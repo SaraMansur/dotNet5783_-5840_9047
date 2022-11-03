@@ -10,6 +10,7 @@ namespace DO;
 
 public struct Order
 {
+
     public int? m_ID { get; set; }
     public string? m_CustomerName { get; set; }
     public string? m_CustomerEmail { get; set; }

@@ -8,6 +8,7 @@ namespace DO;
 /// </summary>
 public struct OrderItem
 {
+
     public int? m_ProductId { get; set; }
     public int? m_OrderId { get; set; }
     public double? m_Price { get; set; }
@@ -17,5 +18,6 @@ public struct OrderItem
     order id: {m_OrderId}
     price: {m_Price}
     amount of item: {m_amount}";
+
 
 }

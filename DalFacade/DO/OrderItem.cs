@@ -5,4 +5,5 @@ namespace DO;
 /// </summary>
 public struct OrderItem
 {
+
 }

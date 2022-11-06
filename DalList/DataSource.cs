@@ -1,9 +1,5 @@
-﻿using DO;
-using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization.Formatters;
-using static Dal.DalProduct;
-using static DO.Enums;
+﻿
+using DO;
 
 namespace Dal;
 
@@ -50,6 +46,7 @@ internal static class DataSource
     //Adds an entity of type Product to the array:
     private static void addProduct()
     {
+
         Random rand = new Random(DateTime.Now.Millisecond);
         Product product = new Product();
         product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
@@ -71,7 +68,8 @@ internal static class DataSource
         if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("earring"))
             product.m_Category = Enums.Category.Earrings;
 
-        //Add(product);
+        var mc = new DalProduct();
+        mc.Add(product);
     }
 
     private static void addOrder(int i)
@@ -104,13 +102,16 @@ internal static class DataSource
             order.m_ShipDate = DateTime.MinValue;
             order.m_DeliveryrDate = DateTime.MinValue;
         }
-    }
+
+        var mc = new DalOrder();
+        mc.Add(order);
+    } 
 
     private static void addOrderItem()
     {
         OrderItem orderItem = new OrderItem();
         Random rand = new Random(DateTime.Now.Millisecond);
-        orderItem.m_Id = Config.orderItemId;
+        orderItem.m_ID = Config.orderItemId;
         int num = rand.Next(0, 20);
         orderItem.m_OrderId = m_OrderArray[num].m_ID;
         for (int k = 0, j = 0; j < m_OrderItemArray.Length; j++)
@@ -139,6 +140,10 @@ internal static class DataSource
         }
         orderItem.m_amount = rand.Next(11, 3);
         orderItem.m_Price = orderItem.m_amount * m_ProductArray[index].m_Price;
+
+        var mc = new DalOrderItem();
+        mc.Add(orderItem);
+
     }
 
 

@@ -1,11 +1,12 @@
-﻿
+﻿//
 using DO;
 using static Dal.DataSource;
 
 namespace Dal;
 
 
-public class DalOrder
+
+    public  class DalOrder
 {
     public int? Add(Order O)
     {

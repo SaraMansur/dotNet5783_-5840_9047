@@ -1,4 +1,5 @@
-﻿using DO;
+﻿//
+using DO;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
 using static Dal.DataSource;

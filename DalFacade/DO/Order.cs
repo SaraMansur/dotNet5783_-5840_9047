@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace DO;
 /// <summary>
-/// 
+/
 /// </summary>
 
 
@@ -23,7 +23,5 @@ public struct Order
     customer adress: {m_CustomerAdress}
     order time: {m_OrderTime}
     ship date: {m_ShipDate}
-    deliveryr date: {m_DeliveryrDate}
-";
-
+    deliveryr date: {m_DeliveryrDate}";
 }

@@ -7,6 +7,7 @@ namespace DO;
 /// <summary>
 /// 
 /// </summary>
+
 public struct Product
 {
     public int m_ID { get; set; }

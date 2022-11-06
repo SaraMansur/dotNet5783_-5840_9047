@@ -1,13 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+// See https://aka.ms/new-console-template for more information
 using Dal;
+using DO;
 using Microsoft.VisualBasic;
 
 Console.WriteLine("Hello, World!");
 static void Main(string[] args) 
 { 
+
     DalOrder order = new DalOrder();
     DalOrderItem item = new DalOrderItem();
-    DalProduct profuct= new DalProduct();
+    DalProduct product= new DalProduct();
     string anstr,ansBstr;
     int ans;
     char ansB;
@@ -43,6 +46,15 @@ static void Main(string[] args)
                 switch (ansB)
                 {
                     case 'a':
+                        Console.WriteLine("please enter id,InStock,price,name of the product.\n");
+                        string str,name;
+                        str = Console.ReadLine();  int id = int.Parse(str);
+                        str = Console.ReadLine();  int? InStock = int.Parse(str);
+                        str = Console.ReadLine(); double price=double.Parse(str);   
+                        name = Console.ReadLine();
+                        Product p =new Product();
+                        p.m_Price = price; p.m_ID=id; p.m_Name = name; p.m_InStock = InStock;
+                        product.Add(p);
                         break;
                     case 'b':
                         break;
@@ -52,7 +64,6 @@ static void Main(string[] args)
                         break;
                     case 'e':
                         break;
-
                 }
                 break;
             case 2:
@@ -78,6 +89,7 @@ static void Main(string[] args)
                 switch (ansB)
                 {
                     case 'a':
+
                         break;
                     case 'b':
                         break;

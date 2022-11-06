@@ -11,7 +11,7 @@ namespace DO;
 public struct Order
 {
 
-    public int? m_ID { get; set; }
+    public int m_ID { get; set; }
     public string? m_CustomerName { get; set; }
     public string? m_CustomerEmail { get; set; }
     public string? m_CustomerAdress { get; set; }

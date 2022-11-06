@@ -112,7 +112,7 @@ internal static class DataSource
     {
         OrderItem orderItem = new OrderItem();
         Random rand = new Random(DateTime.Now.Millisecond);
-        orderItem.m_Id = Config.orderItemId;
+        orderItem.m_ID = Config.orderItemId;
         int num = rand.Next(0, 20);
         orderItem.m_OrderId = m_OrderArray[num].m_ID;
         for (int k=0,j = 0; j < m_OrderItemArray.Length; j++)

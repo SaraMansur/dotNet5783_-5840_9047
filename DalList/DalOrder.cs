@@ -1,12 +1,11 @@
-﻿//
-using DO;
+﻿using DO;
 using System.Collections;
 using static Dal.DataSource;
 namespace Dal;
 
 
 
-    public  class DalOrder
+public class DalOrder
 {
     /// <summary>
     /// A function that adds a new object to the array of orders
@@ -16,8 +15,8 @@ namespace Dal;
     public int Add(Order O)
     {
         m_OrderArray[Config.m_indexEmptyOrder++] = O;
-        m_OrderArray[Config.m_indexEmptyOrder-1].m_ID = Config.orderId;
-        return m_OrderArray[Config.m_indexEmptyOrder-1].m_ID;
+        m_OrderArray[Config.m_indexEmptyOrder - 1].m_ID = Config.orderId;
+        return m_OrderArray[Config.m_indexEmptyOrder - 1].m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orders
@@ -27,7 +26,7 @@ namespace Dal;
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
         {
-            if (ID ==m_OrderArray[i].m_ID)
+            if (ID == m_OrderArray[i].m_ID)
             {
                 if (i == Config.m_indexEmptyOrder - 1)
                     Config.m_indexEmptyOrder--;
@@ -50,19 +49,19 @@ namespace Dal;
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
             if (O.m_ID == m_OrderArray[i].m_ID)
-            { 
+            {
                 m_OrderArray[i] = O;
                 return;
             }
         throw new Exception("The requested order does not exist");
     }
     /// <summary>
-    /// The function returns the order whose ID was received
+    /// The function returns the order w hose ID was received
     /// </summary>
     /// <param name="ID"></param>The function receives an order ID
     /// <returns></returns>The function returns the requested order
     /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
-    public Order GetbyID(int ID) 
+    public Order GetbyID(int ID)
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
         {
@@ -80,7 +79,7 @@ namespace Dal;
         Order[] array = new Order[Config.m_indexEmptyOrder];
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
             array[i] = m_OrderArray[i];
-        IEnumerable e=array.AsEnumerable();
+        IEnumerable e = array.AsEnumerable();
         return e;
     }
 }

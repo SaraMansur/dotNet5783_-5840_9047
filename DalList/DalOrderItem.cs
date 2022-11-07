@@ -1,5 +1,4 @@
-﻿//
-using DO;
+﻿using DO;
 using System.Collections;
 using static Dal.DataSource;
 namespace Dal;
@@ -47,9 +46,9 @@ public class DalOrderItem
     {
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
             if (OI.m_ID == m_OrderItemArray[i].m_ID)
-            { 
-                m_OrderItemArray[i] = OI; 
-                return; 
+            {
+                m_OrderItemArray[i] = OI;
+                return;
             }
         throw new Exception("The requested orderItem does not exist");
     }
@@ -100,13 +99,13 @@ public class DalOrderItem
     /// <returns></returns returns a list of all the products included in the order 
     public IEnumerable GetOrderItems(int? orderId)
     {
-        List<OrderItem> order=new List<OrderItem>();
+        List<OrderItem> order = new List<OrderItem>();
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
         {
-            if (m_OrderItemArray[i].m_OrderId== orderId)
+            if (m_OrderItemArray[i].m_OrderId == orderId)
                 order.Add(m_OrderItemArray[i]);
         }
-        IEnumerable e=order.AsEnumerable();
+        IEnumerable e = order.AsEnumerable();
         return e;
     }
 }

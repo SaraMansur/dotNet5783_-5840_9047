@@ -1,5 +1,4 @@
-﻿
-using static DO.Enums;
+﻿using static DO.Enums;
 using System.Diagnostics;
 using System.Xml.Linq;
 //
@@ -7,7 +6,6 @@ namespace DO;
 /// <summary>
 /// 
 /// </summary>
-
 public struct Product
 {
     public int m_ID { get; set; }
@@ -24,5 +22,3 @@ public struct Product
     amount in stock: {m_InStock}";
 
 }
-
-

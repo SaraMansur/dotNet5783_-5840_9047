@@ -7,8 +7,8 @@ using System.Collections;
 using System.Net;
 
 Console.WriteLine("Hello, World!");
-static void Main(string[] args) 
-{ 
+static void Main(string[] args)
+{
 
     DalOrder order = new DalOrder();
     DalOrderItem item = new DalOrderItem();
@@ -28,8 +28,8 @@ static void Main(string[] args)
         Console.WriteLine("To check the Order entity, type-2\n");
         Console.WriteLine("To check the OrderItem entity, type-3\n");
         anstr = Console.ReadLine();
-        ans=int.Parse(anstr);
-        if(ans==1||ans==2||ans==3)
+        ans = int.Parse(anstr);
+        if (ans == 1 || ans == 2 || ans == 3)
         {
             Console.WriteLine("Which option do you want to check?\n");
             Console.WriteLine("a.Option to add an object to an entity's list.\n");
@@ -38,7 +38,7 @@ static void Main(string[] args)
             Console.WriteLine("d.Option to update object data.\n");
             Console.WriteLine("e.Option to delete an object from an entity's list.\n");
             if (ans == 3)
-            { 
+            {
                 Console.WriteLine("f.Option to receive a list of private orders based on the IDorder.");
                 Console.WriteLine("g.Option to display object by order and product.");
             }
@@ -101,6 +101,7 @@ static void Main(string[] args)
             case 2:
                 ansBstr = Console.ReadLine();
                 ansB = char.Parse(anstr);
+                Order O = new Order();
                 switch (ansB)
                 {
                     case 'a':

@@ -105,7 +105,7 @@ internal static class DataSource
 
         var mc = new DalOrder();
         mc.Add(order);
-    } 
+    }
 
     private static void addOrderItem()
     {

@@ -5,6 +5,7 @@ using static Dal.DataSource;
 namespace Dal;
 public class DalProduct
 {
+   
     /// <summary>
     /// A function that adds a new object to the array of ptoducts
     /// </summary>

@@ -3,8 +3,6 @@ using System.Collections;
 using static Dal.DataSource;
 namespace Dal;
 
-
-
 public class DalOrder
 {
     /// <summary>

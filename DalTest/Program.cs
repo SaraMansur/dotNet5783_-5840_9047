@@ -98,10 +98,10 @@ static void Main(string[] args)
                         break;
                 }
                 break;
+
             case 2:
                 ansBstr = Console.ReadLine();
                 ansB = char.Parse(anstr);
-                Order O = new Order();
                 switch (ansB)
                 {
                     case 'a':

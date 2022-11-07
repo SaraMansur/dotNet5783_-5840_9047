@@ -11,25 +11,24 @@ internal static class DataSource
     internal static OrderItem[] m_OrderItemArray = new OrderItem[200];
 
 
-
-    static string[] m_nameProduct = new string[]
+    static string[] nameProduct = new string[] //An array of product initialization names.
     { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
 
-    static int[] m_price = new int[]
+    static int[] price = new int[]   //An array of prices to initialize products.
     {250, 300, 800, 579, 230, 190, 99, 135, 340, 178};
 
-    static int[] m_stock = new int[]
+    static int[] stock = new int[]  //An array of stock to initialize products.
     {50, 67, 0, 78, 56, 23, 56, 90, 89, 100};
 
-    static string[] m_nameOfCustomer = new string[]
+    static string[] nameOfCustomer = new string[] //An array of customer names to initialize orders.
     {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
         "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
 
-    static string[] m_mail = new string[]
+    static string[] mail = new string[] //
     {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
     "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
 
-    static string[] m_address = new string[]
+    static string[] address = new string[] //
     {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
     "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
 
@@ -84,21 +83,21 @@ internal static class DataSource
         System.DateTime date = DateTime.Now;
         if (i >= 1 && i <= 10)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-30, -15));
-            order.m_ShipDate = order.m_OrderTime.AddDays(rand.Next(1, 14));
-            order.m_DeliveryrDate = order.m_ShipDate.AddHours(rand.Next(1, 24));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-30, -15),0,0,0));
+            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14),0,0,0));
+            order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(rand.Next(1, 24),0,0,0));
         }
 
         if (i > 10 && i <= 16)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-16, -14));
-            order.m_ShipDate = order.m_OrderTime.AddDays(rand.Next(1, 14));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-16, -14),0,0,0));
+            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14),0,0,0));
             order.m_DeliveryrDate = DateTime.MinValue;
         }
 
         if (i > 16 && i <= 20)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-13, -1));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-13, -1),0,0,0));
             order.m_ShipDate = DateTime.MinValue;
             order.m_DeliveryrDate = DateTime.MinValue;
         }

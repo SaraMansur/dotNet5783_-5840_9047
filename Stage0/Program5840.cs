@@ -9,17 +9,16 @@ namespace Stage0
         static void Main(String[] args)
         {
             Welcome5840();
-            Welcome9047();
+            Wellcome9047();
             Console.ReadLine();
         }
 
         private static void Welcome5840()
         {
             System.Console.WriteLine("Enter Your Name: ");
-            String name = System.Console.ReadLine();
+            string? name = Console.ReadLine();
             System.Console.WriteLine(name + ", welcome to my first console application");
         }
-        private static void Welcome9047() { }
-
+        static partial void Wellcome9047();
     }
 }

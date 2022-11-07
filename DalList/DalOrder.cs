@@ -38,7 +38,7 @@ public class DalOrder
                 return;
             }
         }
-        throw new Exception("The requested order does not exist");
+        throw new Exception("The requested orderItem item does not exist");
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.

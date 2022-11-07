@@ -1,15 +1,18 @@
 ﻿
+using Dal;
 using DO;
-
+using System.Collections;
 namespace Dal;
-
 internal static class DataSource
 {
+
     public static readonly int m_num;
     internal static Product[] m_ProductArray = new Product[50];
     internal static Order[] m_OrderArray = new Order[100];
     internal static OrderItem[] m_OrderItemArray = new OrderItem[200];
 
+    //difult constructor:
+    static DataSource() => s_Initialize();
 
 
     static string[] m_nameProduct = new string[]
@@ -27,17 +30,15 @@ internal static class DataSource
 
     static string[] m_mail = new string[]
     {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
-    "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
+         "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
 
     static string[] m_address = new string[]
     {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
-    "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
-
-    //difult constructor:
-    static DataSource() { s_Initialize(); }
+         "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
 
     private static void s_Initialize()
     {
+        Console.WriteLine("saraaaaaaaaaaaaaaaaaa.");
         for (int i = 1; i <= 10; i++) { addProduct(); } //The loop initializes 10 products.
         for (int i = 1; i <= 20; i++) { addOrder(i); }   //The loop initializes 20 orders.
         for (int i = 1; i <= 40; i++) { addOrderItem(); }//The loop initializes 40 ordersItems.
@@ -70,6 +71,7 @@ internal static class DataSource
 
         var mc = new DalProduct();
         mc.Add(product);
+        //m_ProductArray[Config.m_indexEmptyProduct++] = product;
     }
 
     private static void addOrder(int i)
@@ -105,6 +107,7 @@ internal static class DataSource
 
         var mc = new DalOrder();
         mc.Add(order);
+        //m_OrderArray[Config.m_indexEmptyOrder++] = order;
     }
 
     private static void addOrderItem()
@@ -138,12 +141,12 @@ internal static class DataSource
                 j = 0;
             }
         }
-        orderItem.m_amount = rand.Next(11, 3);
+        orderItem.m_amount = rand.Next(3, 11);
         orderItem.m_Price = orderItem.m_amount * m_ProductArray[index].m_Price;
 
         var mc = new DalOrderItem();
         mc.Add(orderItem);
-
+        //m_OrderItemArray[Config.m_indexEmptyOrderItem++] = orderItem;
     }
 
 
@@ -158,4 +161,7 @@ internal static class DataSource
         public static int orderId { get { return m_orderId++; } }
         public static int orderItemId { get { return m_orderItemId++; } }
     }
+
 }
+
+

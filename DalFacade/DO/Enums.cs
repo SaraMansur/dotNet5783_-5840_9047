@@ -8,12 +8,5 @@ public struct Enums
     {
         Watches, Bracelets, Earrings, Rings, Necklaces
     }
-    //public enum Gender
-    //{
-    //    Man, Woman
-    //}
-    //public enum Description
-    //{
-    //    Rose, Gold, Silver, Goldfield
-    //}
+    
 }

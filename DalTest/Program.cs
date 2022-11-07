@@ -58,17 +58,18 @@ namespace DalList
                         switch (ansBstr)
                         {
                             case "a":
-                                Console.WriteLine("please enter category ,InStock,price,name of the product.");
+                                Console.WriteLine("please enter id,category ,InStock,price,name of the product.");
+                                str = Console.ReadLine(); id = int.Parse(str);
                                 str = Console.ReadLine(); category = (Category)Enum.Parse(typeof(Category), str);
                                 str = Console.ReadLine(); InStock = int.Parse(str);
                                 str = Console.ReadLine(); price = double.Parse(str);
                                 name = Console.ReadLine();
-                                p.m_Price = price; p.m_Category = category; p.m_Name = name; p.m_InStock = InStock;
+                                p.m_Price = price;p.m_ID = id; p.m_Category = category; p.m_Name = name; p.m_InStock = InStock;
                                 try { Console.WriteLine(product.Add(p)); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
                                 break;
                             case "b":
-                                Console.WriteLine("please enter ID of the product.\n");
+                                Console.WriteLine("please enter ID of the product.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { Console.WriteLine(product.GetbyID(id)); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -83,7 +84,7 @@ namespace DalList
                                 }
                                 break;
                             case "d":
-                                Console.WriteLine("please enter id,InStock,price,name of the product.\n");
+                                Console.WriteLine("please enter id,InStock,price,name of the product.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 str = Console.ReadLine(); InStock = int.Parse(str);
                                 str = Console.ReadLine(); price = double.Parse(str);
@@ -93,7 +94,7 @@ namespace DalList
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
                                 break;
                             case "e":
-                                Console.WriteLine("please enter ID of the product.\n");
+                                Console.WriteLine("please enter ID of the product.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { product.Delete(id); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -105,7 +106,7 @@ namespace DalList
                         switch (ansBstr)
                         {
                             case "a":
-                                Console.WriteLine("please enter your name, email,and adress.\n");
+                                Console.WriteLine("please enter your name, email,and adress.");
                                 name = Console.ReadLine(); O.m_CustomerName = name;
                                 email = Console.ReadLine(); O.m_CustomerEmail = email;
                                 address = Console.ReadLine(); O.m_CustomerAdress = address;
@@ -117,7 +118,7 @@ namespace DalList
                                 break;
 
                             case "b":
-                                Console.WriteLine("please enter ID of the order.\n");
+                                Console.WriteLine("please enter ID of the order.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { Console.WriteLine(order.GetbyID(id)); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -134,7 +135,7 @@ namespace DalList
                                 break;
 
                             case "d":
-                                Console.WriteLine("please enter id, your name, email,and adress.\n");
+                                Console.WriteLine("please enter id, your name, email,and adress.");
                                 str = Console.ReadLine(); id = int.Parse(str); O.m_ID = id;
                                 name = Console.ReadLine(); O.m_CustomerName = name;
                                 email = Console.ReadLine(); O.m_CustomerEmail = email;
@@ -147,7 +148,7 @@ namespace DalList
                                 break;
 
                             case "e":
-                                Console.WriteLine("please enter ID of the order.\n");
+                                Console.WriteLine("please enter ID of the order.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { order.Delete(id); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -160,7 +161,7 @@ namespace DalList
                         switch (ansBstr)
                         {
                             case "a":
-                                Console.WriteLine("please enter your name, email,and adress.\n");
+                                Console.WriteLine("please enter productId, orderId, price, amount.");
                                 str = Console.ReadLine(); productId = int.Parse(str);
                                 str = Console.ReadLine(); orderId = int.Parse(str);
                                 str = Console.ReadLine(); price = double.Parse(str);
@@ -170,7 +171,7 @@ namespace DalList
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
                                 break;
                             case "b":
-                                Console.WriteLine("please enter ID of the orderItem.\n");
+                                Console.WriteLine("please enter ID of the orderItem.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { Console.WriteLine(item.GetbyID(id)); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -185,7 +186,7 @@ namespace DalList
                                 }
                                 break;
                             case "d":
-                                Console.WriteLine("please enter your name, email,and adress.\n");
+                                Console.WriteLine("please enter productId, orderId, price, amount.");
                                 str = Console.ReadLine(); productId = int.Parse(str);
                                 str = Console.ReadLine(); orderId = int.Parse(str);
                                 str = Console.ReadLine(); price = double.Parse(str);
@@ -195,7 +196,7 @@ namespace DalList
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
                                 break;
                             case "e":
-                                Console.WriteLine("please enter ID of the orderItem.\n");
+                                Console.WriteLine("please enter ID of the orderItem.");
                                 str = Console.ReadLine(); id = int.Parse(str);
                                 try { item.Delete(id); }
                                 catch (Exception e) { Console.WriteLine(e + "\n"); }
@@ -203,12 +204,18 @@ namespace DalList
                             //Console.WriteLine("f.Option to receive a list of private orders based on the IDorder.");
                             //Console.WriteLine("g.Option to display object by order and product.");
                             case "f":
-                                Console.WriteLine("please enter ID of the order.\n");
+                                Console.WriteLine("please enter ID of the order.");
                                 str = Console.ReadLine(); id = int.Parse(str);
-                                item.GetOrderItems(id);
+                                IEnumerable Ien = item.GetOrderItems(id);
+                                IEnumerator enumerato = Ien.GetEnumerator();
+                                while (enumerato.MoveNext())
+                                {
+                                    O = (Order)enumerato.Current;
+                                    Console.WriteLine(O + "\n");
+                                }
                                 break;
                             case "g":
-                                Console.WriteLine("please enter ID of product and order.\n");
+                                Console.WriteLine("please enter ID of product and order.");
                                 str = Console.ReadLine(); productId = int.Parse(str);
                                 str = Console.ReadLine(); orderId = int.Parse(str);
                                 try { item.GetbyProductAndOrder(productId, orderId); }

@@ -4,9 +4,8 @@ using DO;
 using System.Collections;
 namespace Dal;
 internal static class DataSource
-{
-
-    public static readonly int m_num;
+{ 
+    static readonly Random rand = new Random();
     internal static Product[] m_ProductArray = new Product[50];
     internal static Order[] m_OrderArray = new Order[100];
     internal static OrderItem[] m_OrderItemArray = new OrderItem[200];
@@ -38,7 +37,7 @@ internal static class DataSource
 
     private static void s_Initialize()
     {
-        Console.WriteLine("saraaaaaaaaaaaaaaaaaa.");
+        Console.WriteLine("");
         for (int i = 1; i <= 10; i++) { addProduct(); } //The loop initializes 10 products.
         for (int i = 1; i <= 20; i++) { addOrder(i); }   //The loop initializes 20 orders.
         for (int i = 1; i <= 40; i++) { addOrderItem(); }//The loop initializes 40 ordersItems.
@@ -48,7 +47,7 @@ internal static class DataSource
     private static void addProduct()
     {
 
-        Random rand = new Random(DateTime.Now.Millisecond);
+        //Random rand = new Random(DateTime.Now.Millisecond);
         Product product = new Product();
         product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
         for (int j = 0; j < m_ProductArray.Length; j++)
@@ -77,30 +76,29 @@ internal static class DataSource
     private static void addOrder(int i)
     {
         Order order = new Order();
-        order.m_ID = Config.orderId;
         order.m_CustomerName = m_nameOfCustomer[Config.m_indexEmptyOrder];
         order.m_CustomerEmail = m_mail[Config.m_indexEmptyOrder];
-        order.m_CustomerAdress = m_mail[Config.m_indexEmptyOrder];
+        order.m_CustomerAdress = m_address[Config.m_indexEmptyOrder];
 
-        Random rand = new Random(DateTime.Now.Millisecond);
+        //Random rand = new Random(DateTime.Now.Millisecond);
         System.DateTime date = DateTime.Now;
         if (i >= 1 && i <= 10)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-30, -15));
-            order.m_ShipDate = order.m_OrderTime.AddDays(rand.Next(1, 14));
-            order.m_DeliveryrDate = order.m_ShipDate.AddHours(rand.Next(1, 24));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
+            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+            order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(rand.Next(1, 24), 0, 0, 0));
         }
 
         if (i > 10 && i <= 16)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-16, -14));
-            order.m_ShipDate = order.m_OrderTime.AddDays(rand.Next(1, 14));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
+            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
             order.m_DeliveryrDate = DateTime.MinValue;
         }
 
         if (i > 16 && i <= 20)
         {
-            order.m_OrderTime = date.AddDays(rand.Next(-13, -1));
+            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-13, -1), 0, 0, 0));
             order.m_ShipDate = DateTime.MinValue;
             order.m_DeliveryrDate = DateTime.MinValue;
         }
@@ -113,8 +111,6 @@ internal static class DataSource
     private static void addOrderItem()
     {
         OrderItem orderItem = new OrderItem();
-        Random rand = new Random(DateTime.Now.Millisecond);
-        orderItem.m_ID = Config.orderItemId;
         int num = rand.Next(0, 20);
         orderItem.m_OrderId = m_OrderArray[num].m_ID;
         for (int k = 0, j = 0; j < m_OrderItemArray.Length; j++)
@@ -158,8 +154,8 @@ internal static class DataSource
         internal static int m_indexEmptyOrderItem = 0;
         private static int m_orderId = 100000;
         private static int m_orderItemId = 100000;
-        public static int orderId { get { return m_orderId++; } }
-        public static int orderItemId { get { return m_orderItemId++; } }
+        internal static int orderId { get { return m_orderId++; } }
+        internal static int orderItemId { get { return m_orderItemId++; } }
     }
 
 }

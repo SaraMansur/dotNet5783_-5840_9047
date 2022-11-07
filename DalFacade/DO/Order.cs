@@ -18,6 +18,7 @@ public struct Order
     public DateTime m_DeliveryrDate { get; set; }
     public override string ToString() => $@"
     id:{m_ID}
+    customer name: {m_CustomerName}
     customer email: {m_CustomerEmail}
     customer adress: {m_CustomerAdress}
     order time: {m_OrderTime}

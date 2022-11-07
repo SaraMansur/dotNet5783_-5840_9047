@@ -86,7 +86,7 @@ internal static class DataSource
         {
             order.m_OrderTime = date.AddDays(rand.Next(-30, -15));
             order.m_ShipDate = order.m_OrderTime.AddDays(rand.Next(1, 14));
-            order.m_DeliveryrDate = order.m_ShipDate.AddDays(rand.Next(1, 24));
+            order.m_DeliveryrDate = order.m_ShipDate.AddHours(rand.Next(1, 24));
         }
 
         if (i > 10 && i <= 16) 

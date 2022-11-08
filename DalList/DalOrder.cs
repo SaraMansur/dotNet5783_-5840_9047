@@ -12,9 +12,9 @@ public class DalOrder
     /// <returns></returns>The function returns the ID of the new added order
     public int Add(Order O)
     {
-        m_OrderArray[Config.m_indexEmptyOrder++] = O;
-        m_OrderArray[Config.m_indexEmptyOrder - 1].m_ID = Config.orderId;
-        return m_OrderArray[Config.m_indexEmptyOrder - 1].m_ID;
+        O.m_ID = Config.orderId;
+        m_listOreders[Config.m_indexEmptyOrder++] = O;
+        return m_listOreders[Config.m_indexEmptyOrder - 1].m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orders
@@ -24,14 +24,9 @@ public class DalOrder
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
         {
-            if (ID == m_OrderArray[i].m_ID)
+            if (ID == m_listOreders[i].m_ID)
             {
-                if (i == Config.m_indexEmptyOrder - 1)
-                    Config.m_indexEmptyOrder--;
-                else
-                    for (int j = i; j < Config.m_indexEmptyOrder; j++)
-                        if (j + 1 != Config.m_indexEmptyOrder)
-                            m_OrderArray[j] = m_OrderArray[j + 1];
+                m_listOreders.Remove(m_listOreders[i]);
                 Config.m_indexEmptyOrder--;
                 return;
             }
@@ -46,9 +41,9 @@ public class DalOrder
     public void Update(Order O)
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
-            if (O.m_ID == m_OrderArray[i].m_ID)
+            if (O.m_ID == m_listOreders[i].m_ID)
             {
-                m_OrderArray[i] = O;
+                m_listOreders[i] = O;
                 return;
             }
         throw new Exception("The requested order does not exist");
@@ -63,8 +58,8 @@ public class DalOrder
     {
         for (int i = 0; i != Config.m_indexEmptyOrder; i++)
         {
-            if (ID == m_OrderArray[i].m_ID)
-                return m_OrderArray[i];
+            if (ID == m_listOreders[i].m_ID)
+                return m_listOreders[i];
         }
         throw new Exception("The requested order does not exist");
     }
@@ -74,10 +69,6 @@ public class DalOrder
     /// <returns></returns>
     public IEnumerable GetArray()
     {
-        Order[] array = new Order[Config.m_indexEmptyOrder];
-        for (int i = 0; i != Config.m_indexEmptyOrder; i++)
-            array[i] = m_OrderArray[i];
-        IEnumerable e = array.AsEnumerable();
-        return e;
+        return m_listOreders;
     }
 }

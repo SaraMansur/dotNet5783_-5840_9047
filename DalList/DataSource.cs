@@ -2,16 +2,18 @@
 using Dal;
 using DO;
 using System.Collections;
+using static Dal.DataSource;
+
 namespace Dal;
 internal static class DataSource
 { 
     static readonly Random rand = new Random();
-    internal static Product[] m_ProductArray = new Product[50];
-    internal static Order[] m_OrderArray = new Order[100];
-    internal static OrderItem[] m_OrderItemArray = new OrderItem[200];
 
-    //difult constructor:
-    static DataSource() => s_Initialize();
+    internal static List<Product> m_listPruducts = new List<Product>();
+    internal static List<Order> m_listOreders = new List<Order>();
+    internal static List<OrderItem> m_listOrderItems = new List<OrderItem>();
+
+    static DataSource() => s_Initialize(); //difult constructor.
 
     static string[] nameProduct = new string[] //An array of product initialization names.
     { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
@@ -26,125 +28,107 @@ internal static class DataSource
     {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
         "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
 
-    static string[] mail = new string[] //
+    static string[] mail = new string[] 
     {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
          "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
 
-    static string[] address = new string[] //
+    static string[] address = new string[] 
     {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
          "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
 
     private static void s_Initialize()
     {
         Console.WriteLine("");
-        for (int i = 1; i <= 10; i++) { addProduct(); } //The loop initializes 10 products.
-        for (int i = 1; i <= 20; i++) { addOrder(i); }   //The loop initializes 20 orders.
-        for (int i = 1; i <= 40; i++) { addOrderItem(); }//The loop initializes 40 ordersItems.
-    }
-
-    //Adds an entity of type Product to the array:
-    private static void addProduct()
-    {
-
-        //Random rand = new Random(DateTime.Now.Millisecond);
-        Product product = new Product();
-        product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
-        for (int j = 0; j < m_ProductArray.Length; j++)
+        for (int i = 1; i <= 10; i++) //The loop initializes 10 products.
         {
-            if (m_ProductArray[j].m_ID == product.m_ID)
-            { product.m_ID = rand.Next(100000, 999999); j = 0; }
-        }
-        product.m_Name = m_nameProduct[Config.m_indexEmptyProduct];
-        product.m_Price = m_price[Config.m_indexEmptyProduct];
-        product.m_InStock = m_stock[Config.m_indexEmptyProduct];
-
-        if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
-            product.m_Category = Enums.Category.Necklaces;
-        if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("ring"))
-            product.m_Category = Enums.Category.Rings;
-        if (product.m_Name.StartsWith("Bracelet") || product.m_Name.EndsWith("bracelet"))
-            product.m_Category = Enums.Category.Bracelets;
-        if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("earring"))
-            product.m_Category = Enums.Category.Earrings;
-
-        var mc = new DalProduct();
-        mc.Add(product);
-        //m_ProductArray[Config.m_indexEmptyProduct++] = product;
-    }
-
-    private static void addOrder(int i)
-    {
-        Order order = new Order();
-        order.m_CustomerName = m_nameOfCustomer[Config.m_indexEmptyOrder];
-        order.m_CustomerEmail = m_mail[Config.m_indexEmptyOrder];
-        order.m_CustomerAdress = m_address[Config.m_indexEmptyOrder];
-
-        //Random rand = new Random(DateTime.Now.Millisecond);
-        System.DateTime date = DateTime.Now;
-        if (i >= 1 && i <= 10)
-        {
-            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
-            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
-            order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(rand.Next(1, 24), 0, 0, 0));
-        }
-
-        if (i > 10 && i <= 16)
-        {
-            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
-            order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
-            order.m_DeliveryrDate = DateTime.MinValue;
-        }
-
-        if (i > 16 && i <= 20)
-        {
-            order.m_OrderTime = date.Add(new TimeSpan(rand.Next(-13, -1), 0, 0, 0));
-            order.m_ShipDate = DateTime.MinValue;
-            order.m_DeliveryrDate = DateTime.MinValue;
-        }
-
-        var mc = new DalOrder();
-        mc.Add(order);
-        //m_OrderArray[Config.m_indexEmptyOrder++] = order;
-    }
-
-    private static void addOrderItem()
-    {
-        OrderItem orderItem = new OrderItem();
-        int num = rand.Next(0, 20);
-        orderItem.m_OrderId = m_OrderArray[num].m_ID;
-        for (int k = 0, j = 0; j < m_OrderItemArray.Length; j++)
-        {
-            if (m_OrderItemArray[j].m_OrderId == orderItem.m_OrderId)
+            Product product = new Product();
+            product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
+            for (int j = 0; j < m_listPruducts.Count; j++) //Checking if the ID number exists.
             {
-                k++;
-                if (k > 4)
+                if (m_listPruducts.Exists(match => match.m_ID == product.m_ID))
+                { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
+            }
+            product.m_Name = nameProduct[Config.m_indexEmptyProduct]; //initialization product name
+            product.m_Price = price[Config.m_indexEmptyProduct]; //Product price initialization.
+            product.m_InStock = stock[Config.m_indexEmptyProduct]; //Initialize quantity in stock for product.
+
+            if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
+                product.m_Category = Enums.Category.Necklaces;
+            if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("ring"))
+                product.m_Category = Enums.Category.Rings;
+            if (product.m_Name.StartsWith("Bracelet") || product.m_Name.EndsWith("bracelet"))
+                product.m_Category = Enums.Category.Bracelets;
+            if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("earring"))
+                product.m_Category = Enums.Category.Earrings;
+            addProduct(product);
+        }
+
+        for (int i = 1; i <= 20; i++)//The loop initializes 20 orders.
+        {
+            Order order = new Order();
+            order.m_CustomerName = nameOfCustomer[Config.m_indexEmptyOrder]; //Initialize the Customer name.
+            order.m_CustomerEmail = mail[Config.m_indexEmptyOrder]; //Initialize the customer email.
+            order.m_CustomerAdress = address[Config.m_indexEmptyOrder]; //Client address initialization.
+
+            if (i > 10 && i <= 16)//80 from orders also have a delivery date.
+            {
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
+                order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_DeliveryrDate = DateTime.MinValue;
+            }
+
+            if (i >= 1 && i <= 10)//To 60 percent of the 80 percent of the orders that also have a delivery date, have a delivery date.
+            {
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
+                order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
+            }
+
+            if (i > 16 && i <= 20)//20 percent of orders have no delivery date and delivery date.
+            {
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-13, -1), 0, 0, 0));
+                order.m_ShipDate = DateTime.MinValue;
+                order.m_DeliveryrDate = DateTime.MinValue;
+            }
+            addOrder(order); 
+        }   
+
+        for (int i = 1; i <= 40; i++)//The loop initializes 40 ordersItems.
+        {
+            OrderItem orderItem = new OrderItem();
+            orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID;
+            for (int k = 0, j = 0; j < m_listOreders.Count; j++) //Test that each order will be 1 to 4 order items
+            {
+                if (m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
                 {
-                    num = rand.Next(0, 20);
-                    orderItem.m_OrderId = m_OrderArray[num].m_ID;
-                    j = 0;
+                    k++;
+                    if (k > 4) { orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID; j = 0; }
                 }
             }
-        }
-        int index = rand.Next(0, 9);
-        orderItem.m_ProductId = m_ProductArray[index].m_ID;
-        for (int j = 0; j < m_OrderItemArray.Length; j++)
-        {
-            if (m_OrderItemArray[j].m_ProductId == orderItem.m_ProductId && m_OrderItemArray[j].m_OrderId == orderItem.m_OrderId)
+            int index = rand.Next(0, 9);
+            orderItem.m_ProductId = m_listPruducts[index].m_ID;
+            for (int j = 0; j < m_listOrderItems.Count; j++)  //An examination that this item does not exist in the current order.
             {
-                index = rand.Next(0, 9);
-                orderItem.m_ProductId = m_ProductArray[index].m_ID;
-                j = 0;
+                if (m_listOrderItems[j].m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
+                { //If the item exists.
+                    index = rand.Next(0, 9);
+                    orderItem.m_ProductId = m_listOreders[index].m_ID; j = 0;//The price is equal to double price.
+                }
             }
+            orderItem.m_amount = rand.Next(1, 4); //Random number of product amount.
+            orderItem.m_Price = orderItem.m_amount * m_listPruducts[index].m_Price; //
+            addOrderItem(orderItem); 
         }
-        orderItem.m_amount = rand.Next(3, 11);
-        orderItem.m_Price = orderItem.m_amount * m_ProductArray[index].m_Price;
-
-        var mc = new DalOrderItem();
-        mc.Add(orderItem);
-        //m_OrderItemArray[Config.m_indexEmptyOrderItem++] = orderItem;
     }
 
+    //The function adds a product to the product pool:
+    private static void addProduct(Product product)=> m_listPruducts.Add(product);
 
+    //The function adds an order to the order pool:
+    private static void addOrder(Order order)=>m_listOreders.Add(order);
+
+    //The function adds an OrderItem to the OrderItem pool:
+    private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
 
     internal static class Config
     {

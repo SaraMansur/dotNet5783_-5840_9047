@@ -11,9 +11,10 @@ public class DalOrderItem
     /// <returns></returns>The function returns the ID of the new added orderItem
     public int Add(OrderItem OI)
     {
-        m_OrderItemArray[Config.m_indexEmptyOrderItem++] = OI;
-        m_OrderItemArray[Config.m_indexEmptyOrderItem - 1].m_ID = Config.orderItemId;
-        return m_OrderItemArray[Config.m_indexEmptyOrderItem - 1].m_ID;
+        
+        OI.m_ID= Config.orderItemId;
+        m_listOrderItems[Config.m_indexEmptyOrderItem++] = OI;
+        return m_listOrderItems[Config.m_indexEmptyOrderItem - 1].m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orderItem
@@ -23,14 +24,9 @@ public class DalOrderItem
     {
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
         {
-            if (ID == m_OrderItemArray[i].m_ID)
+            if (ID == m_listOrderItems[i].m_ID)
             {
-                if (i == Config.m_indexEmptyOrderItem - 1)
-                    Config.m_indexEmptyOrderItem--;
-                else
-                    for (int j = i; j < Config.m_indexEmptyOrderItem; j++)
-                        if (j + 1 != Config.m_indexEmptyOrderItem)
-                            m_OrderItemArray[j] = m_OrderItemArray[j + 1];
+                m_listOrderItems.Remove(m_listOrderItems[i]);
                 Config.m_indexEmptyOrderItem--;
                 return;
             }
@@ -45,9 +41,9 @@ public class DalOrderItem
     public void Update(OrderItem OI)
     {
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
-            if (OI.m_ID == m_OrderItemArray[i].m_ID)
+            if (OI.m_ID == m_listOrderItems[i].m_ID)
             {
-                m_OrderItemArray[i] = OI;
+                m_listOrderItems[i] = OI;
                 return;
             }
         throw new Exception("The requested orderItem does not exist");
@@ -61,8 +57,8 @@ public class DalOrderItem
     public OrderItem GetbyID(int ID)
     {
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
-            if (ID == m_OrderItemArray[i].m_ID)
-                return m_OrderItemArray[i];
+            if (ID == m_listOrderItems[i].m_ID)
+                return m_listOrderItems[i];
         throw new Exception("The requested order item does not exist");
     }
     /// <summary>
@@ -71,11 +67,7 @@ public class DalOrderItem
     /// <returns></returns>
     public IEnumerable GetArray()
     {
-        OrderItem[] array = new OrderItem[Config.m_indexEmptyOrderItem];
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
-            array[i] = m_OrderItemArray[i];
-        IEnumerable e = array.AsEnumerable();
-        return e;
+        return m_listOrderItems;
     }
     /// <summary>
     /// The function recives  ID of  product and order  and  returns the appropriate  orderItem 
@@ -87,8 +79,8 @@ public class DalOrderItem
     public OrderItem GetbyProductAndOrder(int? PID, int? OID)
     {
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
-            if (OID == m_OrderItemArray[i].m_OrderId && PID == m_OrderItemArray[i].m_ProductId)
-                return m_OrderItemArray[i];
+            if (OID == m_listOrderItems[i].m_OrderId && PID == m_listOrderItems[i].m_ProductId)
+                return m_listOrderItems[i];
         throw new Exception("The requested orderItem item does not exist");
     }
 
@@ -102,10 +94,9 @@ public class DalOrderItem
         List<OrderItem> order = new List<OrderItem>();
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
         {
-            if (m_OrderItemArray[i].m_OrderId == orderId)
-                order.Add(m_OrderItemArray[i]);
+            if (m_listOrderItems[i].m_OrderId == orderId)
+                order.Add(m_listOrderItems[i]);
         }
-        IEnumerable e = order.AsEnumerable();
-        return e;
+        return order;
     }
 }

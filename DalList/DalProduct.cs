@@ -17,10 +17,10 @@ public class DalProduct
 
         for (int i = 0; i != Config.m_indexEmptyProduct; i++)
         {
-            if (P.m_ID == m_ProductArray[i].m_ID)
+            if (P.m_ID == m_listPruducts[i].m_ID)
                 throw new Exception("The requested product already exist");
         }
-        m_ProductArray[Config.m_indexEmptyProduct++] = P;
+        m_listPruducts[Config.m_indexEmptyProduct++] = P;
         return P.m_ID;
     }
     /// <summary>
@@ -31,14 +31,9 @@ public class DalProduct
     {
         for (int i = 0; i != Config.m_indexEmptyProduct; i++)
         {
-            if (ID == m_ProductArray[i].m_ID)
+            if (ID == m_listPruducts[i].m_ID)
             {
-                if (i == Config.m_indexEmptyProduct - 1)
-                    Config.m_indexEmptyProduct--;
-                else
-                    for (int j = i; j < Config.m_indexEmptyProduct; j++)
-                        if (j + 1 != Config.m_indexEmptyProduct)
-                            m_ProductArray[j] = m_ProductArray[j + 1];
+                m_listPruducts.Remove(m_listPruducts[i]);
                 Config.m_indexEmptyProduct--;
                 return;
             }
@@ -53,9 +48,9 @@ public class DalProduct
     public void Update(Product P)
     {
         for (int i = 0; i != Config.m_indexEmptyProduct; i++)
-            if (P.m_ID == m_ProductArray[i].m_ID)
+            if (P.m_ID == m_listPruducts[i].m_ID)
             {
-                m_ProductArray[i] = P;
+                m_listPruducts[i] = P;
                 return;
             }
 
@@ -71,8 +66,8 @@ public class DalProduct
     {
         for (int i = 0; i != Config.m_indexEmptyProduct; i++)
         {
-            if (m_ProductArray[i].m_ID == ID)
-                return m_ProductArray[i];
+            if (m_listPruducts[i].m_ID == ID)
+                return m_listPruducts[i];
         }
         throw new Exception("The requested product does not exist");
     }
@@ -82,10 +77,6 @@ public class DalProduct
     /// <returns></returns>
     public IEnumerable GetArray()
     {
-        Product[] array = new Product[Config.m_indexEmptyProduct];
-        for (int i = 0; i != Config.m_indexEmptyProduct; i++)
-            array[i] = m_ProductArray[i];
-        IEnumerable e = array.AsEnumerable();
-        return e;
+        return m_listPruducts;
     }
 }

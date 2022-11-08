@@ -75,7 +75,7 @@ public class DalProduct
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable GetArray()
+    public IEnumerable<Product> GetArray()
     {
         return m_listPruducts;
     }

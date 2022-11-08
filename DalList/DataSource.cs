@@ -26,31 +26,30 @@ internal static class DataSource
 
     static string[] nameOfCustomer = new string[] //An array of customer names to initialize orders.
     {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
-        "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
+    "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
 
     static string[] mail = new string[] 
     {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
-         "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
+    "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
 
     static string[] address = new string[] 
     {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
-         "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
+    "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
 
     private static void s_Initialize()
     {
-        Console.WriteLine("");
-        for (int i = 1; i <= 10; i++) //The loop initializes 10 products.
+        for (int i = 0; i < 10; i++) //The loop initializes 10 products.
         {
             Product product = new Product();
             product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
-            for (int j = 0; j < m_listPruducts.Count; j++) //Checking if the ID number exists.
+            for (int j = 0; j < Config.m_indexEmptyProduct; j++) //Checking if the ID number exists.
             {
                 if (m_listPruducts.Exists(match => match.m_ID == product.m_ID))
                 { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
             }
-            product.m_Name = nameProduct[Config.m_indexEmptyProduct]; //initialization product name
-            product.m_Price = price[Config.m_indexEmptyProduct]; //Product price initialization.
-            product.m_InStock = stock[Config.m_indexEmptyProduct]; //Initialize quantity in stock for product.
+            product.m_Name = nameProduct[i]; //initialization product name
+            product.m_Price = price[i]; //Product price initialization.
+            product.m_InStock = stock[i]; //Initialize quantity in stock for product.
 
             if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
                 product.m_Category = Enums.Category.Necklaces;
@@ -66,9 +65,9 @@ internal static class DataSource
         for (int i = 1; i <= 20; i++)//The loop initializes 20 orders.
         {
             Order order = new Order();
-            order.m_CustomerName = nameOfCustomer[Config.m_indexEmptyOrder]; //Initialize the Customer name.
-            order.m_CustomerEmail = mail[Config.m_indexEmptyOrder]; //Initialize the customer email.
-            order.m_CustomerAdress = address[Config.m_indexEmptyOrder]; //Client address initialization.
+            order.m_CustomerName = nameOfCustomer[i]; //Initialize the Customer name.
+            order.m_CustomerEmail = mail[i]; //Initialize the customer email.
+            order.m_CustomerAdress = address[i]; //Client address initialization.
 
             if (i > 10 && i <= 16)//80 from orders also have a delivery date.
             {

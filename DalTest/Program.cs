@@ -42,7 +42,7 @@ namespace DalList
 
                 }
 
-                try
+               try
                 {
                     switch (ans)
                     {
@@ -66,7 +66,9 @@ namespace DalList
                                     Console.WriteLine(product.GetbyID(int.Parse(Console.ReadLine())));
                                     break;
                                 case "c":
-                                    IEnumerable Ie = product.GetArray();
+                                 // IEnumerable Ie = product.GetArray();
+                                    //numerator<Product> Ie = product.GetArray();
+                                    IEnumerable<Product> Ie = product.GetArray();
                                     IEnumerator enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
@@ -155,7 +157,7 @@ namespace DalList
                                     break;
 
                                 case "c":
-                                    IEnumerable Ie = item.GetArray();
+                                    IEnumerable Ie= item.GetArray();
                                     IEnumerator enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {

@@ -15,7 +15,7 @@ public struct Product
     public Enums.Category? m_Category { get; set; }
     public override string ToString() => $@"
     product id= {m_ID}
-    name: {m_Name}, 
+    name: {m_Name}
     category - {m_Category}
     price: {m_Price}
     amount in stock: {m_InStock}";

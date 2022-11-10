@@ -15,15 +15,48 @@ internal static class DataSource
 
     static DataSource() => s_Initialize(); //difult constructor.
 
-    static string[] nameProduct = { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
+    private static void s_Initialize()
+    {
+        string[] nameProduct = //An array of product initialization names.
+        { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
 
-    static string[] firstName = { "David", "Sara", "Yael", "Lea", "Yair", "Yossi", "Meir", "Tali" };
+        int[] price = //An array of prices to initialize products.
+        {250, 300, 800, 579, 230, 190, 99, 135, 340, 178};
 
-    static string[] lastName = { "Cohen", "Ochana", "Mansur", "Levi", "Dahan", "Ben-Califa", "Zafrani", "Deryi" };
+        int[] stock = //An array of stock to initialize products.
+        {50, 67, 0, 78, 56, 23, 56, 90, 89, 100};
 
-    static string[] citie = { "Haifa", "Jerusalem", "Rechassim", "Tveria", "Netivot", "Rechovot", "Gadera", "Gadera", "Tveria", "Jerosulem" };
+        string[] nameOfCustomer = //An array of customer names to initialize orders.
+        {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
+        "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
 
-    static string[] street = { "Ben Guryon", "Harimonim", "Hazait", "Vaitzman", "Begin" ,"Hatamar","Savion","Haoranim"};
+        string[] mail = 
+        {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
+         "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
+
+        string[] address = 
+        {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
+         "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa"};
+
+        for (int i = 0; i < 10; i++) //The loop initializes 10 products.
+        {
+            Product product = new Product();
+            do { product.m_ID = rand.Next(100000, 999999); } //Generate a random number with 6 digits.
+            while (m_listPruducts.Exists(x => x.m_ID == product.m_ID));
+            product.m_Name = nameProduct[i]; //initialization product name
+            product.m_Price = price[i]; //Product price initialization.
+            product.m_InStock = stock[i]; //Initialize quantity in stock for product.
+
+
+            static string[] nameProduct = { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
+
+            static string[] firstName = { "David", "Sara", "Yael", "Lea", "Yair", "Yossi", "Meir", "Tali" };
+
+            static string[] lastName = { "Cohen", "Ochana", "Mansur", "Levi", "Dahan", "Ben-Califa", "Zafrani", "Deryi" };
+
+           static string[] citie = { "Haifa", "Jerusalem", "Rechassim", "Tveria", "Netivot", "Rechovot", "Gadera", "Gadera", "Tveria", "Jerosulem" };
+
+           static string[] street = { "Ben Guryon", "Harimonim", "Hazait", "Vaitzman", "Begin" ,"Hatamar","Savion","Haoranim"};
 
     private static void s_Initialize()
     {
@@ -55,12 +88,19 @@ internal static class DataSource
         {
             Order order = new Order();
 
+            order.m_CustomerName = nameOfCustomer[i]; //Initialize the Customer name.
+            order.m_CustomerEmail = mail[i]; //Initialize the customer email.
+            order.m_CustomerAdress = address[i]; //Client address initialization.
+
+
+
             string custumerFirstName = firstName[rand.Next(0, 7)];
             string custumerLastName = lastName[rand.Next(0, 7)];
 
             order.m_CustomerName = custumerFirstName + " " + custumerLastName; //Initialize the Customer name.
             order.m_CustomerEmail = custumerFirstName + rand.Next(100, 999) + "@gmail.com"; //Initialize the customer email.
             order.m_CustomerAdress = street[rand.Next(0, 7)] + " " + rand.Next(1, 100) + " " + citie[rand.Next(0, 9)]; //Client address initialization.
+
 
             if (i >= 10 && i < 16)//80 from orders also have a delivery date.
             {
@@ -103,6 +143,15 @@ internal static class DataSource
             {
                 if (m_listOrderItems[j].m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
                 { //If the item exists.
+
+                    index = rand.Next(0, 9);
+                    orderItem.m_ProductId = m_listPruducts[index].m_ID; j = 0;//The price is equal to double price.
+                }
+            }
+            orderItem.m_amount = rand.Next(1, 4); //Random number of product amount.
+            orderItem.m_Price = (orderItem.m_amount) * (m_listPruducts[index].m_Price); //
+            addOrderItem(orderItem); 
+
                     p = m_listPruducts[rand.Next(0, 9)];
                     orderItem.m_ProductId = p.m_ID; j = 0;//The price is equal to double price.
                 }
@@ -110,6 +159,7 @@ internal static class DataSource
             orderItem.m_amount = rand.Next(1, 4); //Random number of product amount.
             orderItem.m_Price = orderItem.m_amount * p.m_Price; //
             addOrderItem(orderItem);
+
         }
     }
 

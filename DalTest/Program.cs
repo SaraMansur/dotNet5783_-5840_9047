@@ -155,6 +155,7 @@ namespace DalList
                                     break;
 
                                 case "c":
+
                                     IEnumerable<OrderItem> Ie = item.GetArray();
                                     IEnumerator<OrderItem> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())

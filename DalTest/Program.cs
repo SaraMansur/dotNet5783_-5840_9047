@@ -66,11 +66,11 @@ namespace DalList
                                     Console.WriteLine(product.GetbyID(int.Parse(Console.ReadLine())));
                                     break;
                                 case "c":
-                                    IEnumerable Ie = product.GetArray();
-                                    IEnumerator enumerator = Ie.GetEnumerator();
+                                    IEnumerable<Product> Ie = product.GetArray();
+                                    IEnumerator<Product> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
-                                        p = (Product)enumerator.Current;
+                                        p = enumerator.Current;
                                         Console.WriteLine(p + "\n");
                                     }
                                     break;
@@ -109,11 +109,11 @@ namespace DalList
                                     break;
 
                                 case "c":
-                                    IEnumerable Ie = order.GetArray();
-                                    IEnumerator enumerator = Ie.GetEnumerator();
+                                    IEnumerable<Order> Ie = order.GetArray();
+                                    IEnumerator<Order> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
-                                        O = (Order)enumerator.Current;
+                                        O = enumerator.Current;
                                         Console.WriteLine(O + "\n");
                                     }
                                     break;
@@ -155,11 +155,11 @@ namespace DalList
                                     break;
 
                                 case "c":
-                                    IEnumerable Ie = item.GetArray();
-                                    IEnumerator enumerator = Ie.GetEnumerator();
+                                    IEnumerable<OrderItem> Ie = item.GetArray();
+                                    IEnumerator<OrderItem> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
-                                        OI = (OrderItem)enumerator.Current;
+                                        OI = enumerator.Current;
                                         Console.WriteLine(OI + "\n");
                                     }
                                     break;
@@ -181,12 +181,12 @@ namespace DalList
 
                                 case "f":
                                     Console.WriteLine("please enter ID of the order.");
-                                    IEnumerable Ien = item.GetOrderItems(int.Parse(Console.ReadLine()));
-                                    IEnumerator enumerato = Ien.GetEnumerator();
+                                    IEnumerable<OrderItem> Ien = item.GetOrderItems(int.Parse(Console.ReadLine()));
+                                    IEnumerator<OrderItem> enumerato = Ien.GetEnumerator();
                                     while (enumerato.MoveNext())
                                     {
-                                        O = (Order)enumerato.Current;
-                                        Console.WriteLine(O + "\n");
+                                        OI = enumerato.Current;
+                                        Console.WriteLine(OI + "\n");
                                     }
                                     break;
 

@@ -65,7 +65,7 @@ public class DalOrderItem
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable GetArray()
+    public IEnumerable<OrderItem> GetArray()
     {
         return m_listOrderItems;
     }
@@ -89,7 +89,7 @@ public class DalOrderItem
     /// </summary>
     /// <param name="orderId"></param> the function recives id of order
     /// <returns></returns returns a list of all the products included in the order 
-    public IEnumerable GetOrderItems(int? orderId)
+    public IEnumerable<OrderItem> GetOrderItems(int? orderId)
     {
         List<OrderItem> order = new List<OrderItem>();
         for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)

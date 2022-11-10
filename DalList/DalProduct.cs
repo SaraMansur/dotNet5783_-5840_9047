@@ -5,7 +5,7 @@ using static Dal.DataSource;
 namespace Dal;
 public class DalProduct
 {
-   
+
     /// <summary>
     /// A function that adds a new object to the array of ptoducts
     /// </summary>
@@ -75,8 +75,9 @@ public class DalProduct
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable GetArray()
+    public IEnumerable<Product> GetArray()
     {
         return m_listPruducts;
-    }
+    } 
+   
 }

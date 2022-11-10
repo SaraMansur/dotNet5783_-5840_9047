@@ -67,7 +67,7 @@ public class DalOrder
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable GetArray()
+    public IEnumerable<Order> GetArray()
     {
         return m_listOreders;
     }

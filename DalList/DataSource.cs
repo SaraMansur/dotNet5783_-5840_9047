@@ -14,44 +14,37 @@ internal static class DataSource
     internal static List<OrderItem> m_listOrderItems = new List<OrderItem>();
 
     static DataSource() => s_Initialize(); //difult constructor.
-
-    static string[] nameProduct = new string[] //An array of product initialization names.
-    { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
-
-    static int[] price = new int[]   //An array of prices to initialize products.
-    {250, 300, 800, 579, 230, 190, 99, 135, 340, 178};
-
-    static int[] stock = new int[]  //An array of stock to initialize products.
-    {50, 67, 0, 78, 56, 23, 56, 90, 89, 100};
-
-    static string[] nameOfCustomer = new string[] //An array of customer names to initialize orders.
-    {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
-        "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
-
-    static string[] mail = new string[] 
-    {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
-         "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
-
-    static string[] address = new string[] 
-    {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
-         "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa","Haifa"};
-
     private static void s_Initialize()
     {
-        Console.WriteLine("");
-        for (int i = 1; i <= 10; i++) //The loop initializes 10 products.
+        string[] nameProduct = //An array of product initialization names.
+        { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
+
+        int[] price = //An array of prices to initialize products.
+        {250, 300, 800, 579, 230, 190, 99, 135, 340, 178};
+
+        int[] stock = //An array of stock to initialize products.
+        {50, 67, 0, 78, 56, 23, 56, 90, 89, 100};
+
+        string[] nameOfCustomer = //An array of customer names to initialize orders.
+        {"David","Sara","Yael","Lea","Yair","Yossi","Meir","Tali","Moshe","Miriam",
+        "Yonit","Hadas","Efrat","Tamar","Noa","Tal","Tamir","Tomi","Rami","Ari"};
+
+        string[] mail = 
+        {"111@gmail.com","568@gmail.com","78@gmail.com","567@gmail.com","664@gmail.com","552@gmail.com","226@gmail.com","524@gmail.com","888@gmail.com","288@gmail.com",
+         "241@gmail.com","784@gmail.com","334@gmail.com","342@gmail.com","822@gmail.com","726@gmail.com","522@gmail.com","999@gmail.com","100@gmail.com","995@gmail.com",};
+
+        string[] address = 
+        {"Haifa","Jerusalem","Rechassim","Tveria","Netivot","Rechovot","Gadera","Gadera","Tveria","Jerosulem",
+         "Rosh Pina","Hadera","Nahariya","Jerusalem","Rechassim","Rechassim","Gadera","Netivot","Netivot","Haifa"};
+
+        for (int i = 0; i < 10; i++) //The loop initializes 10 products.
         {
             Product product = new Product();
-            product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
-            for (int j = 0; j < m_listPruducts.Count; j++) //Checking if the ID number exists.
-            {
-                if (m_listPruducts.Exists(match => match.m_ID == product.m_ID))
-                { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
-            }
-            product.m_Name = nameProduct[Config.m_indexEmptyProduct]; //initialization product name
-            product.m_Price = price[Config.m_indexEmptyProduct]; //Product price initialization.
-            product.m_InStock = stock[Config.m_indexEmptyProduct]; //Initialize quantity in stock for product.
-
+            do { product.m_ID = rand.Next(100000, 999999); } //Generate a random number with 6 digits.
+            while (m_listPruducts.Exists(x => x.m_ID == product.m_ID));
+            product.m_Name = nameProduct[i]; //initialization product name
+            product.m_Price = price[i]; //Product price initialization.
+            product.m_InStock = stock[i]; //Initialize quantity in stock for product.
             if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
                 product.m_Category = Enums.Category.Necklaces;
             if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("ring"))
@@ -63,28 +56,28 @@ internal static class DataSource
             addProduct(product);
         }
 
-        for (int i = 1; i <= 20; i++)//The loop initializes 20 orders.
+        for (int i = 0; i < 20; i++)//The loop initializes 20 orders.
         {
             Order order = new Order();
-            order.m_CustomerName = nameOfCustomer[Config.m_indexEmptyOrder]; //Initialize the Customer name.
-            order.m_CustomerEmail = mail[Config.m_indexEmptyOrder]; //Initialize the customer email.
-            order.m_CustomerAdress = address[Config.m_indexEmptyOrder]; //Client address initialization.
+            order.m_CustomerName = nameOfCustomer[i]; //Initialize the Customer name.
+            order.m_CustomerEmail = mail[i]; //Initialize the customer email.
+            order.m_CustomerAdress = address[i]; //Client address initialization.
 
-            if (i > 10 && i <= 16)//80 from orders also have a delivery date.
+            if (i >= 10 && i < 16)//80 from orders also have a delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
                 order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
                 order.m_DeliveryrDate = DateTime.MinValue;
             }
 
-            if (i >= 1 && i <= 10)//To 60 percent of the 80 percent of the orders that also have a delivery date, have a delivery date.
+            if (i >= 0 && i < 10)//To 60 percent of the 80 percent of the orders that also have a delivery date, have a delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
                 order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
                 order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
             }
 
-            if (i > 16 && i <= 20)//20 percent of orders have no delivery date and delivery date.
+            if (i >= 16 && i < 20)//20 percent of orders have no delivery date and delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-13, -1), 0, 0, 0));
                 order.m_ShipDate = DateTime.MinValue;
@@ -93,11 +86,11 @@ internal static class DataSource
             addOrder(order); 
         }   
 
-        for (int i = 1; i <= 40; i++)//The loop initializes 40 ordersItems.
+        for (int i = 0; i < 40; i++)//The loop initializes 40 ordersItems.
         {
             OrderItem orderItem = new OrderItem();
             orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID;
-            for (int k = 0, j = 0; j < m_listOreders.Count; j++) //Test that each order will be 1 to 4 order items
+            for (int k = 0, j = 0; j < Config.m_indexEmptyOrderItem; j++) //Test that each order will be 1 to 4 order items
             {
                 if (m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
                 {
@@ -112,11 +105,11 @@ internal static class DataSource
                 if (m_listOrderItems[j].m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
                 { //If the item exists.
                     index = rand.Next(0, 9);
-                    orderItem.m_ProductId = m_listOreders[index].m_ID; j = 0;//The price is equal to double price.
+                    orderItem.m_ProductId = m_listPruducts[index].m_ID; j = 0;//The price is equal to double price.
                 }
             }
             orderItem.m_amount = rand.Next(1, 4); //Random number of product amount.
-            orderItem.m_Price = orderItem.m_amount * m_listPruducts[index].m_Price; //
+            orderItem.m_Price = (orderItem.m_amount) * (m_listPruducts[index].m_Price); //
             addOrderItem(orderItem); 
         }
     }

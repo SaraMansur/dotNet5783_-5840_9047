@@ -53,6 +53,7 @@ internal static class DataSource
         for (int i = 0; i < 20; i++)//The loop initializes 20 orders.
         {
             Order order = new Order();
+            order.m_ID = Config.orderId;
 
             string custumerFirstName = firstName[rand.Next(0, 7)];
             string custumerLastName = lastName[rand.Next(0, 7)];
@@ -87,6 +88,7 @@ internal static class DataSource
         for (int i = 0; i < 40; i++)//The loop initializes 40 ordersItems.
         {
             OrderItem orderItem = new OrderItem();
+            orderItem.m_ID = Config.orderItemId;
             Product p = m_listPruducts[rand.Next(0, 9)];
             orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID;
             for (int k = 0, j = 0; j < Config.m_indexEmptyOrderItem; j++) //Test that each order will be 1 to 4 order items
@@ -113,13 +115,26 @@ internal static class DataSource
     }
 
     //The function adds a product to the product pool:
-    private static void addProduct(Product product) => m_listPruducts.Add(product);
+    private static void addProduct(Product product)
+    {
+        m_listPruducts.Add(product);
+        Config.m_indexEmptyProduct++;
+    }
+
 
     //The function adds an order to the order pool:
-    private static void addOrder(Order order) => m_listOreders.Add(order);
+    private static void addOrder(Order order)
+    {
+        m_listOreders.Add(order);
+        Config.m_indexEmptyOrder++;
+    }
 
     //The function adds an OrderItem to the OrderItem pool:
-    private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
+    private static void addOrderItem(OrderItem orderItem)
+    {
+        m_listOrderItems.Add(orderItem);
+        Config.m_indexEmptyOrderItem++;
+    }
 
     internal static class Config
     {

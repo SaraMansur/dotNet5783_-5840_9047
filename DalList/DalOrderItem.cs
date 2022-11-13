@@ -13,8 +13,9 @@ public class DalOrderItem
     {
         
         OI.m_ID= Config.orderItemId;
-        m_listOrderItems[Config.m_indexEmptyOrderItem++] = OI;
-        return m_listOrderItems[Config.m_indexEmptyOrderItem - 1].m_ID;
+        m_listOrderItems.Add(OI);
+        Config.m_indexEmptyOrderItem++;
+        return OI.m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orderItem
@@ -22,7 +23,7 @@ public class DalOrderItem
     /// <param name="ID"></param>ID  of the requested orderItem
     public void Delete(int ID)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i < Config.m_indexEmptyOrderItem; i++)
         {
             if (ID == m_listOrderItems[i].m_ID)
             {
@@ -65,9 +66,9 @@ public class DalOrderItem
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<OrderItem> GetArray()
+    public IEnumerable <OrderItem> GetArray()
     {
-        return m_listOrderItems;
+        return DataSource.m_listOrderItems;
     }
     /// <summary>
     /// The function recives  ID of  product and order  and  returns the appropriate  orderItem 

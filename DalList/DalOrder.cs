@@ -13,8 +13,9 @@ public class DalOrder
     public int Add(Order O)
     {
         O.m_ID = Config.orderId;
-        m_listOreders[Config.m_indexEmptyOrder++] = O;
-        return m_listOreders[Config.m_indexEmptyOrder - 1].m_ID;
+        m_listOreders.Add(O);
+        Config.m_indexEmptyOrder++;
+        return O.m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orders
@@ -69,6 +70,6 @@ public class DalOrder
     /// <returns></returns>
     public IEnumerable<Order> GetArray()
     {
-        return m_listOreders;
+        return DataSource.m_listOreders;
     }
 }

@@ -13,7 +13,8 @@ public class DalOrder
     public int Add(Order O)
     {
         O.m_ID = Config.orderId;
-        m_listOreders[Config.m_indexEmptyOrder++] = O;
+        Config.m_indexEmptyOrder++;
+        m_listOreders.Add(O);
         return m_listOreders[Config.m_indexEmptyOrder - 1].m_ID;
     }
     /// <summary>

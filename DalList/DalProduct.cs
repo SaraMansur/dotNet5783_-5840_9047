@@ -20,7 +20,8 @@ public class DalProduct
             if (P.m_ID == m_listPruducts[i].m_ID)
                 throw new Exception("The requested product already exist");
         }
-        m_listPruducts[Config.m_indexEmptyProduct++] = P;
+        m_listPruducts.Add(P);
+        Config.m_indexEmptyProduct++;
         return P.m_ID;
     }
     /// <summary>

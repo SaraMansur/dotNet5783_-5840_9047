@@ -13,7 +13,7 @@ public class DalOrderItem
     {
         
         OI.m_ID= Config.orderItemId;
-        m_listOrderItems[Config.m_indexEmptyOrderItem++] = OI;
+        m_listOrderItems.Add(OI);
         return m_listOrderItems[Config.m_indexEmptyOrderItem - 1].m_ID;
     }
     /// <summary>

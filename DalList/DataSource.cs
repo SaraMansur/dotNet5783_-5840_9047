@@ -12,6 +12,7 @@ internal static class DataSource
     internal static List<Order> m_listOreders = new List<Order>();
     internal static List<OrderItem> m_listOrderItems = new List<OrderItem>();
 
+
     static DataSource() => s_Initialize(); //difult constructor.
 
     static string[] nameProduct = { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
@@ -26,6 +27,7 @@ internal static class DataSource
 
     private static void s_Initialize()
     {
+   
         for (int i = 0; i < 10; i++) //The loop initializes 10 products.
         {
             Product product = new Product();
@@ -36,7 +38,7 @@ internal static class DataSource
                 { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
             }
             product.m_Name = nameProduct[i]; //initialization product name
-            product.m_Price = (double)rand.Next(200, 1000); //Product price initialization.
+            product.m_Price = rand.Next(200, 1000); //Product price initialization.
             product.m_InStock = rand.Next(10, 30); //Initialize quantity in stock for product.
 
             if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
@@ -113,13 +115,13 @@ internal static class DataSource
     }
 
     //The function adds a product to the product pool:
-    private static void addProduct(Product product) => m_listPruducts.Add(product);
+    private static void addProduct(Product product) { m_listPruducts.Add(product); Config.m_indexEmptyProduct++; }
 
     //The function adds an order to the order pool:
-    private static void addOrder(Order order) => m_listOreders.Add(order);
+    private static void addOrder(Order order) { m_listOreders.Add(order); Config.m_indexEmptyOrder++; }
 
     //The function adds an OrderItem to the OrderItem pool:
-    private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
+    private static void addOrderItem(OrderItem orderItem) { m_listOrderItems.Add(orderItem); Config.m_indexEmptyOrderItem++; }
 
     internal static class Config
     {

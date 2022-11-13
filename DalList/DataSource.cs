@@ -30,7 +30,7 @@ internal static class DataSource
         {
             Product product = new Product();
             product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
-            for (int j = 0; j < Config.m_indexEmptyProduct; j++) //Checking if the ID number exists.
+            for (int j = 0; j < m_listPruducts.Count; j++) //Checking if the ID number exists.
             {
                 if (m_listPruducts.Exists(match => match.m_ID == product.m_ID))
                 { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
@@ -91,7 +91,7 @@ internal static class DataSource
             orderItem.m_ID = Config.orderItemId;
             Product p = m_listPruducts[rand.Next(0, 9)];
             orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID;
-            for (int k = 0, j = 0; j < Config.m_indexEmptyOrderItem; j++) //Test that each order will be 1 to 4 order items
+            for (int k = 0, j = 0; j < m_listOrderItems.Count; j++) //Test that each order will be 1 to 4 order items
             {
                 if (m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
                 {
@@ -115,32 +115,17 @@ internal static class DataSource
     }
 
     //The function adds a product to the product pool:
-    private static void addProduct(Product product)
-    {
-        m_listPruducts.Add(product);
-        Config.m_indexEmptyProduct++;
-    }
-
+    private static void addProduct(Product product) => m_listPruducts.Add(product);
 
     //The function adds an order to the order pool:
-    private static void addOrder(Order order)
-    {
-        m_listOreders.Add(order);
-        Config.m_indexEmptyOrder++;
-    }
+    private static void addOrder(Order order) => m_listOreders.Add(order);
 
     //The function adds an OrderItem to the OrderItem pool:
-    private static void addOrderItem(OrderItem orderItem)
-    {
-        m_listOrderItems.Add(orderItem);
-        Config.m_indexEmptyOrderItem++;
-    }
+    private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
+
 
     internal static class Config
     {
-        internal static int m_indexEmptyProduct = 0;
-        internal static int m_indexEmptyOrder = 0;
-        internal static int m_indexEmptyOrderItem = 0;
         private static int m_orderId = 100000;
         private static int m_orderItemId = 100000;
         internal static int orderId { get { return m_orderId++; } }

@@ -15,7 +15,7 @@ public class DalProduct
     public int Add(Product P)
     {
 
-        for (int i = 0; i != Config.m_indexEmptyProduct; i++)
+        for (int i = 0; i < Config.m_indexEmptyProduct; i++)
         {
             if (P.m_ID == m_listPruducts[i].m_ID)
                 throw new Exception("The requested product already exist");
@@ -76,9 +76,9 @@ public class DalProduct
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<Product> GetArray()
+    public IEnumerable <Product> GetArray()
     {
-        return m_listPruducts;
+        return DataSource.m_listPruducts;
     } 
    
 }

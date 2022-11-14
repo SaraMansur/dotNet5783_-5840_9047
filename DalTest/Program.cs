@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Dal;
+using DalApi;
 using DO;
-using System.Collections;
 using static DO.Enums;
 
 
@@ -9,12 +8,9 @@ namespace DalList
 {
     partial class program
     {
+        private static IDal d = new Dal.DalList();
         static void Main(string[] args)
         {
-
-            DalOrder order = new DalOrder();
-            DalOrderItem item = new DalOrderItem();
-            DalProduct product = new DalProduct();
             Product p = new Product();
             Order O = new Order();
             OrderItem OI = new OrderItem();
@@ -59,14 +55,14 @@ namespace DalList
                                     p.m_InStock = int.Parse(Console.ReadLine());
                                     p.m_Price = double.Parse(Console.ReadLine());
                                     p.m_Name = Console.ReadLine();
-                                    Console.WriteLine(product.Add(p));
+                                    Console.WriteLine(d.Product.Add(p));
                                     break;
                                 case "b":
                                     Console.WriteLine("please enter ID of the product.");
-                                    Console.WriteLine(product.GetbyID(int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.Product.GetbyID(int.Parse(Console.ReadLine())));
                                     break;
                                 case "c":
-                                    IEnumerable<Product> Ie = product.GetArray();
+                                    IEnumerable<Product> Ie = d.Product.Get();
                                     IEnumerator<Product> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
@@ -81,11 +77,11 @@ namespace DalList
                                     p.m_InStock = int.Parse(Console.ReadLine());
                                     p.m_Price = double.Parse(Console.ReadLine());
                                     p.m_Name = Console.ReadLine();
-                                    product.Update(p);
+                                    d.Product.Update(p);
                                     break;
                                 case "e":
                                     Console.WriteLine("please enter ID of the product.");
-                                    product.Delete(int.Parse(Console.ReadLine()));
+                                    d.Product.Delete(int.Parse(Console.ReadLine()));
                                     break;
                             }
                             break;
@@ -100,16 +96,16 @@ namespace DalList
                                     O.m_OrderTime = DateTime.Now;
                                     O.m_ShipDate = DateTime.MinValue;
                                     O.m_DeliveryrDate = DateTime.MinValue;
-                                    Console.WriteLine(order.Add(O));
+                                    Console.WriteLine(d.Order.Add(O));
                                     break;
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the order.");
-                                    Console.WriteLine(order.GetbyID(int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.Order.GetbyID(int.Parse(Console.ReadLine())));
                                     break;
 
                                 case "c":
-                                    IEnumerable<Order> Ie = order.GetArray();
+                                    IEnumerable<Order> Ie = d.Order.Get();
                                     IEnumerator<Order> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
@@ -127,12 +123,12 @@ namespace DalList
                                     O.m_OrderTime = DateTime.Now;
                                     O.m_ShipDate = DateTime.MinValue;
                                     O.m_DeliveryrDate = DateTime.MinValue;
-                                    order.Update(O);
+                                    d.Order.Update(O);
                                     break;
 
                                 case "e":
                                     Console.WriteLine("please enter ID of the order.");
-                                    order.Delete(int.Parse(Console.ReadLine()));
+                                    d.Order.Delete(int.Parse(Console.ReadLine()));
                                     break;
                             }
                             break;
@@ -146,17 +142,17 @@ namespace DalList
                                     OI.m_OrderId = int.Parse(Console.ReadLine());
                                     OI.m_Price = double.Parse(Console.ReadLine());
                                     OI.m_amount = int.Parse(Console.ReadLine());
-                                    Console.WriteLine(item.Add(OI));
+                                    Console.WriteLine(d.OrderItem.Add(OI));
                                     break;
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    Console.WriteLine(item.GetbyID(int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.OrderItem.GetbyID(int.Parse(Console.ReadLine())));
                                     break;
 
                                 case "c":
 
-                                    IEnumerable<OrderItem> Ie = item.GetArray();
+                                    IEnumerable<OrderItem> Ie = d.OrderItem.Get();
                                     IEnumerator<OrderItem> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
                                     {
@@ -172,17 +168,17 @@ namespace DalList
                                     OI.m_OrderId = int.Parse(Console.ReadLine());
                                     OI.m_Price = double.Parse(Console.ReadLine());
                                     OI.m_amount = int.Parse(Console.ReadLine());
-                                    item.Update(OI);
+                                    d.OrderItem.Update(OI);
                                     break;
 
                                 case "e":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    item.Delete(int.Parse(Console.ReadLine()));
+                                    d.OrderItem.Delete(int.Parse(Console.ReadLine()));
                                     break;
 
                                 case "f":
                                     Console.WriteLine("please enter ID of the order.");
-                                    IEnumerable<OrderItem> Ien = item.GetOrderItems(int.Parse(Console.ReadLine()));
+                                    IEnumerable<OrderItem> Ien = d.OrderItem.GetOrderItems(int.Parse(Console.ReadLine()));
                                     IEnumerator<OrderItem> enumerato = Ien.GetEnumerator();
                                     while (enumerato.MoveNext())
                                     {
@@ -193,7 +189,7 @@ namespace DalList
 
                                 case "g":
                                     Console.WriteLine("please enter ID of product and order.");
-                                    Console.WriteLine(item.GetbyProductAndOrder(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.OrderItem.GetbyProductAndOrder(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
                                     break;
                             }
                             break;

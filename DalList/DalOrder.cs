@@ -1,9 +1,10 @@
 ﻿using DO;
-using System.Collections;
 using static Dal.DataSource;
+using DalApi;
 namespace Dal;
 
-public class DalOrder
+
+internal class DalOrder:IOrder
 {
     /// <summary>
     /// A function that adds a new object to the array of orders
@@ -14,7 +15,6 @@ public class DalOrder
     {
         O.m_ID = Config.orderId;
         m_listOreders.Add(O);
-        Config.m_indexEmptyOrder++;
         return O.m_ID;
     }
     /// <summary>
@@ -23,16 +23,15 @@ public class DalOrder
     /// <param name="ID"></param>ID  of the requested order
     public void Delete(int ID)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrder; i++)
+        for (int i = 0; i != m_listOreders.Count; i++)
         {
             if (ID == m_listOreders[i].m_ID)
             {
                 m_listOreders.Remove(m_listOreders[i]);
-                Config.m_indexEmptyOrder--;
                 return;
             }
         }
-        throw new Exception("The requested orderItem item does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
@@ -41,13 +40,13 @@ public class DalOrder
     /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
     public void Update(Order O)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrder; i++)
+        for (int i = 0; i != m_listOreders.Count; i++)
             if (O.m_ID == m_listOreders[i].m_ID)
             {
                 m_listOreders[i] = O;
                 return;
             }
-        throw new Exception("The requested order does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function returns the order w hose ID was received
@@ -57,19 +56,19 @@ public class DalOrder
     /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
     public Order GetbyID(int ID)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrder; i++)
+        for (int i = 0; i != m_listOreders.Count; i++)
         {
             if (ID == m_listOreders[i].m_ID)
                 return m_listOreders[i];
         }
-        throw new Exception("The requested order does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<Order> GetArray()
+    public IEnumerable<Order> Get()
     {
-        return DataSource.m_listOreders;
+        return m_listOreders;
     }
 }

@@ -1,8 +1,8 @@
-﻿using DO;
-using System.Collections;
+﻿using DalApi;
+using DO;
 using static Dal.DataSource;
 namespace Dal;
-public class DalOrderItem
+internal class DalOrderItem:IOrderItem
 {
     /// <summary>
     /// A function that adds a new object to the array of orderItem
@@ -11,10 +11,8 @@ public class DalOrderItem
     /// <returns></returns>The function returns the ID of the new added orderItem
     public int Add(OrderItem OI)
     {
-        
         OI.m_ID= Config.orderItemId;
         m_listOrderItems.Add(OI);
-        Config.m_indexEmptyOrderItem++;
         return OI.m_ID;
     }
     /// <summary>
@@ -23,16 +21,15 @@ public class DalOrderItem
     /// <param name="ID"></param>ID  of the requested orderItem
     public void Delete(int ID)
     {
-        for (int i = 0; i < Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i < m_listOrderItems.Count; i++)
         {
             if (ID == m_listOrderItems[i].m_ID)
             {
                 m_listOrderItems.Remove(m_listOrderItems[i]);
-                Config.m_indexEmptyOrderItem--;
                 return;
             }
         }
-        throw new Exception("The requested orderItem item does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
@@ -41,13 +38,13 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>If the orderItem does not exist in the array an exception is thrown
     public void Update(OrderItem OI)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i != m_listOrderItems.Count; i++)
             if (OI.m_ID == m_listOrderItems[i].m_ID)
             {
                 m_listOrderItems[i] = OI;
                 return;
             }
-        throw new Exception("The requested orderItem does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function returns the orderItem whose ID was received
@@ -57,18 +54,18 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>If the orderItem does not exist in the array an exception is thrown
     public OrderItem GetbyID(int ID)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i != m_listOrderItems.Count; i++)
             if (ID == m_listOrderItems[i].m_ID)
                 return m_listOrderItems[i];
-        throw new Exception("The requested order item does not exist");
+        throw new MissingID();
     }
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable <OrderItem> GetArray()
+    public IEnumerable <OrderItem> Get()
     {
-        return DataSource.m_listOrderItems;
+        return m_listOrderItems;
     }
     /// <summary>
     /// The function recives  ID of  product and order  and  returns the appropriate  orderItem 
@@ -79,10 +76,10 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception> if The requested orderItem item does not exist
     public OrderItem GetbyProductAndOrder(int? PID, int? OID)
     {
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i != m_listOrderItems.Count; i++)
             if (OID == m_listOrderItems[i].m_OrderId && PID == m_listOrderItems[i].m_ProductId)
                 return m_listOrderItems[i];
-        throw new Exception("The requested orderItem item does not exist");
+        throw new MissingID();
     }
 
     /// <summary>
@@ -93,7 +90,7 @@ public class DalOrderItem
     public IEnumerable<OrderItem> GetOrderItems(int? orderId)
     {
         List<OrderItem> order = new List<OrderItem>();
-        for (int i = 0; i != Config.m_indexEmptyOrderItem; i++)
+        for (int i = 0; i != m_listOrderItems.Count; i++)
         {
             if (m_listOrderItems[i].m_OrderId == orderId)
                 order.Add(m_listOrderItems[i]);

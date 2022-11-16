@@ -2,7 +2,7 @@
 using BO;
 namespace BlApi;
 
-public interface ICart
+public interface IBoCart
 {
     /// <summary>
     /// The function adds a product to the shopping cart (for the catalog screen).

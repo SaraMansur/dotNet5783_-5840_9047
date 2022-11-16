@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IProduct
+public interface IBoProduct
 {
     /// <summary>
     /// The function builds a list of products and returns it (for an admin screen)

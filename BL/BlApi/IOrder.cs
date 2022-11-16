@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IBoOrder
+public interface IOrder
 {
 
 }

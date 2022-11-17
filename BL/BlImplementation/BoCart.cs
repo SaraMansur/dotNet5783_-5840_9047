@@ -5,7 +5,7 @@ using DO;
 
 namespace BlImplementation;
 
-internal class Cart : ICart
+internal class BoCart : IBoCart
 {
     private IDal Dal = new Dal.DalList();
 

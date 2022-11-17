@@ -14,37 +14,37 @@ public interface IProduct
     /// The function builds a product catalog and returns it (for a customer's screen)
     /// </summary>
     /// <returns></returns>
-    IEnumerable<ProductItem> CatalogList();
+    IEnumerable<ProductForList> CatalogList();
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for an admin screen)
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    Product ProductId(int ID);
+    BO.Product ProductId(int ID);
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for a customer screen - from the catalog)
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    Product CatalogProductId(int ID);
+    ProductItem CatalogProductId(int ID);
 
     /// <summary>
     /// The function compares a product if it is correct, to the data overlay (for the manager screen)
     /// </summary>
     /// <param name="product"></param>
-    void AddProduct(Product product);
+    void AddProduct(BO.Product product);
 
     /// <summary>
     /// The function deletes a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    void DeleteProduct(Product product);
+    void DeleteProduct(int ID);
 
     /// <summary>
     /// The function updates a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    void UpdateProduct(Product product);
+    void UpdateProduct(BO.Product product);
 }

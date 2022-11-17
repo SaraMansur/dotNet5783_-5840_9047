@@ -5,7 +5,7 @@ public class OrderForList
 {
     public int? m_Id { get; set; }
     public string? m_CustomerName { get; set; }
-    public double? m_OrderStatus { get; set; }
+    public Enums.Status? m_OrderStatus { get; set; }
     public int? m_AmountItems { get; set; }
     public double? m_TotalPrice { get; set; }
     public override string ToString() => $@"

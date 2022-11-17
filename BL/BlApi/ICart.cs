@@ -1,5 +1,5 @@
 ﻿
-using BO;
+
 namespace BlApi;
 
 public interface ICart
@@ -10,7 +10,7 @@ public interface ICart
     /// <param name="cart"></param>
     /// <param name="ID"></param>
     /// <returns></returns>
-    Cart AddItemToCart(Cart cart, int ID);
+    public BO.Cart AddItemToCart(BO.Cart cart, int ID);
 
     /// <summary>
     /// The function updates the quantity of a product in the shopping basket (for the cart screen).
@@ -19,7 +19,7 @@ public interface ICart
     /// <param name="ID"></param>
     /// <param name="amount"></param>
     /// <returns></returns>
-    Cart UpdateAmount(Cart cart, int ID, int amount);
+    public BO.Cart UpdateAmount(BO.Cart cart, int ID, int amount);
 
     /// <summary>
     /// The function places an order (for the shopping cart screen or the order completion screen).
@@ -28,5 +28,5 @@ public interface ICart
     /// <param name="nameCustomr"></param>
     /// <param name="mailCustomer"></param>
     /// <param name="addressCustomr"></param>
-    void OrderConfirmation(Cart cart,string nameCustomr,string mailCustomer, string addressCustomr);  
+    public void OrderConfirmation(BO.Cart cart,string nameCustomr,string mailCustomer, string addressCustomr);  
 }

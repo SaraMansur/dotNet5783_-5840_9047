@@ -25,9 +25,17 @@ public interface IOrder
     public BO.Order sendingAnInvitation(int orderId);
 
     /// <summary>
-    /// 
+    /// The function allows the manager to update that the order has been delivered to the customer.
     /// </summary>
     /// <param name=""></param>
     /// <returns></returns>
     public BO.Order orderDeliveryint (int orderId);
+
+    /// <summary>
+    /// The function allows the administrator to track the order
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    public BO.OrderTracking orderTracking(int orderId);
+
 }

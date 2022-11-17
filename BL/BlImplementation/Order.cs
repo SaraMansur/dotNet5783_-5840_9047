@@ -86,7 +86,7 @@ internal class Order : IOrder
     {
         if (orderId < 0)
             throw new BO.IncorrectDetails();
-        DO.Order DOorder = new DO.Order();    
+        DO.Order DOorder = new DO.Order();
         try//בדיקה אם מזהה הזמנה תקין
         {
             DOorder = Dal.Order.GetbyID(orderId);
@@ -108,9 +108,9 @@ internal class Order : IOrder
         }
         catch
         { throw new BO.IncorrectDetails(); }
-        if(DOorder.m_ShipDate>DateTime.Now)//If the order has already been sent, throw that the order has already been sent.
+        if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, throw that the order has already been sent.
             throw new BO.IncorrectDetails();
-        DOorder.m_ShipDate=DateTime.Now;    
+        DOorder.m_ShipDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -125,12 +125,46 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO. IncorrectDetails(); }
-        if (DOorder.m_ShipDate > DateTime.Now && DOorder.m_DeliveryrDate< DateTime.Now)
+        { throw new BO.IncorrectDetails(); }
+        if (DOorder.m_ShipDate > DateTime.Now && DOorder.m_DeliveryrDate < DateTime.Now)
             throw new BO.IncorrectDetails();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
+    }
+
+    // The function allows the administrator to track the order:
+    public BO.OrderTracking orderTracking(int orderId)
+    {
+        BO.OrderTracking OT = new BO.OrderTracking();
+        DO.Order DOorder = new DO.Order();
+        try//Checking if Order ID is correct
+        {
+            DOorder = Dal.Order.GetbyID(orderId);
+        }
+        catch
+        { throw new BO.IncorrectDetails(); }
+        OT.m_Status = status(DOorder);
+        OT.m_ID = orderId;
+        if(OT.m_Status== BO.Enums.Status.Received)
+        {
+            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
+            OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
+            OT.m_DescriptionProgress?.Add(DOorder.m_DeliveryrDate.ToString());
+            OT.m_DescriptionProgress?.Add("The order has been delivered");
+        }
+        if (OT.m_Status == BO.Enums.Status.Shipped)
+        {
+            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
+            OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
+            OT.m_DescriptionProgress?.Add("The order is sent");
+        }
+        if (OT.m_Status == BO.Enums.Status.Ordered)
+        {
+            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
+            OT.m_DescriptionProgress?.Add("The order has been created");
+        }
+        return OT;
     }
 }

@@ -18,7 +18,7 @@ internal class Cart : ICart
         }
         catch (Exception)//If the product is not in stock.
         {
-            throw new BO.IncorrectQuantity();
+            throw new BO.incorrectData();
         }
         return p;
     } 
@@ -34,7 +34,7 @@ internal class Cart : ICart
             { 
                 if ((cart.m_orderItems[i].m_AmountInCart + 1) < product.m_InStock)
                 { //If the product exists but there is not enough in the shopping basket
-                    throw new BO.IncorrectQuantity();
+                    throw new BO.incorrectData();
                 }
                 cart.m_orderItems[i].m_AmountInCart = cart.m_orderItems[i].m_AmountInCart + 1; //The quantity of the item plus one.
                 cart.m_orderItems[i].m_TotalPriceItem = cart.m_orderItems[i].m_TotalPriceItem + product.m_Price;  //Total price of the item
@@ -64,7 +64,7 @@ internal class Cart : ICart
             {
                 if ((cart.m_orderItems[i].m_AmountInCart + amount) < product.m_InStock)
                 { //If the product exists but there is not enough in the shopping basket
-                    throw new BO.IncorrectQuantity(); 
+                    throw new BO.incorrectData(); 
                 }
                 if (amount == 0)
                 {//If the buyer wants to remove the product from the cart.
@@ -78,7 +78,7 @@ internal class Cart : ICart
                 return cart; //Returning an updated shopping basket.
             }
         }
-        throw new BO.MissingInOrderItems();//Throws an exception if the product does not exist in the shopping cart at all.
+        throw new BO.MissingID();//Throws an exception if the product does not exist in the shopping cart at all.
     }
 
     //The function adds an order to the order list and returns an order ID:
@@ -101,9 +101,9 @@ internal class Cart : ICart
             DO.Product product = new DO.Product();//A new product is released.
             product = cheackId(product, cart.m_orderItems[i].m_IdProduct);//Product ID integrity check.
             if (cart.m_orderItems[i].m_AmountInCart > product.m_InStock || cart.m_orderItems[i].m_AmountInCart <= 0) 
-                throw new BO.IncorrectQuantity(); //If the quantity in the basket is greater than the quantity in stock or negative.
+                throw new BO.incorrectData(); //If the quantity in the basket is greater than the quantity in stock or negative.
             if (!mailCustomer.EndsWith("@gmail.com") || nameCustomr.Length == 0 || mailCustomer.Length == 0 || addressCustomr.Length == 0)
-                throw new BO.IncorrectDetails(); //Throwing an exception in case one or more of the details is wrong.
+                throw new BO.incorrectData(); //Throwing an exception in case one or more of the details is wrong.
         }
         DO.Order order = new DO.Order();//A new order is released.
         order.m_ID = addOrder(order, nameCustomr, mailCustomer, addressCustomr);

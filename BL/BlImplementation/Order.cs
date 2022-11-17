@@ -49,7 +49,7 @@ internal class Order : IOrder
                 BOorderItem.m_PriceProduct = Dal.Product.GetbyID(item.m_ProductId).m_Price;
             }
             catch
-            { throw new BO.MissingInOrderItems(); }
+            { throw new BO.MissingID(); }
             BOorderItem.m_AmountInCart = item.m_amount;
             BOorderItem.m_TotalPriceItem = item.m_Price;
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
@@ -85,14 +85,14 @@ internal class Order : IOrder
     public BO.Order orderDetails(int orderId)
     {
         if (orderId < 0)
-            throw new BO.IncorrectDetails();
+            throw new BO.incorrectData();
         DO.Order DOorder = new DO.Order();
         try//בדיקה אם מזהה הזמנה תקין
         {
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.IncorrectDetails(); }
+        { throw new BO.incorrectData(); }
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -107,9 +107,9 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.IncorrectDetails(); }
+        { throw new BO.incorrectData(); }
         if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, throw that the order has already been sent.
-            throw new BO.IncorrectDetails();
+            throw new BO.incorrectData();
         DOorder.m_ShipDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
@@ -125,9 +125,9 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.IncorrectDetails(); }
+        { throw new BO.incorrectData(); }
         if (DOorder.m_ShipDate > DateTime.Now && DOorder.m_DeliveryrDate < DateTime.Now)
-            throw new BO.IncorrectDetails();//If the order has already been delivered, throw that the order has been delivered.
+            throw new BO.incorrectData();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
@@ -144,7 +144,7 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.IncorrectDetails(); }
+        { throw new BO.incorrectData(); }
         OT.m_Status = status(DOorder);
         OT.m_ID = orderId;
         if(OT.m_Status== BO.Enums.Status.Received)

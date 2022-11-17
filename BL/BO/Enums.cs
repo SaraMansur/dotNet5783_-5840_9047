@@ -7,4 +7,9 @@ public class Enums
     {
         Watches, Bracelets, Earrings, Rings, Necklaces
     }
+
+    public enum Status
+    {
+        InProcess, Ordered, Shipped, Received
+    }
 }

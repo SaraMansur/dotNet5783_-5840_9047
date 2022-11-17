@@ -3,8 +3,11 @@ namespace BO;
 
 public class OrderTracking
 {
-    /*○ מזהה
-   ○ מצב הזמנה
-   ○ רשימה של צמדים )תאריך, תיאור התקדמות חבילה(*/
-    
+    public int? m_ID;
+    public Enums.Status m_Status;
+    public List<string>? m_DescriptionProgress;
+    public override string ToString() => $@"
+    order id: {m_ID}
+    order status: {m_Status}
+    Package progress: {m_DescriptionProgress}";
 }

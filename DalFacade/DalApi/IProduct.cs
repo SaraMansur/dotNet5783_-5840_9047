@@ -3,5 +3,5 @@ namespace DalApi;
 
 public interface IProduct:ICrud<Product>
 {
-    Product GetbyID(int? ID);
+    public Product GetbyID(int? ID);
 }

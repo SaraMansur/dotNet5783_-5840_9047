@@ -3,7 +3,7 @@ using BO;
 using DalApi;
 namespace BlImplementation;
 
-internal class Product: BlApi.IProduct
+internal class BoProduct: IBoProduct
 {
     private IDal Dal = new Dal.DalList();
     IEnumerable<ProductForList> ProductList() 

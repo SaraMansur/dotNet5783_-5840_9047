@@ -2,13 +2,13 @@
 
 namespace BlApi;
 
-public interface IOrder
+public interface IBoOrder
 {
     /// <summary>
     /// The function builds a new order list of the OrderForList type (for the manager screen).
     /// </summary>
     /// <returns></returns>
-    public BO.OrderForList OrderList();
+    public IEnumerable<BO.OrderForList> OrderList();
 
     /// <summary>
     /// The function receives an order ID and returns an object of type BO.Order that contains all the order details.

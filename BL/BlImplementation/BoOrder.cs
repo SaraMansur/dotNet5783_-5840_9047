@@ -2,7 +2,7 @@
 using DalApi;
 namespace BlImplementation;
 
-internal class Order : BlApi.IOrder
+internal class BoOrder : IBoOrder
 {
     private IDal Dal = new Dal.DalList();
 
@@ -58,7 +58,7 @@ internal class Order : BlApi.IOrder
     }
 
     // The function builds a new order list of the OrderForList type (for the manager screen):
-    public List<BO.OrderForList> OrderList()
+    public IEnumerable<BO.OrderForList> OrderList()
     {
         IEnumerable<DO.Order> orders = Dal.Order.Get(); //A new list of type Orde
         List<BO.OrderForList> orderList = new List<BO.OrderForList>(); //A new list of type OrderForList

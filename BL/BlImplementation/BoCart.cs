@@ -15,7 +15,7 @@ internal class BoCart : IBoCart
         }
         catch (Exception)//If the product is not in stock.
         {
-            throw new BO.incorrectData();
+            throw new BO.MissingID();
         }
         return p;
     } 
@@ -31,7 +31,7 @@ internal class BoCart : IBoCart
             { 
                 if ((cart.m_orderItems[i].m_AmountInCart + 1) < product.m_InStock)
                 { //If the product exists but there is not enough in the shopping basket
-                    throw new BO.incorrectData();
+                    throw new BO.MissingInStock();
                 }
                 cart.m_orderItems[i].m_AmountInCart = cart.m_orderItems[i].m_AmountInCart + 1; //The quantity of the item plus one.
                 cart.m_orderItems[i].m_TotalPriceItem = cart.m_orderItems[i].m_TotalPriceItem + product.m_Price;  //Total price of the item
@@ -61,7 +61,7 @@ internal class BoCart : IBoCart
             {
                 if ((cart.m_orderItems[i].m_AmountInCart + amount) < product.m_InStock)
                 { //If the product exists but there is not enough in the shopping basket
-                    throw new BO.incorrectData(); 
+                    throw new BO.MissingInStock(); 
                 }
                 if (amount == 0)
                 {//If the buyer wants to remove the product from the cart.

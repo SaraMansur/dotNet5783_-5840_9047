@@ -48,7 +48,7 @@ internal class BoOrder : IBoOrder
                 BOorderItem.m_PriceProduct = Dal.Product.GetbyID(item.m_ProductId).m_Price;
             }
             catch
-            { throw new BO.MissingID(); }
+            { throw new BO.MissingID(); } //Throwing in the event of a wrong ID number
             BOorderItem.m_AmountInCart = item.m_amount;
             BOorderItem.m_TotalPriceItem = item.m_Price;
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
@@ -84,14 +84,14 @@ internal class BoOrder : IBoOrder
     public BO.Order orderDetails(int orderId)
     {
         if (orderId < 0)
-            throw new BO.incorrectData();
+            throw new BO.incorrectData(); //Negative ID number - wrong
         DO.Order DOorder = new DO.Order();
-        try//בדיקה אם מזהה הזמנה תקין
+        try//Checking if Order ID is correct
         {
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.incorrectData(); }
+        { throw new BO.MissingID(); } //Throwing in the event of a wrong ID number
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -106,9 +106,9 @@ internal class BoOrder : IBoOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.incorrectData(); }
-        if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, throw that the order has already been sent.
-            throw new BO.incorrectData();
+        { throw new BO.incorrectData(); } //Throwing in the event of a wrong ID number
+        if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, 
+            throw new BO.incorrectData(); //throw that the order has already been sent.
         DOorder.m_ShipDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
@@ -125,7 +125,7 @@ internal class BoOrder : IBoOrder
         }
         catch
         { throw new BO.incorrectData(); }
-        if (DOorder.m_ShipDate > DateTime.Now && DOorder.m_DeliveryrDate < DateTime.Now)
+        if (DOorder.m_DeliveryrDate > DateTime.Now)
             throw new BO.incorrectData();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         BO.Order BOorder = new BO.Order();
@@ -146,19 +146,22 @@ internal class BoOrder : IBoOrder
         { throw new BO.incorrectData(); }
         OT.m_Status = status(DOorder);
         OT.m_ID = orderId;
-        if(OT.m_Status== BO.Enums.Status.Received)
+        //If the order has already been shipped and delivered to the customer:
+        if (OT.m_Status== BO.Enums.Status.Received)
         {
             OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
             OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
             OT.m_DescriptionProgress?.Add(DOorder.m_DeliveryrDate.ToString());
             OT.m_DescriptionProgress?.Add("The order has been delivered");
         }
+        //If the order has been sent but not yet delivered to the customer:
         if (OT.m_Status == BO.Enums.Status.Shipped)
         {
             OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
             OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
             OT.m_DescriptionProgress?.Add("The order is sent");
         }
+        //If the order has been confirmed but not yet sent to the customer:
         if (OT.m_Status == BO.Enums.Status.Ordered)
         {
             OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());

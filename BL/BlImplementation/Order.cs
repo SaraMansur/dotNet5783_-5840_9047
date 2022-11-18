@@ -1,9 +1,8 @@
 ﻿using BlApi;
 using DalApi;
-
 namespace BlImplementation;
 
-internal class Order : IOrder
+internal class Order : BlApi.IOrder
 {
     private IDal Dal = new Dal.DalList();
 
@@ -117,7 +116,7 @@ internal class Order : IOrder
     }
 
     //The function allows the manager to update that the order has been delivered to the customer.
-    public BO.Order orderDeliveryint(int orderId)
+    public BO.Order orderDelivery(int orderId)
     {
         DO.Order DOorder = new DO.Order();
         try//Checking if Order ID is correct

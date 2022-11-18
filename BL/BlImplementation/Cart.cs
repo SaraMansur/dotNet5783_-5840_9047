@@ -1,8 +1,5 @@
 ﻿using BlApi;
-using BO;
 using DalApi;
-using DO;
-
 namespace BlImplementation;
 
 internal class Cart : ICart

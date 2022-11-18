@@ -29,7 +29,7 @@ public interface IOrder
     /// </summary>
     /// <param name=""></param>
     /// <returns></returns>
-    public BO.Order orderDeliveryint (int orderId);
+    public BO.Order orderDelivery (int orderId);
 
     /// <summary>
     /// The function allows the administrator to track the order
@@ -37,5 +37,6 @@ public interface IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     public BO.OrderTracking orderTracking(int orderId);
+
 
 }

@@ -1,26 +1,25 @@
 ﻿using BlApi;
-using BO;
 using DalApi;
 namespace BlImplementation;
 
 internal class BoProduct: IBoProduct
 {
     private IDal Dal = new Dal.DalList();
-    IEnumerable<ProductForList> ProductList() 
+    public IEnumerable<BO.ProductForList> ProductList() 
     {
-        List<ProductForList> productForLists = new List<ProductForList>();//Going through the list of products
+        List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
         foreach (var item in Dal.Product.Get())
         {
-            productForLists.Add(new ProductForList() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
+            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
         }
         return productForLists;
     }
 
-    IEnumerable<ProductForList> CatalogList() 
+    public IEnumerable<BO.ProductForList> CatalogList() 
     {
         return ProductList();
     }
-    BO.Product ProductId(int ID)
+    public BO.Product ProductId(int ID)
     {
         if (ID < 0) throw new BO.incorrectData();
         try
@@ -32,26 +31,27 @@ internal class BoProduct: IBoProduct
         }
         catch (Exception) { throw new BO.MissingID(); }
     }
-    ProductItem CatalogProductId(int ID)
+    public BO.ProductItem CatalogProductId(int ID)
     {
         if (ID < 0) throw new BO.incorrectData();
         try 
         { 
             DO.Product Doproduct = Dal.Product.GetbyID(ID); 
-            ProductItem productItem = new ProductItem() { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID,m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
+            BO.ProductItem productItem = new BO.ProductItem() 
+            { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID,m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
             return productItem; 
         }
         catch (Exception) { throw new BO.MissingID(); }
     }
-    void AddProduct(BO.Product product) 
+    public void AddProduct(BO.Product product) 
     {
         if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStok < 0 || product.m_Name == "")
-            throw new incorrectData();
+            throw new BO.incorrectData();
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price,m_Category = (DO.Enums.Category?)product.m_Category,m_ID= product.m_Id,m_InStock= product.m_InStok};
         try { Dal.Product.Add(Doproduct); }
         catch(Exception) { throw new BO.DuplicateID(); }   
     }
-    void DeleteProduct(int ID) 
+    public void DeleteProduct(int ID) 
     {
         bool flag =false;    
         foreach (var item in Dal.Order.Get())
@@ -64,10 +64,10 @@ internal class BoProduct: IBoProduct
         try { if (!flag) Dal.Product.Delete(ID); }
         catch (Exception) { throw new BO.MissingID(); }
     }
-    void UpdateProduct(BO.Product product) 
+    public void UpdateProduct(BO.Product product) 
     {
         if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStok < 0 || product.m_Name == "")
-            throw new incorrectData();
+            throw new BO.incorrectData();
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStok };
         try { Dal.Product.Update(Doproduct); }
         catch(Exception) { throw new BO.MissingID(); }  

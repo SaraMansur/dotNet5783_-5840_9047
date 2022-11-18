@@ -8,43 +8,43 @@ public interface IBoProduct
     /// The function builds a list of products and returns it (for an admin screen)
     /// </summary>
     /// <returns></returns>
-    IEnumerable<ProductForList> ProductList();
+    public IEnumerable<ProductForList> ProductList();
 
     /// <summary>
     /// The function builds a product catalog and returns it (for a customer's screen)
     /// </summary>
     /// <returns></returns>
-    IEnumerable<ProductForList> CatalogList();
+    public IEnumerable<ProductForList> CatalogList();
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for an admin screen)
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    BO.Product ProductId(int ID);
+    public BO.Product ProductId(int ID);
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for a customer screen - from the catalog)
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    ProductItem CatalogProductId(int ID);
+    public ProductItem CatalogProductId(int ID);
 
     /// <summary>
     /// The function compares a product if it is correct, to the data overlay (for the manager screen)
     /// </summary>
     /// <param name="product"></param>
-    void AddProduct(BO.Product product);
+    public void AddProduct(BO.Product product);
 
     /// <summary>
     /// The function deletes a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    void DeleteProduct(int ID);
+    public void DeleteProduct(int ID);
 
     /// <summary>
     /// The function updates a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    void UpdateProduct(BO.Product product);
+    public void UpdateProduct(BO.Product product);
 }

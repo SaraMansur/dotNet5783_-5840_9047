@@ -8,7 +8,7 @@ public class Product
     public string? m_Name { get; set; }
     public double? m_Price { get; set; }
     public Enums.Category? m_Category { get; set; }
-    public int? m_InStok { get; set; }
+    public int? m_InStock { get; set; }
     public override string ToString() => $@"
     product id= {m_Id}
     name: {m_Name}

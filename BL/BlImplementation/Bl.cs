@@ -5,7 +5,7 @@ namespace BlImplementation;
 
 sealed public class Bl : IBl
 {
-    public ICart Cart => new Cart();
-    public IOrder Order => new Order();
-    public IProduct Product => new Product();
+    public IBoCart Cart => new BoCart();
+    public IBoOrder  Order => new BoOrder();
+    public IBoProduct Product => new BoProduct();
 }

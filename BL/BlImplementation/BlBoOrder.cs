@@ -2,27 +2,27 @@
 using DalApi;
 namespace BlImplementation;
 
-internal class BoOrder : IBoOrder
+internal class BlBoOrder : IBoOrder
 {
     private IDal Dal = new Dal.DalList();
 
     //The function returns the status of the order:
     private BO.Enums.Status status(DO.Order order)
     {
-        if (order.m_DeliveryrDate >= DateTime.Now) //If the order has been delivered
+        if (order.m_DeliveryrDate > DateTime.MinValue) //If the order has been delivered
             return BO.Enums.Status.Received;
         else //If the order has not yet been delivered
         {
-            if (order.m_ShipDate >= DateTime.Now)//If the order has been shipped
+            if (order.m_ShipDate > DateTime.MinValue)//If the order has been shipped
                 return BO.Enums.Status.Shipped;
             else//If the order has not yet been sent
             {
-                if (order.m_OrderTime >= DateTime.Now) //If the order is made
+                if (order.m_OrderTime > DateTime.MinValue) //If the order is made
                     return BO.Enums.Status.Ordered;
                 else //If the order is still in progress
                     return BO.Enums.Status.InProcess;
             }
-        }
+        } 
     }
 
     //The function constructs an object of type BO.Order:

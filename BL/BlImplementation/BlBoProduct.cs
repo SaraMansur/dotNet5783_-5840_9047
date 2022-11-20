@@ -2,7 +2,7 @@
 using DalApi;
 namespace BlImplementation;
 
-internal class BoProduct: IBoProduct
+internal class BlBoProduct: IBoProduct
 {
     private IDal Dal = new Dal.DalList();
     public IEnumerable<BO.ProductForList> ProductList() 

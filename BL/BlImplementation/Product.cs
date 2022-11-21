@@ -1,4 +1,6 @@
 ﻿using BlApi;
+using BO;
+
 namespace BlImplementation;
 
 internal class Product: IProduct
@@ -16,9 +18,19 @@ internal class Product: IProduct
     }
 
     //the function return a catalog for the customer
-    public IEnumerable<BO.ProductForList> CatalogList() 
+    //public IEnumerable<BO.ProductForList> CatalogList() 
+    //{
+    //    return ProductList();
+    //}
+
+    public IEnumerable<BO.ProductItem> CatalogList()
     {
-        return ProductList();
+        List<ProductItem> catalogList = new List<ProductItem>();
+        foreach (var item in Dal.Product.Get())
+        {
+            catalogList.Add(new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
+        }
+        return catalogList;
     }
 
     //the function returns details of the requsted  product to the manager
@@ -84,12 +96,3 @@ internal class Product: IProduct
         catch(Exception) { throw new BO.MissingID(); }  
     }
 }
-//IEnumerable<ProductItem> CatalogList()
-//{
-//    List<ProductItem> catalogList = new List<ProductItem>();
-//    foreach (var item in Dal.Product.Get())
-//    {
-//        catalogList.Add(new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
-//    }
-//    return catalogList;
-//}

@@ -49,14 +49,13 @@ internal class Cart : ICart
         //If the product is not yet in the cart:
         if(checkInStock(1,product.m_InStock)) //
         {   //if there is enough of the object in stock:
-            cart.m_orderItems = new List<BO.OrderItem>();
             BO.OrderItem orderItem = new BO.OrderItem();
             orderItem.m_IdProduct = ID;
             orderItem.m_TotalPriceItem = product.m_Price;
             orderItem.m_AmountInCart = 1;
             orderItem.m_NameProduct = product.m_Name;
             orderItem.m_PriceProduct = product.m_Price;
-            cart.m_orderItems?.Add(orderItem);//If the product does not exist, we will add it to the product list.
+            cart.m_orderItems.Add(orderItem);//If the product does not exist, we will add it to the product list.
             cart.m_TotalPrice = cart.m_TotalPrice + product.m_Price;//Total price update of the shopping curt.
         }
         return cart; //Returning an updated shopping basket.
@@ -77,11 +76,11 @@ internal class Cart : ICart
                     cart.m_orderItems.Remove(cart.m_orderItems[i]);//The missing product from the product list.
                     return cart; //Returning an updated shopping basket.
                 }
-                if (checkInStock((cart.m_orderItems[i].m_AmountInCart + amount), product.m_InStock))
+                if (checkInStock( amount, product.m_InStock))
                 {   //if there is enough of the object in stock:
-                    cart.m_orderItems[i].m_AmountInCart = cart.m_orderItems[i].m_AmountInCart + amount; //The quantity of the item plus amount that customer wont.
-                    cart.m_orderItems[i].m_TotalPriceItem = cart.m_orderItems[i].m_TotalPriceItem + (amount * product.m_Price);  //Total price of the item
-                    cart.m_TotalPrice = cart.m_TotalPrice + (amount * product.m_Price); //Total price update of the shopping curt.
+                    cart.m_orderItems[i].m_AmountInCart =  amount; //The quantity of the item to amount that customer wont.
+                    cart.m_TotalPrice = cart.m_TotalPrice + (amount * product.m_Price)- cart.m_orderItems[i].m_TotalPriceItem; //Total price update of the shopping curt.
+                    cart.m_orderItems[i].m_TotalPriceItem = (amount * product.m_Price);  //Total price of the item
                     return cart; //Returning an updated shopping basket.
                 }
             }
@@ -110,7 +109,7 @@ internal class Cart : ICart
         {
             DO.Product product = new DO.Product();//A new product is released.
             product = cheackId(product, cart.m_orderItems[i].m_IdProduct);//Product ID integrity check.
-            if (checkInStock(cart.m_orderItems[i].m_AmountInCart, product.m_InStock) || cart.m_orderItems[i].m_AmountInCart <= 0) 
+            if (!checkInStock(cart.m_orderItems[i].m_AmountInCart, product.m_InStock) || cart.m_orderItems[i].m_AmountInCart <= 0) 
                 throw new BO.incorrectData(); //If the quantity in the basket is greater than the quantity in stock or negative.
             if (cart.m_orderItems[i].m_NameProduct?.Length==0|| cart.m_orderItems[i].m_TotalPriceItem<=0||cart.m_TotalPrice<=0)
                 throw new BO.incorrectData(); //Throwing an exception in case one or more of the details is wrong.

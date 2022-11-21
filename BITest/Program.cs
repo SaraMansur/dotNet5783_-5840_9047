@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BlImplementation;
+using BO;
 
 namespace BITest;
 
@@ -11,6 +12,7 @@ internal class Program
         C.m_CustomerName = "sara";
         C.m_CustomerAdress = "Haifa";
         C.m_CustomerMail = "srhm1155@gmail.com";
+        C.m_orderItems = new List<BO.OrderItem>();
         int ans;
         do
         {
@@ -165,7 +167,7 @@ internal class Program
                 bl.Product.DeleteProduct(int.Parse(Console.ReadLine()));
                 break;
             case "f":
-                IEnumerable<BO.ProductForList> e2= bl.Product.CatalogList();
+                IEnumerable<BO.ProductItem> e2= bl.Product.CatalogList();
                 foreach (var item in e2)
                 {
                     Console.WriteLine(item + "\n");

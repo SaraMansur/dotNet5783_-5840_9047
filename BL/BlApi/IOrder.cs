@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IBoOrder
+public interface IOrder
 {
     /// <summary>
     /// The function builds a new order list of the OrderForList type (for the manager screen).

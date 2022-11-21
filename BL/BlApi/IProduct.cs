@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IBoProduct
+public interface IProduct
 {
     /// <summary>
     /// The function builds a list of products and returns it (for an admin screen)
@@ -14,7 +14,7 @@ public interface IBoProduct
     /// The function builds a product catalog and returns it (for a customer's screen)
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<ProductForList> CatalogList();
+    public IEnumerable<BO.ProductItem> CatalogList();
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for an admin screen)

@@ -8,13 +8,13 @@ public class Order
     public string? m_CustomerMail { get; set; }
     public string? m_CustomerAdress { get; set; }
     public Enums.Status? m_OrderStatus { get; set; }
-    public double? m_TotalPrice { get; set; }
+    public double m_TotalPrice { get; set; }
     public DateTime m_OrderTime { get; set; }
     public DateTime m_ShipDate { get; set; }
     public DateTime m_DeliveryrDate { get; set; }
     public List<BO.OrderItem>? m_orderItems { get; set; }
     public override string ToString() => $@"
-    product id= {m_Id}
+    order id= {m_Id}
     name of Customer: {m_CustomerName}
     mail of Customer:{m_CustomerMail}
     adress of customer:{m_CustomerAdress}
@@ -23,7 +23,8 @@ public class Order
     order time: {m_OrderTime}
     ship date: {m_ShipDate}
     delivery date: {m_DeliveryrDate}
-    order item: {m_orderItems}
+    order items: {'\n'}  
+    {string.Join('\n', m_orderItems)} 
      ";
  
 }

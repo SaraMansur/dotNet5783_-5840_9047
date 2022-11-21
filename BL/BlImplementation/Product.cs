@@ -1,10 +1,11 @@
 ﻿using BlApi;
-using DalApi;
+using BO;
+
 namespace BlImplementation;
 
-internal class BoProduct: IBoProduct
+internal class Product: IProduct
 {
-    private IDal Dal = new Dal.DalList();
+    private DalApi.IDal Dal = new Dal.DalList();
     // the function returns list of products to the manager
     public IEnumerable<BO.ProductForList> ProductList() 
     {
@@ -17,9 +18,19 @@ internal class BoProduct: IBoProduct
     }
 
     //the function return a catalog for the customer
-    public IEnumerable<BO.ProductForList> CatalogList() 
+    //public IEnumerable<BO.ProductForList> CatalogList() 
+    //{
+    //    return ProductList();
+    //}
+
+    public IEnumerable<BO.ProductItem> CatalogList()
     {
-        return ProductList();
+        List<ProductItem> catalogList = new List<ProductItem>();
+        foreach (var item in Dal.Product.Get())
+        {
+            catalogList.Add(new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
+        }
+        return catalogList;
     }
 
     //the function returns details of the requsted  product to the manager
@@ -85,12 +96,3 @@ internal class BoProduct: IBoProduct
         catch(Exception) { throw new BO.MissingID(); }  
     }
 }
-//IEnumerable<ProductItem> CatalogList()
-//{
-//    List<ProductItem> catalogList = new List<ProductItem>();
-//    foreach (var item in Dal.Product.Get())
-//    {
-//        catalogList.Add(new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
-//    }
-//    return catalogList;
-//}

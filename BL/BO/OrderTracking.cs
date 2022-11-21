@@ -9,5 +9,6 @@ public class OrderTracking
     public override string ToString() => $@"
     order id: {m_ID}
     order status: {m_Status}
-    Package progress: {m_DescriptionProgress}";
+    Package progress: {string.Join('\n', m_DescriptionProgress)}   
+    ";
 }

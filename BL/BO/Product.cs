@@ -14,5 +14,5 @@ public class Product
     name: {m_Name}
     category: {m_Category}
     price: {m_Price}
-    amount in stock: {m_InStok}";
+    amount in stock: {m_InStock}";
 }

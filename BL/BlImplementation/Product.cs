@@ -1,10 +1,9 @@
 ﻿using BlApi;
-using DalApi;
 namespace BlImplementation;
 
-internal class BlBoProduct: IBoProduct
+internal class Product: IProduct
 {
-    private IDal Dal = new Dal.DalList();
+    private DalApi.IDal Dal = new Dal.DalList();
     // the function returns list of products to the manager
     public IEnumerable<BO.ProductForList> ProductList() 
     {

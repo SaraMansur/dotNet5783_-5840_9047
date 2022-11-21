@@ -7,6 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        BO.Cart C = new BO.Cart();
+        C.m_CustomerName = "sara";
+        C.m_CustomerAdress = "Haifa";
+        C.m_CustomerMail = "srhm1155@gmail.com";
         int ans;
         do
         {
@@ -21,7 +25,7 @@ internal class Program
                     case 0:
                         break;
                     case 1:
-                        cartTesting();
+                        C = cartTesting(C);
                         break;
                     case 2:
                         orderTesting();
@@ -40,34 +44,35 @@ internal class Program
     }
 
     // the function tests the cart entity
-    static void cartTesting()
+    static BO.Cart cartTesting(BO.Cart C)
     {
         IBl bl = new Bl();
-        BO.Cart C = new BO.Cart();
+        //BO.Cart C = new BO.Cart();
         Console.WriteLine("a.Option to add an item to the cart");
         Console.WriteLine("b.Option to update the amount");
         Console.WriteLine("c.Option to confirm order");
         switch (Console.ReadLine())
         {
             case "a":
-                Console.WriteLine("Enter please name,mail,adress,id of the cart");
-                C.m_CustomerName = Console.ReadLine();
-                C.m_CustomerMail = Console.ReadLine();
-                C.m_CustomerAdress= Console.ReadLine();
-                bl.Cart.AddItemToCart(C,int.Parse(Console.ReadLine()));
+                Console.WriteLine("Enter please id of the product");
+                //C.m_CustomerName = Console.ReadLine();
+                //C.m_CustomerMail = Console.ReadLine();
+                //C.m_CustomerAdress= Console.ReadLine();
+                Console.WriteLine(bl.Cart.AddItemToCart(C,int.Parse(Console.ReadLine())));
                 break;
             case "b":
                 Console.WriteLine("Enter please id,amount of the cart");
-                bl.Cart.UpdateAmount(C, int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Cart.UpdateAmount(C, int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
                 break;
             case "c":
-                Console.WriteLine("Enter please name,mail,adress of the cart");
+                Console.WriteLine("Enter please name,mail,adress of the customer");
                 bl.Cart.OrderConfirmation(C, Console.ReadLine(), Console.ReadLine(), Console.ReadLine());
                 break;
             default:
                 Console.WriteLine("ERROR");
                 break;
         }
+        return C;
     }
 
     // the function tests the order entity
@@ -83,26 +88,28 @@ internal class Program
         switch (Console.ReadLine())
         {
             case "a":
-                foreach (var item in bl.Order.OrderList())
+                IEnumerable<BO.OrderForList> e = bl.Order.OrderList();
+                foreach (var item in e)
                 {
                     Console.WriteLine(item + "\n");
                 }
                 break;
             case "b":
                 Console.WriteLine("Enter please id of the order");
-                bl.Order.orderDetails(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Order.orderDetails(int.Parse(Console.ReadLine())));
+                //fv
                 break;
             case "c":
                 Console.WriteLine("Enter please id of the order");
-                bl.Order.sendingAnInvitation(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Order.sendingAnInvitation(int.Parse(Console.ReadLine())));
                 break;
             case "d":
                 Console.WriteLine("Enter please id of the order");
-                bl.Order.orderDelivery(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Order.orderDelivery(int.Parse(Console.ReadLine())));
                 break;
             case "e":
                 Console.WriteLine("Enter please id of the order");
-                bl.Order.orderTracking(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Order.orderTracking(int.Parse(Console.ReadLine())));
                 break;
             default:
                 Console.WriteLine("ERROR");
@@ -125,14 +132,15 @@ internal class Program
         switch (Console.ReadLine())
         {
             case "a":
-                foreach (var item in bl.Product.ProductList())
+                IEnumerable<BO.ProductForList> e = bl.Product.ProductList();
+                foreach (var item in e)
                 {
                     Console.WriteLine(item + "\n");
                 }
                 break;
             case "b":
                 Console.WriteLine("Enter please id of the  product");
-                bl.Product.ProductId(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Product.ProductId(int.Parse(Console.ReadLine())));
                 break;
             case "c":
                 Console.WriteLine("Enter please id,category,instock,price,name of the product");
@@ -157,14 +165,15 @@ internal class Program
                 bl.Product.DeleteProduct(int.Parse(Console.ReadLine()));
                 break;
             case "f":
-                foreach (var item in bl.Product.CatalogList())
+                IEnumerable<BO.ProductForList> e2= bl.Product.CatalogList();
+                foreach (var item in e2)
                 {
                     Console.WriteLine(item + "\n");
                 }
                 break;
             case "g":
                 Console.WriteLine("Enter id of the  product");
-                bl.Product.CatalogProductId(int.Parse(Console.ReadLine()));
+                Console.WriteLine(bl.Product.CatalogProductId(int.Parse(Console.ReadLine())));
                 break;
             default:
                 Console.WriteLine("ERROR");

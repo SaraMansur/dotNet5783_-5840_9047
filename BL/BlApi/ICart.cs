@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IBoCart
+public interface ICart
 {
     /// <summary>
     /// The function adds a product to the shopping cart (for the catalog screen).

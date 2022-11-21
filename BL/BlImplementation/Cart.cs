@@ -1,10 +1,10 @@
 ﻿using BlApi;
-using DalApi;
+
 namespace BlImplementation;
 
-internal class BlBoCart : IBoCart
+internal class Cart : ICart
 {
-    private IDal Dal = new Dal.DalList();
+    private DalApi.IDal Dal = new Dal.DalList();
 
     //The function checks the correctness of the product ID, if it is wrong it throws an exception.
     private DO.Product cheackId(DO.Product p, int? ID)
@@ -49,8 +49,8 @@ internal class BlBoCart : IBoCart
         //If the product is not yet in the cart:
         if(checkInStock(1,product.m_InStock)) //
         {   //if there is enough of the object in stock:
+            cart.m_orderItems = new List<BO.OrderItem>();
             BO.OrderItem orderItem = new BO.OrderItem();
-            orderItem.m_ID = cart.m_orderItems[cart.m_orderItems.Count - 1].m_ID + 1;
             orderItem.m_IdProduct = ID;
             orderItem.m_TotalPriceItem = product.m_Price;
             orderItem.m_AmountInCart = 1;
@@ -69,7 +69,7 @@ internal class BlBoCart : IBoCart
         product = cheackId(product, ID);//Product ID integrity check.
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
         {
-            if (cart.m_orderItems[i].m_ID == ID)//If the product exists
+            if (cart.m_orderItems[i].m_IdProduct == ID)//If the product exists
             {
                 if (amount == 0)
                 {//If the customer wants to remove the product from the cart.

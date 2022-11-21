@@ -1,10 +1,10 @@
 ﻿using BlApi;
-using DalApi;
+
 namespace BlImplementation;
 
-internal class BlBoOrder : IBoOrder
+internal class Order : IOrder
 {
-    private IDal Dal = new Dal.DalList();
+    private DalApi.IDal Dal = new Dal.DalList();
 
     //The function returns the status of the order:
     private BO.Enums.Status status(DO.Order order)
@@ -36,10 +36,11 @@ internal class BlBoOrder : IBoOrder
         BOorder.m_DeliveryrDate = DOorder.m_DeliveryrDate;
         BOorder.m_ShipDate = DOorder.m_ShipDate;
         BOorder.m_OrderStatus = status(DOorder);
-        BO.OrderItem BOorderItem = new BO.OrderItem();
+        BOorder.m_orderItems=new List<BO.OrderItem>();
         IEnumerable<DO.OrderItem> DOorderItems = Dal.OrderItem.GetOrderItems(orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
+            BO.OrderItem BOorderItem = new BO.OrderItem();
             BOorderItem.m_ID = item.m_ID;
             BOorderItem.m_IdProduct = item.m_ProductId;
             try
@@ -52,7 +53,7 @@ internal class BlBoOrder : IBoOrder
             BOorderItem.m_AmountInCart = item.m_amount;
             BOorderItem.m_TotalPriceItem = item.m_Price;
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
-            BOorder.m_orderItems?.Add(BOorderItem);
+            BOorder.m_orderItems.Add(BOorderItem);
         }
         return BOorder;
     }
@@ -60,11 +61,11 @@ internal class BlBoOrder : IBoOrder
     // The function builds a new order list of the OrderForList type (for the manager screen):
     public IEnumerable<BO.OrderForList> OrderList()
     {
-        IEnumerable<DO.Order> orders = Dal.Order.Get(); //A new list of type Orde
-        List<BO.OrderForList> orderList = new List<BO.OrderForList>(); //A new list of type OrderForList
-        BO.OrderForList orderForList = new BO.OrderForList(); //A new object of type Order For List
-        foreach (DO.Order order in orders) //The loop goes through the entire order list.
+        IEnumerable<DO.Order> DoOrders = Dal.Order.Get(); //A new list of type Orde
+        List<BO.OrderForList> ListorderForList = new List<BO.OrderForList>(); //A new list of type OrderForList
+        foreach (DO.Order order in DoOrders) //The loop goes through the entire order list.
         {
+            BO.OrderForList orderForList = new BO.OrderForList(); //A new object of type Order For List
             IEnumerable<DO.OrderItem> orderItems = Dal.OrderItem.GetOrderItems(order.m_ID); //List of order details of the current order.
             foreach (DO.OrderItem item in orderItems)
             { //The loop goes through the order details list of the current order:
@@ -75,9 +76,9 @@ internal class BlBoOrder : IBoOrder
             orderForList.m_Id = order.m_ID;
             orderForList.m_OrderStatus = status(order);//Updates the status of the order.
 
-            orderList.Add(orderForList);
+            ListorderForList.Add(orderForList); 
         }
-        return orderList;
+        return ListorderForList;
     }
 
     // The function receives an order ID and returns an object of type BO.Order that contains all the order details.
@@ -110,6 +111,7 @@ internal class BlBoOrder : IBoOrder
         if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, 
             throw new BO.incorrectData(); //throw that the order has already been sent.
         DOorder.m_ShipDate = DateTime.Now;
+        Dal.Order.Update(DOorder);
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -128,6 +130,7 @@ internal class BlBoOrder : IBoOrder
         if (DOorder.m_DeliveryrDate > DateTime.Now)
             throw new BO.incorrectData();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
+        Dal.Order.Update(DOorder);
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -146,6 +149,7 @@ internal class BlBoOrder : IBoOrder
         { throw new BO.incorrectData(); }
         OT.m_Status = status(DOorder);
         OT.m_ID = orderId;
+        OT.m_DescriptionProgress = new List<string>();
         //If the order has already been shipped and delivered to the customer:
         if (OT.m_Status== BO.Enums.Status.Received)
         {

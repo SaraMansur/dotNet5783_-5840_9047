@@ -2,11 +2,10 @@
 using System.Xml.Linq;
 
 namespace DO;
+
 /// <summary>
 /// 
 /// </summary>
-
-
 public struct Order
 {
     public int m_ID { get; set; }

@@ -6,7 +6,13 @@ internal class Cart : ICart
 {
     private DalApi.IDal Dal = new Dal.DalList();
 
-    //The function checks the correctness of the product ID, if it is wrong it throws an exception.
+    /// <summary>
+    /// The function checks the correctness of the product ID, if it is wrong it throws an exception:
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.MissingID"></exception>
     private DO.Product cheackId(DO.Product p, int? ID)
     {
         try //Checks if the product exists
@@ -20,7 +26,13 @@ internal class Cart : ICart
         return p;
     }
 
-    //this function cheach if there is enough of the object in stock:
+    /// <summary>
+    /// this function cheach if there is enough of the object in stock:
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <param name="inStock"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.MissingInStock"></exception>
     private bool checkInStock(int? amount,int? inStock)
     {
         if (amount > inStock) 
@@ -28,7 +40,12 @@ internal class Cart : ICart
         return true;
     }
 
-    // The function adds a product to the shopping cart (for the catalog screen):
+    /// <summary>
+    /// The function adds a product to the shopping cart (for the catalog screen):
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="ID"></param>
+    /// <returns></returns>
     public BO.Cart AddItemToCart(BO.Cart cart, int ID)
     {
         DO.Product product = new DO.Product();//A new product is released.
@@ -49,19 +66,21 @@ internal class Cart : ICart
         //If the product is not yet in the cart:
         if(checkInStock(1,product.m_InStock)) //
         {   //if there is enough of the object in stock:
-            BO.OrderItem orderItem = new BO.OrderItem();
-            orderItem.m_IdProduct = ID;
-            orderItem.m_TotalPriceItem = product.m_Price;
-            orderItem.m_AmountInCart = 1;
-            orderItem.m_NameProduct = product.m_Name;
-            orderItem.m_PriceProduct = product.m_Price;
+            BO.OrderItem orderItem = new BO.OrderItem() { m_IdProduct = ID, m_TotalPriceItem = product.m_Price, m_AmountInCart = 1, m_NameProduct = product.m_Name, m_PriceProduct = product.m_Price };
             cart.m_orderItems.Add(orderItem);//If the product does not exist, we will add it to the product list.
             cart.m_TotalPrice = cart.m_TotalPrice + product.m_Price;//Total price update of the shopping curt.
         }
         return cart; //Returning an updated shopping basket.
     }
 
-    // The function updates the quantity of a product in the shopping basket (for the cart screen)
+    /// <summary>
+    /// The function updates the quantity of a product in the shopping basket (for the cart screen)
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="ID"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.MissingID"></exception>
     public BO.Cart UpdateAmount(BO.Cart cart, int ID, int amount)
     {
         DO.Product product = new DO.Product();//A new product is released.
@@ -88,19 +107,15 @@ internal class Cart : ICart
         throw new BO.MissingID();//Throws an exception if the product does not exist in the shopping cart at all.
     }
 
-    //The function adds an order to the order list and returns an order ID:
-    private int addOrder(DO.Order order, string nameCustomr, string mailCustomer, string addressCustomr)
-    {
-        order.m_CustomerAdress = addressCustomr;
-        order.m_CustomerEmail = mailCustomer;
-        order.m_CustomerName = nameCustomr;
-        order.m_OrderTime = DateTime.Now;
-        order.m_DeliveryrDate = DateTime.MinValue;
-        order.m_ShipDate = DateTime.MinValue;
-        return Dal.Order.Add(order);
-    }
 
-    // The function places an order (for the shopping cart screen or the order completion screen):
+    /// <summary>
+    /// The function places an order (for the shopping cart screen or the order completion screen):
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="nameCustomr"></param>
+    /// <param name="mailCustomer"></param>
+    /// <param name="addressCustomr"></param>
+    /// <exception cref="BO.incorrectData"></exception>
     public void OrderConfirmation(BO.Cart cart, string nameCustomr, string mailCustomer, string addressCustomr)
     {
         if (!mailCustomer.EndsWith("@gmail.com") || nameCustomr.Length == 0 || mailCustomer.Length == 0 || addressCustomr.Length == 0)
@@ -114,16 +129,12 @@ internal class Cart : ICart
             if (cart.m_orderItems[i].m_NameProduct?.Length==0|| cart.m_orderItems[i].m_TotalPriceItem<=0||cart.m_TotalPrice<=0)
                 throw new BO.incorrectData(); //Throwing an exception in case one or more of the details is wrong.
         }
-        DO.Order order = new DO.Order();//A new order is released.
-        order.m_ID = addOrder(order, nameCustomr, mailCustomer, addressCustomr);
+        ;//A new order is released.
+        DO.Order order = new DO.Order() { m_CustomerAdress = addressCustomr, m_CustomerEmail = mailCustomer, m_CustomerName = nameCustomr, m_OrderTime = DateTime.Now, m_DeliveryrDate = DateTime.MinValue, m_ShipDate = DateTime.MinValue };
+        order.m_ID = Dal.Order.Add(order);
         for (int i = 0; i < cart.m_orderItems?.Count; i++) //The loop adds product details to the list of product details
         {
-            DO.OrderItem orderItem = new DO.OrderItem();//A new product is released.
-            orderItem.m_ID = cart.m_orderItems[i].m_ID;
-            orderItem.m_amount = cart.m_orderItems[i].m_AmountInCart;
-            orderItem.m_OrderId = order.m_ID;
-            orderItem.m_Price = cart.m_orderItems[i].m_TotalPriceItem;
-            orderItem.m_ProductId = cart.m_orderItems[i].m_IdProduct;
+            DO.OrderItem orderItem = new DO.OrderItem() { m_ID = cart.m_orderItems[i].m_ID, m_amount = cart.m_orderItems[i].m_AmountInCart, m_OrderId = order.m_ID, m_Price = cart.m_orderItems[i].m_TotalPriceItem, m_ProductId = cart.m_orderItems[i].m_IdProduct };
             Dal.OrderItem.Add(orderItem); //Add to list.
             DO.Product p = Dal.Product.GetbyID(orderItem.m_ProductId);
             p.m_InStock = p.m_InStock - orderItem.m_amount;

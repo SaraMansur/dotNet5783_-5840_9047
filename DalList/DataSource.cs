@@ -116,13 +116,22 @@ internal static class DataSource
         }
     }
 
-    //The function adds a product to the product pool:
+    /// <summary>
+    /// The function adds a product to the product pool:
+    /// </summary>
+    /// <param name="product"></param>
     private static void addProduct(Product product) => m_listPruducts.Add(product);
 
-    //The function adds an order to the order pool:
+    /// <summary>
+    /// The function adds an order to the order pool:
+    /// </summary>
+    /// <param name="order"></param>
     private static void addOrder(Order order) => m_listOreders.Add(order);
 
-    //The function adds an OrderItem to the OrderItem pool:
+    /// <summary>
+    /// The function adds an OrderItem to the OrderItem pool:
+    /// </summary>
+    /// <param name="orderItem"></param>
     private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
 
 

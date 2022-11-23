@@ -6,7 +6,11 @@ internal class Order : IOrder
 {
     private DalApi.IDal Dal = new Dal.DalList();
 
-    //The function returns the status of the order:
+    /// <summary>
+    /// The function returns the status of the order:
+    /// </summary>
+    /// <param name="order"></param>
+    /// <returns></returns>
     private BO.Enums.Status status(DO.Order order)
     {
         if (order.m_DeliveryrDate > DateTime.MinValue) //If the order has been delivered
@@ -25,7 +29,14 @@ internal class Order : IOrder
         } 
     }
 
-    //The function constructs an object of type BO.Order:
+    /// <summary>
+    /// The function constructs an object of type BO.Order:
+    /// </summary>
+    /// <param name="BOorder"></param>
+    /// <param name="DOorder"></param>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.MissingID"></exception>
     private BO.Order BuildOrder(BO.Order BOorder,DO.Order DOorder, int orderId)
     {
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
@@ -47,10 +58,10 @@ internal class Order : IOrder
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
             orderItems.Add(BOorderItem);
         }
-        BO.Order order = new BO.Order() //Fast boot:
+        return new BO.Order() //Fast boot:
         {
             m_Id = DOorder.m_ID,
-            m_CustomerName = DOorder.m_CustomerEmail,
+            m_CustomerName = DOorder.m_CustomerName,
             m_CustomerMail = DOorder.m_CustomerEmail,
             m_CustomerAdress = DOorder.m_CustomerAdress,
             m_OrderTime = DOorder.m_OrderTime,
@@ -60,10 +71,12 @@ internal class Order : IOrder
             m_TotalPrice = BOorder.m_TotalPrice,
             m_orderItems = new (orderItems.ToList())
         };
-        return order;
     }
 
-    // The function builds a new order list of the OrderForList type (for the manager screen):
+    /// <summary>
+    /// The function builds a new order list of the OrderForList type (for the manager screen):
+    /// </summary>
+    /// <returns></returns>
     public IEnumerable<BO.OrderForList> OrderList()
     {
         IEnumerable<DO.Order> DoOrders = Dal.Order.Get(); //A new list of type Orde
@@ -82,7 +95,13 @@ internal class Order : IOrder
         return ListorderForList;
     }
 
-    // The function receives an order ID and returns an object of type BO.Order that contains all the order details.
+    /// <summary>
+    /// The function receives an order ID and returns an object of type BO.Order that contains all the order details.
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.incorrectData"></exception>
+    /// <exception cref="BO.MissingID"></exception>
     public BO.Order orderDetails(int orderId)
     {
         if (orderId < 0)
@@ -99,7 +118,12 @@ internal class Order : IOrder
         return BOorder;
     }
 
-    // The function allows the manager to update that the order has been sent to the customer.
+    /// <summary>
+    /// The function allows the manager to update that the order has been sent to the customer.
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.incorrectData"></exception>
     public BO.Order sendingAnInvitation(int orderId)
     {
         DO.Order DOorder = new DO.Order();
@@ -118,7 +142,12 @@ internal class Order : IOrder
         return BOorder;
     }
 
-    //The function allows the manager to update that the order has been delivered to the customer.
+    /// <summary>
+    /// The function allows the manager to update that the order has been delivered to the customer.
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.incorrectData"></exception>
     public BO.Order orderDelivery(int orderId)
     {
         DO.Order DOorder = new DO.Order();
@@ -137,7 +166,12 @@ internal class Order : IOrder
         return BOorder;
     }
 
-    // The function allows the administrator to track the order:
+    /// <summary>
+    ///  The function allows the administrator to track the order:
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.incorrectData"></exception>
     public BO.OrderTracking orderTracking(int orderId)
     {
         BO.OrderTracking OT = new BO.OrderTracking();
@@ -148,8 +182,7 @@ internal class Order : IOrder
         }
         catch
         { throw new BO.incorrectData(); }
-        OT.m_Status = status(DOorder);
-        OT.m_ID = orderId;
+        OT.m_Status = status(DOorder); OT.m_ID = orderId;
         OT.m_DescriptionProgress = new List<string>();
         //If the order has already been shipped and delivered to the customer:
         if (OT.m_Status== BO.Enums.Status.Received)

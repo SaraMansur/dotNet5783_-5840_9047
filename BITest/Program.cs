@@ -50,7 +50,11 @@ internal class Program
         } while (ans!=0);
     }
 
-    // the function tests the cart entity
+    /// <summary>
+    /// the function tests the cart entity
+    /// </summary>
+    /// <param name="C"></param>
+    /// <returns></returns>
     static BO.Cart cartTesting(BO.Cart C)
     {
         IBl bl = new Bl();
@@ -79,7 +83,9 @@ internal class Program
         return C;
     }
 
-    // the function tests the order entity
+    /// <summary>
+    /// the function tests the order entity
+    /// </summary>
     static void orderTesting()
     {
         IBl bl = new Bl();
@@ -121,7 +127,9 @@ internal class Program
         }
     }
 
-    // the function tests the product entity
+    /// <summary>
+    /// the function tests the product entity
+    /// </summary>
     static void productTesting()
     {
         IBl bl = new Bl();

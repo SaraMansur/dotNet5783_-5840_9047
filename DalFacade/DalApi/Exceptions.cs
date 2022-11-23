@@ -1,5 +1,8 @@
 ﻿
 namespace DalApi;
+/// <summary>
+/// Throw in case the ID number is wrong
+/// </summary>
 [Serializable]
 public class MissingID : Exception
 {
@@ -9,6 +12,10 @@ public class MissingID : Exception
         return Message;
     }
 }
+
+/// <summary>
+/// Throw in case the object already exists
+/// </summary>
 public class DuplicateID : Exception
 {
     public override string Message => "The object already exist";

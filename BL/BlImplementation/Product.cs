@@ -17,18 +17,24 @@ internal class Product: IProduct
         return productForLists;
     }
 
-    //the function return a catalog for the customer
+
     //public IEnumerable<BO.ProductForList> CatalogList() 
     //{
     //    return ProductList();
     //}
 
+    //the function return a catalog for the customer
     public IEnumerable<BO.ProductItem> CatalogList()
     {
         List<ProductItem> catalogList = new List<ProductItem>();
         foreach (var item in Dal.Product.Get())
         {
-            catalogList.Add(new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
+            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price,m_AmountInCart=0 };
+            if (item.m_InStock > 0) 
+                p.m_InStock = true; 
+            else 
+                p.m_InStock = false;
+            catalogList.Add(p); 
         }
         return catalogList;
     }

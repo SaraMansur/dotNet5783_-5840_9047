@@ -9,10 +9,15 @@ internal class Program
     static void Main(string[] args)
     {
         BO.Cart C = new BO.Cart();
-        C.m_CustomerName = "sara";
-        C.m_CustomerAdress = "Haifa";
-        C.m_CustomerMail = "srhm1155@gmail.com";
-        C.m_orderItems = new List<BO.OrderItem>();
+        Console.WriteLine("Are you a manager or customer?");
+        if (Console.ReadLine() == "customer")
+        {
+            Console.WriteLine("Please enter name,adress and mail");
+            C.m_CustomerName = Console.ReadLine();
+            C.m_CustomerAdress = Console.ReadLine();
+            C.m_CustomerMail = Console.ReadLine();
+            C.m_orderItems = new List<BO.OrderItem>();
+        }
         int ans;
         do
         {
@@ -57,13 +62,10 @@ internal class Program
         {
             case "a":
                 Console.WriteLine("Enter please id of the product");
-                //C.m_CustomerName = Console.ReadLine();
-                //C.m_CustomerMail = Console.ReadLine();
-                //C.m_CustomerAdress= Console.ReadLine();
                 Console.WriteLine(bl.Cart.AddItemToCart(C,int.Parse(Console.ReadLine())));
                 break;
             case "b":
-                Console.WriteLine("Enter please id,amount of the cart");
+                Console.WriteLine("Enter please id,amount of the product");
                 Console.WriteLine(bl.Cart.UpdateAmount(C, int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
                 break;
             case "c":

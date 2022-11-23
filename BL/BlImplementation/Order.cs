@@ -26,17 +26,9 @@ internal class Order : IOrder
     }
 
     //The function constructs an object of type BO.Order:
-    private BO.Order BuildOrder(BO.Order BOorder, DO.Order DOorder, int orderId)
+    private BO.Order BuildOrder(BO.Order BOorder,DO.Order DOorder, int orderId)
     {
-        BOorder.m_Id = DOorder.m_ID;
-        BOorder.m_CustomerName = DOorder.m_CustomerName;
-        BOorder.m_CustomerMail = DOorder.m_CustomerEmail;
-        BOorder.m_CustomerAdress = DOorder.m_CustomerAdress;
-        BOorder.m_OrderTime = DOorder.m_OrderTime;
-        BOorder.m_DeliveryrDate = DOorder.m_DeliveryrDate;
-        BOorder.m_ShipDate = DOorder.m_ShipDate;
-        BOorder.m_OrderStatus = status(DOorder);
-        BOorder.m_orderItems=new List<BO.OrderItem>();
+        List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
         IEnumerable<DO.OrderItem> DOorderItems = Dal.OrderItem.GetOrderItems(orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
@@ -53,9 +45,22 @@ internal class Order : IOrder
             BOorderItem.m_AmountInCart = item.m_amount;
             BOorderItem.m_TotalPriceItem = item.m_Price;
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
-            BOorder.m_orderItems.Add(BOorderItem);
+            orderItems.Add(BOorderItem);
         }
-        return BOorder;
+        BO.Order order = new BO.Order() //Fast boot:
+        {
+            m_Id = DOorder.m_ID,
+            m_CustomerName = DOorder.m_CustomerEmail,
+            m_CustomerMail = DOorder.m_CustomerEmail,
+            m_CustomerAdress = DOorder.m_CustomerAdress,
+            m_OrderTime = DOorder.m_OrderTime,
+            m_DeliveryrDate = DOorder.m_DeliveryrDate,
+            m_ShipDate = DOorder.m_ShipDate,
+            m_OrderStatus = status(DOorder),
+            m_TotalPrice = BOorder.m_TotalPrice,
+            m_orderItems = new (orderItems.ToList())
+        };
+        return order;
     }
 
     // The function builds a new order list of the OrderForList type (for the manager screen):
@@ -65,18 +70,14 @@ internal class Order : IOrder
         List<BO.OrderForList> ListorderForList = new List<BO.OrderForList>(); //A new list of type OrderForList
         foreach (DO.Order order in DoOrders) //The loop goes through the entire order list.
         {
-            BO.OrderForList orderForList = new BO.OrderForList(); //A new object of type Order For List
+            int amount = 0 ; double price = 0 ;   
             IEnumerable<DO.OrderItem> orderItems = Dal.OrderItem.GetOrderItems(order.m_ID); //List of order details of the current order.
             foreach (DO.OrderItem item in orderItems)
             { //The loop goes through the order details list of the current order:
-                orderForList.m_AmountItems = orderForList.m_AmountItems + item.m_amount;
-                orderForList.m_TotalPrice = orderForList.m_TotalPrice + item.m_Price;
+                amount += item.m_amount;
+                price +=  item.m_Price;
             }
-            orderForList.m_CustomerName = order.m_CustomerName;
-            orderForList.m_Id = order.m_ID;
-            orderForList.m_OrderStatus = status(order);//Updates the status of the order.
-
-            ListorderForList.Add(orderForList); 
+            ListorderForList.Add(new BO.OrderForList { m_CustomerName = order.m_CustomerName, m_Id = order.m_ID, m_OrderStatus = status(order), m_AmountItems=amount, m_TotalPrice=price }); 
         }
         return ListorderForList;
     }

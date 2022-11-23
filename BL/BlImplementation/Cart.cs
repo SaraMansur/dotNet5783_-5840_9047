@@ -19,9 +19,9 @@ internal class Cart : ICart
         {
             p= Dal.Product.GetbyID(ID);
         }
-        catch (Exception)//If the product is not in stock.
+        catch (Exception )//If the product is not in stock.
         {
-            throw new BO.MissingID();
+            throw new BO.NotExist();
         }
         return p;
     }
@@ -104,7 +104,7 @@ internal class Cart : ICart
                 }
             }
         }
-        throw new BO.MissingID();//Throws an exception if the product does not exist in the shopping cart at all.
+        throw new BO.NotExist();//Throws an exception if the product does not exist in the shopping cart at all.
     }
 
 
@@ -119,15 +119,15 @@ internal class Cart : ICart
     public void OrderConfirmation(BO.Cart cart, string nameCustomr, string mailCustomer, string addressCustomr)
     {
         if (!mailCustomer.EndsWith("@gmail.com") || nameCustomr.Length == 0 || mailCustomer.Length == 0 || addressCustomr.Length == 0)
-            throw new BO.incorrectData(); //Throwing an exception in case one or more of the details is wrong.
+            throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
         for (int i = 0; i < cart.m_orderItems?.Count; i++) //The loop checks data integrity.
         {
             DO.Product product = new DO.Product();//A new product is released.
             product = cheackId(product, cart.m_orderItems[i].m_IdProduct);//Product ID integrity check.
             if (!checkInStock(cart.m_orderItems[i].m_AmountInCart, product.m_InStock) || cart.m_orderItems[i].m_AmountInCart <= 0) 
-                throw new BO.incorrectData(); //If the quantity in the basket is greater than the quantity in stock or negative.
+                throw new BO.IlegalInput(); //If the quantity in the basket is greater than the quantity in stock or negative.
             if (cart.m_orderItems[i].m_NameProduct?.Length==0|| cart.m_orderItems[i].m_TotalPriceItem<=0||cart.m_TotalPrice<=0)
-                throw new BO.incorrectData(); //Throwing an exception in case one or more of the details is wrong.
+                throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
         }
         ;//A new order is released.
         DO.Order order = new DO.Order() { m_CustomerAdress = addressCustomr, m_CustomerEmail = mailCustomer, m_CustomerName = nameCustomr, m_OrderTime = DateTime.Now, m_DeliveryrDate = DateTime.MinValue, m_ShipDate = DateTime.MinValue };

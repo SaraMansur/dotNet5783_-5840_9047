@@ -31,7 +31,7 @@ internal class DalOrder:IOrder
                 return;
             }
         }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
@@ -46,7 +46,7 @@ internal class DalOrder:IOrder
                 m_listOreders[i] = O;
                 return;
             }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns the order w hose ID was received
@@ -61,7 +61,7 @@ internal class DalOrder:IOrder
             if (ID == m_listOreders[i].m_ID)
                 return m_listOreders[i];
         }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns an array of the objects

@@ -10,7 +10,7 @@ public struct OrderItem
     public int m_ID { get; set; }
     public int? m_ProductId { get; set; }
     public int? m_OrderId { get; set; }
-    public double m_Price { get; set; }
+    public double? m_Price { get; set; }
     public int m_amount { get; set; }
     public override string ToString() => $@"
     order item id: {m_ID}

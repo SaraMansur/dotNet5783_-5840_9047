@@ -51,8 +51,8 @@ internal class Order : IOrder
                 BOorderItem.m_NameProduct = Dal.Product.GetbyID(item.m_ProductId).m_Name;
                 BOorderItem.m_PriceProduct = Dal.Product.GetbyID(item.m_ProductId).m_Price;
             }
-            catch
-            { throw new BO.MissingID(); } //Throwing in the event of a wrong ID number
+            catch(Exception ) 
+            { throw new BO.NotExist(); } //Throwing in the event of a wrong ID number
             BOorderItem.m_AmountInCart = item.m_amount;
             BOorderItem.m_TotalPriceItem = item.m_Price;
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
@@ -105,14 +105,14 @@ internal class Order : IOrder
     public BO.Order orderDetails(int orderId)
     {
         if (orderId < 0)
-            throw new BO.incorrectData(); //Negative ID number - wrong
+            throw new BO.IlegalInput(); //Negative ID number - wrong
         DO.Order DOorder = new DO.Order();
         try//Checking if Order ID is correct
         {
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.MissingID(); } //Throwing in the event of a wrong ID number
+        { throw new BO.NotExist(); } //Throwing in the event of a wrong ID number
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -132,9 +132,9 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.incorrectData(); } //Throwing in the event of a wrong ID number
+        { throw new BO.IlegalInput(); } //Throwing in the event of a wrong ID number
         if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, 
-            throw new BO.incorrectData(); //throw that the order has already been sent.
+            throw new BO.IlegalInput(); //throw that the order has already been sent.
         DOorder.m_ShipDate = DateTime.Now;
         Dal.Order.Update(DOorder);
         BO.Order BOorder = new BO.Order();
@@ -156,9 +156,9 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
-        { throw new BO.incorrectData(); }
+        { throw new BO.IlegalInput(); }
         if (DOorder.m_DeliveryrDate > DateTime.Now)
-            throw new BO.incorrectData();//If the order has already been delivered, throw that the order has been delivered.
+            throw new BO.IlegalInput();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         Dal.Order.Update(DOorder);
         BO.Order BOorder = new BO.Order();
@@ -181,6 +181,9 @@ internal class Order : IOrder
             DOorder = Dal.Order.GetbyID(orderId);
         }
         catch
+        { throw new BO.IlegalInput(); }
+        OT.m_Status = status(DOorder);
+        OT.m_ID = orderId;
         { throw new BO.incorrectData(); }
         OT.m_Status = status(DOorder); OT.m_ID = orderId;
         OT.m_DescriptionProgress = new List<string>();

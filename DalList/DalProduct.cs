@@ -17,7 +17,7 @@ internal class DalProduct:IProduct
         for (int i = 0; i < m_listPruducts.Count; i++)
         {
             if (P.m_ID == m_listPruducts[i].m_ID)
-                throw new DuplicateID();
+                throw new AlreadyExist();
         }
         m_listPruducts.Add(P);
         return P.m_ID;
@@ -36,7 +36,7 @@ internal class DalProduct:IProduct
                 return;
             }
         }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
@@ -52,7 +52,7 @@ internal class DalProduct:IProduct
                 return;
             }
 
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns the product whose ID was received
@@ -67,7 +67,7 @@ internal class DalProduct:IProduct
             if (m_listPruducts[i].m_ID == ID)
                 return m_listPruducts[i];
         }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns an array of the objects

@@ -42,7 +42,7 @@ internal class Product: IProduct
     //the function returns details of the requsted  product to the manager
     public BO.Product ProductId(int ID)
     {
-        if (ID < 0) throw new BO.incorrectData(); //check if the id is correct
+        if (ID < 0) throw new FaildGetting(new IlegalInput()); //check if the id is correct
         try
         {
             DO.Product Doproduct = Dal.Product.GetbyID(ID);
@@ -50,13 +50,13 @@ internal class Product: IProduct
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_Id = Doproduct.m_ID, m_InStock = Doproduct.m_InStock, m_Name = Doproduct.m_Name, m_Price = Doproduct.m_Price };
             return Boproduct; 
         }
-        catch (Exception) { throw new BO.MissingID(); }
+        catch (Exception inner) { throw new FaildGetting(inner); }
     }
 
     //the function returns details of the requsted product for the customer
     public BO.ProductItem CatalogProductId(int ID)
     {
-        if (ID < 0) throw new BO.incorrectData();//check if the id is correct
+        if (ID < 0) throw new FaildGetting(new IlegalInput());//check if the id is correct
         try 
         { 
             DO.Product Doproduct = Dal.Product.GetbyID(ID); 
@@ -64,17 +64,17 @@ internal class Product: IProduct
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID,m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
             return productItem; 
         }
-        catch (Exception) { throw new BO.MissingID(); }
+        catch (Exception inner) { throw new FaildGetting(inner); }
     }
 
     //The function adds a product to the data base
     public void AddProduct(BO.Product product) 
     {
         if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
-            throw new BO.incorrectData();
+            throw new FaildAdding(new IlegalInput());
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price,m_Category = (DO.Enums.Category?)product.m_Category,m_ID= product.m_Id,m_InStock= product.m_InStock};
         try { Dal.Product.Add(Doproduct); }
-        catch(Exception) { throw new BO.DuplicateID(); }   
+        catch(Exception inner) { throw new FaildAdding(inner); }   
     }
 
     //the function deletes the requsted product from the data base
@@ -89,16 +89,16 @@ internal class Product: IProduct
                     break;
                 }
         try { if (!flag) Dal.Product.Delete(ID); }
-        catch (Exception) { throw new BO.MissingID(); }
+        catch (Exception inner ) { throw new FaildDelete(inner); }
     }
 
     //the function update the requsted product from the data base
     public void UpdateProduct(BO.Product product) 
     {
         if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
-            throw new BO.incorrectData();
+            throw new BO.IlegalInput();
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
         try { Dal.Product.Update(Doproduct); }
-        catch(Exception) { throw new BO.MissingID(); }  
+        catch(Exception inner) { throw new FaildUpdating(inner); }  
     }
 }

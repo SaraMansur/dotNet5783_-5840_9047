@@ -29,7 +29,7 @@ internal class DalOrderItem:IOrderItem
                 return;
             }
         }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
@@ -44,7 +44,7 @@ internal class DalOrderItem:IOrderItem
                 m_listOrderItems[i] = OI;
                 return;
             }
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns the orderItem whose ID was received
@@ -57,7 +57,7 @@ internal class DalOrderItem:IOrderItem
         for (int i = 0; i != m_listOrderItems.Count; i++)
             if (ID == m_listOrderItems[i].m_ID)
                 return m_listOrderItems[i];
-        throw new MissingID();
+        throw new NotExist();
     }
     /// <summary>
     /// The function returns an array of the objects
@@ -79,7 +79,7 @@ internal class DalOrderItem:IOrderItem
         for (int i = 0; i != m_listOrderItems.Count; i++)
             if (OID == m_listOrderItems[i].m_OrderId && PID == m_listOrderItems[i].m_ProductId)
                 return m_listOrderItems[i];
-        throw new MissingID();
+        throw new NotExist();
     }
 
     /// <summary>

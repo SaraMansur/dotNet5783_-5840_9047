@@ -3,9 +3,10 @@ namespace BO;
 /// <summary>
 /// A throw in the event that one or more of the data is incorrect
 /// </summary>
-public class incorrectData:Exception
+
+public class IlegalInput : Exception
 {
-    public override string Message => "The data is incorrect";
+    public override string Message => "The input is ilegal";
     public override string ToString()
     {
         return Message;
@@ -15,9 +16,9 @@ public class incorrectData:Exception
 /// <summary>
 /// A shot in case the ID number is wrong
 /// </summary>
-public class MissingID : Exception
+public class NotExist : Exception
 {
-    public override string Message => "The object does not exist";
+    public override string Message => "not existing object";
     public override string ToString()
     {
         return Message;
@@ -27,14 +28,16 @@ public class MissingID : Exception
 /// <summary>
 /// Throw in case the object already exists
 /// </summary>
-public class DuplicateID : Exception
+
+public class AlreadyExist : Exception
 {
-    public override string Message => "The object already exist";
+    public override string Message => "already existing object";
     public override string ToString()
     {
         return Message;
     }
 }
+
 
 /// <summary>
 /// Throw in case there is not enough of an object in the inventory
@@ -46,4 +49,37 @@ public class MissingInStock : Exception
     {
         return Message;
     }
+}
+
+public class FaildGetting : Exception
+{
+    public FaildGetting(Exception inner) : base("faild getting", inner) { }
+
+    public object Massage { get;}
+
+    public override string ToString() => $@"{Massage} - {this.InnerException}";
+    
+}
+public class FaildAdding : Exception
+{
+    public FaildAdding(Exception inner):base("faild adding", inner) { }
+    public object Massage { get; }
+    public override string ToString() => $@"{Massage} - {this.InnerException}";
+ 
+}
+
+public class FaildDelete : Exception
+{
+    public FaildDelete(Exception inner) : base("faild delete", inner) { }
+    public object Massage { get; }
+    public override string ToString() => $@"{Massage} - {this.InnerException}";
+
+}
+public class FaildUpdating : Exception
+{
+    public FaildUpdating(Exception inner) : base("faild updating", inner) { }
+    public object Massage { get; }
+    public override string ToString() => $@"{Massage} - {this.InnerException}";
+
+
 }

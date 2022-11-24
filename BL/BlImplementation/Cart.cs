@@ -1,30 +1,11 @@
 ﻿using BlApi;
+using BO;
 
 namespace BlImplementation;
 
 internal class Cart : ICart
 {
     private DalApi.IDal Dal = new Dal.DalList();
-
-    /// <summary>
-    /// The function checks the correctness of the product ID, if it is wrong it throws an exception:
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="ID"></param>
-    /// <returns></returns>
-    /// <exception cref="BO.MissingID"></exception>
-    private DO.Product cheackId(DO.Product p, int? ID)
-    {
-        try //Checks if the product exists
-        {
-            p= Dal.Product.GetbyID(ID);
-        }
-        catch (Exception )//If the product is not in stock.
-        {
-            throw new BO.NotExist();
-        }
-        return p;
-    }
 
     /// <summary>
     /// this function cheach if there is enough of the object in stock:
@@ -49,7 +30,8 @@ internal class Cart : ICart
     public BO.Cart AddItemToCart(BO.Cart cart, int ID)
     {
         DO.Product product = new DO.Product();//A new product is released.
-        product = cheackId(product, ID); //Product ID integrity check.
+        try { product = Dal.Product.GetbyID(ID); } //Checks if the product exists
+        catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
         { 
             if (cart.m_orderItems[i].m_IdProduct == ID)//If the product exists
@@ -84,7 +66,8 @@ internal class Cart : ICart
     public BO.Cart UpdateAmount(BO.Cart cart, int ID, int amount)
     {
         DO.Product product = new DO.Product();//A new product is released.
-        product = cheackId(product, ID);//Product ID integrity check.
+        try { product = Dal.Product.GetbyID(ID); } //Checks if the product exists
+        catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
         {
             if (cart.m_orderItems[i].m_IdProduct == ID)//If the product exists
@@ -123,7 +106,8 @@ internal class Cart : ICart
         for (int i = 0; i < cart.m_orderItems?.Count; i++) //The loop checks data integrity.
         {
             DO.Product product = new DO.Product();//A new product is released.
-            product = cheackId(product, cart.m_orderItems[i].m_IdProduct);//Product ID integrity check.
+            try { product = Dal.Product.GetbyID(cart.m_orderItems[i].m_IdProduct); } //Checks if the product exists
+            catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
             if (!checkInStock(cart.m_orderItems[i].m_AmountInCart, product.m_InStock) || cart.m_orderItems[i].m_AmountInCart <= 0) 
                 throw new BO.IlegalInput(); //If the quantity in the basket is greater than the quantity in stock or negative.
             if (cart.m_orderItems[i].m_NameProduct?.Length==0|| cart.m_orderItems[i].m_TotalPriceItem<=0||cart.m_TotalPrice<=0)

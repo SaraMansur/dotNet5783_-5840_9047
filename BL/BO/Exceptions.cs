@@ -14,7 +14,7 @@ public class IlegalInput : Exception
 }
 
 /// <summary>
-/// A shot in case the ID number is wrong
+/// A throw in case the object not existing
 /// </summary>
 public class NotExist : Exception
 {
@@ -51,6 +51,9 @@ public class MissingInStock : Exception
     }
 }
 
+/// <summary>
+/// Throwing in the state of Faild Getting
+/// </summary>
 public class FaildGetting : Exception
 {
     public FaildGetting(Exception inner) : base("faild getting", inner) { }
@@ -60,6 +63,10 @@ public class FaildGetting : Exception
     public override string ToString() => $@"{Massage} - {this.InnerException}";
     
 }
+
+/// <summary>
+/// Throwing in the state of Faild Adding
+/// </summary>
 public class FaildAdding : Exception
 {
     public FaildAdding(Exception inner):base("faild adding", inner) { }
@@ -68,6 +75,9 @@ public class FaildAdding : Exception
  
 }
 
+/// <summary>
+/// Throwing in the state of Faild Delete
+/// </summary>
 public class FaildDelete : Exception
 {
     public FaildDelete(Exception inner) : base("faild delete", inner) { }
@@ -75,6 +85,10 @@ public class FaildDelete : Exception
     public override string ToString() => $@"{Massage} - {this.InnerException}";
 
 }
+
+/// <summary>
+/// Throwing in the state of Faild Updating
+/// </summary>
 public class FaildUpdating : Exception
 {
     public FaildUpdating(Exception inner) : base("faild updating", inner) { }

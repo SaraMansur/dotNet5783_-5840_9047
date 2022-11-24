@@ -18,7 +18,6 @@ public class AlreadyExist: Exception
 /// <summary>
 /// Throw in case the object already exists
 /// </summary>
-public class DuplicateID : Exception
 public class NotExist : Exception
 {
     public override string Message => "not existing object";

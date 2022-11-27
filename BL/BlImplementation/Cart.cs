@@ -46,7 +46,7 @@ internal class Cart : ICart
             }
         }
         //If the product is not yet in the cart:
-        if(checkInStock(1,product.m_InStock)) //
+        if(checkInStock(1,product.m_InStock)) 
         {   //if there is enough of the object in stock:
             BO.OrderItem orderItem = new BO.OrderItem() { m_IdProduct = ID, m_TotalPriceItem = product.m_Price, m_AmountInCart = 1, m_NameProduct = product.m_Name, m_PriceProduct = product.m_Price };
             cart.m_orderItems.Add(orderItem);//If the product does not exist, we will add it to the product list.

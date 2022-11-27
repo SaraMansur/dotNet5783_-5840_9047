@@ -9,6 +9,7 @@ internal class Program
     static void Main(string[] args)
     {
         BO.Cart C = new BO.Cart();
+        C.m_orderItems = new List<BO.OrderItem>();
         Console.WriteLine("Are you a manager or customer?");
         if (Console.ReadLine() == "customer")
         {

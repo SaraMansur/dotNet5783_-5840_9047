@@ -128,7 +128,7 @@ internal class Order : IOrder
         DO.Order DOorder = new DO.Order(); 
         try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        if (DOorder.m_ShipDate > DateTime.Now)//If the order has already been sent, 
+        if (DOorder.m_ShipDate > DateTime.MinValue)//If the order has already been sent, 
             throw new BO.IlegalInput(); //throw that the order has already been sent.
         DOorder.m_ShipDate = DateTime.Now;
         try { Dal.Order.Update(DOorder); } 
@@ -149,7 +149,7 @@ internal class Order : IOrder
         DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
         try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        if (DOorder.m_DeliveryrDate > DateTime.Now)
+        if (DOorder.m_DeliveryrDate > DateTime.MinValue || DOorder.m_ShipDate == DateTime.MinValue)
             throw new BO.IlegalInput();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         try { Dal.Order.Update(DOorder); }

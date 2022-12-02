@@ -167,33 +167,23 @@ internal class Order : IOrder
     /// <exception cref="BO.incorrectData"></exception>
     public BO.OrderTracking orderTracking(int orderId)
     {
-        BO.OrderTracking OT = new BO.OrderTracking();
         DO.Order DOorder = new DO.Order();
         try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        OT.m_Status = status(DOorder); OT.m_ID = orderId;
-        OT.m_DescriptionProgress = new List<string>();
-        //If the order has already been shipped and delivered to the customer:
-        if (OT.m_Status== BO.Enums.Status.Received)
-        {
-            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
-            OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
-            OT.m_DescriptionProgress?.Add(DOorder.m_DeliveryrDate.ToString());
-            OT.m_DescriptionProgress?.Add("The order has been delivered");
-        }
-        //If the order has been sent but not yet delivered to the customer:
-        if (OT.m_Status == BO.Enums.Status.Shipped)
-        {
-            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
-            OT.m_DescriptionProgress?.Add(DOorder.m_ShipDate.ToString());
-            OT.m_DescriptionProgress?.Add("The order is sent");
-        }
+        BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId, m_Status = status(DOorder) };
+        OT.m_DescriptionProgress = new List<Tuple<string?, DateTime?>>();
+
         //If the order has been confirmed but not yet sent to the customer:
-        if (OT.m_Status == BO.Enums.Status.Ordered)
-        {
-            OT.m_DescriptionProgress?.Add(DOorder.m_OrderTime.ToString());
-            OT.m_DescriptionProgress?.Add("The order has been created");
-        }
+        if (DOorder.m_OrderTime> DateTime.MinValue)
+        { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order has been created", DOorder.m_OrderTime)); }
+
+        //If the order has been sent but not yet delivered to the customer:
+        if (DOorder.m_ShipDate > DateTime.MinValue)
+        { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order is sent", DOorder.m_ShipDate)); }
+
+        //If the order has already been shipped and delivered to the customer:
+        if (DOorder.m_DeliveryrDate> DateTime.MinValue)
+        { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order has been delivered", DOorder.m_DeliveryrDate)); }
         return OT;
     }
 }

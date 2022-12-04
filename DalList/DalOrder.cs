@@ -25,7 +25,7 @@ internal class DalOrder:IOrder
     {
         for (int i = 0; i != m_listOreders.Count; i++)
         {
-            if (ID == m_listOreders[i].m_ID)
+            if (ID == m_listOreders[i].Value.m_ID)
             {
                 m_listOreders.Remove(m_listOreders[i]);
                 return;
@@ -41,7 +41,7 @@ internal class DalOrder:IOrder
     public void Update(Order O)
     {
         for (int i = 0; i != m_listOreders.Count; i++)
-            if (O.m_ID == m_listOreders[i].m_ID)
+            if (O.m_ID == m_listOreders[i].Value.m_ID)
             {
                 m_listOreders[i] = O;
                 return;
@@ -58,8 +58,8 @@ internal class DalOrder:IOrder
     {
         for (int i = 0; i != m_listOreders.Count; i++)
         {
-            if (ID == m_listOreders[i].m_ID)
-                return m_listOreders[i];
+            if (ID == m_listOreders[i].Value.m_ID)
+                return m_listOreders[i].Value;
         }
         throw new NotExist();
     }
@@ -67,7 +67,7 @@ internal class DalOrder:IOrder
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<Order> Get()
+    public IEnumerable<Order?> Get()
     {
         return m_listOreders;
     }

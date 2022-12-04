@@ -8,9 +8,9 @@ internal static class DataSource
 {
     static readonly Random rand = new Random();
 
-    internal static List<Product> m_listPruducts = new List<Product>();
-    internal static List<Order> m_listOreders = new List<Order>();
-    internal static List<OrderItem> m_listOrderItems = new List<OrderItem>();
+    internal static List<Product?> m_listPruducts = new List<Product?>();
+    internal static List<Order?> m_listOreders = new List<Order?>();
+    internal static List<OrderItem?> m_listOrderItems = new List<OrderItem?>();
 
 
     static DataSource() => s_Initialize(); //difult constructor.
@@ -34,7 +34,7 @@ internal static class DataSource
             product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
             for (int j = 0; j < m_listPruducts.Count; j++) //Checking if the ID number exists.
             {
-                if (m_listPruducts.Exists(match => match.m_ID == product.m_ID))
+                if (m_listPruducts.Exists(match => match?.m_ID == product.m_ID))
                 { product.m_ID = rand.Next(100000, 999999); j = 0; } //If found, replace ID number.
             }
             product.m_Name = nameProduct[i]; //initialization product name
@@ -67,15 +67,15 @@ internal static class DataSource
             if (i >= 10 && i < 16)//80 from orders also have a delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
-                order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
                 order.m_DeliveryrDate = DateTime.MinValue;
             }
 
             if (i >= 0 && i < 10)//To 60 percent of the 80 percent of the orders that also have a delivery date, have a delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
-                order.m_ShipDate = order.m_OrderTime.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
-                order.m_DeliveryrDate = order.m_ShipDate.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
+                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_DeliveryrDate = order.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
             }
 
             if (i >= 16 && i < 20)//20 percent of orders have no delivery date and delivery date.
@@ -91,22 +91,22 @@ internal static class DataSource
         {
             OrderItem orderItem = new OrderItem();
             orderItem.m_ID = Config.orderItemId;
-            Product p = m_listPruducts[rand.Next(0, 9)];
-            orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID;
+            Product p =m_listPruducts[rand.Next(0, 9)].Value;
+            orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].Value.m_ID;
             for (int k = 0, j = 0; j < m_listOrderItems.Count; j++) //Test that each order will be 1 to 4 order items
             {
-                if (m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
+                if (m_listOrderItems[j]?.m_OrderId == orderItem.m_OrderId)
                 {
                     k++;
-                    if (k > 4) { orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].m_ID; j = 0; }
+                    if (k > 4) { orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].Value.m_ID; j = 0; }
                 }
             }
             orderItem.m_ProductId = p.m_ID;
             for (int j = 0; j < m_listOrderItems.Count; j++)  //An examination that this item does not exist in the current order.
             {
-                if (m_listOrderItems[j].m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].m_OrderId == orderItem.m_OrderId)
+                if (m_listOrderItems[j]?.m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].Value.m_OrderId == orderItem.m_OrderId)
                 { //If the item exists.
-                    p = m_listPruducts[rand.Next(0, 9)];
+                    p = (Product)m_listPruducts[rand.Next(0, 9)];
                     orderItem.m_ProductId = p.m_ID; j = 0;//The price is equal to double price.
                 }
             }

@@ -11,7 +11,7 @@ public class OrderItem
     /// <summary>
     /// the id of the product item
     /// </summary>
-    public int? m_IdProduct { get; set; }
+    public int m_IdProduct { get; set; }
     /// <summary>
     /// the name of the product
     /// </summary>
@@ -19,7 +19,7 @@ public class OrderItem
     /// <summary>
     /// the price of the product
     /// </summary>
-    public double? m_PriceProduct { get; set; }
+    public double m_PriceProduct { get; set; }
     /// <summary>
     /// the amount of the product in the cart
     /// </summary>

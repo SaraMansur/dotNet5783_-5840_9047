@@ -1,4 +1,6 @@
-﻿namespace DalApi;
+﻿using System;
+
+namespace DalApi;
 
 public interface ICrud<T>
 {
@@ -25,5 +27,5 @@ public interface ICrud<T>
     /// get an object to an entity
     /// </summary>
     /// <returns></returns>
-    IEnumerable<T> Get();
+    IEnumerable<T?> Get(Func <T?,bool>? func);
 }

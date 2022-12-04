@@ -5,7 +5,7 @@ public class Order
     /// <summary>
     /// the id of the order
     /// </summary>
-    public int? m_Id { get; set; }
+    public int m_Id { get; set; }
     /// <summary>
     /// the name of the customrt
     /// </summary>
@@ -29,19 +29,19 @@ public class Order
     /// <summary>
     /// the time that the order made
     /// </summary>
-    public DateTime m_OrderTime { get; set; }
+    public DateTime? m_OrderTime { get; set; }
     /// <summary>
     /// the time that the order shiped
     /// </summary>
-    public DateTime m_ShipDate { get; set; }
+    public DateTime? m_ShipDate { get; set; }
     /// <summary>
     /// The time the order was delivered
     /// </summary>
-    public DateTime m_DeliveryrDate { get; set; }
+    public DateTime? m_DeliveryrDate { get; set; }
     /// <summary>
     /// list of the item that in the order
     /// </summary>
-    public List<BO.OrderItem>? m_orderItems { get; set; }
+    public List<BO.OrderItem?>? m_orderItems { get; set; }
     /// <summary>
     /// This function will print all order attributes
     /// </summary>

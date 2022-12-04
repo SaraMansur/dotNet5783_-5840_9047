@@ -5,7 +5,7 @@ public class ProductForList
     /// <summary>
     /// the id of the product
     /// </summary>
-    public int? m_ID { get; set; }
+    public int m_ID { get; set; }
     /// <summary>
     /// the name of the product
     /// </summary>
@@ -13,7 +13,7 @@ public class ProductForList
     /// <summary>
     /// the price of the product
     /// </summary>
-    public double? m_PriceProduct { get; set; }
+    public double m_PriceProduct { get; set; }
     /// <summary>
     /// the category of the product
     /// </summary>

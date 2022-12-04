@@ -16,7 +16,7 @@ internal class DalProduct:IProduct
 
         for (int i = 0; i < m_listPruducts.Count; i++)
         {
-            if (P.m_ID == m_listPruducts[i].m_ID)
+            if (P.m_ID == m_listPruducts[i].Value.m_ID)
                 throw new AlreadyExist();
         }
         m_listPruducts.Add(P);
@@ -30,7 +30,7 @@ internal class DalProduct:IProduct
     {
         for (int i = 0; i != m_listPruducts.Count; i++)
         {
-            if (ID == m_listPruducts[i].m_ID)
+            if (ID == m_listPruducts[i].Value.m_ID)
             {
                 m_listPruducts.Remove(m_listPruducts[i]);
                 return;
@@ -46,7 +46,7 @@ internal class DalProduct:IProduct
     public void Update(Product P)
     {
         for (int i = 0; i != m_listPruducts.Count; i++)
-            if (P.m_ID == m_listPruducts[i].m_ID)
+            if (P.m_ID == m_listPruducts[i].Value.m_ID)
             {
                 m_listPruducts[i] = P;
                 return;
@@ -64,8 +64,8 @@ internal class DalProduct:IProduct
     {
         for (int i = 0; i != m_listPruducts.Count; i++)
         {
-            if (m_listPruducts[i].m_ID == ID)
-                return m_listPruducts[i];
+            if (m_listPruducts[i].Value.m_ID == ID)
+                return (Product)m_listPruducts[i];
         }
         throw new NotExist();
     }
@@ -73,7 +73,7 @@ internal class DalProduct:IProduct
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable <Product> Get()
+    public IEnumerable <Product?> Get()
     {
         return m_listPruducts;
     } 

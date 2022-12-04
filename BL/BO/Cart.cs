@@ -17,7 +17,7 @@ public class Cart
     /// <summary>
     /// list of the items that in the cart of the customer
     /// </summary>
-    public List<BO.OrderItem>? m_orderItems { get; set; }
+    public List<BO.OrderItem?>? m_orderItems { get; set; }
     /// <summary>
     /// the price of all the cart
     /// </summary>

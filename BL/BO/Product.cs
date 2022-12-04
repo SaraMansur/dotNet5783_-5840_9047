@@ -21,7 +21,7 @@ public class Product
     /// <summary>
     /// the amount of the product in the stock
     /// </summary>
-    public int? m_InStock { get; set; }
+    public int m_InStock { get; set; }
     /// <summary>
     /// This function will print all the features of the product
     /// </summary>

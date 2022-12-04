@@ -23,7 +23,7 @@ internal class DalOrderItem:IOrderItem
     {
         for (int i = 0; i < m_listOrderItems.Count; i++)
         {
-            if (ID == m_listOrderItems[i].m_ID)
+            if (ID == m_listOrderItems[i].Value.m_ID)
             {
                 m_listOrderItems.Remove(m_listOrderItems[i]);
                 return;
@@ -39,7 +39,7 @@ internal class DalOrderItem:IOrderItem
     public void Update(OrderItem OI)
     {
         for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (OI.m_ID == m_listOrderItems[i].m_ID)
+            if (OI.m_ID == m_listOrderItems[i].Value.m_ID)
             {
                 m_listOrderItems[i] = OI;
                 return;
@@ -55,15 +55,15 @@ internal class DalOrderItem:IOrderItem
     public OrderItem GetbyID(int ID)
     {
         for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (ID == m_listOrderItems[i].m_ID)
-                return m_listOrderItems[i];
+            if (ID == m_listOrderItems[i].Value.m_ID)
+                return (OrderItem)m_listOrderItems[i];
         throw new NotExist();
     }
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable <OrderItem> Get()
+    public IEnumerable <OrderItem?> Get()
     {
         return m_listOrderItems;
     }
@@ -77,8 +77,8 @@ internal class DalOrderItem:IOrderItem
     public OrderItem GetbyProductAndOrder(int? PID, int? OID)
     {
         for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (OID == m_listOrderItems[i].m_OrderId && PID == m_listOrderItems[i].m_ProductId)
-                return m_listOrderItems[i];
+            if (OID == m_listOrderItems[i].Value.m_OrderId && PID == m_listOrderItems[i].Value.m_ProductId)
+                return (OrderItem)m_listOrderItems[i];
         throw new NotExist();
     }
 
@@ -87,13 +87,13 @@ internal class DalOrderItem:IOrderItem
     /// </summary>
     /// <param name="orderId"></param> the function recives id of order
     /// <returns></returns returns a list of all the products included in the order 
-    public IEnumerable<OrderItem> GetOrderItems(int? orderId)
+    public IEnumerable<OrderItem?> GetOrderItems(int? orderId)
     {
-        List<OrderItem> order = new List<OrderItem>();
+        List<OrderItem?> order = new List<OrderItem?>();
         for (int i = 0; i != m_listOrderItems.Count; i++)
         {
-            if (m_listOrderItems[i].m_OrderId == orderId)
-                order.Add(m_listOrderItems[i]);
+            if (m_listOrderItems[i].Value.m_OrderId == orderId)
+                order.Add((OrderItem)m_listOrderItems[i]);
         }
         return order;
     }

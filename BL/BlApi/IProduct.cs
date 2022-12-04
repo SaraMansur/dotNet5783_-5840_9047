@@ -8,13 +8,13 @@ public interface IProduct
     /// The function builds a list of products and returns it (for an admin screen)
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<ProductForList> ProductList();
+    public IEnumerable<ProductForList?> ProductList();
 
     /// <summary>
     /// The function builds a product catalog and returns it (for a customer's screen)
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<BO.ProductItem> CatalogList();
+    public IEnumerable<BO.ProductItem?> CatalogList();
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for an admin screen)

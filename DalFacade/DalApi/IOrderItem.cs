@@ -8,7 +8,7 @@ public interface IOrderItem:ICrud<OrderItem>
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    OrderItem GetbyID(int ID);
+    //OrderItem GetbyID(int ID);
 
     /// <summary>
     /// Gets the products on order by order id and product id
@@ -16,12 +16,12 @@ public interface IOrderItem:ICrud<OrderItem>
     /// <param name="PID"></param>
     /// <param name="OID"></param>
     /// <returns></returns>
-    OrderItem GetbyProductAndOrder(int? PID, int? OID);
+    //OrderItem GetbyProductAndOrder(int? PID, int? OID);
 
     /// <summary>
     /// Gets the list of products on order by order id
     /// </summary>
     /// <param name="orderId"></param>
     /// <returns></returns>
-    IEnumerable<OrderItem> GetOrderItems(int? orderId);
+    //IEnumerable<OrderItem?> GetOrderItems(int? orderId);
 }

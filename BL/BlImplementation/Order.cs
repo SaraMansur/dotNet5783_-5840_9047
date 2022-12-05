@@ -41,7 +41,7 @@ internal class Order : IOrder
     private BO.Order BuildOrder(BO.Order BOorder,DO.Order DOorder, int orderId)
     {
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
-        IEnumerable<DO.OrderItem> DOorderItems = Dal.OrderItem.GetOrderItems(orderId);//List of current order details.
+        IEnumerable<DO.OrderItem?> DOorderItems = Dal.OrderItem.Get(x=>x.Value.m_ID== orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
             BO.OrderItem BOorderItem = new BO.OrderItem();
@@ -49,8 +49,8 @@ internal class Order : IOrder
             BOorderItem.m_IdProduct = item.m_ProductId;
             try
             {
-                BOorderItem.m_NameProduct = Dal.Product.GetbyID(item.m_ProductId).m_Name;
-                BOorderItem.m_PriceProduct = Dal.Product.GetbyID(item.m_ProductId).m_Price;
+                BOorderItem.m_NameProduct = Dal.Product.GetSingle((x => x.Value.m_ID == item.m_ProductId)).Value.m_Name;
+                BOorderItem.m_PriceProduct = Dal.Product.GetSingle((x => x.Value.m_ID == item.m_ProductId)).Value.m_Price;
             }
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
             BOorderItem.m_AmountInCart = item.m_amount;
@@ -79,12 +79,12 @@ internal class Order : IOrder
     /// <returns></returns>
     public IEnumerable<BO.OrderForList> OrderList()
     {
-        IEnumerable<DO.Order> DoOrders = Dal.Order.Get(); //A new list of type Orde
+        IEnumerable<DO.Order?> DoOrders = Dal.Order.Get(); //A new list of type Orde
         List<BO.OrderForList> ListorderForList = new List<BO.OrderForList>(); //A new list of type OrderForList
         foreach (DO.Order order in DoOrders) //The loop goes through the entire order list.
         {
             int amount = 0 ; double price = 0 ;   
-            IEnumerable<DO.OrderItem> orderItems = Dal.OrderItem.GetOrderItems(order.m_ID); //List of order details of the current order.
+            IEnumerable<DO.OrderItem?> orderItems = Dal.OrderItem.Get(x => x.Value.m_ID == order.m_ID); //List of order details of the current order.
             foreach (DO.OrderItem item in orderItems)
             { //The loop goes through the order details list of the current order:
                 amount += item.m_amount;
@@ -109,7 +109,7 @@ internal class Order : IOrder
         DO.Order DOorder = new DO.Order();
         try//Checking if Order ID is correct
         {
-            DOorder = Dal.Order.GetbyID(orderId);
+            DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId));
         }
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         BO.Order BOorder = new BO.Order();
@@ -126,7 +126,7 @@ internal class Order : IOrder
     public BO.Order sendingAnInvitation(int orderId)
     {
         DO.Order DOorder = new DO.Order(); 
-        try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         if (DOorder.m_ShipDate > DateTime.MinValue)//If the order has already been sent, 
             throw new BO.IlegalInput(); //throw that the order has already been sent.
@@ -147,9 +147,9 @@ internal class Order : IOrder
     public BO.Order orderDelivery(int orderId)
     {
         DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
-        try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        if (DOorder.m_DeliveryrDate > DateTime.MinValue || DOorder.m_ShipDate == DateTime.MinValue)
+        if (DOorder.m_DeliveryrDate > DateTime.MinValue || DOorder.m_ShipDate == null)
             throw new BO.IlegalInput();//If the order has already been delivered, throw that the order has been delivered.
         DOorder.m_DeliveryrDate = DateTime.Now;
         try { Dal.Order.Update(DOorder); }
@@ -168,7 +168,7 @@ internal class Order : IOrder
     public BO.OrderTracking orderTracking(int orderId)
     {
         DO.Order DOorder = new DO.Order();
-        try { DOorder = Dal.Order.GetbyID(orderId); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId, m_Status = status(DOorder) };
         OT.m_DescriptionProgress = new List<Tuple<string?, DateTime?>>();

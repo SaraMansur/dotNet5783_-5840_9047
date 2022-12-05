@@ -16,7 +16,7 @@ internal class Product: IProduct
         List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
         foreach (var item in Dal.Product.Get())
         {
-            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price });
+            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item.Value.m_Category, m_ID = item.Value.m_ID, m_NameProduct = item.Value.m_Name, m_PriceProduct = item.Value.m_Price });
         }
         return productForLists;
     }
@@ -36,8 +36,8 @@ internal class Product: IProduct
         List<ProductItem> catalogList = new List<ProductItem>();
         foreach (var item in Dal.Product.Get())
         {
-            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item.m_Category, m_ID = item.m_ID, m_NameProduct = item.m_Name, m_PriceProduct = item.m_Price,m_AmountInCart=0 };
-            if (item.m_InStock > 0) 
+            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item.Value.m_Category, m_ID = item.Value.m_ID, m_NameProduct = item.Value.m_Name, m_PriceProduct = item.Value.m_Price,m_AmountInCart=0 };
+            if (item.Value.m_InStock > 0) 
                 p.m_InStock = true; 
             else 
                 p.m_InStock = false;
@@ -57,7 +57,7 @@ internal class Product: IProduct
         if (ID < 0) throw new FaildGetting(new IlegalInput()); //check if the id is correct
         try
         {
-            DO.Product Doproduct = Dal.Product.GetbyID(ID);
+            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID);
             BO.Product Boproduct = new BO.Product()
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_Id = Doproduct.m_ID, m_InStock = Doproduct.m_InStock, m_Name = Doproduct.m_Name, m_Price = Doproduct.m_Price };
             return Boproduct; 
@@ -76,7 +76,7 @@ internal class Product: IProduct
         if (ID < 0) throw new FaildGetting(new IlegalInput());//check if the id is correct
         try 
         { 
-            DO.Product Doproduct = Dal.Product.GetbyID(ID); 
+            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID);
             BO.ProductItem productItem = new BO.ProductItem() 
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID,m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
             return productItem; 
@@ -104,11 +104,11 @@ internal class Product: IProduct
     /// <param name="ID"></param>
     /// <exception cref="FaildDelete"></exception>
     public void DeleteProduct(int ID) 
-    {
+    { 
         bool flag =false;    
         foreach (var item in Dal.Order.Get()) //Going through the list of orders
-            foreach (var item2 in Dal.OrderItem.GetOrderItems(item.m_ID)) //for each order check if there is the reqsted product 
-                if (item2.m_ProductId == ID)
+            foreach (var item2 in Dal.OrderItem.Get(x=>x.Value.m_ID == item.Value.m_ID)) //for each order check if there is the reqsted product 
+                if (item2.Value.m_ProductId == ID)
                 {
                     flag = true; 
                     break;

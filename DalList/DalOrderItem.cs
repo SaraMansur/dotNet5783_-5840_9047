@@ -52,20 +52,29 @@ internal class DalOrderItem:IOrderItem
     /// <param name="ID"></param>The function receives an orderItem ID
     /// <returns></returns>The function returns the requested orderItem
     /// <exception cref="Exception"></exception>If the orderItem does not exist in the array an exception is thrown
-    public OrderItem GetbyID(int ID)
-    {
-        for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (ID == m_listOrderItems[i].Value.m_ID)
-                return (OrderItem)m_listOrderItems[i];
-        throw new NotExist();
-    }
+    //public OrderItem GetbyID(int ID)
+    //{
+    //    for (int i = 0; i != m_listOrderItems.Count; i++)
+    //        if (ID == m_listOrderItems[i].Value.m_ID)
+    //            return m_listOrderItems[i].Value;
+    //    throw new NotExist();
+    //}
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable <OrderItem?> Get()
+    public IEnumerable <OrderItem?> Get(Func<OrderItem?, bool>? func)
     {
-        return m_listOrderItems;
+        if (func == null)
+            return m_listOrderItems;
+        List<OrderItem?> list = new List<OrderItem?>();
+        foreach (var item in m_listOrderItems)
+        {
+            if (func(item))
+                list.Add(item);
+        }
+        return list;
+
     }
     /// <summary>
     /// The function recives  ID of  product and order  and  returns the appropriate  orderItem 
@@ -74,27 +83,37 @@ internal class DalOrderItem:IOrderItem
     /// <param name="OID"></param>ID of order
     /// <returns></returns> returns the appropriate  orderItem
     /// <exception cref="Exception"></exception> if The requested orderItem item does not exist
-    public OrderItem GetbyProductAndOrder(int? PID, int? OID)
-    {
-        for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (OID == m_listOrderItems[i].Value.m_OrderId && PID == m_listOrderItems[i].Value.m_ProductId)
-                return (OrderItem)m_listOrderItems[i];
-        throw new NotExist();
-    }
+    //public OrderItem GetbyProductAndOrder(int? PID, int? OID)
+    //{
+    //    for (int i = 0; i != m_listOrderItems.Count; i++)
+    //        if (OID == m_listOrderItems[i].Value.m_OrderId && PID == m_listOrderItems[i].Value.m_ProductId)
+    //            return m_listOrderItems[i].Value;
+    //    throw new NotExist();
+    //}
 
     /// <summary>
     /// The function accepts an order ID and returns a list of all the products included in the order
     /// </summary>
     /// <param name="orderId"></param> the function recives id of order
     /// <returns></returns returns a list of all the products included in the order 
-    public IEnumerable<OrderItem?> GetOrderItems(int? orderId)
-    {
-        List<OrderItem?> order = new List<OrderItem?>();
-        for (int i = 0; i != m_listOrderItems.Count; i++)
-        {
-            if (m_listOrderItems[i].Value.m_OrderId == orderId)
-                order.Add((OrderItem)m_listOrderItems[i]);
-        }
-        return order;
+    //public IEnumerable<OrderItem?> GetOrderItems(int? orderId)
+    //{
+    //    List<OrderItem?> order = new List<OrderItem?>();
+    //    for (int i = 0; i != m_listOrderItems.Count; i++)
+    //    {
+    //        if (m_listOrderItems[i].Value.m_OrderId == orderId)
+    //            order.Add(m_listOrderItems[i].Value);
+    //    }
+    //    return order;
+    //}
+
+    public OrderItem? GetSingle(Func<OrderItem?, bool>? func) 
+    { 
+        if(m_listOrderItems.FirstOrDefault(func)!=null)
+            return m_listOrderItems.FirstOrDefault(func);   
+        throw new NotExist();
+            
     }
+
+    
 }

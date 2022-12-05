@@ -1,6 +1,8 @@
 ﻿using DO;
 using static Dal.DataSource;
 using DalApi;
+using System.Collections.Generic;
+
 namespace Dal;
 
 
@@ -54,21 +56,36 @@ internal class DalOrder:IOrder
     /// <param name="ID"></param>The function receives an order ID
     /// <returns></returns>The function returns the requested order
     /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
-    public Order GetbyID(int ID)
-    {
-        for (int i = 0; i != m_listOreders.Count; i++)
-        {
-            if (ID == m_listOreders[i].Value.m_ID)
-                return m_listOreders[i].Value;
-        }
-        throw new NotExist();
-    }
+    //public Order GetbyID(int ID)
+    //{
+    //    for (int i = 0; i != m_listOreders.Count; i++)
+    //    {
+    //        if (ID == m_listOreders[i].Value.m_ID)
+    //            return m_listOreders[i].Value;
+    //    }
+    //    throw new NotExist();
+    //}
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<Order?> Get()
+    public IEnumerable<Order?> Get( Func<Order?, bool>? func = null)
     {
-        return m_listOreders;
+        if(func==null)
+           return m_listOreders;
+        List<Order?> list = new List<Order?>();
+        foreach (var item in m_listOreders)
+        {
+            if(func(item))
+                list.Add(item); 
+        }
+        return list;
     }
+    public Order? GetSingle(Func<Order?, bool>? func)
+    {
+        if (m_listOreders.FirstOrDefault(func) != null)
+            return m_listOreders.FirstOrDefault(func);
+        throw new NotExist();
+    }
+
 }

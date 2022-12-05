@@ -8,5 +8,5 @@ public interface IOrder:ICrud<Order>
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    Order GetbyID(int ID);
+    //Order GetbyID(int ID);
 }

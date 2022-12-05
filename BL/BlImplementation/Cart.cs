@@ -1,5 +1,4 @@
-﻿
-using BlApi;
+﻿using BlApi;
 using BO;
 
 namespace BlImplementation;
@@ -31,7 +30,7 @@ internal class Cart : ICart
     public BO.Cart AddItemToCart(BO.Cart cart, int ID)
     {
         DO.Product product = new DO.Product();//A new product is released.
-        try { product = Dal.Product.GetbyID(ID); } //Checks if the product exists
+        try { product = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID); } //Checks if the product exists
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
         { 
@@ -67,7 +66,7 @@ internal class Cart : ICart
     public BO.Cart UpdateAmount(BO.Cart cart, int ID, int amount)
     {
         DO.Product product = new DO.Product();//A new product is released.
-        try { product = Dal.Product.GetbyID(ID); } //Checks if the product exists
+        try { product = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID); } //Checks if the product exists
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
         {
@@ -107,7 +106,7 @@ internal class Cart : ICart
         for (int i = 0; i < cart.m_orderItems?.Count; i++) //The loop checks data integrity.
         {
             DO.Product product = new DO.Product();//A new product is released.
-            try { product = Dal.Product.GetbyID(cart.m_orderItems[i].m_IdProduct); } //Checks if the product exists
+            try { product = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == cart.m_orderItems[i].m_IdProduct); } //Checks if the product exists
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
             if (!checkInStock(cart.m_orderItems[i].m_AmountInCart, product.m_InStock) || cart.m_orderItems[i].m_AmountInCart <= 0) 
                 throw new BO.IlegalInput(); //If the quantity in the basket is greater than the quantity in stock or negative.
@@ -115,13 +114,13 @@ internal class Cart : ICart
                 throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
         }
         ;//A new order is released.
-        DO.Order order = new DO.Order() { m_CustomerAdress = addressCustomr, m_CustomerEmail = mailCustomer, m_CustomerName = nameCustomr, m_OrderTime = DateTime.Now, m_DeliveryrDate = DateTime.MinValue, m_ShipDate = DateTime.MinValue };
+        DO.Order order = new DO.Order() { m_CustomerAdress = addressCustomr, m_CustomerEmail = mailCustomer, m_CustomerName = nameCustomr, m_OrderTime = DateTime.Now, m_DeliveryrDate = null, m_ShipDate = null };
         order.m_ID = Dal.Order.Add(order);
         for (int i = 0; i < cart.m_orderItems?.Count; i++) //The loop adds product details to the list of product details
         {
             DO.OrderItem orderItem = new DO.OrderItem() { m_ID = cart.m_orderItems[i].m_ID, m_amount = cart.m_orderItems[i].m_AmountInCart, m_OrderId = order.m_ID, m_Price = cart.m_orderItems[i].m_TotalPriceItem, m_ProductId = cart.m_orderItems[i].m_IdProduct };
             Dal.OrderItem.Add(orderItem); //Add to list.
-            DO.Product p = Dal.Product.GetbyID(orderItem.m_ProductId);
+            DO.Product p = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == orderItem.m_ProductId);
             p.m_InStock = p.m_InStock - orderItem.m_amount;
             Dal.Product.Update(p); //Product inventory update.
         }

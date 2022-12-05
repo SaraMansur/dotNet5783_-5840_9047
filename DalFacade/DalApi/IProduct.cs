@@ -8,5 +8,5 @@ public interface IProduct:ICrud<Product>
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    public Product GetbyID(int? ID);
+//    public Product GetbyID(int? ID);
 }

@@ -57,10 +57,10 @@ public class MissingInStock : Exception
 public class FaildGetting : Exception
 {
     public FaildGetting(Exception inner) : base("faild getting", inner) { }
+    
+    public object Massage { get; }
 
-    public object Massage { get;}
-
-    public override string ToString() => $@"{Massage} - {this.InnerException}";
+    public override string ToString() => $@"Faild getting - {this.InnerException}";
     
 }
 
@@ -71,7 +71,7 @@ public class FaildAdding : Exception
 {
     public FaildAdding(Exception inner):base("faild adding", inner) { }
     public object Massage { get; }
-    public override string ToString() => $@"{Massage} - {this.InnerException}";
+    public override string ToString() => $@"Faild adding - {this.InnerException}";
  
 }
 
@@ -82,7 +82,7 @@ public class FaildDelete : Exception
 {
     public FaildDelete(Exception inner) : base("faild delete", inner) { }
     public object Massage { get; }
-    public override string ToString() => $@"{Massage} - {this.InnerException}";
+    public override string ToString() => $@"Faild delete - {this.InnerException}";
 
 }
 
@@ -93,7 +93,7 @@ public class FaildUpdating : Exception
 {
     public FaildUpdating(Exception inner) : base("faild updating", inner) { }
     public object Massage { get; }
-    public override string ToString() => $@"{Massage} - {this.InnerException}";
+    public override string ToString() => $@"Faild updating - {this.InnerException}";
 
 
 }

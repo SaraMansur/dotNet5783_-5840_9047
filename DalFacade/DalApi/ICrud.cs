@@ -2,7 +2,7 @@
 
 namespace DalApi;
 
-public interface ICrud<T>
+public interface ICrud<T> where T : struct
 {
     /// <summary>
     /// Adds an object to an entity
@@ -27,5 +27,12 @@ public interface ICrud<T>
     /// get an object to an entity
     /// </summary>
     /// <returns></returns>
-    IEnumerable<T?> Get(Func <T?,bool>? func);
+    IEnumerable<T?> Get(Func <T?,bool>? func=null);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="func"></param>
+    /// <returns></returns>
+    T? GetSingle(Func<T?,bool>? func);
 }

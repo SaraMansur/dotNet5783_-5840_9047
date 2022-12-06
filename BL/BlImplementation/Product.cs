@@ -13,7 +13,7 @@ internal class Product: IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductForList> ProductList() 
     {
-        List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
+        List <BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
         foreach (var item in Dal.Product.Get())
         {
             productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item.Value.m_Category, m_ID = item.Value.m_ID, m_NameProduct = item.Value.m_Name, m_PriceProduct = item.Value.m_Price });
@@ -130,5 +130,17 @@ internal class Product: IProduct
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
         try { Dal.Product.Update(Doproduct); }
         catch(Exception inner) { throw new FaildUpdating(inner); }  
+    }
+    public IEnumerable<ProductForList?> FilterBycategory(BO.Enums.Category c)
+    {
+        if (c == BO.Enums.Category.None)
+            return ProductList();
+        List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
+        foreach (var item in ProductList())
+        {
+            if(c==item.m_Category)
+                productForLists.Add(item);  
+        }
+        return productForLists;
     }
 }

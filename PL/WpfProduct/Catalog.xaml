@@ -5,30 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfProduct"
         mc:Ignorable="d"
-        Title="Catalog" Height="450" Width="800">
+        Title="Catalog" Height="640" Width="800">
     <Grid Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="500*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Height="auto" Grid.Row="0">
+        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="22*"/>
                 <ColumnDefinition Width="45*"/>
                 <ColumnDefinition Width="13*"/>
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" Grid.Column="3" Name="AttributeSelector">
-                <StackPanel>
-                    <ComboBoxItem Content="Watches" />
-                    <ComboBoxItem Content="Bracelets" />
-                    <ComboBoxItem Content="Earrings" />
-                    <ComboBoxItem Content="Rings" />
-                    <ComboBoxItem Content="Necklaces" />
-                </StackPanel>
-            </ComboBox>
-            <TextBlock Text="CATEGORY:" Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontSize="24" Background="#FFE8E7E0" Grid.ColumnSpan="3"/>
-        </Grid>        <ListView x:Name="products" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="400" Grid.Row="1"/>
+            <ComboBox Grid.Row="0" Grid.Column="3" Name="AttributeSelector" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Stretch" />
+            <TextBlock Text="CATEGORY:" Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontSize="24" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background>
+            </TextBlock>
+        </Grid>
+        <ListView x:Name="productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2">
+            <ListView.Background>
+                <ImageBrush/>
+            </ListView.Background>
+        </ListView>
+        <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="691,5,0,5" Padding="5" Click = "AddProduct_Click" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

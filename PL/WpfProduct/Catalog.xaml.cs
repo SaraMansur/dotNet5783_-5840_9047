@@ -1,4 +1,6 @@
-﻿using BO;
+﻿using BlApi;
+using BlImplementation;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +23,22 @@ namespace PL.WpfProduct
     /// </summary>
     public partial class Catalog : Window
     {
+        IBl bl = BlFactory.GetBL();
         public Catalog()
         {
             InitializeComponent();
+            productsList.ItemsSource = bl.Product.ProductList();
+            AttributeSelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            productsList.ItemsSource=bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem); 
         }
+
+        private void AddProduct_Click(object sender, RoutedEventArgs e) => new Changes().Show();
+
     }
 }
 

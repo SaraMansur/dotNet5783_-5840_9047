@@ -13,7 +13,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WpfProduct\צילום מסך 2022-09-11 182431.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WpfProduct\צילום מסך 2022-09-11 182431.png" />
   </ItemGroup>
 
 </Project>

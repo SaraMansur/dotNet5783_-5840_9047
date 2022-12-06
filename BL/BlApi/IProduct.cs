@@ -47,4 +47,6 @@ public interface IProduct
     /// </summary>
     /// <param name="product"></param>
     public void UpdateProduct(BO.Product product);
+    public IEnumerable<ProductForList?> FilterBycategory (BO.Enums.Category c);
+
 }

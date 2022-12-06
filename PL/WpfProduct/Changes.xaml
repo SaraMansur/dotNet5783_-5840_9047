@@ -7,6 +7,36 @@
         mc:Ignorable="d"
         Title="Changes" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" FontSize="15" TextAlignment="Center" />
+        <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" FontSize="15" TextAlignment="Center"/>
+        <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" TextAlignment="Center"/>
+        <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" TextAlignment="Center"/>
+        <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" TextAlignment="Center"/>
+        <TextBox Grid.Column="2" Grid.Row="1"/>
+        <ComboBox Name="category" Grid.Column="2" Grid.Row="3"/>
+        <TextBox Grid.Column="2" Grid.Row="5"/>
+        <TextBox Grid.Column="2" Grid.Row="7"/>
+        <TextBox Grid.Column="2" Grid.Row="9"/>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@ public class Enums
     /// </summary>
     public enum Category
     {
-        Watches, Bracelets, Earrings, Rings, Necklaces
+        Watches, Bracelets, Earrings, Rings, Necklaces,None
     }
     /// <summary>
     /// enum of the options of the satus order

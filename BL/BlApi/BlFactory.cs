@@ -7,26 +7,17 @@ using System.Threading.Tasks;
 
 using BL;
 using BlApi;
-    using BlImplementation; 
+using BlImplementation; 
 using BO;
 
 namespace BlApi
 {
-    public static class BLFactory
+   
+    public static class BlFactory
     {
-        public static IBl GetBL(string type)
-        {
-            switch (type)
-            {
-                case "Cart":
-                    return new Bl.Cart();
-                case "Order":
-                    return new Bl();
-                case "Product":
-                    return new Bl();
-                default:
-                    return new Bl();
-            }
+        public static IBl GetBL()
+        {         
+            return new Bl();
         }
     }
 }

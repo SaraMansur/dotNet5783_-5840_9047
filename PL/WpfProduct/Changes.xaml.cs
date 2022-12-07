@@ -25,7 +25,14 @@ namespace PL.WpfProduct
         public Changes()
         {
             InitializeComponent();
-            category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            categoryP.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+        }
+
+        private void AddP_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Product P = new BO.Product() { m_Category = (BO.Enums.Category)categoryP.SelectedItem };
+            bl.Product.AddProduct(P);
         }
     }
+
 }

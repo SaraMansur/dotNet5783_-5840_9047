@@ -35,6 +35,6 @@
                 <ImageBrush/>
             </ListView.Background>
         </ListView>
-        <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="691,5,0,5" Padding="5" Click = "AddProduct_Click" Grid.ColumnSpan="2"/>
+        <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="635,5,0,5" Padding="5" Click = "AddProduct_Click" Width="115"/>
     </Grid>
 </Window>

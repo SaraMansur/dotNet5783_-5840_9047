@@ -38,12 +38,17 @@
         <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" TextAlignment="Center"/>
         <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" TextAlignment="Center"/>
         <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" TextAlignment="Center"/>
-        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" TextChanged="TextChanged_Id" />
-        <ComboBox Name="category" Grid.Column="2" Grid.Row="3" SelectionChanged="Category_SelectionChanged"/>
-        <TextBox Name="Name" Grid.Column="2" Grid.Row="5" TextChanged="TextChanged_Name"/>
-        <TextBox Name="Price" Grid.Column="2" Grid.Row="7" TextChanged="TextChanged_Price"/>
-        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9" TextChanged="TextChanged_InStock"/>
+        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" />
+        <ComboBox Name="category" Grid.Column="2" Grid.Row="3"/>
+        <TextBox Name="Name" Grid.Column="2" Grid.Row="5"/>
+        <TextBox Name="Price" Grid.Column="2" Grid.Row="7"/>
+        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9"/>
         <Button x:Name="UpdateP" Content="Update" Grid.Column="2"  Grid.Row="13" Width="90" Click="UpdateP_Click" Background="{x:Null}" IsEnabled="True"/>
         <Button x:Name="AddP" Content="ADD" Grid.Column="1"  Grid.Row="13" Width="90" Click="AddP_Click" Background="{x:Null}" IsEnabled="True"/>
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="25" Click="Click_buttonBack" BorderBrush="#FFE3DFDF">
+            <Button.Background>
+                <ImageBrush ImageSource="/WpfProduct/חץ.jpg"  />
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

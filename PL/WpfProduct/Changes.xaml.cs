@@ -23,7 +23,7 @@ namespace PL.WpfProduct
     {
         IBl bl = BlFactory.GetBL();
         BO.Product P = new BO.Product();
-        public Changes(int ID)
+        public Changes(int ID=-1)
         {
             InitializeComponent();
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
@@ -43,34 +43,31 @@ namespace PL.WpfProduct
         }
 
         private void AddP_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            P.m_Category = (BO.Enums.Category)category.SelectedItem;
+            P.m_Id = int.Parse(Id.Text);
+            P.m_Name = Name.Text;
+            P.m_Price = int.Parse(Price.Text);
+            P.m_InStock = int.Parse(InStock.Text);
             bl.Product.AddProduct(P);
         }
 
-        private void Category_SelectionChanged(object sender, SelectionChangedEventArgs e)=> P.m_Category = (BO.Enums.Category)category.SelectedItem;
-
-        private void TextChanged_Id(object sender, TextChangedEventArgs e) => P.m_Id = int.Parse(Id.Text);
-
-        private void TextChanged_Name(object sender, TextChangedEventArgs e) => P.m_Name = Name.Text;
-
-
-        private void TextChanged_Price(object sender, TextChangedEventArgs e) => P.m_Price = int.Parse(Price.Text);
-
-
-        private void TextChanged_InStock(object sender, TextChangedEventArgs e) => P.m_InStock = int.Parse(InStock.Text);
-
         private void UpdateP_Click(object sender, RoutedEventArgs e)
         {
+            P.m_Category = (BO.Enums.Category)category.SelectedItem;
+            P.m_Id = int.Parse(Id.Text);
+            P.m_Name = Name.Text;
+            P.m_Price = int.Parse(Price.Text);
+            P.m_InStock = int.Parse(InStock.Text);
             bl.Product.UpdateProduct(P);
-            Id.Clear();
-            Name.Clear();
-            Price.Clear();
-            InStock.Clear();
-            category.SelectedItem = BO.Enums.Category.None;
+          
         }
 
-
-
+        private void Click_buttonBack(object sender, RoutedEventArgs e)
+        {
+            new Catalog().Show();
+            this.Close();
+        }
     }
 
 }

@@ -24,7 +24,6 @@ namespace PL.WpfProduct
     public partial class Catalog : Window
     {
         IBl bl = BlFactory.GetBL();
-        int id=-1;
         public Catalog()
         {
             InitializeComponent();
@@ -38,14 +37,19 @@ namespace PL.WpfProduct
             productsList.ItemsSource=bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem); 
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e) => new Changes(id).Show();
+        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); this.Close();  }
 
-        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e) => new Changes(id).Show();
-
-        private void productsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e) 
         {
             ProductForList pl = (ProductForList)productsList.SelectedItem;
-            id = pl.m_ID;
+            new Changes(pl.m_ID).Show();
+            this.Close();
+        }
+
+        private void Click_buttonBack(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
         }
     }
 }

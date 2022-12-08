@@ -28,6 +28,6 @@ namespace PL
         {
             InitializeComponent();
         }
-        private void VeiwList_Click(object sender, RoutedEventArgs e) => new Catalog().Show();
+        private void VeiwList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close();  }
     }
 }

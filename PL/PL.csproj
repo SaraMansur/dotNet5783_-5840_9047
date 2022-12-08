@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WpfProduct\חץ.jpg" />
     <None Remove="WpfProduct\לשרה.png" />
     <None Remove="לשרה.png" />
   </ItemGroup>
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="WpfProduct\חץ.jpg" />
     <Resource Include="WpfProduct\לשרה.png" />
     <Resource Include="לשרה.png" />
   </ItemGroup>

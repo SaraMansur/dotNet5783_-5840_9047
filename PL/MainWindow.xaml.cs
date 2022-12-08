@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using BlImplementation;
 using PL.WpfProduct;
 using System;
 using System.Collections.Generic;
@@ -23,11 +22,11 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        IBl bl = BlFactory.GetBL();
+        IBl bl = Factory.Get();
         public MainWindow()
         {
             InitializeComponent();
         }
-        private void VeiwList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close();  }
+        private void VeiwList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close(); }
     }
 }

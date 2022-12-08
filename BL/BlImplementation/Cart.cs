@@ -5,7 +5,7 @@ namespace BlImplementation;
 
 internal class Cart : ICart
 {
-    private DalApi.IDal Dal = new Dal.DalList();
+    private DalApi.IDal? Dal = DalApi.Factory.Get();
 
     /// <summary>
     /// this function cheach if there is enough of the object in stock:

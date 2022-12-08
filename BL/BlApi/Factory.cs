@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BL;
 using BlApi;
 using BlImplementation; 
 using BO;
@@ -13,9 +12,9 @@ using BO;
 namespace BlApi
 {
    
-    public static class BlFactory
+    public static class Factory
     {
-        public static IBl GetBL()
+        public static IBl Get()
         {         
             return new Bl();
         }

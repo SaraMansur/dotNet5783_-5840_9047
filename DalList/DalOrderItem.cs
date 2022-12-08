@@ -83,13 +83,15 @@ internal class DalOrderItem:IOrderItem
     /// <param name="OID"></param>ID of order
     /// <returns></returns> returns the appropriate  orderItem
     /// <exception cref="Exception"></exception> if The requested orderItem item does not exist
-    //public OrderItem GetbyProductAndOrder(int? PID, int? OID)
-    //{
-    //    for (int i = 0; i != m_listOrderItems.Count; i++)
-    //        if (OID == m_listOrderItems[i].Value.m_OrderId && PID == m_listOrderItems[i].Value.m_ProductId)
-    //            return m_listOrderItems[i].Value;
-    //    throw new NotExist();
-    //}
+    public OrderItem GetbyProductAndOrder(int? PID, int? OID)
+    {
+        for (int i = 0; i != m_listOrderItems.Count; i++)
+        {
+            if (OID == ((OrderItem)m_listOrderItems[i]).m_OrderId && PID == ((OrderItem)m_listOrderItems[i]).m_ProductId)
+                return ((OrderItem)m_listOrderItems[i]);
+        }
+        throw new NotExist();
+    }
 
     /// <summary>
     /// The function accepts an order ID and returns a list of all the products included in the order
@@ -114,6 +116,4 @@ internal class DalOrderItem:IOrderItem
         throw new NotExist();
             
     }
-
-    
 }

@@ -23,7 +23,7 @@ namespace PL.WpfProduct
     /// </summary>
     public partial class Catalog : Window
     {
-        IBl bl = BlFactory.GetBL();
+        IBl bl = Factory.Get();
         public Catalog()
         {
             InitializeComponent();

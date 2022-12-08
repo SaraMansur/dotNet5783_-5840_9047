@@ -81,6 +81,7 @@ internal class DalOrder:IOrder
         }
         return list;
     }
+
     public Order? GetSingle(Func<Order?, bool>? func)
     {
         if (m_listOreders.FirstOrDefault(func) != null)

@@ -9,7 +9,7 @@ namespace DalList
 {
     partial class program
     {
-        private static IDal d = new Dal.DalList();
+        private static DalApi.IDal d = DalApi.Factory.Get();
         static void Main(string[] args)
         {
             Product p = new Product();
@@ -191,7 +191,7 @@ namespace DalList
 
                                 case "g":
                                     Console.WriteLine("please enter ID of product and order.");
-                                    Console.WriteLine(d.OrderItem.Get(x => ((OrderItem)x).m_ProductId == int.Parse(Console.ReadLine()) && x.Value.m_OrderId == int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.OrderItem.GetbyProductAndOrder(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
                                     break;
                             }
                             break;

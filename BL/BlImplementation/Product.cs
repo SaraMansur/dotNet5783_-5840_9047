@@ -5,7 +5,7 @@ namespace BlImplementation;
 
 internal class Product: IProduct
 {
-    private DalApi.IDal Dal = new Dal.DalList();
+    private DalApi.IDal? Dal = DalApi.Factory.Get();
 
     /// <summary>
     /// the function returns list of products to the manager

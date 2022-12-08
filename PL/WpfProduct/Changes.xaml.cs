@@ -1,5 +1,5 @@
 ﻿using BlApi;
-using BlImplementation;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace PL.WpfProduct
     /// </summary>
     public partial class Changes : Window
     {
-        IBl bl = BlFactory.GetBL();
+        IBl bl = Factory.Get();
         BO.Product P = new BO.Product();
         public Changes(int ID=-1)
         {

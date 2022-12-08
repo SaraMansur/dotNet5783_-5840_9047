@@ -16,7 +16,7 @@ public interface IOrderItem:ICrud<OrderItem>
     /// <param name="PID"></param>
     /// <param name="OID"></param>
     /// <returns></returns>
-    //OrderItem GetbyProductAndOrder(int? PID, int? OID);
+    OrderItem GetbyProductAndOrder(int? PID, int? OID);
 
     /// <summary>
     /// Gets the list of products on order by order id

@@ -40,11 +40,12 @@ namespace PL.WpfProduct
 
         private void AddProduct_Click(object sender, RoutedEventArgs e) => new Changes(id).Show();
 
-        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e) => new Changes().Show();
+        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e) => new Changes(id).Show();
 
         private void productsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            id=(ProductForList)productsList.SelectedItem.
+            ProductForList pl = (ProductForList)productsList.SelectedItem;
+            id = pl.m_ID;
            
         }
     }

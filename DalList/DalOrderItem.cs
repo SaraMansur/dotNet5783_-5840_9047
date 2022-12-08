@@ -23,7 +23,7 @@ internal class DalOrderItem:IOrderItem
     {
         for (int i = 0; i < m_listOrderItems.Count; i++)
         {
-            if (ID == m_listOrderItems[i].Value.m_ID)
+            if (ID == ((OrderItem)m_listOrderItems[i]).m_ID)
             {
                 m_listOrderItems.Remove(m_listOrderItems[i]);
                 return;
@@ -39,7 +39,7 @@ internal class DalOrderItem:IOrderItem
     public void Update(OrderItem OI)
     {
         for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (OI.m_ID == m_listOrderItems[i].Value.m_ID)
+            if (OI.m_ID == ((OrderItem)m_listOrderItems[i]).m_ID)
             {
                 m_listOrderItems[i] = OI;
                 return;

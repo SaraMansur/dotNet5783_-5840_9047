@@ -32,9 +32,9 @@
         </Grid>
         <ListView x:Name="productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2">
             <ListView.Background>
-                <ImageBrush/>
+                <ImageBrush ImageSource="/WpfProduct/לשרה.png"/>
             </ListView.Background>
         </ListView>
-        <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="635,5,0,5" Padding="5" Click = "AddProduct_Click" Width="115"/>
+        <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="635,5,0,5" Padding="5" Click = "AddProduct_Click" Width="115" Background="{x:Null}"/>
     </Grid>
 </Window>

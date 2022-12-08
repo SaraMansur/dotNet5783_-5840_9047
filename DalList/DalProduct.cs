@@ -18,7 +18,7 @@ internal class DalProduct:IProduct
 
         for (int i = 0; i < m_listPruducts.Count; i++)
         {
-            if (P.m_ID == m_listPruducts[i].Value.m_ID)
+            if (P.m_ID == ((Product)m_listPruducts[i]).m_ID)
                 throw new AlreadyExist();
         }
         m_listPruducts.Add(P);
@@ -32,7 +32,7 @@ internal class DalProduct:IProduct
     {
         for (int i = 0; i != m_listPruducts.Count; i++)
         {
-            if (ID == m_listPruducts[i].Value.m_ID)
+            if (ID == ((Product)m_listPruducts[i]).m_ID)
             {
                 m_listPruducts.Remove(m_listPruducts[i]);
                 return;
@@ -48,7 +48,7 @@ internal class DalProduct:IProduct
     public void Update(Product P)
     {
         for (int i = 0; i != m_listPruducts.Count; i++)
-            if (P.m_ID == m_listPruducts[i].Value.m_ID)
+            if (P.m_ID == ((Product)m_listPruducts[i]).m_ID)
             {
                 m_listPruducts[i] = P;
                 return;

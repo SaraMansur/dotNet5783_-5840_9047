@@ -13,7 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="WpfProduct\צילום מסך 2022-09-11 182431.png" />
+    <None Remove="WpfProduct\לשרה.png" />
+    <None Remove="לשרה.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="WpfProduct\צילום מסך 2022-09-11 182431.png" />
+    <Resource Include="WpfProduct\לשרה.png" />
+    <Resource Include="לשרה.png" />
   </ItemGroup>
 
 </Project>

@@ -91,20 +91,20 @@ internal static class DataSource
         {
             OrderItem orderItem = new OrderItem();
             orderItem.m_ID = Config.orderItemId;
-            Product p =m_listPruducts[rand.Next(0, 9)].Value;
-            orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].Value.m_ID;
+            Product p = (Product)m_listPruducts[rand.Next(0, 9)];
+            orderItem.m_OrderId = ((Order)m_listOreders[rand.Next(0, 19)]).m_ID;
             for (int k = 0, j = 0; j < m_listOrderItems.Count; j++) //Test that each order will be 1 to 4 order items
             {
                 if (m_listOrderItems[j]?.m_OrderId == orderItem.m_OrderId)
                 {
                     k++;
-                    if (k > 4) { orderItem.m_OrderId = m_listOreders[rand.Next(0, 19)].Value.m_ID; j = 0; }
+                    if (k > 4) { orderItem.m_OrderId = ((Order)m_listOreders[rand.Next(0, 19)]).m_ID; j = 0; }
                 }
             }
             orderItem.m_ProductId = p.m_ID;
             for (int j = 0; j < m_listOrderItems.Count; j++)  //An examination that this item does not exist in the current order.
             {
-                if (m_listOrderItems[j]?.m_ProductId == orderItem.m_ProductId && m_listOrderItems[j].Value.m_OrderId == orderItem.m_OrderId)
+                if (m_listOrderItems[j]?.m_ProductId == orderItem.m_ProductId && m_listOrderItems[j]?.m_OrderId == orderItem.m_OrderId)
                 { //If the item exists.
                     p = (Product)m_listPruducts[rand.Next(0, 9)];
                     orderItem.m_ProductId = p.m_ID; j = 0;//The price is equal to double price.

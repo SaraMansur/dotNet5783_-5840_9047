@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="EnterToViewList" Content="To view list" Click="VeiwList_Click" Height="50" Width="80"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/לשרה.png"/>
+        </Grid.Background>
+        <Button x:Name="EnterToViewList" Content="To view list" Click="VeiwList_Click" Margin="320,149,320,217" Background="{x:Null}"/>
     </Grid>
 </Window>

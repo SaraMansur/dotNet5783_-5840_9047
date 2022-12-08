@@ -60,7 +60,7 @@ namespace DalList
                                     break;
                                 case "b":
                                     Console.WriteLine("please enter ID of the product.");
-                                    Console.WriteLine(d.Product.GetSingle(x => x.Value.m_ID == int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.Product.GetSingle(x => ((Product)x).m_ID == int.Parse(Console.ReadLine())));
                                     break;
                                 case "c":
                                     IEnumerable<Product?> Ie = d.Product.Get();
@@ -102,7 +102,7 @@ namespace DalList
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the order.");
-                                    Console.WriteLine(d.Order.GetSingle(x => x.Value.m_ID == int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.Order.GetSingle(x => ((Order)x).m_ID == int.Parse(Console.ReadLine())));
                                     break;
 
                                 case "c":
@@ -148,7 +148,7 @@ namespace DalList
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    Console.WriteLine(d.OrderItem.GetSingle(x => x.Value.m_ID == int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.OrderItem.GetSingle(x => ((OrderItem)x).m_ID == int.Parse(Console.ReadLine())));
                                     break;
 
                                 case "c":
@@ -179,18 +179,19 @@ namespace DalList
 
                                 case "f":
                                     Console.WriteLine("please enter ID of the order.");
-                                    IEnumerable<OrderItem> Ien = (IEnumerable<OrderItem>)d.OrderItem.Get(x => x.Value.m_OrderId == int.Parse(Console.ReadLine()));
-                                    IEnumerator<OrderItem> enumerato = Ien.GetEnumerator();
+                                    int id = int.Parse(Console.ReadLine());
+                                    IEnumerable<OrderItem?> Ien = d.OrderItem.Get(x => ((OrderItem)x).m_OrderId == id);
+                                    IEnumerator<OrderItem?> enumerato = Ien.GetEnumerator();
                                     while (enumerato.MoveNext())
                                     {
-                                        OI = enumerato.Current;
+                                        OI = (OrderItem)enumerato.Current;
                                         Console.WriteLine(OI + "\n");
                                     }
                                     break;
 
                                 case "g":
                                     Console.WriteLine("please enter ID of product and order.");
-                                    Console.WriteLine(d.OrderItem.Get(x => x.Value.m_ProductId == int.Parse(Console.ReadLine()) && x.Value.m_OrderId == int.Parse(Console.ReadLine())));
+                                    Console.WriteLine(d.OrderItem.Get(x => ((OrderItem)x).m_ProductId == int.Parse(Console.ReadLine()) && x.Value.m_OrderId == int.Parse(Console.ReadLine())));
                                     break;
                             }
                             break;

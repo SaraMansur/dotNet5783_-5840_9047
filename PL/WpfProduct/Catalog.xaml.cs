@@ -39,6 +39,10 @@ namespace PL.WpfProduct
 
         private void AddProduct_Click(object sender, RoutedEventArgs e) => new Changes().Show();
 
+        private void productsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

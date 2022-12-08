@@ -38,7 +38,7 @@
         <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" TextAlignment="Center"/>
         <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" TextAlignment="Center"/>
         <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" TextAlignment="Center"/>
-        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" TextChanged="TextChanged_Id"/>
+        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" TextChanged="TextChanged_Id" />
         <ComboBox Name="category" Grid.Column="2" Grid.Row="3" SelectionChanged="Category_SelectionChanged"/>
         <TextBox Name="Name" Grid.Column="2" Grid.Row="5" TextChanged="TextChanged_Name"/>
         <TextBox Name="Price" Grid.Column="2" Grid.Row="7" TextChanged="TextChanged_Price"/>

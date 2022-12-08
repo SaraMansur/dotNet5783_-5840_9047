@@ -46,7 +46,6 @@ namespace PL.WpfProduct
         {
             ProductForList pl = (ProductForList)productsList.SelectedItem;
             id = pl.m_ID;
-           
         }
     }
 }

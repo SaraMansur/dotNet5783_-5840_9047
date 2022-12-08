@@ -29,15 +29,21 @@ namespace PL.WpfProduct
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (ID != -1)
             {
-                UpdateP.IsEnabled = false;
-                P=bl.Product.ProductId(ID);
+               
+                AddP.IsEnabled = false;
+                P =bl.Product.ProductId(ID);
+                Id.Text = Convert.ToString(P.m_Id);
+                Name.Text = Convert.ToString(P.m_Name);
+                Price.Text = Convert.ToString(P.m_Price);
+                InStock.Text = Convert.ToString(P.m_InStock);
+                category.SelectedItem = P.m_Category;
             }
             else
-                AddP.IsEnabled = false;
+                UpdateP.IsEnabled = false;
         }
 
         private void AddP_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             bl.Product.AddProduct(P);
         }
 
@@ -55,13 +61,16 @@ namespace PL.WpfProduct
 
         private void UpdateP_Click(object sender, RoutedEventArgs e)
         {
-            Id.Text = Convert.ToString(P.m_Id);
-            Name.Text = Convert.ToString(P.m_Name);
-            Price.Text = Convert.ToString(P.m_Price);
-            InStock.Text = Convert.ToString(P.m_InStock);
-            category.SelectedItem = P.m_Category;
             bl.Product.UpdateProduct(P);
+            Id.Clear();
+            Name.Clear();
+            Price.Clear();
+            InStock.Clear();
+            category.SelectedItem = BO.Enums.Category.None;
         }
+
+
+
     }
 
 }

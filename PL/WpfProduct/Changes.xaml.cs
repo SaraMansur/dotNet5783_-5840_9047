@@ -22,16 +22,45 @@ namespace PL.WpfProduct
     public partial class Changes : Window
     {
         IBl bl = BlFactory.GetBL();
-        public Changes()
+        BO.Product P = new BO.Product();
+        public Changes(int ID)
         {
             InitializeComponent();
-            categoryP.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            if (ID != -1)
+            {
+                UpdateP.IsEnabled = false;
+                P=bl.Product.ProductId(ID);
+            }
+            else
+                AddP.IsEnabled = false;
         }
 
         private void AddP_Click(object sender, RoutedEventArgs e)
         {
-            BO.Product P = new BO.Product() { m_Category = (BO.Enums.Category)categoryP.SelectedItem };
             bl.Product.AddProduct(P);
+        }
+
+        private void Category_SelectionChanged(object sender, SelectionChangedEventArgs e)=> P.m_Category = (BO.Enums.Category)category.SelectedItem;
+
+        private void TextChanged_Id(object sender, TextChangedEventArgs e) => P.m_Id = int.Parse(Id.Text);
+
+        private void TextChanged_Name(object sender, TextChangedEventArgs e) => P.m_Name = Name.Text;
+
+
+        private void TextChanged_Price(object sender, TextChangedEventArgs e) => P.m_Price = int.Parse(Price.Text);
+
+
+        private void TextChanged_InStock(object sender, TextChangedEventArgs e) => P.m_InStock = int.Parse(InStock.Text);
+
+        private void UpdateP_Click(object sender, RoutedEventArgs e)
+        {
+            Id.Text = Convert.ToString(P.m_Id);
+            Name.Text = Convert.ToString(P.m_Name);
+            Price.Text = Convert.ToString(P.m_Price);
+            InStock.Text = Convert.ToString(P.m_InStock);
+            category.SelectedItem = P.m_Category;
+            bl.Product.UpdateProduct(P);
         }
     }
 

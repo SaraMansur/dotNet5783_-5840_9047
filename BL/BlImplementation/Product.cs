@@ -147,12 +147,5 @@ internal class Product: IProduct
         if (c == BO.Enums.Category.None)
             return ProductList();
         return ProductList().Where(x => x.m_Category == c); 
-        //List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
-        //foreach (var item in ProductList())
-        //{
-        //    if(c==item.m_Category)
-        //        productForLists.Add(item);  
-        //}
-        //return productForLists;
     }
 }

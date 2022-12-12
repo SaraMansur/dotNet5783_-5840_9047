@@ -42,10 +42,11 @@ internal class Order : IOrder
     private BO.Order BuildOrder(BO.Order? BOorder,DO.Order? DOorder, int? orderId)
     {
         BOorder= BOorder?? throw new ArgumentNull();
-        DOorder = DOorder?? throw new ArgumentNull();   
+        DOorder = DOorder?? throw new ArgumentNull();
+        orderId = orderId?? throw new ArgumentNull();   
         
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
-        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x=>x.Value.m_ID== orderId);//List of current order details.
+        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x=>x?.m_ID== orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
             BO.OrderItem BOorderItem = new BO.OrderItem();
@@ -109,12 +110,13 @@ internal class Order : IOrder
     /// <exception cref="BO.MissingID"></exception>
     public BO.Order orderDetails(int? orderId)
     {
+        orderId = orderId ?? throw new ArgumentNull();  
         if (orderId < 0)
             throw new BO.IlegalInput(); //Negative ID number - wrong
         DO.Order DOorder = new DO.Order();
         try//Checking if Order ID is correct
         {
-            DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId));
+            DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId));
         }
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         BO.Order BOorder = new BO.Order();
@@ -130,8 +132,10 @@ internal class Order : IOrder
     /// <exception cref="BO.incorrectData"></exception>
     public BO.Order sendingAnInvitation(int? orderId)
     {
+        orderId = orderId ?? throw new ArgumentNull();  
+
         DO.Order DOorder = new DO.Order(); 
-        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         if (DOorder.m_ShipDate > DateTime.MinValue)//If the order has already been sent, 
             throw new BO.IlegalInput(); //throw that the order has already been sent.
@@ -151,8 +155,10 @@ internal class Order : IOrder
     /// <exception cref="BO.incorrectData"></exception>
     public BO.Order orderDelivery(int? orderId)
     {
+        orderId = orderId ?? throw new ArgumentNull();
+
         DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
-        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         if (DOorder.m_DeliveryrDate > DateTime.MinValue || DOorder.m_ShipDate == null)
             throw new BO.IlegalInput();//If the order has already been delivered, throw that the order has been delivered.
@@ -172,8 +178,10 @@ internal class Order : IOrder
     /// <exception cref="BO.incorrectData"></exception>
     public BO.OrderTracking orderTracking(int? orderId)
     {
+        orderId = orderId ?? throw new ArgumentNull();
+
         DO.Order DOorder = new DO.Order();
-        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId?? throw new BO.IlegalInput(), m_Status = status(DOorder) };
         OT.m_DescriptionProgress = new List<Tuple<string?, DateTime?>>();

@@ -44,6 +44,8 @@ namespace PL.WpfProduct
 
         private void AddP_Click(object sender, RoutedEventArgs e)
         {
+            int ID = P.m_Id;
+            if (int.TryParse(Id.Text, out ID))
             P.m_Category = (BO.Enums.Category)category.SelectedItem;
             P.m_Id = int.Parse(Id.Text);
             P.m_Name = Name.Text;

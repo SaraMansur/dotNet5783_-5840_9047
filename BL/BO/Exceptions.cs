@@ -1,4 +1,6 @@
 ﻿
+using DO;
+
 namespace BO;
 /// <summary>
 /// A throw in the event that one or more of the data is incorrect
@@ -6,10 +8,7 @@ namespace BO;
 public class IlegalInput : Exception
 {
     public override string Message => "The input is ilegal";
-    public override string ToString()
-    {
-        return Message;
-    }
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }
 
 /// <summary>
@@ -18,10 +17,7 @@ public class IlegalInput : Exception
 public class NotExist : Exception
 {
     public override string Message => "not existing object";
-    public override string ToString()
-    {
-        return Message;
-    }
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }
 
 /// <summary>
@@ -31,10 +27,7 @@ public class NotExist : Exception
 public class AlreadyExist : Exception
 {
     public override string Message => "already existing object";
-    public override string ToString()
-    {
-        return Message;
-    }
+    public override string ToString()=> ToStringExtension.ToStringProperty(this);
 }
 
 
@@ -44,10 +37,7 @@ public class AlreadyExist : Exception
 public class MissingInStock : Exception
 {
     public override string Message => "There is not enough of the object in stock";
-    public override string ToString()
-    {
-        return Message;
-    }
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }
 
 /// <summary>
@@ -71,7 +61,7 @@ public class FaildAdding : Exception
     public FaildAdding(Exception inner):base("faild adding", inner) { }
     public object Massage { get; }
     public override string ToString() => $@"Faild adding - {this.InnerException}";
- 
+
 }
 
 /// <summary>
@@ -101,8 +91,5 @@ public class FaildUpdating : Exception
 public class ArgumentNull : Exception
 {
     public override string Message => "The input is empty";
-    public override string ToString()
-    {
-        return Message;
-    }
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }

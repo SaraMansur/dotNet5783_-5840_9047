@@ -1,4 +1,5 @@
-﻿namespace BO;
+﻿using DO;
+namespace BO;
 
 public class OrderForList
 {
@@ -26,11 +27,5 @@ public class OrderForList
     /// this function print all the attributes of the order to the manager screem
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => $@"
-    order id= {m_Id}
-    name of Customer: {m_CustomerName}
-    order status: {m_OrderStatus}
-    total price: {m_TotalPrice}
-    amount items: {m_AmountItems}
-     ";
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }

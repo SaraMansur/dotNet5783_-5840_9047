@@ -39,12 +39,16 @@ namespace PL.WpfProduct
 
         private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); this.Close();  }
 
-        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e) 
+        private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e)
         {
-            ProductForList pl = (ProductForList)productsList.SelectedItem;
-            new Changes(pl.m_ID).Show();
-            this.Close();
-        }
+            try
+            {
+                ProductForList pl = (ProductForList)productsList.SelectedItem ?? throw new ArgumentNull(); 
+                new Changes(pl.m_ID).Show();
+                this.Close();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }  
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)
         {

@@ -47,7 +47,7 @@ namespace PL.WpfProduct
                 new Changes(pl.m_ID).Show();
                 this.Close();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }  
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)

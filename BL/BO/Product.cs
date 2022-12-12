@@ -1,4 +1,6 @@
-﻿namespace BO;
+﻿using DO;
+
+namespace BO;
 
 public class Product
 {
@@ -26,10 +28,5 @@ public class Product
     /// This function will print all the features of the product
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => $@"
-    product id= {m_Id}
-    name: {m_Name}
-    category: {m_Category}
-    price: {m_Price}
-    amount in stock: {m_InStock}";
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }

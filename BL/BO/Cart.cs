@@ -1,4 +1,6 @@
-﻿namespace BO;
+﻿using DO;
+
+namespace BO;
 
 public class Cart
 {
@@ -26,11 +28,6 @@ public class Cart
     /// This function will print all the cart attributes
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => $@"
-    customer name: {m_CustomerName}
-    customer mail: {m_CustomerMail}
-    customer adress: {m_CustomerAdress}
-    total price: {m_TotalPrice}
-    order item: {'\n'}
-    {string.Join('\n', m_orderItems)}";
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    
 }

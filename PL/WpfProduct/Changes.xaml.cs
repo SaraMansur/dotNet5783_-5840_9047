@@ -30,9 +30,9 @@ namespace PL.WpfProduct
             if (ID != -1)
             {
                 AddP.Visibility = Visibility.Collapsed;
-                AddP.IsEnabled = false;
                 P =bl.Product.ProductId(ID);
                 Id.Text = Convert.ToString(P.m_Id);
+                Id.IsReadOnly=true;
                 Name.Text = Convert.ToString(P.m_Name);
                 Price.Text = Convert.ToString(P.m_Price);
                 InStock.Text = Convert.ToString(P.m_InStock);
@@ -49,7 +49,8 @@ namespace PL.WpfProduct
             P.m_Name = Name.Text;
             P.m_Price = int.Parse(Price.Text);
             P.m_InStock = int.Parse(InStock.Text);
-            bl.Product.AddProduct(P);
+            try { bl.Product.AddProduct(P); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void UpdateP_Click(object sender, RoutedEventArgs e)
@@ -59,8 +60,8 @@ namespace PL.WpfProduct
             P.m_Name = Name.Text;
             P.m_Price = int.Parse(Price.Text);
             P.m_InStock = int.Parse(InStock.Text);
-            bl.Product.UpdateProduct(P);
-          
+            try { bl.Product.UpdateProduct(P); }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)

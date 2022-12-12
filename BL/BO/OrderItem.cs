@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using DO;
+using System.Diagnostics;
 
 namespace BO;
 
@@ -32,12 +33,5 @@ public class OrderItem
     /// this function print all the attributes of the order item
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => $@"
-    order item id= {m_ID}
-    product id: {m_IdProduct}
-    name of product:{m_NameProduct}
-    price of product: {m_PriceProduct}
-    amount in cart: {m_AmountInCart}
-    total price: {m_TotalPriceItem}
-     ";
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }

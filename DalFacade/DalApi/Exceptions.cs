@@ -33,3 +33,15 @@ public class DalConfigException : Exception
     public DalConfigException(string msg) : base(msg) { }
     public DalConfigException(string msg, Exception ex) : base(msg, ex) { }
 }
+
+/// <summary>
+/// 
+/// </summary>
+public class ArgumentNull : Exception
+{
+    public override string Message => "The input is empty";
+    public override string ToString()
+    {
+        return Message;
+    }
+}

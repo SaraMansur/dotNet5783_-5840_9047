@@ -14,9 +14,9 @@ internal class Product: IProduct
     public IEnumerable<BO.ProductForList> ProductList() 
     {
         List <BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
-        foreach (var item in Dal.Product.Get())
+        foreach (var item in Dal!.Product.Get())
         {
-            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item.Value.m_Category, m_ID = item.Value.m_ID, m_NameProduct = item.Value.m_Name, m_PriceProduct = item.Value.m_Price });
+            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price });
         }
         return productForLists;
     }
@@ -34,10 +34,10 @@ internal class Product: IProduct
     public IEnumerable<BO.ProductItem> CatalogList()
     {
         List<ProductItem> catalogList = new List<ProductItem>();
-        foreach (var item in Dal.Product.Get())
+        foreach (var item in Dal!.Product.Get())
         {
-            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item.Value.m_Category, m_ID = item.Value.m_ID, m_NameProduct = item.Value.m_Name, m_PriceProduct = item.Value.m_Price,m_AmountInCart=0 };
-            if (item.Value.m_InStock > 0) 
+            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart=0 };
+            if (item?.m_InStock > 0) 
                 p.m_InStock = true; 
             else 
                 p.m_InStock = false;
@@ -52,12 +52,13 @@ internal class Product: IProduct
     /// <param name="ID"></param>
     /// <returns></returns>
     /// <exception cref="FaildGetting"></exception>
-    public BO.Product ProductId(int ID)
+    public BO.Product ProductId(int? ID)
     {
+        ID = ID ?? throw new ArgumentNull();
         if (ID < 0) throw new FaildGetting(new IlegalInput()); //check if the id is correct
         try
         {
-            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID);
+            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID);
             BO.Product Boproduct = new BO.Product()
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_Id = Doproduct.m_ID, m_InStock = Doproduct.m_InStock, m_Name = Doproduct.m_Name, m_Price = Doproduct.m_Price };
             return Boproduct; 
@@ -71,12 +72,13 @@ internal class Product: IProduct
     /// <param name="ID"></param>
     /// <returns></returns>
     /// <exception cref="FaildGetting"></exception>
-    public BO.ProductItem CatalogProductId(int ID)
+    public BO.ProductItem CatalogProductId(int? ID)
     {
+        ID= ID ?? throw new ArgumentNull();
         if (ID < 0) throw new FaildGetting(new IlegalInput());//check if the id is correct
         try 
         { 
-            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x.Value.m_ID == ID);
+            DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID);
             BO.ProductItem productItem = new BO.ProductItem() 
             { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID,m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
             return productItem; 
@@ -89,12 +91,13 @@ internal class Product: IProduct
     /// </summary>
     /// <param name="product"></param>
     /// <exception cref="FaildAdding"></exception>
-    public void AddProduct(BO.Product product) 
+    public void AddProduct(BO.Product? product) 
     {
-        if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
+        product = product?? throw new ArgumentNull();  
+        if (product.m_Id < 100000 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
             throw new FaildAdding(new IlegalInput());
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price,m_Category = (DO.Enums.Category?)product.m_Category,m_ID= product.m_Id,m_InStock= product.m_InStock};
-        try { Dal.Product.Add(Doproduct); }
+        try { Dal!.Product.Add(Doproduct); }
         catch(Exception inner) { throw new FaildAdding(inner); }   
     }
 
@@ -103,12 +106,13 @@ internal class Product: IProduct
     /// </summary>
     /// <param name="ID"></param>
     /// <exception cref="FaildDelete"></exception>
-    public void DeleteProduct(int ID) 
+    public void DeleteProduct(int? ID) 
     { 
+        ID = ID ?? throw new ArgumentNull();
         bool flag =false;    
-        foreach (var item in Dal.Order.Get()) //Going through the list of orders
-            foreach (var item2 in Dal.OrderItem.Get(x=>x.Value.m_ID == item.Value.m_ID)) //for each order check if there is the reqsted product 
-                if (item2.Value.m_ProductId == ID)
+        foreach (var item in Dal!.Order.Get()) //Going through the list of orders
+            foreach (var item2 in Dal.OrderItem.Get(x=>x?.m_ID == item?.m_ID)) //for each order check if there is the reqsted product 
+                if (item2?.m_ProductId == ID)
                 {
                     flag = true; 
                     break;
@@ -123,24 +127,32 @@ internal class Product: IProduct
     /// <param name="product"></param>
     /// <exception cref="BO.IlegalInput"></exception>
     /// <exception cref="FaildUpdating"></exception>
-    public void UpdateProduct(BO.Product product) 
+    public void UpdateProduct(BO.Product? product) 
     {
-        if (product.m_Id < 0 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
+        product = product ?? throw new ArgumentNull();
+        if (product?.m_Id < 0 || product?.m_Price < 0 || product?.m_InStock < 0 || product?.m_Name == "")//check if the data is correct
             throw new BO.IlegalInput();
-        DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
-        try { Dal.Product.Update(Doproduct); }
+        DO.Product Doproduct = new DO.Product() { m_Name = product?.m_Name, m_Price = (double)product?.m_Price!, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
+        try { Dal!.Product.Update(Doproduct); }
         catch(Exception inner) { throw new FaildUpdating(inner); }  
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
     public IEnumerable<ProductForList?> FilterBycategory(BO.Enums.Category c)
     {
         if (c == BO.Enums.Category.None)
             return ProductList();
-        List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
-        foreach (var item in ProductList())
-        {
-            if(c==item.m_Category)
-                productForLists.Add(item);  
-        }
-        return productForLists;
+        return ProductList().Where(x => x.m_Category == c); 
+        //List<BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
+        //foreach (var item in ProductList())
+        //{
+        //    if(c==item.m_Category)
+        //        productForLists.Add(item);  
+        //}
+        //return productForLists;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using System.Runtime.Intrinsics.Arm;
 
 namespace BlImplementation;
 
@@ -38,10 +39,13 @@ internal class Order : IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     /// <exception cref="BO.MissingID"></exception>
-    private BO.Order BuildOrder(BO.Order BOorder,DO.Order DOorder, int orderId)
+    private BO.Order BuildOrder(BO.Order? BOorder,DO.Order? DOorder, int? orderId)
     {
+        BOorder= BOorder?? throw new ArgumentNull();
+        DOorder = DOorder?? throw new ArgumentNull();   
+        
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
-        IEnumerable<DO.OrderItem?> DOorderItems = Dal.OrderItem.Get(x=>x.Value.m_ID== orderId);//List of current order details.
+        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x=>x.Value.m_ID== orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
             BO.OrderItem BOorderItem = new BO.OrderItem();
@@ -49,8 +53,8 @@ internal class Order : IOrder
             BOorderItem.m_IdProduct = item.m_ProductId;
             try
             {
-                BOorderItem.m_NameProduct = Dal.Product.GetSingle((x => x.Value.m_ID == item.m_ProductId)).Value.m_Name;
-                BOorderItem.m_PriceProduct = Dal.Product.GetSingle((x => x.Value.m_ID == item.m_ProductId)).Value.m_Price;
+                BOorderItem.m_NameProduct = Dal.Product.GetSingle((x => x?.m_ID == item.m_ProductId))?.m_Name;
+                BOorderItem.m_PriceProduct = (double)Dal.Product.GetSingle((x => x?.m_ID == item.m_ProductId))?.m_Price;
             }
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
             BOorderItem.m_AmountInCart = item.m_amount;
@@ -58,16 +62,17 @@ internal class Order : IOrder
             BOorder.m_TotalPrice = BOorder.m_TotalPrice + item.m_Price;
             orderItems.Add(BOorderItem);
         }
+        DO.Order order = (DO.Order)DOorder;
         return new BO.Order() //Fast boot:
         {
-            m_Id = DOorder.m_ID,
-            m_CustomerName = DOorder.m_CustomerName,
-            m_CustomerMail = DOorder.m_CustomerEmail,
-            m_CustomerAdress = DOorder.m_CustomerAdress,
-            m_OrderTime = DOorder.m_OrderTime,
-            m_DeliveryrDate = DOorder.m_DeliveryrDate,
-            m_ShipDate = DOorder.m_ShipDate,
-            m_OrderStatus = status(DOorder),
+            m_Id = order.m_ID,
+            m_CustomerName = order.m_CustomerName,
+            m_CustomerMail = order.m_CustomerEmail,
+            m_CustomerAdress = order.m_CustomerAdress,
+            m_OrderTime = order.m_OrderTime,
+            m_DeliveryrDate = order.m_DeliveryrDate,
+            m_ShipDate = order.m_ShipDate,
+            m_OrderStatus = status(order),
             m_TotalPrice = BOorder.m_TotalPrice,
             m_orderItems = new (orderItems.ToList())
         };
@@ -79,12 +84,12 @@ internal class Order : IOrder
     /// <returns></returns>
     public IEnumerable<BO.OrderForList> OrderList()
     {
-        IEnumerable<DO.Order?> DoOrders = Dal.Order.Get(); //A new list of type Orde
+        IEnumerable<DO.Order?> DoOrders = Dal!.Order.Get(); //A new list of type Orde
         List<BO.OrderForList> ListorderForList = new List<BO.OrderForList>(); //A new list of type OrderForList
         foreach (DO.Order order in DoOrders) //The loop goes through the entire order list.
         {
             int amount = 0 ; double price = 0 ;   
-            IEnumerable<DO.OrderItem?> orderItems = Dal.OrderItem.Get(x => x.Value.m_ID == order.m_ID); //List of order details of the current order.
+            IEnumerable<DO.OrderItem?> orderItems = Dal.OrderItem.Get(x => x?.m_ID == order.m_ID); //List of order details of the current order.
             foreach (DO.OrderItem item in orderItems)
             { //The loop goes through the order details list of the current order:
                 amount += item.m_amount;
@@ -102,7 +107,7 @@ internal class Order : IOrder
     /// <returns></returns>
     /// <exception cref="BO.incorrectData"></exception>
     /// <exception cref="BO.MissingID"></exception>
-    public BO.Order orderDetails(int orderId)
+    public BO.Order orderDetails(int? orderId)
     {
         if (orderId < 0)
             throw new BO.IlegalInput(); //Negative ID number - wrong
@@ -123,7 +128,7 @@ internal class Order : IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     /// <exception cref="BO.incorrectData"></exception>
-    public BO.Order sendingAnInvitation(int orderId)
+    public BO.Order sendingAnInvitation(int? orderId)
     {
         DO.Order DOorder = new DO.Order(); 
         try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
@@ -144,7 +149,7 @@ internal class Order : IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     /// <exception cref="BO.incorrectData"></exception>
-    public BO.Order orderDelivery(int orderId)
+    public BO.Order orderDelivery(int? orderId)
     {
         DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
         try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
@@ -165,12 +170,12 @@ internal class Order : IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     /// <exception cref="BO.incorrectData"></exception>
-    public BO.OrderTracking orderTracking(int orderId)
+    public BO.OrderTracking orderTracking(int? orderId)
     {
         DO.Order DOorder = new DO.Order();
         try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x.Value.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId, m_Status = status(DOorder) };
+        BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId?? throw new BO.IlegalInput(), m_Status = status(DOorder) };
         OT.m_DescriptionProgress = new List<Tuple<string?, DateTime?>>();
 
         //If the order has been confirmed but not yet sent to the customer:

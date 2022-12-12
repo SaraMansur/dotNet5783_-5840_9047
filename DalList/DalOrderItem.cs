@@ -9,37 +9,34 @@ internal class DalOrderItem:IOrderItem
     /// </summary>
     /// <param name="O"></param>The function accepts a new object to add
     /// <returns></returns>The function returns the ID of the new added orderItem
-    public int Add(OrderItem OI)
+    public int Add(OrderItem? OI)
     {
-        OI.m_ID= Config.orderItemId;
+        OrderItem oi = OI ?? throw new ArgumentNull();
+        oi.m_ID = Config.orderItemId;
+        OI = oi;
         m_listOrderItems.Add(OI);
-        return OI.m_ID;
+        return oi.m_ID;
     }
     /// <summary>
     /// A function that deletes an object from the array of orderItem
     /// </summary>
     /// <param name="ID"></param>ID  of the requested orderItem
-    public void Delete(int ID)
+    public void Delete(int? ID)
     {
-        for (int i = 0; i < m_listOrderItems.Count; i++)
-        {
-            if (ID == ((OrderItem)m_listOrderItems[i]).m_ID)
-            {
-                m_listOrderItems.Remove(m_listOrderItems[i]);
-                return;
-            }
-        }
-        throw new NotExist();
+        ID = ID?? throw new ArgumentNull();
+        m_listOrderItems.Remove(GetSingle(x => x?.m_ID == ID));
+        return;
     }
     /// <summary>
     /// The function updates details of an item that exists in the array.
     /// </summary>
     /// <param name="O"></param>The function receives the orderItem that needs to be updated
     /// <exception cref="Exception"></exception>If the orderItem does not exist in the array an exception is thrown
-    public void Update(OrderItem OI)
+    public void Update(OrderItem? OI)
     {
+        OI = OI ?? throw new ArgumentNull();
         for (int i = 0; i != m_listOrderItems.Count; i++)
-            if (OI.m_ID == ((OrderItem)m_listOrderItems[i]).m_ID)
+            if (OI?.m_ID == m_listOrderItems[i]?.m_ID)
             {
                 m_listOrderItems[i] = OI;
                 return;
@@ -67,13 +64,14 @@ internal class DalOrderItem:IOrderItem
     {
         if (func == null)
             return m_listOrderItems;
-        List<OrderItem?> list = new List<OrderItem?>();
-        foreach (var item in m_listOrderItems)
-        {
-            if (func(item))
-                list.Add(item);
-        }
-        return list;
+        return m_listOrderItems.Where(func);
+        //List<OrderItem?> list = new List<OrderItem?>();
+        //foreach (var item in m_listOrderItems)
+        //{
+        //    if (func(item))
+        //        list.Add(item);
+        //}
+        //return list;
 
     }
     /// <summary>
@@ -83,15 +81,15 @@ internal class DalOrderItem:IOrderItem
     /// <param name="OID"></param>ID of order
     /// <returns></returns> returns the appropriate  orderItem
     /// <exception cref="Exception"></exception> if The requested orderItem item does not exist
-    public OrderItem GetbyProductAndOrder(int? PID, int? OID)
-    {
-        for (int i = 0; i != m_listOrderItems.Count; i++)
-        {
-            if (OID == ((OrderItem)m_listOrderItems[i]).m_OrderId && PID == ((OrderItem)m_listOrderItems[i]).m_ProductId)
-                return ((OrderItem)m_listOrderItems[i]);
-        }
-        throw new NotExist();
-    }
+    //public OrderItem GetbyProductAndOrder(int? PID, int? OID)
+    //{
+    //    for (int i = 0; i != m_listOrderItems.Count; i++)
+    //    {
+    //        if (OID == ((OrderItem)m_listOrderItems[i]).m_OrderId && PID == ((OrderItem)m_listOrderItems[i]).m_ProductId)
+    //            return ((OrderItem)m_listOrderItems[i]);
+    //    }
+    //    throw new NotExist();
+    //}
 
     /// <summary>
     /// The function accepts an order ID and returns a list of all the products included in the order
@@ -110,10 +108,8 @@ internal class DalOrderItem:IOrderItem
     //}
 
     public OrderItem? GetSingle(Func<OrderItem?, bool>? func) 
-    { 
-        if(m_listOrderItems.FirstOrDefault(func)!=null)
-            return m_listOrderItems.FirstOrDefault(func);   
-        throw new NotExist();
-            
+    {
+        OrderItem? od = m_listOrderItems.FirstOrDefault(func)?? throw new NotExist();
+        return od;   
     }
 }

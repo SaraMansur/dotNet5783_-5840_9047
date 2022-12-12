@@ -29,7 +29,7 @@ namespace PL.WpfProduct
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (ID != -1)
             {
-               
+                AddP.Visibility = Visibility.Collapsed;
                 AddP.IsEnabled = false;
                 P =bl.Product.ProductId(ID);
                 Id.Text = Convert.ToString(P.m_Id);
@@ -39,7 +39,7 @@ namespace PL.WpfProduct
                 category.SelectedItem = P.m_Category;
             }
             else
-                UpdateP.IsEnabled = false;
+                UpdateP.Visibility = Visibility.Collapsed;
         }
 
         private void AddP_Click(object sender, RoutedEventArgs e)

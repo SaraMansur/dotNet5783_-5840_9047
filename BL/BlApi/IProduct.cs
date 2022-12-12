@@ -21,32 +21,32 @@ public interface IProduct
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    public BO.Product ProductId(int ID);
+    public BO.Product ProductId(int? ID);
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for a customer screen - from the catalog)
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    public ProductItem CatalogProductId(int ID);
+    public ProductItem CatalogProductId(int? ID);
 
     /// <summary>
     /// The function compares a product if it is correct, to the data overlay (for the manager screen)
     /// </summary>
     /// <param name="product"></param>
-    public void AddProduct(BO.Product product);
+    public void AddProduct(BO.Product? product);
 
     /// <summary>
     /// The function deletes a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    public void DeleteProduct(int ID);
+    public void DeleteProduct(int? ID);
 
     /// <summary>
     /// The function updates a product if it is possible (for an administrator screen)
     /// </summary>
     /// <param name="product"></param>
-    public void UpdateProduct(BO.Product product);
+    public void UpdateProduct(BO.Product? product);
 
     /// <summary>
     /// 

@@ -58,7 +58,7 @@ internal class Program
     /// <returns></returns>
     static BO.Cart cartTesting(BO.Cart C)
     {
-        IBl bl = new Bl();
+        IBl bl = Factory.Get();
         //BO.Cart C = new BO.Cart();
         Console.WriteLine("a.Option to add an item to the cart");
         Console.WriteLine("b.Option to update the amount");
@@ -89,7 +89,7 @@ internal class Program
     /// </summary>
     static void orderTesting()
     {
-        IBl bl = new Bl();
+        IBl bl = Factory.Get(); 
         BO.Order O= new BO.Order();
         Console.WriteLine("a.Option to receive a list of orders");
         Console.WriteLine("b.Option to receive order details");
@@ -133,7 +133,7 @@ internal class Program
     /// </summary>
     static void productTesting()
     {
-        IBl bl = new Bl();
+        IBl bl = Factory.Get();
         BO.Product p = new BO.Product();
         Console.WriteLine("a.Option to request a list of products to the manager");
         Console.WriteLine("b.Option to request product details to the manager");
@@ -145,7 +145,7 @@ internal class Program
         switch (Console.ReadLine())
         {
             case "a":
-                IEnumerable<BO.ProductForList> e = bl.Product.ProductList();
+                IEnumerable<BO.ProductForList> e = bl.Product.ProductList()!;
                 foreach (var item in e)
                 {
                     Console.WriteLine(item + "\n");
@@ -153,29 +153,29 @@ internal class Program
                 break;
             case "b":
                 Console.WriteLine("Enter please id of the  product");
-                Console.WriteLine(bl.Product.ProductId(int.Parse(Console.ReadLine())));
+                Console.WriteLine(bl.Product.ProductId(int.Parse(Console.ReadLine()!)));
                 break;
             case "c":
                 Console.WriteLine("Enter please id,category,instock,price,name of the product");
-                p.m_Id = int.Parse(Console.ReadLine());
-                p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine());
-                p.m_InStock = int.Parse(Console.ReadLine());
-                p.m_Price = double.Parse(Console.ReadLine());
+                p.m_Id = int.Parse(Console.ReadLine()!);
+                p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine()!);
+                p.m_InStock = int.Parse(Console.ReadLine()!);
+                p.m_Price = double.Parse(Console.ReadLine()!);
                 p.m_Name = Console.ReadLine();
                 bl.Product.AddProduct(p);
                 break;
             case "d":
                 Console.WriteLine("Enter please id,category,instock,price,name of the product");
-                p.m_Id = int.Parse(Console.ReadLine());
-                p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine());
-                p.m_InStock = int.Parse(Console.ReadLine());
-                p.m_Price = double.Parse(Console.ReadLine());
+                p.m_Id = int.Parse(Console.ReadLine()!);
+                p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine()!);
+                p.m_InStock = int.Parse(Console.ReadLine()!);
+                p.m_Price = double.Parse(Console.ReadLine()!);
                 p.m_Name = Console.ReadLine();
                 bl.Product.UpdateProduct(p);
                 break;
             case "e":
                 Console.WriteLine("Enter id of the  product");
-                bl.Product.DeleteProduct(int.Parse(Console.ReadLine()));
+                bl.Product.DeleteProduct(int.Parse(Console.ReadLine()!));
                 break;
             case "f":
                 IEnumerable<BO.ProductItem> e2= bl.Product.CatalogList();
@@ -186,7 +186,7 @@ internal class Program
                 break;
             case "g":
                 Console.WriteLine("Enter id of the  product");
-                Console.WriteLine(bl.Product.CatalogProductId(int.Parse(Console.ReadLine())));
+                Console.WriteLine(bl.Product.CatalogProductId(int.Parse(Console.ReadLine()!)));
                 break;
             default:
                 Console.WriteLine("ERROR");

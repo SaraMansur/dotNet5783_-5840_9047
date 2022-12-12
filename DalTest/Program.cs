@@ -9,7 +9,7 @@ namespace DalList
 {
     partial class program
     {
-        private static DalApi.IDal d = DalApi.Factory.Get();
+        private static DalApi.IDal? d = DalApi.Factory.Get();
         static void Main(string[] args)
         {
             Product p = new Product();
@@ -22,7 +22,7 @@ namespace DalList
                 Console.WriteLine("To check the Product entity, type-1");
                 Console.WriteLine("To check the Order entity, type-2");
                 Console.WriteLine("To check the OrderItem entity, type-3");
-                ans = int.Parse(Console.ReadLine());
+                ans = int.Parse(Console.ReadLine()!);
                 if (ans == 1 || ans == 2 || ans == 3)
                 {
                     Console.WriteLine("Which option do you want to check?");
@@ -51,16 +51,17 @@ namespace DalList
                             {
                                 case "a":
                                     Console.WriteLine("please enter id,category ,InStock,price,name of the product.");
-                                    p.m_ID = int.Parse(Console.ReadLine());
-                                    p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine());
-                                    p.m_InStock = int.Parse(Console.ReadLine());
-                                    p.m_Price = double.Parse(Console.ReadLine());
+                                    p.m_ID = int.Parse(Console.ReadLine()!);
+                                    p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine()!);
+                                    p.m_InStock = int.Parse(Console.ReadLine()!);
+                                    p.m_Price = double.Parse(Console.ReadLine()!);
                                     p.m_Name = Console.ReadLine();
-                                    Console.WriteLine(d.Product.Add(p));
+                                    Console.WriteLine(d?.Product.Add(p));
                                     break;
                                 case "b":
                                     Console.WriteLine("please enter ID of the product.");
-                                    Console.WriteLine(d.Product.GetSingle(x => ((Product)x).m_ID == int.Parse(Console.ReadLine())));
+                                    int id = int.Parse(Console.ReadLine()!);    
+                                    Console.WriteLine(d?.Product.GetSingle(x => x?.m_ID == id));
                                     break;
                                 case "c":
                                     IEnumerable<Product?> Ie = d.Product.Get();
@@ -73,16 +74,16 @@ namespace DalList
                                     break;
                                 case "d":
                                     Console.WriteLine("please enter id,category,inStock,price,name of the product.");
-                                    p.m_ID = int.Parse(Console.ReadLine());
-                                    p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine());
-                                    p.m_InStock = int.Parse(Console.ReadLine());
-                                    p.m_Price = double.Parse(Console.ReadLine());
+                                    p.m_ID = int.Parse(Console.ReadLine()!);
+                                    p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine()!);
+                                    p.m_InStock = int.Parse(Console.ReadLine()!);
+                                    p.m_Price = double.Parse(Console.ReadLine()!);
                                     p.m_Name = Console.ReadLine();
-                                    d.Product.Update(p);
+                                    d?.Product.Update(p);
                                     break;
                                 case "e":
                                     Console.WriteLine("please enter ID of the product.");
-                                    d.Product.Delete(int.Parse(Console.ReadLine()));
+                                    d?.Product.Delete(int.Parse(Console.ReadLine()!));
                                     break;
                             }
                             break;
@@ -102,7 +103,8 @@ namespace DalList
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the order.");
-                                    Console.WriteLine(d.Order.GetSingle(x => ((Order)x).m_ID == int.Parse(Console.ReadLine())));
+                                    int id = int.Parse(Console.ReadLine()!);
+                                    Console.WriteLine(d?.Order.GetSingle(x => x?.m_ID == id));
                                     break;
 
                                 case "c":
@@ -117,7 +119,7 @@ namespace DalList
 
                                 case "d":
                                     Console.WriteLine("please enter id, your name, email,and adress.");
-                                    O.m_ID = int.Parse(Console.ReadLine());
+                                    O.m_ID = int.Parse(Console.ReadLine()!);
                                     O.m_CustomerName = Console.ReadLine();
                                     O.m_CustomerEmail = Console.ReadLine(); 
                                     O.m_CustomerAdress = Console.ReadLine(); 
@@ -129,7 +131,7 @@ namespace DalList
 
                                 case "e":
                                     Console.WriteLine("please enter ID of the order.");
-                                    d.Order.Delete(int.Parse(Console.ReadLine()));
+                                    d?.Order.Delete(int.Parse(Console.ReadLine()!));
                                     break;
                             }
                             break;
@@ -139,16 +141,17 @@ namespace DalList
                             {
                                 case "a":
                                     Console.WriteLine("please enter productId, orderId, price, amount.");
-                                    OI.m_ProductId = int.Parse(Console.ReadLine());
-                                    OI.m_OrderId = int.Parse(Console.ReadLine());
-                                    OI.m_Price = double.Parse(Console.ReadLine());
-                                    OI.m_amount = int.Parse(Console.ReadLine());
-                                    Console.WriteLine(d.OrderItem.Add(OI));
+                                    OI.m_ProductId = int.Parse(Console.ReadLine()!);
+                                    OI.m_OrderId = int.Parse(Console.ReadLine()!);
+                                    OI.m_Price = double.Parse(Console.ReadLine()!);
+                                    OI.m_amount = int.Parse(Console.ReadLine()!);
+                                    Console.WriteLine(d?.OrderItem.Add(OI));
                                     break;
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    Console.WriteLine(d.OrderItem.GetSingle(x => ((OrderItem)x).m_ID == int.Parse(Console.ReadLine())));
+                                    int id = int.Parse(Console.ReadLine()!);
+                                    Console.WriteLine(d?.OrderItem.GetSingle(x => x?.m_ID == id));
                                     break;
 
                                 case "c":
@@ -164,23 +167,23 @@ namespace DalList
 
                                 case "d":
                                     Console.WriteLine("please enter orderItemId, productId, orderId, price, amount.");
-                                    OI.m_ID= int.Parse(Console.ReadLine()); ;
-                                    OI.m_ProductId = int.Parse(Console.ReadLine());
-                                    OI.m_OrderId = int.Parse(Console.ReadLine());
-                                    OI.m_Price = double.Parse(Console.ReadLine());
-                                    OI.m_amount = int.Parse(Console.ReadLine());
+                                    OI.m_ID= int.Parse(Console.ReadLine()!); ;
+                                    OI.m_ProductId = int.Parse(Console.ReadLine()!);
+                                    OI.m_OrderId = int.Parse(Console.ReadLine()!);
+                                    OI.m_Price = double.Parse(Console.ReadLine()!);
+                                    OI.m_amount = int.Parse(Console.ReadLine()!);
                                     d.OrderItem.Update(OI);
                                     break;
 
                                 case "e":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    d.OrderItem.Delete(int.Parse(Console.ReadLine()));
+                                    d.OrderItem.Delete(int.Parse(Console.ReadLine()!));
                                     break;
 
                                 case "f":
                                     Console.WriteLine("please enter ID of the order.");
-                                    int id = int.Parse(Console.ReadLine());
-                                    IEnumerable<OrderItem?> Ien = d.OrderItem.Get(x => ((OrderItem)x).m_OrderId == id);
+                                    int id3 = int.Parse(Console.ReadLine()!);
+                                    IEnumerable<OrderItem?> Ien = d.OrderItem.Get(x => x?.m_OrderId == id3);
                                     IEnumerator<OrderItem?> enumerato = Ien.GetEnumerator();
                                     while (enumerato.MoveNext())
                                     {
@@ -191,7 +194,9 @@ namespace DalList
 
                                 case "g":
                                     Console.WriteLine("please enter ID of product and order.");
-                                    Console.WriteLine(d.OrderItem.GetbyProductAndOrder(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine())));
+                                    int? idProduct = int.Parse(Console.ReadLine()!);
+                                    int? idOrder = int.Parse(Console.ReadLine()!);
+                                    Console.WriteLine(d.OrderItem.GetSingle(x => x?.m_ProductId== idProduct && x?.m_OrderId== idOrder));
                                     break;
                             }
                             break;

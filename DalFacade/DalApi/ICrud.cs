@@ -9,19 +9,19 @@ public interface ICrud<T> where T : struct
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    int Add(T entity);
+    int Add(T? entity);
 
     /// <summary>
     /// Delete an object of an entity
     /// </summary>
     /// <param name="ID"></param>
-    void Delete(int ID);
+    void Delete(int? ID);
 
     /// <summary>
     /// update an object to an entity
     /// </summary>
     /// <param name="entity"></param>
-    void Update(T entity);
+    void Update(T? entity);
 
     /// <summary>
     /// get an object to an entity

@@ -3,7 +3,6 @@ namespace BO;
 /// <summary>
 /// A throw in the event that one or more of the data is incorrect
 /// </summary>
-
 public class IlegalInput : Exception
 {
     public override string Message => "The input is ilegal";
@@ -94,6 +93,16 @@ public class FaildUpdating : Exception
     public FaildUpdating(Exception inner) : base("faild updating", inner) { }
     public object Massage { get; }
     public override string ToString() => $@"Faild updating - {this.InnerException}";
+}
 
-
+/// <summary>
+/// 
+/// </summary>
+public class ArgumentNull : Exception
+{
+    public override string Message => "The input is empty";
+    public override string ToString()
+    {
+        return Message;
+    }
 }

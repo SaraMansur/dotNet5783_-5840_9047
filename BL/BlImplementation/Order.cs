@@ -43,10 +43,9 @@ internal class Order : IOrder
     {
         BOorder= BOorder?? throw new ArgumentNull();
         DOorder = DOorder?? throw new ArgumentNull();
-        orderId = orderId?? throw new ArgumentNull();   
-        
+        orderId = orderId?? throw new ArgumentNull(); 
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
-        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x=>x?.m_ID== orderId);//List of current order details.
+        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x => x?.m_ID == orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
             BO.OrderItem BOorderItem = new BO.OrderItem();

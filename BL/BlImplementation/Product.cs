@@ -13,12 +13,16 @@ internal class Product: IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductForList> ProductList() 
     {
-        List <BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
-        foreach (var item in Dal!.Product.Get())
-        {
-            productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price });
-        }
-        return productForLists;
+        ////List <BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
+        //foreach (var item in Dal!.Product.Get())
+        //{
+        //    productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price });
+        //}
+        //return productForLists;
+        var productForLists = from item in Dal!.Product.Get()
+                              let p= new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price}
+                              select p;
+        return productForLists;  
     }
 
 
@@ -33,16 +37,20 @@ internal class Product: IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductItem> CatalogList()
     {
-        List<ProductItem> catalogList = new List<ProductItem>();
-        foreach (var item in Dal!.Product.Get())
-        {
-            ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart=0 };
-            if (item?.m_InStock > 0) 
-                p.m_InStock = true; 
-            else 
-                p.m_InStock = false;
-            catalogList.Add(p); 
-        }
+        //List<ProductItem> catalogList = new List<ProductItem>();
+        //foreach (var item in Dal!.Product.Get())
+        //{
+        //    ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart=0 };
+        //    if (item?.m_InStock > 0) 
+        //        p.m_InStock = true; 
+        //    else 
+        //        p.m_InStock = false;
+        //    catalogList.Add(p); 
+        //}
+        //return catalogList;
+        var catalogList=from item in Dal!.Product.Get()
+                        let p= new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart = 0, m_InStock=item?.m_InStock>0}
+                        select p;
         return catalogList;
     }
 

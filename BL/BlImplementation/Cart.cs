@@ -107,16 +107,18 @@ internal class Cart : ICart
         BO.Cart c = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
         if (!mailCustomer!.EndsWith("@gmail.com") || nameCustomr?.Length == 0 || mailCustomer?.Length == 0 || addressCustomr?.Length == 0)
             throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
-        for (int i = 0; i < cart?.m_orderItems?.Count; i++) //The loop checks data integrity.
+        
+        foreach(var item in cart?.m_orderItems)
         {
             DO.Product product = new DO.Product();//A new product is released.
-            try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == cart.m_orderItems[i].m_IdProduct); } //Checks if the product exists
+            try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == item.m_IdProduct); } //Checks if the product exists
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-            if (!checkInStock(cart?.m_orderItems[i]?.m_AmountInCart, product.m_InStock) || cart?.m_orderItems[i]?.m_AmountInCart <= 0) 
+            if (!checkInStock(item.m_AmountInCart, product.m_InStock) || item?.m_AmountInCart <= 0)
                 throw new BO.IlegalInput(); //If the quantity in the basket is greater than the quantity in stock or negative.
-            if (cart?.m_orderItems[i]?.m_NameProduct?.Length==0|| cart?.m_orderItems[i]?.m_TotalPriceItem<=0||cart?.m_TotalPrice<=0)
+            if (item.m_NameProduct?.Length == 0 ||item.m_TotalPriceItem <= 0 || cart?.m_TotalPrice <= 0)
                 throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
         }
+
         ;//A new order is released.
         DO.Order order = new DO.Order() { m_CustomerAdress = addressCustomr, m_CustomerEmail = mailCustomer, m_CustomerName = nameCustomr, m_OrderTime = DateTime.Now, m_DeliveryrDate = null, m_ShipDate = null };
         try 

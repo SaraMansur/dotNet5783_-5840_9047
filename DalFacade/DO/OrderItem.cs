@@ -12,10 +12,5 @@ public struct OrderItem
     public int m_OrderId { get; set; }
     public double m_Price { get; set; }
     public int m_amount { get; set; }
-    public override string ToString() => $@"
-    order item id: {m_ID}
-    ptouduct id: {m_ProductId}
-    order id: {m_OrderId}
-    price: {m_Price}
-    amount of item: {m_amount}";
+    public override string ToString() => ToStringExtension.ToStringProperty(this);
 }

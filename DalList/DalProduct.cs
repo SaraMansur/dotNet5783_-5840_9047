@@ -15,13 +15,10 @@ internal class DalProduct:IProduct
     /// <exception cref="Exception"></exception> if The requested product already exist an exception is thrown
     public int Add(Product? P)
     {
-        Product help = P?? throw new ArgumentNull();  
-        //var p= m_listPruducts.FirstOrDefault(x=> P?.m_)
-        for (int i = 0; i < m_listPruducts.Count; i++)
-        {
-            if (P?.m_ID == m_listPruducts[i]?.m_ID)
-                throw new AlreadyExist();
-        }
+        Product help = P?? throw new ArgumentNull();
+        var p = m_listPruducts.FirstOrDefault(x => x?.m_ID == P?.m_ID);
+        if (p != null)
+            throw new AlreadyExist();
         m_listPruducts.Add(P);
         return (int)P?.m_ID;
     }
@@ -52,21 +49,7 @@ internal class DalProduct:IProduct
 
         throw new NotExist();
     }
-    /// <summary>
-    /// The function returns the product whose ID was received
-    /// </summary>
-    /// <param name="ID"></param>The function receives an order ID
-    /// <returns></returns>The function returns the requested order
-    /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
-    //public Product GetbyID(int? ID)
-    //{
-    //    for (int i = 0; i != m_listPruducts.Count; i++)
-    //    {
-    //        if (m_listPruducts[i].Value.m_ID == ID)
-    //            return (Product)m_listPruducts[i];
-    //    }
-    //    throw new NotExist();
-    //}
+ 
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
@@ -76,13 +59,6 @@ internal class DalProduct:IProduct
         if (func == null)
             return m_listPruducts;
         return m_listPruducts.Where(func);
-        //List<Product?> list = new List<Product?>();
-        //foreach (var item in m_listPruducts)
-        //{
-        //    if (func(item))
-        //        list.Add(item);
-        //}
-        //return list;
     }
 
     public Product? GetSingle(Func<Product?, bool>? func)

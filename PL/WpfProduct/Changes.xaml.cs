@@ -23,16 +23,16 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         BO.Product P = new BO.Product();
-        public Changes(int ID=-1)
+        public Changes(int ID = -1)
         {
             InitializeComponent();
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (ID != -1)
             {
                 AddP.Visibility = Visibility.Collapsed;
-                P =bl.Product.ProductId(ID);
+                P = bl.Product.ProductId(ID);
                 Id.Text = Convert.ToString(P.m_Id);
-                Id.IsReadOnly=true;
+                Id.IsReadOnly = true;
                 Name.Text = Convert.ToString(P.m_Name);
                 Price.Text = Convert.ToString(P.m_Price);
                 InStock.Text = Convert.ToString(P.m_InStock);
@@ -54,10 +54,9 @@ namespace PL.WpfProduct
                 P.m_Name = Name.Text;
                 P.m_Price = int.Parse(Price.Text);
                 P.m_InStock = int.Parse(InStock.Text);
-                P = P ?? throw new BO.FaildAdding(new BO.ArgumentNull());
                 bl.Product.AddProduct(P);
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         private void UpdateP_Click(object sender, RoutedEventArgs e)

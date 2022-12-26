@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Dal;
 
 
-internal class DalOrder:IOrder
+internal class DalOrder : IOrder
 {
     /// <summary>
     /// A function that adds a new object to the array of orders
@@ -22,6 +22,7 @@ internal class DalOrder:IOrder
         m_listOreders.Add(O);
         return help.m_ID;
     }
+
     /// <summary>
     /// A function that deletes an object from the array of orders
     /// </summary>
@@ -32,6 +33,7 @@ internal class DalOrder:IOrder
         m_listOreders.Remove(GetSingle(x => x?.m_ID == ID));
         return;
     }
+
     /// <summary>
     /// The function updates details of an item that exists in the array.
     /// </summary>
@@ -48,42 +50,22 @@ internal class DalOrder:IOrder
             }
         throw new NotExist();
     }
-    /// <summary>
-    /// The function returns the order w hose ID was received
-    /// </summary>
-    /// <param name="ID"></param>The function receives an order ID
-    /// <returns></returns>The function returns the requested order
-    /// <exception cref="Exception"></exception>If the order does not exist in the array an exception is thrown
-    //public Order GetbyID(int ID)
-    //{
-    //    for (int i = 0; i != m_listOreders.Count; i++)
-    //    {
-    //        if (ID == m_listOreders[i].Value.m_ID)
-    //            return m_listOreders[i].Value;
-    //    }
-    //    throw new NotExist();
-    //}
+
     /// <summary>
     /// The function returns an array of the objects
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<Order?> Get( Func<Order?, bool>? func = null)
+    public IEnumerable<Order?> Get(Func<Order?, bool>? func = null)
     {
-        if(func==null)
-           return m_listOreders;
+        if (func == null)
+            return m_listOreders;
         List<Order?> list = new List<Order?>();
         return m_listOreders.Where(func);
-        //foreach (var item in m_listOreders)
-        //{
-        //    if(func(item))
-        //        list.Add(item); 
-        //}
-        //return list;
     }
 
     public Order? GetSingle(Func<Order?, bool>? func)
     {
-        Order? O = m_listOreders.FirstOrDefault(func)?? throw new NotExist();
+        Order? O = m_listOreders.FirstOrDefault(func) ?? throw new NotExist();
         return O;
     }
 

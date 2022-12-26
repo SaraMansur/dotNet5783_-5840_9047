@@ -1,14 +1,12 @@
-﻿
-using DO;
-
-namespace BO;
+﻿namespace BO;
 /// <summary>
 /// A throw in the event that one or more of the data is incorrect
 /// </summary>
+
 public class IlegalInput : Exception
 {
     public override string Message => "The input is ilegal";
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    public override string ToString() { return Message; }
 }
 
 /// <summary>
@@ -17,7 +15,7 @@ public class IlegalInput : Exception
 public class NotExist : Exception
 {
     public override string Message => "not existing object";
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    public override string ToString() { return Message; }
 }
 
 /// <summary>
@@ -27,7 +25,7 @@ public class NotExist : Exception
 public class AlreadyExist : Exception
 {
     public override string Message => "already existing object";
-    public override string ToString()=> ToStringExtension.ToStringProperty(this);
+    public override string ToString() { return Message; }
 }
 
 
@@ -37,7 +35,7 @@ public class AlreadyExist : Exception
 public class MissingInStock : Exception
 {
     public override string Message => "There is not enough of the object in stock";
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    public override string ToString() { return Message; }
 }
 
 /// <summary>
@@ -46,11 +44,11 @@ public class MissingInStock : Exception
 public class FaildGetting : Exception
 {
     public FaildGetting(Exception inner) : base("faild getting", inner) { }
-    
+
     public object Massage { get; }
 
     public override string ToString() => $@"Faild getting - {this.InnerException}";
-    
+
 }
 
 /// <summary>
@@ -58,7 +56,7 @@ public class FaildGetting : Exception
 /// </summary>
 public class FaildAdding : Exception
 {
-    public FaildAdding(Exception inner):base("faild adding", inner) { }
+    public FaildAdding(Exception inner) : base("faild adding", inner) { }
     public object Massage { get; }
     public override string ToString() => $@"Faild adding - {this.InnerException}";
 
@@ -91,5 +89,5 @@ public class FaildUpdating : Exception
 public class ArgumentNull : Exception
 {
     public override string Message => "The input is empty";
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    public override string ToString() { return Message; }
 }

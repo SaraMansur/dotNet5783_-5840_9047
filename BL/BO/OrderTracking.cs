@@ -19,6 +19,10 @@ public class OrderTracking
     /// </summary>
     public List<Tuple<string?, DateTime?>>? m_DescriptionProgress { get; set; }
 
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
-    
+    public override string ToString() => $@"
+    order id: {m_ID}
+    order status: {m_Status}
+    Package progress: {string.Join('\n', m_DescriptionProgress)}   
+    ";
+
 }

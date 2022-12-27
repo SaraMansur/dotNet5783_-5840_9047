@@ -28,7 +28,7 @@ internal class Order : IOrder
                 else //If the order is still in progress
                     return BO.Enums.Status.InProcess;
             }
-        } 
+        }
     }
 
     /// <summary>
@@ -39,13 +39,13 @@ internal class Order : IOrder
     /// <param name="orderId"></param>
     /// <returns></returns>
     /// <exception cref="BO.MissingID"></exception>
-    private BO.Order BuildOrder(BO.Order? BOorder,DO.Order? DOorder, int? orderId)
+    private BO.Order BuildOrder(BO.Order? BOorder, DO.Order? DOorder, int? orderId)
     {
-        BOorder= BOorder?? throw new ArgumentNull();
-        DOorder = DOorder?? throw new ArgumentNull();
-        orderId = orderId?? throw new ArgumentNull(); 
+        BOorder = BOorder ?? throw new ArgumentNull();
+        DOorder = DOorder ?? throw new ArgumentNull();
+        orderId = orderId ?? throw new ArgumentNull();
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
-        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x => x?.m_ID == orderId);//List of current order details.
+        IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x => x?.m_OrderId == orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
         { //The loop inserts data into a BOorder order details array.
             BO.OrderItem BOorderItem = new BO.OrderItem();
@@ -74,7 +74,7 @@ internal class Order : IOrder
             m_ShipDate = order.m_ShipDate,
             m_OrderStatus = status(order),
             m_TotalPrice = BOorder.m_TotalPrice,
-            m_orderItems = new (orderItems.ToList())
+            m_orderItems = new(orderItems.ToList())
         };
     }
 
@@ -88,14 +88,14 @@ internal class Order : IOrder
         List<BO.OrderForList> ListorderForList = new List<BO.OrderForList>(); //A new list of type OrderForList
         foreach (DO.Order order in DoOrders) //The loop goes through the entire order list.
         {
-            int amount = 0 ; double price = 0 ;   
-            IEnumerable<DO.OrderItem?> orderItems = Dal.OrderItem.Get(x => x?.m_ID == order.m_ID); //List of order details of the current order.
+            int amount = 0; double price = 0;
+            IEnumerable<DO.OrderItem?> orderItems = Dal.OrderItem.Get(x => x?.m_OrderId == order.m_ID); //List of order details of the current order.
             foreach (DO.OrderItem item in orderItems)
             { //The loop goes through the order details list of the current order:
                 amount += item.m_amount;
-                price +=  item.m_Price;
+                price += item.m_Price;
             }
-            ListorderForList.Add(new BO.OrderForList { m_CustomerName = order.m_CustomerName, m_Id = order.m_ID, m_OrderStatus = status(order), m_AmountItems=amount, m_TotalPrice=price }); 
+            ListorderForList.Add(new BO.OrderForList { m_CustomerName = order.m_CustomerName, m_Id = order.m_ID, m_OrderStatus = status(order), m_AmountItems = amount, m_TotalPrice = price });
         }
         return ListorderForList;
     }
@@ -109,13 +109,13 @@ internal class Order : IOrder
     /// <exception cref="BO.MissingID"></exception>
     public BO.Order orderDetails(int? orderId)
     {
-        orderId = orderId ?? throw new ArgumentNull();  
+        orderId = orderId ?? throw new ArgumentNull();
         if (orderId < 0)
             throw new BO.IlegalInput(); //Negative ID number - wrong
         DO.Order DOorder = new DO.Order();
         try//Checking if Order ID is correct
         {
-            DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId));
+            DOorder = (DO.Order)Dal.Order.GetSingle(x => x?.m_ID == orderId);
         }
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         BO.Order BOorder = new BO.Order();
@@ -131,16 +131,16 @@ internal class Order : IOrder
     /// <exception cref="BO.incorrectData"></exception>
     public BO.Order sendingAnInvitation(int? orderId)
     {
-        orderId = orderId ?? throw new ArgumentNull();  
+        orderId = orderId ?? throw new ArgumentNull();
 
-        DO.Order DOorder = new DO.Order(); 
+        DO.Order DOorder = new DO.Order();
         try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         if (DOorder.m_ShipDate > DateTime.MinValue)//If the order has already been sent, 
             throw new BO.IlegalInput(); //throw that the order has already been sent.
         DOorder.m_ShipDate = DateTime.Now;
-        try { Dal.Order.Update(DOorder); } 
-        catch (Exception inner) { throw new FaildUpdating(inner); } 
+        try { Dal.Order.Update(DOorder); }
+        catch (Exception inner) { throw new FaildUpdating(inner); }
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
         return BOorder;
@@ -182,11 +182,11 @@ internal class Order : IOrder
         DO.Order DOorder = new DO.Order();
         try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-        BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId?? throw new BO.IlegalInput(), m_Status = status(DOorder) };
+        BO.OrderTracking OT = new BO.OrderTracking { m_ID = orderId ?? throw new BO.IlegalInput(), m_Status = status(DOorder) };
         OT.m_DescriptionProgress = new List<Tuple<string?, DateTime?>>();
 
         //If the order has been confirmed but not yet sent to the customer:
-        if (DOorder.m_OrderTime> DateTime.MinValue)
+        if (DOorder.m_OrderTime > DateTime.MinValue)
         { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order has been created", DOorder.m_OrderTime)); }
 
         //If the order has been sent but not yet delivered to the customer:
@@ -194,8 +194,9 @@ internal class Order : IOrder
         { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order is sent", DOorder.m_ShipDate)); }
 
         //If the order has already been shipped and delivered to the customer:
-        if (DOorder.m_DeliveryrDate> DateTime.MinValue)
+        if (DOorder.m_DeliveryrDate > DateTime.MinValue)
         { OT.m_DescriptionProgress.Add(new Tuple<string?, DateTime?>("The order has been delivered", DOorder.m_DeliveryrDate)); }
         return OT;
     }
 }
+

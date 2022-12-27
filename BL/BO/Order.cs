@@ -48,7 +48,19 @@ public class Order
     /// This function will print all order attributes
     /// </summary>
     /// <returns></returns>
-    public override string ToString() => ToStringExtension.ToStringProperty(this);
+    public override string ToString() => $@"
+    order id= {m_Id}
+    name of Customer: {m_CustomerName}
+    mail of Customer:{m_CustomerMail}
+    adress of customer:{m_CustomerAdress}
+    order status: {m_OrderStatus}
+    total price: {m_TotalPrice}
+    order time: {m_OrderTime}
+    ship date: {m_ShipDate}
+    delivery date: {m_DeliveryrDate}
+    order items: {'\n'}  
+    {string.Join('\n', m_orderItems)} 
+     ";
 
 
 }

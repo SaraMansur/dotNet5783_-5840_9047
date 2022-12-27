@@ -55,6 +55,8 @@ namespace PL.WpfProduct
                 P.m_Price = int.Parse(Price.Text);
                 P.m_InStock = int.Parse(InStock.Text);
                 bl.Product.AddProduct(P);
+                new Catalog().Show();
+                this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
@@ -72,14 +74,10 @@ namespace PL.WpfProduct
                 P.m_InStock = int.Parse(InStock.Text);
                 P = P ?? throw new BO.FaildUpdating(new BO.ArgumentNull());
                 bl.Product.UpdateProduct(P);
+                new Catalog().Show();
+                this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
-        }
-
-        private void Click_buttonBack(object sender, RoutedEventArgs e)
-        {
-            new Catalog().Show();
-            this.Close();
         }
     }
 

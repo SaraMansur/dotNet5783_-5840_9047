@@ -13,23 +13,11 @@ internal class Product : IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductForList> ProductList()
     {
-        ////List <BO.ProductForList> productForLists = new List<BO.ProductForList>();//Going through the list of products
-        //foreach (var item in Dal!.Product.Get())
-        //{
-        //    productForLists.Add(new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price });
-        //}
-        //return productForLists;
         var productForLists = from item in Dal!.Product.Get()
                               let p = new BO.ProductForList() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price }
                               select p;
         return productForLists;
     }
-
-
-    //public IEnumerable<BO.ProductForList> CatalogList() 
-    //{
-    //    return ProductList();
-    //}
 
     /// <summary>
     /// the function return a catalog for the customer
@@ -37,17 +25,6 @@ internal class Product : IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductItem> CatalogList()
     {
-        //List<ProductItem> catalogList = new List<ProductItem>();
-        //foreach (var item in Dal!.Product.Get())
-        //{
-        //    ProductItem p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart=0 };
-        //    if (item?.m_InStock > 0) 
-        //        p.m_InStock = true; 
-        //    else 
-        //        p.m_InStock = false;
-        //    catalogList.Add(p); 
-        //}
-        //return catalogList;
         var catalogList = from item in Dal!.Product.Get()
                           let p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart = 0, m_InStock = item?.m_InStock > 0 }
                           select p;
@@ -102,7 +79,7 @@ internal class Product : IProduct
     public void AddProduct(BO.Product? product)
     {
         product = product ?? throw new ArgumentNull();
-        if (product.m_Id < 100000 || product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
+        if (product.m_Id < 100000|| product.m_Id > 999999|| product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
             throw new FaildAdding(new IlegalInput());
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
         try { Dal!.Product.Add(Doproduct); }

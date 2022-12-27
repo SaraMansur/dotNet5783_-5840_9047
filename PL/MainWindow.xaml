@@ -10,6 +10,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="/לשרה.png"/>
         </Grid.Background>
-        <Button x:Name="EnterToViewList" Content="To view list" Click="VeiwList_Click" Margin="320,149,320,217" Background="{x:Null}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Grid.Column="0" Background="{x:Null}"/>
+        <Button x:Name="Neworderdisplay" Content="New order display" Click="Neworder_Click" Grid.Column="1" Background="{x:Null}"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Grid.Column="2" Background="{x:Null}"/>
+        <Button x:Name="registereduser" Content="registered user" Click="registeredUser_Click" Grid.Column="3" Background="{x:Null}"/>
     </Grid>
 </Window>

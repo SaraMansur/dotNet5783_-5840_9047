@@ -27,6 +27,13 @@ namespace PL
         {
             InitializeComponent();
         }
-        private void VeiwList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close(); }
+
+        private void Manager_Click(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
+
+        private void Neworder_Click(object sender, RoutedEventArgs e) { }
+
+        private void OrderTracking_Click(object sender, RoutedEventArgs e) { }
+
+        private void registeredUser_Click(object sender, RoutedEventArgs e) { }
     }
 }

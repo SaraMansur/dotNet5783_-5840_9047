@@ -45,18 +45,5 @@
         <TextBox Name="InStock" Grid.Column="2" Grid.Row="9"/>
         <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="13" Width="90" Click="UpdateP_Click" Background="{x:Null}"/>
         <Button x:Name="AddP" Content="ADD" Grid.Column="1"  Grid.Row="13" Width="90" Click="AddP_Click" Background="{x:Null}"/>
-        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="179.451"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Button.Background>
-                <ImageBrush ImageSource="/WpfProduct/חץץ.jpg"/>
-            </Button.Background>
-        </Button>
     </Grid>
 </Window>

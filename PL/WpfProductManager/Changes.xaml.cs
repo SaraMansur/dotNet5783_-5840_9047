@@ -80,5 +80,4 @@ namespace PL.WpfProduct
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
     }
-
 }

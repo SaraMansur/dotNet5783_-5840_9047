@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="WpfOrderManager\לשרה.png" />
-    <None Remove="WpfProductManager\חץץ.jpg" />
-    <None Remove="WpfProductManager\לשרה.png" />
+    <None Remove="Mangager\WpfOrderManager\לשרה.png" />
+    <None Remove="Mangager\WpfProductManager\חץץ.jpg" />
+    <None Remove="Mangager\WpfProductManager\לשרה.png" />
     <None Remove="לשרה.png" />
   </ItemGroup>
 
@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="WpfOrderManager\לשרה.png" />
-    <Resource Include="WpfProductManager\חץץ.jpg" />
-    <Resource Include="WpfProductManager\לשרה.png" />
+    <Resource Include="Mangager\WpfOrderManager\לשרה.png" />
+    <Resource Include="Mangager\WpfProductManager\חץץ.jpg" />
+    <Resource Include="Mangager\WpfProductManager\לשרה.png" />
     <Resource Include="לשרה.png" />
   </ItemGroup>
 

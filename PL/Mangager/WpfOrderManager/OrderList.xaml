@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="OrderList" Height="450" Width="800">
     <Grid x:Name="ProductList">
-        <ListView x:Name="List_Order" Grid.Row ="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding}">
-            <ListView.Background>
-                <ImageBrush ImageSource="/WpfOrderManager/לשרה.png"/>
-            </ListView.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="List_Order" Grid.Row ="0" HorizontalAlignment="Stretch" ItemsSource="{Binding}" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id}" Width="80"/>
@@ -21,5 +22,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Name="updatOrder" Content="update order" Grid.Row="1" Width="107" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="updatOrder_Click" Margin="227,0,0,0"/>
+        <Button Name="orderDetails" Content="order details" Grid.Row="1" Width="107" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="orderDetails_Click" Margin="411,0,0,0"/>
     </Grid>
 </Window>

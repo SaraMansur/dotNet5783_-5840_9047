@@ -2,7 +2,6 @@
 using BO;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,18 +17,16 @@ using System.Windows.Shapes;
 namespace PL.WpfOrderManager
 {
     /// <summary>
-    /// Interaction logic for OrderList.xaml
+    /// Interaction logic for OrderDetails.xaml
     /// </summary>
-    public partial class OrderList : Window
+    public partial class OrderDetails : Window
     {
-        private ObservableCollection<OrderForList?> Orderlist;
         public IBl bl = Factory.Get();
-
-        public OrderList()
+        public OrderDetails(OrderForList p)
         {
             InitializeComponent();
-            Orderlist = new(bl.Order.OrderList());
-            this.DataContext = Orderlist;
+            Order o=bl.Order.orderDetails(p.m_Id);
+            order.DataContext = o;  
         }
     }
 }

@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="Changes" Height="450" Width="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/WpfProductManager/לשרה.png"/>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

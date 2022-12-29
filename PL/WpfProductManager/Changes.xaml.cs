@@ -1,5 +1,5 @@
 ﻿using BlApi;
-
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static BO.Enums;
 
 namespace PL.WpfProduct
 {
@@ -23,9 +24,13 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         BO.Product P = new BO.Product();
-        public Changes(int ID = -1)
+        public Changes(int ID = -1, Product p)
         {
             InitializeComponent();
+
+            categoryitemComboBox.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            this.DataContext = p;
+
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (ID != -1)
             {

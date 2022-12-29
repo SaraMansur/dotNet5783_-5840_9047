@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
         Title="OrderList" Height="450" Width="800">
-    <Grid>
-        
+    <Grid x:Name="ProductList">
+        <ListView x:Name="List_Order" Grid.Row ="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding}">
+            <ListView.Background>
+                <ImageBrush ImageSource="/WpfOrderManager/לשרה.png"/>
+            </ListView.Background>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id}" Width="80"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName}" Width="200"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus}" Width="150"/>
+                    <GridViewColumn Header="Amount Items" DisplayMemberBinding="{Binding Path= m_AmountItems}" Width="80"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

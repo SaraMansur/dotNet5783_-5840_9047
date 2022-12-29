@@ -24,19 +24,30 @@
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions >
             <ComboBox Grid.Row="0" Grid.Column="3" Name="AttributeSelector" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Stretch" />
-            <TextBlock Text="CATEGORY:" Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontSize="24" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <TextBlock Text="CATEGORY:" Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontSize="24" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold">
                 <TextBlock.Background>
                     <ImageBrush/>
                 </TextBlock.Background>
             </TextBlock>
         </Grid>
-        <ListView x:Name="productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2" MouseDoubleClick="MouseDoubleClick_list" >
+        <ListView x:Name="productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2" MouseDoubleClick="MouseDoubleClick_list" ItemsSource="{Binding}">
             <ListView.Background>
-                <ImageBrush ImageSource="/WpfProduct/לשרה.png"/>
+                <ImageBrush ImageSource="/WpfProductManager/לשרה.png"/>
             </ListView.Background>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_ID }" Width="80" />
+                    <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="200"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_PriceProduct}" Width="150"/>
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="80"/>
+                </GridView>
+            </ListView.View>
         </ListView>
         <Button Content="Add new Product" Name="AddProduct" Grid.Row="2" HorizontalAlignment="Left" Margin="635,5,0,5" Padding="5" Click = "AddProduct_Click" Width="115" Background="{x:Null}"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <ImageBrush ImageSource="/WpfProductManager/חץץ.jpg"/>
+            </Button.Background>
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -45,9 +56,6 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-            <Button.Background>
-                <ImageBrush ImageSource="/WpfProduct/חץץ.jpg"/>
-            </Button.Background>
         </Button>
     </Grid>
 </Window>

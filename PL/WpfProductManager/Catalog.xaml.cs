@@ -1,8 +1,10 @@
 ﻿using BlApi;
 using BlImplementation;
 using BO;
+using PL.WpfOrderManager;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +26,14 @@ namespace PL.WpfProduct
     public partial class Catalog : Window
     {
         IBl bl = Factory.Get();
+        private ObservableCollection<ProductForList?> _Productlist;
+
         public Catalog()
         {
             InitializeComponent();
-            productsList.ItemsSource = bl.Product.ProductList();
+            _Productlist = new(bl.Product.ProductList());
+            this.DataContext = _Productlist;
+
             AttributeSelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
 
         }

@@ -26,9 +26,9 @@ namespace PL
             InitializeComponent();
         }
 
-        private void ProductForList_Click(object sender, RoutedEventArgs e) {new Catalog().Show(); this.Close(); }
+        private void ProductForList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close(); }
 
-        private void Click_buttonBack(object sender, RoutedEventArgs e){new MainWindow().Show(); this.Close();}
+        private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close();}
 
         private void OrderForList_Click(object sender, RoutedEventArgs e) { new OrderList().Show(); this.Close(); }
     }

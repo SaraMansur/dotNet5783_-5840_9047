@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BlApi;
+using BO;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,14 @@ namespace PL.WpfOrderManager
     /// </summary>
     public partial class OrderList : Window
     {
+        private ObservableCollection<OrderForList?> Orderlist;
+        public IBl bl = Factory.Get();
+
         public OrderList()
         {
             InitializeComponent();
+            Orderlist = new(bl.Order.OrderList());
+            this.DataContext = Orderlist;
         }
     }
 }

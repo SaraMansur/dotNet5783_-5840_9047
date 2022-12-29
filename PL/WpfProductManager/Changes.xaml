@@ -8,7 +8,7 @@
         Title="Changes" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WpfProduct/לשרה.png"/>
+            <ImageBrush ImageSource="/WpfProductManager/לשרה.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -44,6 +44,6 @@
         <TextBox Name="Price" Grid.Column="2" Grid.Row="7"/>
         <TextBox Name="InStock" Grid.Column="2" Grid.Row="9"/>
         <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="13" Width="90" Click="UpdateP_Click" Background="{x:Null}"/>
-        <Button x:Name="AddP" Content="ADD" Grid.Column="1"  Grid.Row="13" Width="90" Click="AddP_Click" Background="{x:Null}"/>
+        <Button x:Name="AddP" Content="ADD" Grid.Column="1"  Grid.Row="13" Width="90" Click="AddP_Click" Background="{x:Null}" BorderBrush="#FF8F912D"/>
     </Grid>
 </Window>

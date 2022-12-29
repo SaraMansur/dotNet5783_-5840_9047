@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,11 +55,10 @@ namespace PL.WpfProduct
                 P.m_Name = Name.Text;
                 P.m_Price = int.Parse(Price.Text);
                 P.m_InStock = int.Parse(InStock.Text);
+                P = P ?? throw new BO.FaildAdding(new BO.ArgumentNull());
                 bl.Product.AddProduct(P);
-                new Catalog().Show();
-                this.Close();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
         private void UpdateP_Click(object sender, RoutedEventArgs e)
         {
@@ -73,10 +73,15 @@ namespace PL.WpfProduct
                 P.m_InStock = int.Parse(InStock.Text);
                 P = P ?? throw new BO.FaildUpdating(new BO.ArgumentNull());
                 bl.Product.UpdateProduct(P);
-                new Catalog().Show();
-                this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
+
+        private void Click_buttonBack(object sender, RoutedEventArgs e)
+        {
+            new Catalog().Show();
+            this.Close();
+        }
     }
+
 }

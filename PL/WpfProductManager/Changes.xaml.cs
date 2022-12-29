@@ -1,7 +1,8 @@
 ﻿using BlApi;
-using BO;
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static BO.Enums;
 
 namespace PL.WpfProduct
 {
@@ -24,13 +24,9 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         BO.Product P = new BO.Product();
-        public Changes(int ID = -1, Product p)
+        public Changes(int ID = -1)
         {
             InitializeComponent();
-
-            categoryitemComboBox.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-            this.DataContext = p;
-
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (ID != -1)
             {
@@ -59,11 +55,10 @@ namespace PL.WpfProduct
                 P.m_Name = Name.Text;
                 P.m_Price = int.Parse(Price.Text);
                 P.m_InStock = int.Parse(InStock.Text);
+                P = P ?? throw new BO.FaildAdding(new BO.ArgumentNull());
                 bl.Product.AddProduct(P);
-                new Catalog().Show();
-                this.Close();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
         private void UpdateP_Click(object sender, RoutedEventArgs e)
@@ -79,10 +74,15 @@ namespace PL.WpfProduct
                 P.m_InStock = int.Parse(InStock.Text);
                 P = P ?? throw new BO.FaildUpdating(new BO.ArgumentNull());
                 bl.Product.UpdateProduct(P);
-                new Catalog().Show();
-                this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
+
+        private void Click_buttonBack(object sender, RoutedEventArgs e)
+        {
+            new Catalog().Show();
+            this.Close();
+        }
     }
+
 }

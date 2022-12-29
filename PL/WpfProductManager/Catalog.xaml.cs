@@ -40,21 +40,21 @@ namespace PL.WpfProduct
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            productsList.ItemsSource=bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem); 
+            productsList.ItemsSource = bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem);
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); this.Close();  }
+        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); this.Close(); }
 
         private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                ProductForList pl = (ProductForList)productsList.SelectedItem ?? throw new ArgumentNull(); 
+                ProductForList pl = (ProductForList)productsList.SelectedItem ?? throw new ArgumentNull();
                 new Changes(pl.m_ID).Show();
                 this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
-        }  
+        }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)
         {

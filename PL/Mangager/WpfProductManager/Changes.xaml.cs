@@ -60,7 +60,6 @@ namespace PL.WpfProduct
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
-
         private void UpdateP_Click(object sender, RoutedEventArgs e)
         {
             try

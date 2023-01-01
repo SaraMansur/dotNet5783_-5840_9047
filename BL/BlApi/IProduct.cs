@@ -54,5 +54,18 @@ public interface IProduct
     /// <param name="c"></param>
     /// <returns></returns>
     public IEnumerable<ProductForList?> FilterBycategory (BO.Enums.Category c);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+  
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public IEnumerable<ProductItem> FilterBycategoryCustomer(BO.Enums.Category c);
+
 
 }

@@ -32,6 +32,9 @@ internal class Cart : ICart
         DO.Product product = new DO.Product();//A new product is released.
         cart = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
 
+        if (!cart.m_CustomerMail!.EndsWith("@gmail.com") || cart.m_CustomerName?.Length == 0 || cart.m_CustomerMail?.Length == 0 || cart.m_CustomerAdress?.Length == 0)
+            throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
+
         try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID); } //Checks if the product exists
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.

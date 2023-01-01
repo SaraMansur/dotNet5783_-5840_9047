@@ -20,6 +20,8 @@ namespace PL.WpfProduct
     /// <summary>
     /// Interaction logic for Changes.xaml
     /// </summary>
+    /// 
+
     public partial class Changes : Window
     {
         IBl bl = Factory.Get();

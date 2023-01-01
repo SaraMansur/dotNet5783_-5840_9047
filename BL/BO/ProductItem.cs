@@ -19,7 +19,7 @@ public class ProductItem
     /// <summary>
     /// the category of the product
     /// </summary>
-    public Enums.Category? m_Category { get; set; }
+    public Enums.Category? Category { get; set; }
     /// <summary>
     /// the amount of the product in the stock
     /// </summary>

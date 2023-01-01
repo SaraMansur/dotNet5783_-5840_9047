@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using PL.WpfNewOrder;
 using PL.WpfProduct;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace PL
 
         private void Manager_Click(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
 
-        private void Neworder_Click(object sender, RoutedEventArgs e) { }
+        private void Neworder_Click(object sender, RoutedEventArgs e) { new createNewOrder().Show(); }
 
         private void OrderTracking_Click(object sender, RoutedEventArgs e) { }
 

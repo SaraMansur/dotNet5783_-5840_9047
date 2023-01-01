@@ -26,7 +26,7 @@ internal class Product : IProduct
     public IEnumerable<BO.ProductItem> CatalogList()
     {
         var catalogList = from item in Dal!.Product.Get()
-                          let p = new ProductItem() { m_Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart = 0, m_InStock = item?.m_InStock > 0 }
+                          let p = new ProductItem() { Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart = 0, m_InStock = item?.m_InStock > 0 }
                           select p;
         return catalogList;
     }
@@ -65,7 +65,7 @@ internal class Product : IProduct
         {
             DO.Product Doproduct = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID);
             BO.ProductItem productItem = new BO.ProductItem()
-            { m_Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID, m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
+            { Category = (BO.Enums.Category?)Doproduct.m_Category, m_ID = Doproduct.m_ID, m_NameProduct = Doproduct.m_Name, m_PriceProduct = Doproduct.m_Price };
             return productItem;
         }
         catch (Exception inner) { throw new FaildGetting(inner); }
@@ -132,5 +132,12 @@ internal class Product : IProduct
         if (c == BO.Enums.Category.None)
             return ProductList();
         return ProductList().Where(x => x.m_Category == c);
+    }
+
+    public IEnumerable<ProductItem> FilterBycategoryCustomer(BO.Enums.Category c)
+    {
+        if (c == BO.Enums.Category.None)
+            return CatalogList();
+        return CatalogList().Where(x => x.Category == c);
     }
 }

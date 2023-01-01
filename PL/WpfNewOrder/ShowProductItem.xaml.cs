@@ -14,19 +14,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL.WpfOrderManager
+namespace PL.WpfNewOrder
 {
     /// <summary>
-    /// Interaction logic for OrderDetails.xaml
+    /// Interaction logic for ShowProductItem.xaml
     /// </summary>
-    public partial class OrderDetails : Window
+    public partial class ShowProductItem : Window
     {
-        public IBl bl = Factory.Get();
-        public OrderDetails(OrderForList p)
+        IBl bl = Factory.Get();
+        public ShowProductItem(ProductItem p)
         {
             InitializeComponent();
-            Order o=bl.Order.orderDetails(p.m_Id);
-            this.DataContext = o;  
+            this.DataContext = p;
         }
     }
 }

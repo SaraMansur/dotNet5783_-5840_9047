@@ -1,8 +1,7 @@
 ﻿using BlApi;
-
+using BO;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static BO.Enums;
 
 namespace PL.WpfProduct
 {
@@ -24,20 +24,16 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         BO.Product P = new BO.Product();
-        public Changes(int ID = -1)
+        public Changes(int id=0)
         {
             InitializeComponent();
+
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-            if (ID != -1)
+            if (id != null)
             {
+                P = bl.Product.ProductId(id);
+                this.DataContext = P;
                 AddP.Visibility = Visibility.Collapsed;
-                P = bl.Product.ProductId(ID);
-                Id.Text = Convert.ToString(P.m_Id);
-                Id.IsReadOnly = true;
-                Name.Text = Convert.ToString(P.m_Name);
-                Price.Text = Convert.ToString(P.m_Price);
-                InStock.Text = Convert.ToString(P.m_InStock);
-                category.SelectedItem = P.m_Category;
             }
             else
                 UpdateP.Visibility = Visibility.Collapsed;
@@ -47,41 +43,22 @@ namespace PL.WpfProduct
         {
             try
             {
-                if (!int.TryParse(Id.Text, out int _ID)) throw new BO.FaildAdding(new BO.IlegalInput());
-                if (!int.TryParse(Id.Text, out int _Price)) throw new BO.FaildAdding(new BO.IlegalInput());
-                if (!int.TryParse(Id.Text, out int _InStock)) throw new BO.FaildAdding(new BO.IlegalInput());
-                P.m_Category = (BO.Enums.Category)category.SelectedItem;
-                P.m_Id = int.Parse(Id.Text);
-                P.m_Name = Name.Text;
-                P.m_Price = int.Parse(Price.Text);
-                P.m_InStock = int.Parse(InStock.Text);
-                P = P ?? throw new BO.FaildAdding(new BO.ArgumentNull());
                 bl.Product.AddProduct(P);
+                new Catalog().Show();
+                this.Close();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
+
         private void UpdateP_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!int.TryParse(Id.Text, out int _Price)) throw new BO.FaildUpdating(new BO.IlegalInput());
-                if (!int.TryParse(Id.Text, out int _InStock)) throw new BO.FaildUpdating(new BO.IlegalInput());
-                P.m_Category = (BO.Enums.Category)category.SelectedItem;
-                P.m_Id = int.Parse(Id.Text);
-                P.m_Name = Name.Text;
-                P.m_Price = int.Parse(Price.Text);
-                P.m_InStock = int.Parse(InStock.Text);
-                P = P ?? throw new BO.FaildUpdating(new BO.ArgumentNull());
                 bl.Product.UpdateProduct(P);
+                new Catalog().Show();
+                this.Close();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
-        }
-
-        private void Click_buttonBack(object sender, RoutedEventArgs e)
-        {
-            new Catalog().Show();
-            this.Close();
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
     }
-
 }

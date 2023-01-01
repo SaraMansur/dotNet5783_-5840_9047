@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using PL.WPFOrderTacking;
 using PL.WpfProduct;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace PL
 
         private void Neworder_Click(object sender, RoutedEventArgs e) { }
 
-        private void OrderTracking_Click(object sender, RoutedEventArgs e) { }
+        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking().Show(); this.Close(); }
 
         private void registeredUser_Click(object sender, RoutedEventArgs e) { }
     }

@@ -1,8 +1,11 @@
 ﻿using BlApi;
 using BO;
+using PL.WPFOrderTacking;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized; 
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +25,15 @@ namespace PL.WpfOrderManager
     /// </summary>
     public partial class OrderList : Window
     {
-        private ObservableCollection<OrderForList?> Orderlist;
+        public ObservableCollection<OrderForList> Orderlist { get; set; }
         public IBl bl = Factory.Get();
 
-        public OrderList()
+        public OrderList(int num=0)
         {
             InitializeComponent();
-            Orderlist = new(bl.Order.OrderList());
+            Orderlist = new(bl.Order.OrderList()!);
             this.DataContext = Orderlist;
+            Orderlist.CollectionChanged += this.OnCollectionChanged; 
         }
 
         private void updatOrder_Click(object sender, RoutedEventArgs e)
@@ -37,6 +41,7 @@ namespace PL.WpfOrderManager
             OrderForList p= (List_Order.SelectedItem as OrderForList);
             if(p!=null)
               new UpdatOrder(p).Show();
+
         }
 
         private void orderDetails_Click(object sender, RoutedEventArgs e)
@@ -45,5 +50,32 @@ namespace PL.WpfOrderManager
             if (p != null)
                 new OrderDetails(p).Show();
         }
+
+        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            //Get the sender observable collection
+            ObservableCollection<OrderForList> obsSender = sender as ObservableCollection<OrderForList >;
+
+            List<OrderForList> editedOrRemovedItems = new List<OrderForList>();
+            foreach (OrderForList newItem in e.NewItems)
+            {
+                editedOrRemovedItems.Add(newItem);
+            }
+
+            foreach (OrderForList oldItem in e.OldItems)
+            {
+                editedOrRemovedItems.Add(oldItem);
+            }
+
+            //Get the action which raised the collection changed event
+            NotifyCollectionChangedAction action = e.Action;
+        }
+
+        private void Click_buttonBack(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
     }
+}
+
+public interface INotifyCollectionChanged 
+{
+    void NotifyCollectionChanged() { }
 }

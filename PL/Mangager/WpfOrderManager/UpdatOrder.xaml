@@ -5,9 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
-        Title="UpdatOrder" Height="300" Width="500">
-    <Grid>
-        <Button Content="Order delivery update" HorizontalAlignment="Left" Margin="73,0,0,0" VerticalAlignment="Center" Height="60" Width="156" Click="OrderDelivery_Click"/>
-        <Button Content="Order shipping update" HorizontalAlignment="Left" Margin="271,0,0,0" VerticalAlignment="Center" Height="60" Width="156" Click="OrderShipping_Click"/>
+        Title="UpdatOrder" Height="300" Width="320">
+        <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FF898E25" />
+            <Setter Property="FontFamily" Value="Sylfaen" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Width" Value="156" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="BorderBrush" Value="#FF898E25" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,0,9">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Mangager/WpfOrderManager/לשרה.png"/>
+        </Grid.Background>
+        <Button x:Name="delivery"  Content="Order delivery update" Margin="80,44,0,0" Click="OrderDelivery_Click" Style="{StaticResource myButtonStyle}"/>
+        <Button x:Name="shipping" Content="Order shipping update" Margin="80,164,0,0" Click="OrderShipping_Click" Style="{StaticResource myButtonStyle}"/>
     </Grid>
 </Window>

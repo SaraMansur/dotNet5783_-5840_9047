@@ -17,6 +17,9 @@
     <None Remove="Mangager\WpfProductManager\חץץ.jpg" />
     <None Remove="Mangager\WpfProductManager\לשרה.png" />
     <None Remove="Mangager\חץץ.jpg" />
+    <None Remove="WpfNewOrder\3392075.jpg" />
+    <None Remove="WpfNewOrder\חץ.jpg" />
+    <None Remove="WpfNewOrder\לשרה.png" />
     <None Remove="WPFOrderTacking\חץץ.jpg" />
     <None Remove="WPFOrderTacking\לשרה.png" />
     <None Remove="לשרה.png" />
@@ -31,6 +34,9 @@
     <Resource Include="Mangager\WpfProductManager\חץץ.jpg" />
     <Resource Include="Mangager\WpfProductManager\לשרה.png" />
     <Resource Include="Mangager\חץץ.jpg" />
+    <Resource Include="WpfNewOrder\3392075.jpg" />
+    <Resource Include="WpfNewOrder\חץ.jpg" />
+    <Resource Include="WpfNewOrder\לשרה.png" />
     <Resource Include="WPFOrderTacking\חץץ.jpg" />
     <Resource Include="WPFOrderTacking\לשרה.png" />
     <Resource Include="לשרה.png" />

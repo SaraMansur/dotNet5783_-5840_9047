@@ -28,12 +28,23 @@ namespace PL.WpfOrderManager
         public ObservableCollection<OrderForList> Orderlist { get; set; }
         public IBl bl = Factory.Get();
 
+        //public Enums.Status? m_OrderStatus
+        //{
+        //    get { return (Enums.Status?)GetValue(DependencyStatus); }
+        //    set { SetValue(DependencyStatus, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for MyPropertyStatus.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty DependencyStatus =
+        //    DependencyProperty.Register("m_OrderStatus", typeof(Enums.Status?), typeof(OrderForList), new PropertyMetadata(0));
+
+
         public OrderList(int num=0)
         {
             InitializeComponent();
             Orderlist = new(bl.Order.OrderList()!);
-            this.DataContext = Orderlist;
-            Orderlist.CollectionChanged += this.OnCollectionChanged; 
+            DataContext = Orderlist;
+            Orderlist.CollectionChanged += this.OnCollectionChanged;
         }
 
         private void updatOrder_Click(object sender, RoutedEventArgs e)
@@ -54,7 +65,7 @@ namespace PL.WpfOrderManager
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //Get the sender observable collection
-            ObservableCollection<OrderForList> obsSender = sender as ObservableCollection<OrderForList >;
+            ObservableCollection<OrderForList> obsSender = sender as ObservableCollection<OrderForList>;
 
             List<OrderForList> editedOrRemovedItems = new List<OrderForList>();
             foreach (OrderForList newItem in e.NewItems)

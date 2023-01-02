@@ -30,7 +30,7 @@
                 </TextBlock.Background>
             </TextBlock>
         </Grid>
-        <ListView x:Name="productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2" MouseDoubleClick="MouseDoubleClick_list" ItemsSource="{Binding}">
+        <ListView x:Name="_productsList" Grid.ColumnSpan="2" Margin="0,43,0,0" Grid.RowSpan="2" MouseDoubleClick="MouseDoubleClick_list" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_ID }" Width="80" />

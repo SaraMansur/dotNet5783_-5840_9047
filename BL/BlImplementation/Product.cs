@@ -23,11 +23,18 @@ internal class Product : IProduct
     /// the function return a catalog for the customer
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<BO.ProductItem> CatalogList()
+    public IEnumerable<BO.ProductItem> CatalogList(BO.Cart C = null)
     {
-        var catalogList = from item in Dal!.Product.Get()
-                          let p = new ProductItem() { Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_AmountInCart = 0, m_InStock = item?.m_InStock > 0 }
-                          select p;
+        List<ProductItem> catalogList = new List<ProductItem>();
+        foreach (var item in Dal!.Product.Get())
+        {
+            ProductItem p = new ProductItem() { Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_InStock= item?.m_InStock > 0 };
+            foreach (var item2 in C.m_orderItems)
+            {
+                if(item2.m_IdProduct== p.m_ID) { p.m_AmountInCart=item2.m_AmountInCart; break; }
+            }
+                catalogList.Add(p);
+        }
         return catalogList;
     }
 

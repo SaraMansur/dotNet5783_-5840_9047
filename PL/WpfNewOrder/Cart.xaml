@@ -6,39 +6,57 @@
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
         Title="Cart" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FF898E25" />
+            <Setter Property="FontFamily" Value="Sylfaen" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Width" Value="102" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="BorderBrush" Value="#FF898E25" />
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="19*"/>
-            <ColumnDefinition Width="781*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="Items" Grid.Row ="0" ItemsSource="{Binding}" Margin="17,0,125,0" Height="371" VerticalAlignment="Top" Grid.Column="1">
+        <ListView x:Name="Items" Grid.Row ="0" ItemsSource="{Binding}" Margin="17,34,185,0" Height="337" VerticalAlignment="Top" Grid.Column="1" Background="{x:Null}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID of order" DisplayMemberBinding="{Binding Path= m_ID}" Width="80"/>
                     <GridViewColumn Header="ID of product:" DisplayMemberBinding="{Binding Path= m_IdProduct}" Width="80"/>
-                    <GridViewColumn Header="Name:" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="150"/>
+                    <GridViewColumn Header="Name:" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="120"/>
                     <GridViewColumn Header="Price:" DisplayMemberBinding="{Binding Path= m_PriceProduct}" Width="80"/>
                     <GridViewColumn Header="Amount in cart:" DisplayMemberBinding="{Binding Path= m_AmountInCart}" Width="100"/>
                     <GridViewColumn Header="Total Price Item:" DisplayMemberBinding="{Binding Path= m_TotalPriceItem}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Create Order" HorizontalAlignment="Left" Margin="661,55,0,0" VerticalAlignment="Top" Width="102" Height="56" Grid.Column="1"/>
-        <Button Content="Make Empy" HorizontalAlignment="Left" Margin="661,315,0,0" VerticalAlignment="Top" Width="102" Height="56" Grid.Column="1"/>
-        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
+        <Button Content="Create Order" Margin="638,59,0,0" Style="{StaticResource myButtonStyle}" Grid.Column="1" Height="56" Width="102" Click="Confir_Order"/>
+        <Button Content="Make Empy" Margin="638,239,0,0" Style="{StaticResource myButtonStyle}" Grid.Column="1" Height="56" Width="102" Click="Make_Empy_Click"/>
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="179.451"/>
+                    <RotateTransform Angle="-179.714"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
+            </Button.Background>
         </Button>
-        <TextBlock x:Name="Totul_Price_Of_The_Cart" Grid.Column="1" HorizontalAlignment="Left" Margin="39,376,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="158"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="189,376,0,0" TextWrapping="Wrap" Text="{Binding Path=m_TotalPrice}"  VerticalAlignment="Top" Width="62"/>
+        <TextBlock x:Name="Totul_Price_Of_The_Cart" Grid.Column="1" HorizontalAlignment="Left" Margin="39,376,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="158" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="189,376,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice}"  VerticalAlignment="Top" Width="62" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold" Height="19"/>
     </Grid>
 </Window>

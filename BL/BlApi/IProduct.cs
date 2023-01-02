@@ -14,7 +14,7 @@ public interface IProduct
     /// The function builds a product catalog and returns it (for a customer's screen)
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<BO.ProductItem?> CatalogList();
+    public IEnumerable<BO.ProductItem?> CatalogList(BO.Cart C);
 
     /// <summary>
     /// The function receives a product ID and returns a built product (for an admin screen)

@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="createNewOrder" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="4*"/>
@@ -16,19 +19,26 @@
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="0" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="0,0,111,0" />
-            <Button x:Name="Cart" Grid.Column="1" Content="Cart" Margin="0,-5,27,5" Width="123" HorizontalAlignment="Right" Click="Cart_Click"/>
+            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="0" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="480,0,25,0" Grid.ColumnSpan="2" />
+            <Button x:Name="Cart" Content=" My Cart" Margin="0,344,338,-355" Width="163" HorizontalAlignment="Right" Click="Cart_Click" Foreground="#FFF9F9F9" BorderBrush="#FF898E25" FontFamily="Sylfaen" FontSize="20" FontWeight="Bold">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFFEE38F" Offset="0.953"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
 
         </Grid>
-        <ListView Name="ProductItems" Grid.Row="1" ItemsSource="{Binding}"  SelectionChanged="ProductItems_SelectionChanged">
+        <ListView Name="ProductItems" MouseDoubleClick="ProductItems_MouseDoubleClick"  Margin="30,39,0,130" Grid.RowSpan="2" HorizontalAlignment="Left" Width="595" Background="{x:Null}" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="130" DisplayMemberBinding="{Binding m_ID}" />
-                    <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding m_NameProduct}" />
-                    <GridViewColumn Header="Price" Width="130" DisplayMemberBinding="{Binding m_PriceProduct}" />
-                    <GridViewColumn Header="Caregory" Width="130" DisplayMemberBinding="{Binding Category }" />
-                    <GridViewColumn Header="In Stock" Width="130" DisplayMemberBinding="{Binding m_InStock}" />
-                    <GridViewColumn Header="Amount In Cart" Width="140" DisplayMemberBinding="{Binding m_AmountInCart}" />
+                    <GridViewColumn Header="Id" Width="60" DisplayMemberBinding="{Binding m_ID}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding m_NameProduct}" />
+                    <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding m_PriceProduct}" />
+                    <GridViewColumn Header="Caregory" Width="100" DisplayMemberBinding="{Binding Category }" />
+                    <GridViewColumn Header="In Stock" Width="100" DisplayMemberBinding="{Binding m_InStock}" />
+                    <GridViewColumn Header="Amount In Cart" Width="120" DisplayMemberBinding="{Binding m_AmountInCart}" />
                 </GridView>
             </ListView.View>
             <ListView.GroupStyle>
@@ -41,5 +51,18 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-179.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -32,11 +32,11 @@
         <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="40,0,160,0" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="14">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id}"  Width="80"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName}" Width="150"/>
-                    <GridViewColumn x:Name="_Status"  Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus }" Width="100"/>
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems}" Width="80"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice}" Width="100"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="80"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="150"/>
+                    <GridViewColumn x:Name="_Status"  Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus,Mode=TwoWay }" Width="100"/>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems,Mode=TwoWay}" Width="80"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice,Mode=TwoWay}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

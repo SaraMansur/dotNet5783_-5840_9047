@@ -1,7 +1,10 @@
 ﻿using DO;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace BO;
 
-public class OrderForList
+public class OrderForList /*: INotifyPropertyChanged*/
 {
     /// <summary>
     /// the id of the order
@@ -15,6 +18,15 @@ public class OrderForList
     /// the status of the odder
     /// </summary>
     public Enums.Status? m_OrderStatus { get; set; }
+        //set
+        //{
+        //    try { m_OrderStatus = value; }
+        //    catch(Exception e) {  }
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs("Status")); 
+        //} 
+    //}
+    
     /// <summary>
     /// the amount of the items in the order
     /// </summary>
@@ -23,6 +35,9 @@ public class OrderForList
     /// the tota price of the order
     /// </summary>
     public double m_TotalPrice { get; set; }
+
+    //public event PropertyChangedEventHandler? PropertyChanged;
+
     /// <summary>
     /// this function print all the attributes of the order to the manager screem
     /// </summary>

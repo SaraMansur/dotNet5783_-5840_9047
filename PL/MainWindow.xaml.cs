@@ -24,6 +24,7 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
+        BO.Cart cart = new BO.Cart() { m_CustomerAdress = "", m_CustomerName = "", m_CustomerMail = "", m_orderItems = new List<BO.OrderItem>(), m_TotalPrice = 0 };
         IBl bl = Factory.Get();
         public MainWindow()
         {
@@ -32,7 +33,7 @@ namespace PL
 
         private void Manager_Click(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
 
-        private void Neworder_Click(object sender, RoutedEventArgs e) { new createNewOrder().Show(); }
+        private void Neworder_Click(object sender, RoutedEventArgs e) { new createNewOrder(cart).Show(); this.Close(); }
 
         private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking().Show(); this.Close(); }
 

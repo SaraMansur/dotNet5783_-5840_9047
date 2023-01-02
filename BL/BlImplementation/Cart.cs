@@ -32,9 +32,6 @@ internal class Cart : ICart
         DO.Product product = new DO.Product();//A new product is released.
         cart = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
 
-        if (!cart.m_CustomerMail!.EndsWith("@gmail.com") || cart.m_CustomerName?.Length == 0 || cart.m_CustomerMail?.Length == 0 || cart.m_CustomerAdress?.Length == 0)
-            throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
-
         try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID); } //Checks if the product exists
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         for (int i = 0; i < cart.m_orderItems?.Count; i++)//The loop checks if the product is in the shopping cart.
@@ -79,6 +76,15 @@ internal class Cart : ICart
         {
             if (cart.m_orderItems[i]?.m_IdProduct == ID)//If the product exists
             {
+                if (amount < 0) 
+                {
+                    if((cart.m_orderItems[i]!.m_AmountInCart + amount)<0) throw new BO.IlegalInput();
+                    cart.m_orderItems[i]!.m_AmountInCart += amount ?? throw new ArgumentNull(); //The quantity of the item to amount that customer wont.
+                    cart.m_TotalPrice = (cart.m_TotalPrice + (cart.m_orderItems[i]!.m_AmountInCart * product.m_Price) - cart.m_orderItems[i]?.m_TotalPriceItem) ?? throw new ArgumentNull(); //Total price update of the shopping curt.
+                    cart.m_orderItems[i]!.m_TotalPriceItem = (cart.m_orderItems[i]!.m_AmountInCart * product.m_Price) ;  //Total price of the item
+                    return cart; //Returning an updated shopping basket.
+
+                }
                 if (amount == 0)
                 {//If the customer wants to remove the product from the cart.
                     cart.m_TotalPrice = cart.m_TotalPrice - cart.m_orderItems[i]!.m_TotalPriceItem;//Update the cart price minus the product

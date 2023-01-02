@@ -5,11 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
-        Title="ShowProductItem" Height="282" Width="366">
-    <Grid>
+        Title="ShowProductItem" Height="355" Width="420">
+    <Window.Resources>
+        <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF898E25" />
+            <Setter Property="FontFamily" Value="Sylfaen" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="GridProduct">
+        <Grid.Background>
+            <ImageBrush ImageSource="/WpfNewOrder/3392075.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions >
@@ -30,19 +46,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" FontSize="15" TextAlignment="Center" />
-        <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_ID}" />
-        <TextBlock Name="category" Grid.Column="2" Grid.Row="3" Text="{Binding Path=Category}"/>
-        <TextBlock Name="Name" Grid.Column="2" Grid.Row="5" Text="{Binding Path=m_NameProduct}"/>
-        <TextBlock Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_PriceProduct}"/>
-        <TextBlock Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path= m_InStock}"/>
-        <TextBlock Text="Amount in cart:" Grid.Column="1" Grid.Row="11" FontSize="15" TextAlignment="Center" />
-        <TextBlock Name="AmountInCart" Grid.Column="2" Grid.Row="11" Text="{Binding Path=m_AmountInCart }"/>
-        <Button Name="AddCart" Grid.Column="1" Content="Add item" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.471" Height="27" Width="66"/>
-        <Button Name="RemoveCart" Grid.Column="2" Content="Remove Item" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.471" Height="27" Width="66"/>
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_ID}" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="category" Grid.Column="2" Grid.Row="3" Text="{Binding Path=Category}" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="Name" Grid.Column="2" Grid.Row="5" Text="{Binding Path=m_NameProduct}" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_PriceProduct}" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path= m_InStock}" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Amount in cart:" Grid.Column="1" Grid.Row="11" FontSize="15" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Name="AmountInCart" Grid.Column="2" Grid.Row="11" Text="{Binding Path=m_AmountInCart }" Style="{StaticResource myTextBlockStyle}"/>
+        <Button Name="AddCart" Content="+" HorizontalAlignment="Left" Margin="69,34,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="-0.098,0.511" Height="27" Width="27" Click="AddCart_Click" Foreground="#FF898E25" FontSize="18" BorderBrush="#FF898E25" Background="{x:Null}"/>
+        <Button Name="RemoveCart" Grid.Column="2" Content="-" HorizontalAlignment="Left" Margin="78,34,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="0.058,0.403" Height="27" Width="26" Grid.ColumnSpan="2" Click="RemoveCart_Click" BorderBrush="#FF898E25" Foreground="#FF898E25" FontSize="18" Background="{x:Null}"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="8,34,0,0" Grid.Row="14" TextWrapping="Wrap" Text="Update Amount In My Cart" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="2" Height="27" FontFamily="Sylfaen" Foreground="#FF898E25" FontSize="14" Background="{x:Null}"/>
     </Grid>
 </Window>

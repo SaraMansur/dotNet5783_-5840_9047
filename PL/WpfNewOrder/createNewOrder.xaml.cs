@@ -26,12 +26,15 @@ namespace PL.WpfNewOrder
     public partial class createNewOrder : Window
     {
         IBl bl = Factory.Get();
-        private ObservableCollection<ProductItem?> ProductItemlist;
+
+        public ObservableCollection<ProductItem?> ProductItemlist { get; set; }
         BO.Cart cart;
-        public createNewOrder()
+
+        public createNewOrder(BO.Cart c = null)
         {
+            cart = c; 
             InitializeComponent();
-            ProductItemlist = new(bl.Product.CatalogList());
+            ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
             ProductItems.ItemsSource = ProductItemlist;
             GroupBy.ItemsSource = new string[] { "None","Grouping by category" , "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
         }
@@ -50,35 +53,34 @@ namespace PL.WpfNewOrder
                 ProductItems.Items.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
                 return;
             }
-            //ProductItems.Items.Filter = filtering;
             ProductItems.ItemsSource = bl.Product.FilterBycategoryCustomer((BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), property));
           
         }
 
-        //private bool filtering(object obj)
-        //{
-        //    var f = obj as ProductItem;
-        //    string s = GroupBy.SelectedItem as string;
-        //    Enums.Category p = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), s);
-        //    if (f != null) 
-        //        return f.Category!.Value.Equals(p);
-        //    return false;      
-        //}
+        private void GroupBy_SelectionChanged(object sender, SelectionChangedEventArgs e) { GroupList(); }
 
-        private void GroupBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        private void updateAmount(ProductItem productItem , BO.Cart _c )
         {
-            GroupList();
+            var item = ProductItemlist.FirstOrDefault(x => x.m_ID == productItem.m_ID);
+            int index = ProductItemlist.IndexOf(item);
+            ProductItemlist.RemoveAt(index);
+            cart = _c;
+            item.m_AmountInCart += 1;// cart.m_orderItems.FirstOrDefault(x => x.m_ID == item.m_ID).m_AmountInCart;
+            ProductItemlist.Insert(index,item);
+
+
         }
 
-        private void ProductItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Cart_Click(object sender, RoutedEventArgs e) { new Cart(cart).Show(); this.Close(); }
+
+        private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close(); }
+
+        private void ProductItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ProductItem p = ProductItems.SelectedItem as ProductItem;
-            new ShowProductItem(p).Show();
-        }
-
-        private void Cart_Click(object sender, RoutedEventArgs e)
-        {
-            new Cart(cart).Show();
+            new ShowProductItem(updateAmount, p, cart).Show();
         }
     }
 }

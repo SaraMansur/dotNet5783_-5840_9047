@@ -1,6 +1,7 @@
 ﻿using BlApi;
 using BlImplementation;
 using BO;
+using PL.WpfNewOrder;
 using PL.WpfOrderManager;
 using System;
 using System.Collections.Generic;
@@ -43,15 +44,14 @@ namespace PL.WpfProduct
             productsList.ItemsSource = bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem);
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); }
+        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes(AddViewList).Show(); }
 
         private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 ProductForList pl = (ProductForList)productsList.SelectedItem ?? throw new ArgumentNull();
-                new Changes(pl.m_ID).Show();
-                this.Close();
+                new Changes(UpdateViewList,pl.m_ID).Show();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
@@ -60,6 +60,18 @@ namespace PL.WpfProduct
         {
             new MainWindow().Show();
             this.Close();
+        }
+         private void UpdateViewList(ProductForList p)
+        {
+            var item = _Productlist.FirstOrDefault(x => x.m_ID == p.m_ID);
+            int index= _Productlist.IndexOf(item);
+            _Productlist.RemoveAt(index);
+            _Productlist.Insert(index,p);
+        }
+
+        private void AddViewList(ProductForList p)
+        {
+            _Productlist.Add(p);
         }
     }
 }

@@ -2,6 +2,7 @@
 using BO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,29 +26,20 @@ namespace PL.WpfProduct
 
     public partial class Changes : Window
     {
-        private BlApi.IBl? bl = BlApi.Factory.Get();
-
-        private Action<ProductForList> action;
-
-        public Changes()
+        IBl bl = Factory.Get();
+        BO.Product P;
+        public Changes(int id=0)
         {
             InitializeComponent();
-
-            category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));//combobox source of info- categories
-        }
-
-        public Changes(Action<ProductForList> action, Product? myData) : this()
-        {
-            this.action = action;
-            AddP.Visibility = Visibility.Hidden;
-            GridProduct.DataContext = myData;//putting all the data in the textboxes via binding
-            Id.IsEnabled = false;
-        }
-
-        public Changes(Action<ProductForList> action) : this()//to add a product
-        {
-            this.action = action;
-            UpdateP.Visibility = Visibility.Hidden;//update butten invisable
+            DataContext = P;
+            category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+            if (id != 0)
+            {
+                P = bl.Product.ProductId(id);
+                AddP.Visibility = Visibility.Collapsed;
+            }
+            else
+                UpdateP.Visibility = Visibility.Collapsed;
         }
 
         private void AddP_Click(object sender, RoutedEventArgs e)
@@ -122,4 +114,3 @@ namespace PL.WpfProduct
         }
     }
 }
-

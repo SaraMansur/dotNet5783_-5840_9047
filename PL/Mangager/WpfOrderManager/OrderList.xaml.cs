@@ -47,21 +47,6 @@ namespace PL.WpfOrderManager
             Orderlist.CollectionChanged += this.OnCollectionChanged;
         }
 
-        private void updatOrder_Click(object sender, RoutedEventArgs e)
-        {
-            OrderForList p= (List_Order.SelectedItem as OrderForList);
-            if(p!=null)
-              new UpdatOrder(p).Show();
-
-        }
-
-        private void orderDetails_Click(object sender, RoutedEventArgs e)
-        {
-            OrderForList p = (List_Order.SelectedItem as OrderForList);
-            if (p != null)
-                new OrderDetails(p).Show();
-        }
-
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //Get the sender observable collection
@@ -83,6 +68,13 @@ namespace PL.WpfOrderManager
         }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
+
+        private void List_Order_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            OrderForList p = (List_Order.SelectedItem as OrderForList);
+            if (p != null)
+                new OrderDetails(p).Show();
+        }
     }
 }
 

@@ -5,8 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
-        Title="OrderDetails" Height="400" Width="300">
+        Title="OrderDetails" Height="600" Width="1000">
+    <Window.Resources>
+        <DataTemplate x:Key="MyDataTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="ID: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=m_ID}" />
+                <TextBlock Grid.Column="2" Text="  "/>
+                <TextBlock Grid.Column="3" Text="Id of Product: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Text="{Binding Path=m_IdProduct}" />
+                <TextBlock Grid.Column="5" Text="  "/>
+                <TextBlock Grid.Column="6" Text="Name of product: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="7" Text="{Binding Path=m_NameProduct}" />
+                <TextBlock Grid.Column="8" Text="  "/>
+                <TextBlock Grid.Column="9" Text="Price product: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="10" Text="{Binding Path=m_PriceProduct}" />
+                <TextBlock Grid.Column="11" Text="  "/>
+                <TextBlock Grid.Column="12" Text="Amount In Cart: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="13" Text="{Binding Path=m_AmountInCart}" />
+                <TextBlock Grid.Column="14" Text="  "/>
+                <TextBlock Grid.Column="15" Text="Total price item: " FontWeight="Bold"/>
+                <TextBlock Grid.Column="16" Text="{Binding Path=m_TotalPriceItem}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <ListView Name="order" ItemsSource="{Binding}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Id:" Grid.Column="0" Grid.Row="1" FontSize="12" TextAlignment="Center" FontWeight="Bold" />
+        <TextBlock Text="{Binding Path=m_Id}" Grid.Column="1" Grid.Row="1" FontSize="12" TextAlignment="Center"  />
+        <TextBlock Text="Name:" Grid.Column="0" Grid.Row="3" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=m_CustomerName}" Grid.Column="1" Grid.Row="3" FontSize="12" TextAlignment="Center"/>
+        <TextBlock Text="Status:" Grid.Column="0" Grid.Row="5" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=m_OrderStatus}" Grid.Column="1" Grid.Row="5" FontSize="12" TextAlignment="Center"/>
+        <TextBlock Text="Total Price:" Grid.Column="0" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=m_TotalPrice}" Grid.Column="1" Grid.Row="7" FontSize="12" TextAlignment="Center"/>
+        <TextBlock Text="Customer mail:" Grid.Column="0" Grid.Row="9" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path= m_CustomerMail}" Grid.Column="1" Grid.Row="9" FontSize="12" TextAlignment="Center"/>
+        <TextBlock Text="Customer adress:" Grid.Column="2" Grid.Row="1" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=m_CustomerAdress}" Grid.Column="3" Grid.Row="1" FontSize="12" TextAlignment="Center"/>
+        <TextBlock Text="Order time:" Grid.Column="2" Grid.Row="3" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <DatePicker Text="{Binding Path=m_OrderTime}" Grid.Column="3" Grid.Row="3" FontSize="12" />
+        <TextBlock Text="Ship date:" Grid.Column="2" Grid.Row="5" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <DatePicker Text="{Binding Path=m_ShipDate}" Grid.Column="3" Grid.Row="5" FontSize="12" />
+        <TextBlock Text="Deliveryr date:" Grid.Column="2" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <DatePicker Text="{Binding Path=m_DeliveryrDate}" Grid.Column="3" Grid.Row="7" FontSize="12" />
+        <TextBlock Text="order details:" Grid.Column="0" Grid.Row="12"  FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <Button Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="14" VerticalAlignment="Center" Height="41" Width="101" Grid.Column="3"/>
+        <Button Name="shipping" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="134,0,0,0" Grid.Row="14" VerticalAlignment="Center" Height="41" Width="106" Grid.Column="3"/>
+        <ListBox Name="myItems" Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="36,10,36,10"/>
+
     </Grid>
 </Window>

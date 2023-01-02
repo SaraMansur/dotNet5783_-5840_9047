@@ -2,6 +2,7 @@
 using BO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +23,41 @@ namespace PL.WpfOrderManager
     public partial class OrderDetails : Window
     {
         public IBl bl = Factory.Get();
+        private ObservableCollection<OrderForList> Orderlist;
+        private ObservableCollection<OrderItem?> Items;
+        //private ObservableCollection<>
+        Order order;
         public OrderDetails(OrderForList p)
         {
             InitializeComponent();
-            Order o=bl.Order.orderDetails(p.m_Id);
-            this.DataContext = o;  
+            order = bl.Order.orderDetails(p.m_Id);
+            DataContext = order;
+            Items = new(order.m_orderItems);
+            myItems.DataContext = Items;    
+        }
+
+        private void OrderDelivery_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.Order.orderDelivery(order.m_Id);
+                OrderList win = new OrderList();
+                this.Close();
+                MessageBox.Show("The order is updat to be Delivery in succsesfuly!");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+        }
+
+        private void OrderShipping_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.Order.sendingAnInvitation(order.m_Id);
+                OrderList win = new OrderList();
+                this.Close();
+                MessageBox.Show("The order is updat to be shipping in succsesfuly!");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
     }
 }

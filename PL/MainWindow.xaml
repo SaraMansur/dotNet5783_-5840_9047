@@ -6,27 +6,13 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Height="434" VerticalAlignment="Bottom">
         <Grid.Background>
             <ImageBrush ImageSource="/לשרה.png"/>
         </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.3*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="1.3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.3*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="1.3*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Grid.Column="1" Grid.Row ="1" Background="{x:Null}" Foreground="#FF8F912D" FontFamily="Sitka Text" FontWeight="Bold" FontSize="16" BorderBrush="#FF8F912D"/>
-        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Grid.Column="1" Grid.Row ="3" Background="{x:Null}" FontFamily="Sitka Text" Foreground="#FF8F912D" FontSize="16" FontWeight="Bold" BorderBrush="#FF8F912D"/>
-        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Grid.Column="3" Grid.Row ="1" Background="{x:Null}" FontFamily="Sitka Text" FontSize="14" Foreground="#FF8F912D" BorderBrush="#FF8F912D" FontWeight="Bold"/>
-        <Button x:Name="registereduser" Content="registered user" Click="registeredUser_Click" Grid.Column="3" Grid.Row ="3" Background="{x:Null}" BorderBrush="#FF8F912D" FontFamily="Sitka Text" FontSize="16" FontWeight="Bold" Foreground="#FF8F912D"/>
+        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Background="{x:Null}" Foreground="#FF8F912D" FontFamily="Sitka Text" FontWeight="Bold" FontSize="16" BorderBrush="#FF8F912D" Margin="65,217,544,130"/>
+        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="{x:Null}" FontFamily="Sitka Text" Foreground="#FF8F912D" FontSize="16" FontWeight="Bold" BorderBrush="#FF8F912D" Margin="286,217,319,130"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="14" Foreground="#FF8F912D" BorderBrush="#FF8F912D" FontWeight="Bold" Margin="520,217,82,130"/>
+        <TextBlock Grid.Column="2" Margin="0,71,0,0" Text="WELCOME" VerticalAlignment="Top" Height="82" Foreground="#FF8F912D" Grid.RowSpan="2" Width="492" FontFamily="Sitka Small" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

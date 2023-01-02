@@ -45,7 +45,7 @@ namespace PL.WpfProduct
             _productsList.ItemsSource = bl.Product.FilterBycategory((BO.Enums.Category)AttributeSelector.SelectedItem);
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show(); this.Close(); }
+        private void AddProduct_Click(object sender, RoutedEventArgs e) { new Changes().Show();  }
 
         private void MouseDoubleClick_list(object sender, MouseButtonEventArgs e)
         {

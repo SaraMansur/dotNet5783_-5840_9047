@@ -28,6 +28,7 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         BO.Product P;
+        private Action<ProductForList> action;
         public Changes(int id=0)
         {
             InitializeComponent();
@@ -36,34 +37,27 @@ namespace PL.WpfProduct
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (id != 0)
             {
-                P = bl.Product.ProductId(id);
                 AddP.Visibility = Visibility.Collapsed;
             }
             else
                 UpdateP.Visibility = Visibility.Collapsed;
         }
 
+        public Changes(Action<ProductForList> a,int id=0):this(id)
+        {
+            action = a;
+        }
         private void AddP_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (category.SelectedItem == null) //if they didnt enter a category 
-                {
-                    MessageBox.Show("please select a category");
-                    return;
-                }
-                BO.Product product = new BO.Product()//creating a new product
-                {
-                    m_Id = int.Parse(Id.Text),
-                    m_Name = Name.Text,
-                    m_Price = double.Parse(Price.Text),
-                    m_InStock = int.Parse(InStock.Text),
-                    m_Category = (BO.Enums.Category)category.SelectedItem
-                };
                 try
                 {
-                    bl?.Product.AddProduct(product);//adds the product to the do
-                   // action(bl?.Product.ProductId(product.m_Id) ?? throw new ArgumentNull());//goes back to the window b4 and adds the product to the observablcollection
+                    bl?.Product.AddProduct(P);//adds the product to the do
+                    ProductForList pfl = new ProductForList() { m_Category = P.m_Category, m_ID = P.m_Id, m_NameProduct = P.m_Name, m_PriceProduct = P.m_Price };
+                    action(pfl);
+                    P = new Product();
+                    DataContext = P;
                     MessageBox.Show("product added successfully");
                     this.Close();
                 }
@@ -87,18 +81,13 @@ namespace PL.WpfProduct
                     MessageBox.Show("Please enter a name");
                     return;
                 }
-                BO.Product product = new BO.Product()//crating a new product
-                {
-                    m_Id = int.Parse(Id.Text),
-                    m_Name = Name.Text,
-                    m_Price = double.Parse(Price.Text),
-                    m_InStock = int.Parse(InStock.Text),
-                    m_Category = (BO.Enums.Category)category.SelectedItem
-                };
                 try
                 {
-                    bl?.Product.UpdateProduct(product);//adds the product to the do
-                  //  action(bl?.Product.ProductId(product.m_Id) ?? throw new ArgumentNull());//goes back a window and does the update to the oc
+                    bl?.Product.UpdateProduct(P);//adds the product to the do
+                    ProductForList pfl = new ProductForList() { m_Category = P.m_Category, m_ID = P.m_Id, m_NameProduct = P.m_Name, m_PriceProduct = P.m_Price };
+                    action(pfl);
+                    P = new Product();
+                    DataContext = P;
                     MessageBox.Show("product updated successfully");
                     this.Close();
 

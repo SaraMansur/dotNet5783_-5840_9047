@@ -25,7 +25,7 @@ namespace PL.WpfOrderManager
         public IBl bl = Factory.Get();
         private ObservableCollection<OrderForList> Orderlist;
         private ObservableCollection<OrderItem?> Items;
-        //private ObservableCollection<>
+        private Action<OrderForList> action;
         Order order;
         public OrderDetails(OrderForList p)
         {
@@ -36,11 +36,17 @@ namespace PL.WpfOrderManager
             myItems.DataContext = Items;    
         }
 
+        public OrderDetails(Action<OrderForList> a,OrderForList p):this(p)
+        {
+            action = a;
+        }
         private void OrderDelivery_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                bl.Order.orderDelivery(order.m_Id);
+                Order o=bl.Order.orderDelivery(order.m_Id);
+                OrderForList ofl=new OrderForList() { m_AmountItems=o.m_orderItems.Count(),m_CustomerName=o.m_CustomerName,m_Id=o.m_Id,m_OrderStatus=o.m_OrderStatus,m_TotalPrice=o.m_TotalPrice};
+                action(ofl);
                 OrderList win = new OrderList();
                 this.Close();
                 MessageBox.Show("The order is updat to be Delivery in succsesfuly!");
@@ -52,7 +58,9 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                bl.Order.sendingAnInvitation(order.m_Id);
+                Order o=bl.Order.sendingAnInvitation(order.m_Id);
+                OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
+                action(ofl);
                 OrderList win = new OrderList();
                 this.Close();
                 MessageBox.Show("The order is updat to be shipping in succsesfuly!");

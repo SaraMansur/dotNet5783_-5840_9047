@@ -92,7 +92,7 @@
         <DatePicker Text="{Binding Path=m_OrderTime}" Grid.Column="3" Grid.Row="3" FontSize="12" />
         <TextBlock Text="Ship date:" Grid.Column="2" Grid.Row="5" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
         <DatePicker Text="{Binding Path=m_ShipDate}" Grid.Column="3" Grid.Row="5" FontSize="12" />
-        <TextBlock Text="Deliveryr date:" Grid.Column="2" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="Delivery date:" Grid.Column="2" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
         <DatePicker Text="{Binding Path=m_DeliveryrDate}" Grid.Column="3" Grid.Row="7" FontSize="12" />
         <TextBlock Text="order details:" Grid.Column="0" Grid.Row="12"  FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
         <Button Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="14" VerticalAlignment="Center" Height="41" Width="101" Grid.Column="3"/>

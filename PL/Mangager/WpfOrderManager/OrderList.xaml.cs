@@ -25,18 +25,8 @@ namespace PL.WpfOrderManager
     /// </summary>
     public partial class OrderList : Window
     {
-        public ObservableCollection<OrderForList> Orderlist { get; set; }
+        public ObservableCollection<OrderForList> Orderlist;
         public IBl bl = Factory.Get();
-
-        //public Enums.Status? m_OrderStatus
-        //{
-        //    get { return (Enums.Status?)GetValue(DependencyStatus); }
-        //    set { SetValue(DependencyStatus, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for MyPropertyStatus.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty DependencyStatus =
-        //    DependencyProperty.Register("m_OrderStatus", typeof(Enums.Status?), typeof(OrderForList), new PropertyMetadata(0));
 
 
         public OrderList(int num=0)
@@ -44,28 +34,8 @@ namespace PL.WpfOrderManager
             InitializeComponent();
             Orderlist = new(bl.Order.OrderList()!);
             DataContext = Orderlist;
-            Orderlist.CollectionChanged += this.OnCollectionChanged;
         }
 
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            //Get the sender observable collection
-            ObservableCollection<OrderForList> obsSender = sender as ObservableCollection<OrderForList>;
-
-            List<OrderForList> editedOrRemovedItems = new List<OrderForList>();
-            foreach (OrderForList newItem in e.NewItems)
-            {
-                editedOrRemovedItems.Add(newItem);
-            }
-
-            foreach (OrderForList oldItem in e.OldItems)
-            {
-                editedOrRemovedItems.Add(oldItem);
-            }
-
-            //Get the action which raised the collection changed event
-            NotifyCollectionChangedAction action = e.Action;
-        }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
 
@@ -73,12 +43,16 @@ namespace PL.WpfOrderManager
         {
             OrderForList p = (List_Order.SelectedItem as OrderForList);
             if (p != null)
-                new OrderDetails(p).Show();
+                new OrderDetails(UpdateViewList,p).Show();
+        }
+
+        private void UpdateViewList(OrderForList o)
+        {
+            var item = Orderlist.FirstOrDefault(x => x.m_Id == o.m_Id);
+            int index = Orderlist.IndexOf(item);
+            Orderlist.RemoveAt(index);
+            Orderlist.Insert(index, o);
         }
     }
 }
 
-public interface INotifyCollectionChanged 
-{
-    void NotifyCollectionChanged() { }
-}

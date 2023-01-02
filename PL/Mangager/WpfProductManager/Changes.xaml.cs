@@ -2,6 +2,7 @@
 using BO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,16 +26,15 @@ namespace PL.WpfProduct
     public partial class Changes : Window
     {
         IBl bl = Factory.Get();
-        BO.Product P = new BO.Product();
+        BO.Product P;
         public Changes(int id=0)
         {
             InitializeComponent();
-
+            DataContext = P;
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-            if (id != null)
+            if (id != 0)
             {
                 P = bl.Product.ProductId(id);
-                this.DataContext = P;
                 AddP.Visibility = Visibility.Collapsed;
             }
             else

@@ -29,7 +29,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="40,0,160,0" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="14">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="40,0,160,0" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="14" MouseDoubleClick="List_Order_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id}"  Width="80"/>
@@ -40,8 +40,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="updatOrder" Content="update order" Click="updatOrder_Click" Margin="645,164,0,0" Style="{StaticResource myButtonStyle}"/>
-        <Button Name="orderDetails" Content="order details" Click="orderDetails_Click" Margin="645,64,0,0" Style="{StaticResource myButtonStyle}"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

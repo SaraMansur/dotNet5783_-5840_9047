@@ -1,8 +1,9 @@
 ﻿using DO;
+using System.ComponentModel;
 
 namespace BO;
 
-public class Order
+public class Order : INotifyPropertyChanged
 {
     /// <summary>
     /// the id of the order
@@ -11,15 +12,49 @@ public class Order
     /// <summary>
     /// the name of the customrt
     /// </summary>
-    public string? m_CustomerName { get; set; }
+
+    private string? CustomerName;
+    public string? m_CustomerName
+    {
+        get { return CustomerName; }
+        set
+        {
+            CustomerName = value;
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NameUser")); }
+
+        }
+    }
+
     /// <summary>
     /// the meil of the customer
     /// </summary>
-    public string? m_CustomerMail { get; set; }
+    private string? CustomerMail;
+    public string? m_CustomerMail
+    {
+        get { return CustomerMail; }
+        set
+        {
+            CustomerMail = value;
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MailUser")); }
+
+        }
+    }
+
     /// <summary>
     /// the address of the customer
     /// </summary>
-    public string? m_CustomerAdress { get; set; }
+    private string? CustomerAdress;
+    public string? m_CustomerAdress
+    {
+        get { return CustomerAdress; }
+        set
+        {
+            CustomerAdress = value;
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AdressUser")); }
+
+        }
+    }
+
     /// <summary>
     /// the status of the order
     /// </summary>
@@ -44,6 +79,9 @@ public class Order
     /// list of the item that in the order
     /// </summary>
     public List<BO.OrderItem?>? m_orderItems { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
     /// <summary>
     /// This function will print all order attributes
     /// </summary>
@@ -61,6 +99,4 @@ public class Order
     order items: {'\n'}  
     {string.Join('\n', m_orderItems)} 
      ";
-
-
 }

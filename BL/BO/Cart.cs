@@ -1,8 +1,9 @@
 ﻿using DO;
+using System.ComponentModel;
 
 namespace BO;
 
-public class Cart
+public class Cart : INotifyPropertyChanged
 {
     /// <summary>
     /// the name of the customrt
@@ -23,7 +24,20 @@ public class Cart
     /// <summary>
     /// the price of all the cart
     /// </summary>
-    public double m_TotalPrice { get; set; }
+    private double? TotalPrice;
+    public double? m_TotalPrice
+    {
+        get { return TotalPrice; }
+        set
+        {
+            TotalPrice = value;
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NameUser")); }
+
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
     /// <summary>
     /// This function will print all the cart attributes
     /// </summary>

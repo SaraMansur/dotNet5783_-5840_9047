@@ -17,4 +17,9 @@ public class Enums
     {
         InProcess, Ordered, Shipped, Received
     }
+
+    public enum Numbers
+    {
+        one, two, three, four, five
+    }
 }

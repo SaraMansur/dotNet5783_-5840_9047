@@ -9,10 +9,10 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="80,79,0,0" TextWrapping="Wrap" Text="Enter yor name:" VerticalAlignment="Top" Height="18" Width="110"/>
         <TextBlock HorizontalAlignment="Left" Margin="80,143,0,0" TextWrapping="Wrap" Text="Enter your address:" VerticalAlignment="Top" Height="18" Width="110"/>
-        <TextBlock HorizontalAlignment="Left" Margin="80,199,0,0" TextWrapping="Wrap" Text="Enter your email:" VerticalAlignment="Top" Height="21" Width="110"/>
-        <TextBox HorizontalAlignment="Left" Margin="230,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="230,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="230,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,0,0,0" TextWrapping="Wrap" Text="Enter your email:" VerticalAlignment="Center" Height="21" Width="110"/>
+        <TextBox HorizontalAlignment="Left" Margin="230,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=m_CustomerName,Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Margin="230,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=m_CustomerAdress,Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Margin="230,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=m_CustomerMail,Mode=TwoWay}"/>
         <Button Content="Confirm Order" HorizontalAlignment="Left" Margin="100,294,0,0" VerticalAlignment="Top" Height="45" Width="90" Click="Confirm_Order_Click"/>
     </Grid>
 </Window>

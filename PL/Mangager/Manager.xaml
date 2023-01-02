@@ -22,8 +22,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Name="ProductForList" Content="Product For List" Click="ProductForList_Click" Grid.Column="3" Grid.Row="1" Foreground="#FF8F912D" FontFamily="Sitka Heading" FontSize="16" FontWeight="Bold" FontStyle="Italic" BorderBrush="#FF8F912D" Background="{x:Null}"/>
-        <Button Name="OrderForList" Content="Order For List" Click="OrderForList_Click" Grid.Column="1" Grid.Row="1" FontFamily="Sitka Heading" FontSize="16" Foreground="#FF8F912D" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" BorderBrush="#FF8F912D"/>
+        <Button Name="ProductForList" Content="Products" Click="ProductForList_Click" Grid.Column="3" Grid.Row="1" Foreground="#FF8F912D" FontFamily="Sitka Heading" FontSize="16" FontWeight="Bold" FontStyle="Italic" BorderBrush="#FF8F912D" Background="{x:Null}"/>
+        <Button Name="OrderForList" Content="Orders" Click="OrderForList_Click" Grid.Column="1" Grid.Row="1" FontFamily="Sitka Heading" FontSize="16" Foreground="#FF8F912D" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" BorderBrush="#FF8F912D"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/חץץ.jpg"/>

@@ -28,6 +28,8 @@ public class ProductItem
     /// the amount of the product in the cart
     /// </summary>
     public int m_AmountInCart { get; set; }
+
+    public Enums.Numbers? numbers { get; set; }
     /// <summary>
     /// this function print all the features of the product item
     /// </summary>

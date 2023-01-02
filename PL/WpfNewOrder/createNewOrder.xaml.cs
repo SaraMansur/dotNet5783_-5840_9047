@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Security.Policy;
 using System.Reflection.Emit;
+using System.Data;
 
 namespace PL.WpfNewOrder
 {
@@ -36,8 +37,9 @@ namespace PL.WpfNewOrder
             InitializeComponent();
             ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
             ProductItems.ItemsSource = ProductItemlist;
+
             GroupBy.ItemsSource = new string[] { "None","Grouping by category" , "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
-        }
+        }   
 
         public Predicate<object> Filtering { get; private set; }
 

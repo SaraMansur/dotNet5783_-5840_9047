@@ -31,6 +31,7 @@ namespace PL.WpfProduct
         public Changes(int id=0)
         {
             InitializeComponent();
+            if (id != 0) P = bl.Product.ProductId(id);
             DataContext = P;
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
             if (id != 0)

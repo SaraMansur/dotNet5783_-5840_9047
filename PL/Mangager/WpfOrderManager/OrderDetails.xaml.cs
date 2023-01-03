@@ -31,15 +31,17 @@ namespace PL.WpfOrderManager
         {
             InitializeComponent();
             order = bl.Order.orderDetails(p.m_Id);
+            if (order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
+            else { deliver.Text = order.m_DeliveryrDate.ToString(); }
+            if (order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }
+            else { ship.Text = order.m_ShipDate.ToString(); }   
             DataContext = order;
             Items = new(order.m_orderItems);
             myItems.DataContext = Items;    
         }
 
-        public OrderDetails(Action<OrderForList> a,OrderForList p):this(p)
-        {
-            action = a;
-        }
+        public OrderDetails(Action<OrderForList> a,OrderForList p):this(p) { action = a; }
+
         private void OrderDelivery_Click(object sender, RoutedEventArgs e)
         {
             try

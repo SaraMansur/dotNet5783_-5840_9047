@@ -33,12 +33,10 @@ namespace PL.WpfProduct
         {
             InitializeComponent();
             if (id != 0) P = bl.Product.ProductId(id);
-            DataContext = P;
+            else { P = new BO.Product() { m_Category = Enums.Category.None, m_Id = 0, m_InStock = 0, m_Name = "", m_Price = 0 }; };
+            this.DataContext = P;
             category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-            if (id != 0)
-            {
-                AddP.Visibility = Visibility.Collapsed;
-            }
+            if (id != 0) { AddP.Visibility = Visibility.Collapsed; }
             else
                 UpdateP.Visibility = Visibility.Collapsed;
         }
@@ -56,20 +54,12 @@ namespace PL.WpfProduct
                     bl?.Product.AddProduct(P);//adds the product to the do
                     ProductForList pfl = new ProductForList() { m_Category = P.m_Category, m_ID = P.m_Id, m_NameProduct = P.m_Name, m_PriceProduct = P.m_Price };
                     action(pfl);
-                    P = new Product();
-                    DataContext = P;
                     MessageBox.Show("product added successfully");
                     this.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }   
             }
-            catch (Exception)//if missing any data
-            {
-                MessageBox.Show("Please enter missing data");
-            }
+            catch (Exception) { MessageBox.Show("Please enter missing data"); }//if missing any data 
         }
 
         private void UpdateP_Click(object sender, RoutedEventArgs e)
@@ -86,21 +76,14 @@ namespace PL.WpfProduct
                     bl?.Product.UpdateProduct(P);//adds the product to the do
                     ProductForList pfl = new ProductForList() { m_Category = P.m_Category, m_ID = P.m_Id, m_NameProduct = P.m_Name, m_PriceProduct = P.m_Price };
                     action(pfl);
-                    P = new Product();
-                    DataContext = P;
                     MessageBox.Show("product updated successfully");
                     this.Close();
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+
             }
-            catch (Exception)//if missing any data
-            {
-                MessageBox.Show("Please enter missing data");
-            }
+            catch (Exception) { MessageBox.Show("Please enter missing data"); }//if missing any data 
         }
     }
 }

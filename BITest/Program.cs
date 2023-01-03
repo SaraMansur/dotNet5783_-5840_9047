@@ -178,7 +178,7 @@ internal class Program
                 bl.Product.DeleteProduct(int.Parse(Console.ReadLine()!));
                 break;
             case "f":
-                IEnumerable<BO.ProductItem> e2= bl.Product.CatalogList();
+                IEnumerable<BO.ProductItem> e2= bl.Product.CatalogList(null);
                 foreach (var item in e2)
                 {
                     Console.WriteLine(item + "\n");

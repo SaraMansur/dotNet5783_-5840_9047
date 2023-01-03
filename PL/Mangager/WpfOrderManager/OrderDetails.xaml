@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
-        Title="OrderDetails" Height="600" Width="1000">
+        Title="OrderDetails" Height="630" Width="1081">
     <Window.Resources>
         <DataTemplate x:Key="MyDataTemplate">
             <Grid>
@@ -51,53 +51,50 @@
                 <TextBlock Grid.Column="16" Text="{Binding Path=m_TotalPriceItem}" />
             </Grid>
         </DataTemplate>
+        <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF6B641F" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontFamily" Value="Sylfaen" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <Style x:Key="myTextBlock" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
     </Window.Resources>
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="0.7*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Id:" Grid.Column="0" Grid.Row="1" FontSize="12" TextAlignment="Center" FontWeight="Bold" />
-        <TextBlock Text="{Binding Path=m_Id}" Grid.Column="1" Grid.Row="1" FontSize="12" TextAlignment="Center"  />
-        <TextBlock Text="Name:" Grid.Column="0" Grid.Row="3" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=m_CustomerName}" Grid.Column="1" Grid.Row="3" FontSize="12" TextAlignment="Center"/>
-        <TextBlock Text="Status:" Grid.Column="0" Grid.Row="5" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=m_OrderStatus}" Grid.Column="1" Grid.Row="5" FontSize="12" TextAlignment="Center"/>
-        <TextBlock Text="Total Price:" Grid.Column="0" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=m_TotalPrice}" Grid.Column="1" Grid.Row="7" FontSize="12" TextAlignment="Center"/>
-        <TextBlock Text="Customer mail:" Grid.Column="0" Grid.Row="9" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path= m_CustomerMail}" Grid.Column="1" Grid.Row="9" FontSize="12" TextAlignment="Center"/>
-        <TextBlock Text="Customer adress:" Grid.Column="2" Grid.Row="1" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=m_CustomerAdress}" Grid.Column="3" Grid.Row="1" FontSize="12" TextAlignment="Center"/>
-        <TextBlock Text="Order time:" Grid.Column="2" Grid.Row="3" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <DatePicker Text="{Binding Path=m_OrderTime}" Grid.Column="3" Grid.Row="3" FontSize="12" />
-        <TextBlock Text="Ship date:" Grid.Column="2" Grid.Row="5" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <DatePicker Text="{Binding Path=m_ShipDate}" Grid.Column="3" Grid.Row="5" FontSize="12" />
-        <TextBlock Text="Delivery date:" Grid.Column="2" Grid.Row="7" FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <DatePicker Text="{Binding Path=m_DeliveryrDate}" Grid.Column="3" Grid.Row="7" FontSize="12" />
-        <TextBlock Text="order details:" Grid.Column="0" Grid.Row="12"  FontSize="12" TextAlignment="Center" FontWeight="Bold"/>
-        <Button Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="14" VerticalAlignment="Center" Height="41" Width="101" Grid.Column="3"/>
-        <Button Name="shipping" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="134,0,0,0" Grid.Row="14" VerticalAlignment="Center" Height="41" Width="106" Grid.Column="3"/>
-        <ListBox Name="myItems" Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="36,10,36,10"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Mangager/WpfOrderManager/לשרה.png"/>
+        </Grid.Background>
+        <TextBlock Margin="142,66,0,0" Text="Id of order:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="138,123,0,0" Text="The name of customer:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="135,243,0,0" Text="The mail of customer:" RenderTransformOrigin="-0.736,1.563" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="130,302,0,0" Text="The status of the order:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="132,182,0,0" Text="The adress of customer:" RenderTransformOrigin="-0.371,0.516" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="130,543,0,0" Text="The totul price of the order:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="135,483,0,0" Text="The delivery time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="135,424,0,0" Text="The ship time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="130,360,0,0" Text="The orderd time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="377,65,0,0" Text="{Binding Path=m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,127,0,0" Text="{Binding Path= m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,186,0,0" Text="{Binding Path= m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,248,0,0" Text="{Binding Path= m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,306,0,0" Text="{Binding Path= m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,365,0,0" Text="{Binding Path= m_ShipDate}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,424,0,0" Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,487,0,0" Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,547,0,0" Text="{Binding Path= m_TotalPrice}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+
+        <Button Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="923,334,0,0" VerticalAlignment="Top" Height="41" Width="101" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold"/>
+        <Button Name="shipping" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="684,334,0,0" VerticalAlignment="Top" Height="42" Width="106" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold"/>
+        <ListBox Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="553,156,10,0" Height="129" VerticalAlignment="Top"/>
+        <TextBlock Margin="577,123,0,0" Style="{StaticResource myTextBlockStyle}" Text="The order items:" />
 
     </Grid>
 </Window>

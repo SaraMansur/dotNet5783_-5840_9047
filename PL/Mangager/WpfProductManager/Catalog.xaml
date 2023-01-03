@@ -40,7 +40,13 @@
                     <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="200"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_PriceProduct}" Width="150"/>
                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="80"/>
-                    <GridViewColumn Header="Image:" DisplayMemberBinding="{Binding Path= m_ImageSource}" Width="80"/>
+                    <!--<GridViewColumn Header="Image:" x:Name="Image" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding m_ImageSource, Mode=OneTime, Converter={StaticResource ImageConverter}}" Width="80"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
                 </GridView>
             </ListView.View>
         </ListView>

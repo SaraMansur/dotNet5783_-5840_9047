@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
-        Title="createNewOrder" Height="607" Width="815">
+        Title="createNewOrder" Height="595" Width="1040">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
@@ -23,13 +23,13 @@
             <Button x:Name="Cart" Content=" My Cart" Margin="0,489,323,-500" Width="163" BorderBrush="#FF6B641F" Foreground="#FF6B641F" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="{x:Null}"/>
 
         </Grid>
-        <ListView Name="ProductItems" Margin="0,20,0,137" HorizontalAlignment="Center" Width="765" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged">
+        <ListView Name="ProductItems" Margin="0,20,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding m_ID}" />
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding m_NameProduct}" />
+                    <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding m_NameProduct}" />
                     <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding m_PriceProduct}" />
-                    <GridViewColumn Header="Caregory" Width="100" DisplayMemberBinding="{Binding Category }" />
+                    <GridViewColumn Header="Caregory" Width="120" DisplayMemberBinding="{Binding Category }" />
                     <GridViewColumn Header="In Stock" Width="100" DisplayMemberBinding="{Binding m_InStock}" />
                     <GridViewColumn Header="Amount In Cart" Width="120" DisplayMemberBinding="{Binding m_AmountInCart}" />
                     <GridViewColumn Header="Update Amount" x:Name="_amount" Width="130">

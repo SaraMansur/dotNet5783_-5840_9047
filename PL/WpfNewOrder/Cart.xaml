@@ -55,7 +55,7 @@
         </Button>
         <TextBlock x:Name="Totul_Price_Of_The_Cart" Grid.Column="1" HorizontalAlignment="Left" Margin="39,376,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="158" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold"/>
         <local:NumericUpDownControl x:Name="gradeNumUpDown" Margin="648,168,60,218" RenderTransformOrigin="0.036,0.659" />
-        <Button x:Name="updateGrageButton" Content="update Grade" Click="updateAmountButton_Click" Margin="638,202,0,0" Style="{StaticResource myButtonStyle}" Width="92" Height="47"/>
+        <Button x:Name="updateGrageButton" Content="update Amount" Click="updateAmountButton_Click" Margin="638,202,0,0" Style="{StaticResource myButtonStyle}" Width="102" Height="48" FontSize="14"/>
         <TextBlock Name="Totul_Price" Grid.Column="1" HorizontalAlignment="Left" Margin="189,376,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice,Mode=TwoWay}"  VerticalAlignment="Top" Width="62" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold" Height="19"/>
     </Grid>
 </Window>

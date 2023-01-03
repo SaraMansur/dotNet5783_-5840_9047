@@ -97,13 +97,12 @@ namespace PL.WpfNewOrder
                 OrderItem p = (Items.SelectedItem as OrderItem);
                 if (p == null) throw new Exception();
                 C = bl.Cart.UpdateAmount(C, p.m_IdProduct, amount);
-                for (int i = 0; i < C.m_orderItems.Count(); i++)
-                {
-                    var item = C.m_orderItems[i];
-                    Dates.RemoveAt(i);
-                    if (amount != 0) Dates.Insert(i, item);
-                }
-                Totul_Price.Text = amount.ToString();
+                var item = Dates.FirstOrDefault(x => x.m_ID == p.m_ID);
+                int index= Dates.IndexOf(item);
+                Dates.RemoveAt(index);
+                if(item.m_AmountInCart!=0) Dates.Insert(index, item);
+
+                Totul_Price.Text = C.m_TotalPrice.ToString();
             }
             catch(Exception ex) { MessageBox.Show("You have not selected a product to update. Please select a product"); }   
         }

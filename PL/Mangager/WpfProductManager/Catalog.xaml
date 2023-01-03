@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfProduct"
         mc:Ignorable="d"
-        Title="Catalog" Height="607" Width="815">
+        Title="Catalog" Height="607" Width="945">
     <Grid Name="CatalogGrid">
         <Grid.Background>
             <ImageBrush ImageSource="/Mangager/WpfProductManager/לשרה.png"/>
@@ -37,9 +37,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_ID }" Width="80" />
-                    <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="200"/>
+                    <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="300"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_PriceProduct}" Width="150"/>
-                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="80"/>
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="120"/>
                     <!--<GridViewColumn Header="Image:" x:Name="Image" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

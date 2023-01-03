@@ -39,7 +39,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Create Order" Margin="638,44,0,0" Style="{StaticResource myButtonStyle}" Grid.Column="1" Height="56" Width="102" Click="Confir_Order"/>
-        <Button Content="Make Empy" Margin="638,249,0,0" Style="{StaticResource myButtonStyle}" Grid.Column="1" Height="56" Width="102" Click="Make_Empy_Click"/>
+        <Button Content="Make Empy" Margin="633,278,0,0" Style="{StaticResource myButtonStyle}" Height="56" Width="102" Click="Make_Empy_Click"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Button.RenderTransform>
                 <TransformGroup>

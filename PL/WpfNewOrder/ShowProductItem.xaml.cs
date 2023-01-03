@@ -62,5 +62,15 @@ namespace PL.WpfNewOrder
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ConfirmAmount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

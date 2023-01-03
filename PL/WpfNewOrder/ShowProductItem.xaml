@@ -8,7 +8,7 @@
         Title="ShowProductItem" Height="355" Width="420">
     <Window.Resources>
         <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FF898E25" />
+            <Setter Property="Foreground" Value="#FF6B641F" />
             <Setter Property="FontFamily" Value="Sylfaen" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="14" />
@@ -58,8 +58,8 @@
         <TextBlock Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path= m_InStock}" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Text="Amount in cart:" Grid.Column="1" Grid.Row="11" FontSize="15" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Name="AmountInCart" Grid.Column="2" Grid.Row="11" Text="{Binding Path=m_AmountInCart }" Style="{StaticResource myTextBlockStyle}"/>
-        <Button Name="AddCart" Content="+" HorizontalAlignment="Left" Margin="69,34,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="-0.098,0.511" Height="27" Width="27" Click="AddCart_Click" Foreground="#FF898E25" FontSize="18" BorderBrush="#FF898E25" Background="{x:Null}"/>
-        <Button Name="RemoveCart" Grid.Column="2" Content="-" HorizontalAlignment="Left" Margin="78,34,0,0" Grid.Row="14" VerticalAlignment="Top" RenderTransformOrigin="0.058,0.403" Height="27" Width="26" Grid.ColumnSpan="2" Click="RemoveCart_Click" BorderBrush="#FF898E25" Foreground="#FF898E25" FontSize="18" Background="{x:Null}"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="8,34,0,0" Grid.Row="14" TextWrapping="Wrap" Text="Update Amount In My Cart" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="2" Height="27" FontFamily="Sylfaen" Foreground="#FF898E25" FontSize="14" Background="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="75,34,0,0" Grid.Row="14" TextWrapping="Wrap" Text="Please ender amount to update:" VerticalAlignment="Top" Width="204" Grid.ColumnSpan="3" Height="27" FontFamily="Sylfaen" Foreground="#FF6B641F" FontSize="14" Background="{x:Null}" />
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="80,34,0,0" Grid.Row="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Grid.ColumnSpan="2" Height="27" Foreground="#FF6B641F" TextChanged="TextBox_TextChanged"/>
+        <Button Grid.Column="1" Content="confirm" HorizontalAlignment="Left" Margin="60,79,0,0" Grid.Row="14" VerticalAlignment="Top" Width="60" Click="ConfirmAmount_Click"/>
     </Grid>
 </Window>

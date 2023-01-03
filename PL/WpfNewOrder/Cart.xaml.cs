@@ -83,9 +83,29 @@ namespace PL.WpfNewOrder
             }
         }
 
-        private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e) 
         {
-            new ShowProductItem(productItem, C).Show();
+            BO.OrderItem OI = (Items.SelectedItem as OrderItem);
+            new ShowProductItem((bl.Product.CatalogProductId(OI.m_IdProduct)), C).Show(); 
+        }
+
+        private void updateAmountButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int amount = (int)this.gradeNumUpDown.Value;
+                OrderItem p = (Items.SelectedItem as OrderItem);
+                if (p == null) throw new Exception();
+                C = bl.Cart.UpdateAmount(C, p.m_IdProduct, amount);
+                for (int i = 0; i < C.m_orderItems.Count(); i++)
+                {
+                    var item = C.m_orderItems[i];
+                    Dates.RemoveAt(i);
+                    if (amount != 0) Dates.Insert(i, item);
+                }
+                Totul_Price.Text = amount.ToString();
+            }
+            catch(Exception ex) { MessageBox.Show("You have not selected a product to update. Please select a product"); }   
         }
     }
 }

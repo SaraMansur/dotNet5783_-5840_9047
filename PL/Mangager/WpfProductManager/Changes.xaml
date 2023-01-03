@@ -16,7 +16,7 @@
     </Window.Resources>
     <Grid x:Name="GridProduct">
         <Grid.Background>
-            <ImageBrush/>
+            <ImageBrush ImageSource="/Mangager/WpfProductManager/3392075.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

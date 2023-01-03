@@ -26,7 +26,7 @@
             <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
         </Grid.Background>
 
-        <ListView x:Name="Items" Grid.Row ="0" BorderBrush="#FF6B641F"  FontSize="16" ItemsSource="{Binding}" Margin="17,34,185,0" Height="337" VerticalAlignment="Top" Grid.Column="1" Background="{x:Null}" MouseDoubleClick="Items_MouseDoubleClick">
+        <ListView x:Name="Items" Grid.Row ="0" BorderBrush="#FF6B641F"  FontSize="16" ItemsSource="{Binding}" Margin="17,34,185,0" Height="337" VerticalAlignment="Top" Grid.Column="1" Background="{x:Null}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID of order" DisplayMemberBinding="{Binding Path= m_ID}" Width="80"/>

@@ -87,6 +87,8 @@ internal class Product : IProduct
     /// <exception cref="FaildAdding"></exception>
     public void AddProduct(BO.Product? product)
     {
+        if(product.m_Category==Enums.Category.None)
+            throw new FaildAdding(new BO.IlegalInput());
         product = product ?? throw new ArgumentNull();
         if (product.m_Id < 100000|| product.m_Id > 999999|| product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
             throw new FaildAdding(new IlegalInput());

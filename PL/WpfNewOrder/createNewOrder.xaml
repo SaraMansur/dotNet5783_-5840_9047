@@ -14,16 +14,16 @@
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Margin="0,0,0,506" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="0" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="480,0,25,0" Grid.ColumnSpan="2" />
-            <Button x:Name="Cart" Content=" My Cart" Margin="0,489,323,-500" Width="163" BorderBrush="#FF6B641F" Foreground="#FF6B641F" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="{x:Null}"/>
+            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="1" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="32,10,30,0" Height="39" VerticalAlignment="Top" FontSize="16" />
+            <Button x:Name="Cart" Content=" My Cart" Margin="0,480,490,-491" Width="163" BorderBrush="#FF6B641F" Foreground="#FF6B641F" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="{x:Null}"/>
 
         </Grid>
-        <ListView Name="ProductItems" Margin="0,20,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged">
+        <ListView Name="ProductItems" Margin="0,0,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Height="369" VerticalAlignment="Bottom">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding m_ID}" />

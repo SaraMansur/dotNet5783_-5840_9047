@@ -21,6 +21,7 @@
     <None Remove="WpfNewOrder\3392075.jpg" />
     <None Remove="WpfNewOrder\חץ.jpg" />
     <None Remove="WpfNewOrder\לשרה.png" />
+    <None Remove="WPFOrderTacking\3392075.jpg" />
     <None Remove="WPFOrderTacking\חץץ.jpg" />
     <None Remove="WPFOrderTacking\לשרה.png" />
     <None Remove="לשרה.png" />
@@ -39,6 +40,7 @@
     <Resource Include="WpfNewOrder\3392075.jpg" />
     <Resource Include="WpfNewOrder\חץ.jpg" />
     <Resource Include="WpfNewOrder\לשרה.png" />
+    <Resource Include="WPFOrderTacking\3392075.jpg" />
     <Resource Include="WPFOrderTacking\חץץ.jpg" />
     <Resource Include="WPFOrderTacking\לשרה.png" />
     <Resource Include="לשרה.png" />

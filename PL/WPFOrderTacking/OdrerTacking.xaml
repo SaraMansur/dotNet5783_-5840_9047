@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WPFOrderTacking"
         mc:Ignorable="d"
-        Title="OdrerTacking" Height="450" Width="800">
+        Title="OdrerTacking" Height="607" Width="945">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="127*"/>
@@ -14,7 +14,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/WPFOrderTacking/לשרה.png"/>
         </Grid.Background>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="40,0,160,0" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="14" Grid.ColumnSpan="2">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="50,43,60,97" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id}"  Width="80"/>
@@ -25,7 +25,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="OrderTackindView" Content="Order Tackind &#xD;&#xA;        View" Width="110" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OrderTackindView_Click" Margin="25,34,0,0" FontFamily="FrankRuehl" Foreground="#FF998D3D" Background="{x:Null}" BorderBrush="#FF998D3D" FontSize="16" Grid.Column="1" />
+        <Button Name="OrderTackindView" Content="Order Tackind &#xD;&#xA;        View" Width="125" Height="85" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OrderTackindView_Click" Margin="10,69,0,0" FontFamily="FrankRuehl" Foreground="#FF998D3D" Background="{x:Null}" BorderBrush="#FF998D3D" FontSize="16" Grid.Column="1" />
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

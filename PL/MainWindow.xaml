@@ -5,14 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="490" Width="945">
     <Grid Height="434" VerticalAlignment="Bottom">
         <Grid.Background>
             <ImageBrush ImageSource="/לשרה.png"/>
         </Grid.Background>
-        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Background="{x:Null}" Foreground="#FF8F912D" FontFamily="Sitka Text" FontWeight="Bold" FontSize="16" BorderBrush="#FF8F912D" Margin="65,217,544,130"/>
-        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="{x:Null}" FontFamily="Sitka Text" Foreground="#FF8F912D" FontSize="16" FontWeight="Bold" BorderBrush="#FF8F912D" Margin="286,217,319,130"/>
-        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="14" Foreground="#FF8F912D" BorderBrush="#FF8F912D" FontWeight="Bold" Margin="520,217,82,130"/>
+        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Background="{x:Null}" Foreground="#FF8F912D" FontFamily="Sitka Text" FontWeight="Bold" FontSize="16" BorderBrush="#FF8F912D" Margin="40,217,665,130"/>
+        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="{x:Null}" FontFamily="Sitka Text" Foreground="#FF8F912D" FontSize="16" FontWeight="Bold" BorderBrush="#FF8F912D" Margin="340,217,364,132" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.566"/>
+                    <RotateTransform Angle="-0.13"/>
+                    <TranslateTransform Y="1.19"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="14" Foreground="#FF8F912D" BorderBrush="#FF8F912D" FontWeight="Bold" Margin="640,217,65,130"/>
         <TextBlock Grid.Column="2" Margin="0,71,0,0" Text="WELCOME" VerticalAlignment="Top" Height="82" Foreground="#FF8F912D" Grid.RowSpan="2" Width="492" FontFamily="Sitka Small" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

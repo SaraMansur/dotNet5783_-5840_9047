@@ -1,8 +1,10 @@
 ﻿
 using DO;
+using System.ComponentModel;
+
 namespace BO;
 
-public class ProductItem
+public class ProductItem /*: INotifyPropertyChanged*/
 {
     /// <summary>
     /// the id of the product item
@@ -29,10 +31,11 @@ public class ProductItem
     /// </summary>
     public int m_AmountInCart { get; set; }
 
-    public Enums.Numbers? numbers { get; set; }
     /// <summary>
     /// this function print all the features of the product item
     /// </summary>
     /// <returns></returns>
     public override string ToString() => ToStringExtension.ToStringProperty(this);
+
+    //public event PropertyChangedEventHandler PropertyChanged;
 }

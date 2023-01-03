@@ -1,4 +1,6 @@
 ﻿using BlApi;
+using BO;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,7 @@ namespace PL.WpfNewOrder
     {
         BO.Cart _myOrder;
         IBl bl = Factory.Get();
+        private Action< List<BO.OrderItem?>?> action;
 
         public ConfirOrder(BO.Cart cart)
         {
@@ -30,11 +33,22 @@ namespace PL.WpfNewOrder
 
             this.DataContext = _myOrder;
         }
+        public ConfirOrder(Action<List<BO.OrderItem?>?> a, BO.Cart cart):this(cart)
+        {
+            action= a;
+        }
 
         private void Confirm_Order_Click(object sender, RoutedEventArgs e)
         {
-            bl.Cart.OrderConfirmation(_myOrder, _myOrder.m_CustomerName, _myOrder.m_CustomerMail, _myOrder.m_CustomerAdress);
-            MessageBox.Show("Your order has been successfully placed! Thank you for choosing to buy from us"); this.Close();
+
+            try
+            {
+                bl.Cart.OrderConfirmation(_myOrder, _myOrder.m_CustomerName, _myOrder.m_CustomerMail, _myOrder.m_CustomerAdress);
+                List<BO.OrderItem?>? list = _myOrder.m_orderItems;
+                action(list);
+                MessageBox.Show("Your order has been successfully placed! Thank you for choosing to buy from us"); this.Close();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

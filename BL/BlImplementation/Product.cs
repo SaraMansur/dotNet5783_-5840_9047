@@ -31,8 +31,7 @@ internal class Product : IProduct
             ProductItem p = new ProductItem() { Category = (BO.Enums.Category?)item?.m_Category, m_ID = (int)item?.m_ID, m_NameProduct = item?.m_Name, m_PriceProduct = (double)item?.m_Price, m_InStock= item?.m_InStock > 0 };
             if(C!= null) 
             {
-                foreach (var item2 in C.m_orderItems)
-                {
+                foreach (var item2 in C.m_orderItems) {
                     if (item2.m_IdProduct == p.m_ID) { p.m_AmountInCart = item2.m_AmountInCart; break; }
                 }
             }

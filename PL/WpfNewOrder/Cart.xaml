@@ -29,7 +29,7 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="Items" Grid.Row ="0" ItemsSource="{Binding}" Margin="17,34,185,0" Height="337" VerticalAlignment="Top" Grid.Column="1" Background="{x:Null}" >
+        <ListView x:Name="Items" Grid.Row ="0" ItemsSource="{Binding}" Margin="17,34,185,0" Height="337" VerticalAlignment="Top" Grid.Column="1" Background="{x:Null}" MouseDoubleClick="Items_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID of order" DisplayMemberBinding="{Binding Path= m_ID}" Width="80"/>
@@ -57,6 +57,6 @@
             </Button.Background>
         </Button>
         <TextBlock x:Name="Totul_Price_Of_The_Cart" Grid.Column="1" HorizontalAlignment="Left" Margin="39,376,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="158" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="189,376,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice}"  VerticalAlignment="Top" Width="62" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold" Height="19"/>
+        <TextBlock Name="Totul_Price" Grid.Column="1" HorizontalAlignment="Left" Margin="189,376,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice,Mode=TwoWay}"  VerticalAlignment="Top" Width="62" Foreground="#FF898E25" FontFamily="Segoe UI Variable Display Semibold" FontSize="14" FontWeight="Bold" Height="19"/>
     </Grid>
 </Window>

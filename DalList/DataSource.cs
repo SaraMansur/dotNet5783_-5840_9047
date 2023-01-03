@@ -15,7 +15,29 @@ internal static class DataSource
 
     static DataSource() => s_Initialize(); //difult constructor.
 
-    static string[] nameProduct = { "String necklace", "Pendant necklace", "Wedding ring", "Wide ring", "Name necklace", "Hard bracelet", "Foot bracelet", "Tight earring", "Hoop earing", "Delicate bracelet" };
+    static string[] nameProduct = 
+    { 
+        "טבעת עדינה כסף","טבעת עדינה זהב" ,"טבעת בשיבוץ אבנים ירוקות","טבעת זהב בשיבוץ אבני זרקור",
+        "עגליפ חישוק כסף","עגלים חישוק משושה","עגילים צמודים","צמיד זהב","צמיד כסף","שעון כסף נוגה","שעון רוס",
+        "שרשרת זהב","שרשרת כסף"
+    };
+
+    static string[] ImageSource = 
+    {
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
+        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
+    };
 
     static string[] firstName = { "David", "Sara", "Yael", "Lea", "Yair", "Yossi", "Meir", "Tali" };
 
@@ -28,7 +50,7 @@ internal static class DataSource
     private static void s_Initialize()
     {
    
-        for (int i = 0; i < 10; i++) //The loop initializes 10 products.
+        for (int i = 0; i < 13; i++) //The loop initializes 10 products.
         {
             Product product = new Product();
             product.m_ID = rand.Next(100000, 999999);//Generate a random number with 6 digits.
@@ -41,14 +63,17 @@ internal static class DataSource
             product.m_Price = rand.Next(200, 1000); //Product price initialization.
             product.m_InStock = rand.Next(10, 30); //Initialize quantity in stock for product.
 
-            if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("necklace"))
+            if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("שרשרת"))
                 product.m_Category = Enums.Category.Necklaces;
-            if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("ring"))
+            if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("טבעת"))
                 product.m_Category = Enums.Category.Rings;
-            if (product.m_Name.StartsWith("Bracelet") || product.m_Name.EndsWith("bracelet"))
+            if (product.m_Name.StartsWith("Bracelet") || product.m_Name.EndsWith("צמיד"))
                 product.m_Category = Enums.Category.Bracelets;
-            if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("earring"))
+            if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("עגילים"))
                 product.m_Category = Enums.Category.Earrings;
+            if (product.m_Name.StartsWith("Watches") || product.m_Name.EndsWith("שעון"))
+                product.m_Category = Enums.Category.Watches;
+            product.m_ImageSource = ImageSource[i];
             addProduct(product);
         }
 

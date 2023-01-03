@@ -59,10 +59,33 @@ namespace PL.WpfNewOrder
                 }
                 MessageBox.Show("You have successfully emptied the cart!");
                 Cart win = new Cart(C);
+                Totul_Price.Text = "0";
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
-        private void Confir_Order(object sender, RoutedEventArgs e) { new ConfirOrder(C).Show(); }
+        private void Confir_Order(object sender, RoutedEventArgs e) { new ConfirOrder(UpdateListView,C).Show(); }
+
+        void UpdateListView(List<BO.OrderItem?>? l)
+        {
+            List<BO.OrderForList?> helper = bl.Order.OrderList().ToList();
+            int index = 0;
+            foreach(BO.OrderForList item in helper) index++;
+            int orderId = helper[index-1].m_Id;
+            int OI = bl.Order.orderDetails(orderId).m_orderItems[0].m_ID;
+            for (int i = 0; i < l.Count(); i++)
+            {
+                var item = Dates[i];
+                item.m_ID = OI;
+                Dates.RemoveAt(i);  
+                Dates.Insert(i, item);
+                OI++;
+            }
+        }
+
+        private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            new ShowProductItem(productItem, C).Show();
+        }
     }
 }

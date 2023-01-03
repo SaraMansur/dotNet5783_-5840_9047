@@ -95,6 +95,13 @@ public class Product : INotifyPropertyChanged
     /// This function will print all the features of the product
     /// </summary>
     /// <returns></returns>
+    private string imageSource;
+
+    public string m_ImageSource
+    {
+        get { return imageSource; }
+        set { imageSource = value; }
+    }
     public override string ToString() => ToStringExtension.ToStringProperty(this);
 
     public event PropertyChangedEventHandler PropertyChanged;

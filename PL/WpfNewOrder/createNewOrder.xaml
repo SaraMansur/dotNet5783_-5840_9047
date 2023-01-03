@@ -39,10 +39,10 @@
                     <GridViewColumn Header="Caregory" Width="100" DisplayMemberBinding="{Binding Category }" />
                     <GridViewColumn Header="In Stock" Width="100" DisplayMemberBinding="{Binding m_InStock}" />
                     <GridViewColumn Header="Amount In Cart" Width="120" DisplayMemberBinding="{Binding m_AmountInCart}" />
-                    <GridViewColumn Header="Update Amount" >
+                    <GridViewColumn Header="Update Amount" x:Name="_amount" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox Name="Amount" Width="80" DisplayMemberPath="{Binding numbers, Mode=TwoWay}"/>
+                                <Button x:Name="updateAmount" Content="Add to cart" Click="AddToCart_click" Background="{x:Null}" BorderBrush="#FF8F912D"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

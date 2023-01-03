@@ -18,6 +18,8 @@ using System.ComponentModel;
 using System.Security.Policy;
 using System.Reflection.Emit;
 using System.Data;
+using System.Windows.Media.TextFormatting;
+using System.Security.Cryptography;
 
 namespace PL.WpfNewOrder
 {
@@ -37,7 +39,6 @@ namespace PL.WpfNewOrder
             InitializeComponent();
             ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
             ProductItems.ItemsSource = ProductItemlist;
-
             GroupBy.ItemsSource = new string[] { "None","Grouping by category" , "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
         }   
 
@@ -48,31 +49,23 @@ namespace PL.WpfNewOrder
             ProductItems.ItemsSource = ProductItemlist;
             ProductItems.Items.GroupDescriptions.Clear();
             var property = GroupBy.SelectedItem as string;
-            if (property == "None")
-                return;
+            if (property == "None")  return;
             if (property == "Grouping by category")
             { 
-                ProductItems.Items.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
-                return;
+                ProductItems.Items.GroupDescriptions.Add(new PropertyGroupDescription("Category"));  return;
             }
             ProductItems.ItemsSource = bl.Product.FilterBycategoryCustomer((BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), property));
-          
         }
 
         private void GroupBy_SelectionChanged(object sender, SelectionChangedEventArgs e) { GroupList(); }
-
-
 
         private void updateAmount(ProductItem productItem , BO.Cart _c )
         {
             var item = ProductItemlist.FirstOrDefault(x => x.m_ID == productItem.m_ID);
             int index = ProductItemlist.IndexOf(item);
             ProductItemlist.RemoveAt(index);
-            cart = _c;
             item.m_AmountInCart += 1;// cart.m_orderItems.FirstOrDefault(x => x.m_ID == item.m_ID).m_AmountInCart;
             ProductItemlist.Insert(index,item);
-
-
         }
 
         private void Cart_Click(object sender, RoutedEventArgs e) { new Cart(cart).Show(); this.Close(); }
@@ -83,6 +76,13 @@ namespace PL.WpfNewOrder
         {
             ProductItem p = ProductItems.SelectedItem as ProductItem;
             new ShowProductItem(updateAmount, p, cart).Show();
+        }
+
+        private void AddToCart_click(object sender, RoutedEventArgs e)
+        {
+            ProductItem productItem = (sender as Button).DataContext as BO.ProductItem;
+            updateAmount(productItem, cart);
+            cart = bl.Cart.AddItemToCart(cart, productItem.m_ID);
         }
     }
 }

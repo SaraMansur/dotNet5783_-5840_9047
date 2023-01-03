@@ -120,9 +120,9 @@ internal class Cart : ICart
         for (int i = 0; i < nameCustomr.Length; i++) { 
             if (!(nameCustomr[i]<='z'&& nameCustomr[i] >='a') && (nameCustomr[i]!=' ') && !(nameCustomr[i] <= 'Z' && nameCustomr[i] >= 'A')) 
                 throw new BO.IlegalInput(); }
-        for (int i = 0; i < addressCustomr.Length; i++) {
-            if (!(addressCustomr[i] <= 'z' && addressCustomr[i] >= 'a') && (addressCustomr[i] != ' ') && !(addressCustomr[i] <= 'Z' && addressCustomr[i] >= 'A'))
-                throw new BO.IlegalInput(); }
+        //for (int i = 0; i < addressCustomr.Length; i++) {
+        //    if (!(addressCustomr[i] <= 'z' && addressCustomr[i] >= 'a') && (addressCustomr[i] != ' ') && !(addressCustomr[i] <= 'Z' && addressCustomr[i] >= 'A'))
+        //        throw new BO.IlegalInput(); }
 
         foreach (var item in cart?.m_orderItems)
         {

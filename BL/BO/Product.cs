@@ -11,50 +11,40 @@ public class Product : INotifyPropertyChanged
     private int Id;
     public int m_Id 
     {
-        get
-        { return Id; }
+        get { return Id; }
         set
         {
             Id = value;
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("Id"));
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Id")); }
         }
 
     }
+
     /// <summary>
     /// the name of the product
     /// </summary>
     private string? Name;
     public string? m_Name 
     {
-        get
-        { return Name; }
+        get { return Name; }
         set
         {
             Name = value;
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Name")); }   
         }
     }
+
     /// <summary>
     /// the price of the product
     /// </summary>
     private double Price;
     public double m_Price 
     {
-        get
-        { return Price; }
+        get { return Price; }
         set
         {
             Price = value;
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("Price "));
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Price")); }
         }
     }
     /// <summary>
@@ -63,15 +53,11 @@ public class Product : INotifyPropertyChanged
     private Enums.Category? Category;
     public Enums.Category? m_Category 
     {
-        get
-        { return Category; }
+        get { return Category; }
         set
         {
             Category = value;
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("Category"));
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Category")); }   
         }
     }
     /// <summary>
@@ -80,17 +66,14 @@ public class Product : INotifyPropertyChanged
     private int InStock;
     public int m_InStock 
     {
-        get
-        { return InStock; }
+        get { return InStock; }
         set
         {
             InStock = value;
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("InStock"));
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("InStock")); }
         }
     }
+
     /// <summary>
     /// This function will print all the features of the product
     /// </summary>

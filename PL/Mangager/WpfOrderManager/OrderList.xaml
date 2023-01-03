@@ -6,21 +6,7 @@
         xmlns:dxg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
-        Title="OrderList" Height="450" Width="800">
-    <Window.Resources>
-        <Style x:Key="myButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="#FF898E25" />
-            <Setter Property="FontFamily" Value="Sylfaen" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Width" Value="107" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Background" Value="{x:Null}" />
-            <Setter Property="BorderBrush" Value="#FF898E25" />
-        </Style>
-    </Window.Resources>
+        Title="OrderList" Height="607" Width="815">
     <Grid x:Name="ProductList">
         <Grid.Background>
             <ImageBrush ImageSource="/Mangager/WpfOrderManager/לשרה.png"/>
@@ -29,7 +15,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="40,0,160,0" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="14" MouseDoubleClick="List_Order_MouseDoubleClick">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="50,43,213,97" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16" MouseDoubleClick="List_Order_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="80"/>

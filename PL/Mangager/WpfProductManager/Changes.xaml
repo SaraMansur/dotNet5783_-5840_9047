@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfProduct"
         mc:Ignorable="d"
-        Title="Changes" Height="450" Width="800">
+        Title="Changes" Height="439" Width="435">
+    <Window.Resources>
+        <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF6B641F" />
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </Window.Resources>
     <Grid x:Name="GridProduct">
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -16,32 +27,31 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions >
-        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" FontSize="15" TextAlignment="Center" />
-        <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" FontSize="15" TextAlignment="Center"/>
-        <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" FontSize="15" TextAlignment="Center"/>
-        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_Id, Mode=TwoWay}" />
-        <ComboBox  Name="category" Grid.Column="2" Grid.Row="3"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}"/>
-        <TextBox Name="Name" Grid.Column="2" Grid.Row="5"  Text="{Binding Path=m_Name, Mode=TwoWay}"/>
-        <TextBox Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_Price, Mode=TwoWay}"/>
-        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path=m_InStock , Mode=TwoWay}" />
-        <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="13" Width="90" Click="UpdateP_Click" Background="{x:Null}"/>
-        <Button x:Name="AddP" Content="ADD" Grid.Column="1"  Grid.Row="13" Width="90" Click="AddP_Click" Background="{x:Null}" BorderBrush="#FF8F912D"/>
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" Style="{StaticResource myTextBlockStyle}" />
+        <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_Id, Mode=TwoWay}" BorderBrush="#FF6B641F" />
+        <ComboBox  Name="category" Grid.Column="2" Grid.Row="3"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}" BorderBrush="#FF6B641F"/>
+        <TextBox Name="Name" Grid.Column="2" Grid.Row="5"  Text="{Binding Path=m_Name, Mode=TwoWay}" BorderBrush="#FF6B641F"/>
+        <TextBox Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_Price, Mode=TwoWay}" BorderBrush="#FF6B641F"/>
+        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path=m_InStock , Mode=TwoWay}" BorderBrush="#FF6B641F" />
+        <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="12" Click="UpdateP_Click" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" Grid.ColumnSpan="2" Margin="0,18,107,107" Grid.RowSpan="3"/>
+        <Button x:Name="AddP" Content="ADD"  Grid.Row="12" Click="AddP_Click" Background="{x:Null}" BorderBrush="#FF6B641F" Foreground="#FF6B641F" Grid.ColumnSpan="3" Margin="107,18,108,111" Grid.RowSpan="3"/>
     </Grid>
 </Window>
-   

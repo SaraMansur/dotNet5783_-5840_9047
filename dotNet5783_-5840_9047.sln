@@ -27,6 +27,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749
 		xml\dal-config.xml = xml\dal-config.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductImages", "ProductImages", "{34DFFFE1-5DE7-4D8B-A71E-304632348E94}"
+	ProjectSection(SolutionItems) = preProject
+		product image\שרשרת\hg.png = product image\שרשרת\hg.png
+		product image\טבעות\צילום מסך 2023-01-02 211358.jpg = product image\טבעות\צילום מסך 2023-01-02 211358.jpg
+		product image\שרשרת\צילום מסך 2023-01-03 014809.png = product image\שרשרת\צילום מסך 2023-01-03 014809.png
+		product image\טבעות\צילום מסך 2023-01-03 015143.png = product image\טבעות\צילום מסך 2023-01-03 015143.png
+		product image\צמידים\צילום מסך 2023-01-03 015308.png = product image\צמידים\צילום מסך 2023-01-03 015308.png
+		product image\צמידים\צילום מסך 2023-01-03 015443.png = product image\צמידים\צילום מסך 2023-01-03 015443.png
+		product image\עגילים\צילום מסך 2023-01-03 015630.png = product image\עגילים\צילום מסך 2023-01-03 015630.png
+		product image\עגילים\צילום מסך 2023-01-03 015656.png = product image\עגילים\צילום מסך 2023-01-03 015656.png
+		product image\עגילים\צילום מסך 2023-01-03 015801.png = product image\עגילים\צילום מסך 2023-01-03 015801.png
+		product image\שעונים\צילום מסך 2023-01-03 015841.png = product image\שעונים\צילום מסך 2023-01-03 015841.png
+		product image\טבעות\צילום מסך 2023-01-03 030515.jpg = product image\טבעות\צילום מסך 2023-01-03 030515.jpg
+		product image\טבעות\צילום מסך 2023-01-03 030535.jpg = product image\טבעות\צילום מסך 2023-01-03 030535.jpg
+		product image\שעונים\צילום מסך 2023-01-03 032046.jpg = product image\שעונים\צילום מסך 2023-01-03 032046.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

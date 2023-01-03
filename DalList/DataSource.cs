@@ -16,27 +16,27 @@ internal static class DataSource
     static DataSource() => s_Initialize(); //difult constructor.
 
     static string[] nameProduct = 
-    { 
-        "טבעת עדינה כסף","טבעת עדינה זהב" ,"טבעת בשיבוץ אבנים ירוקות","טבעת זהב בשיבוץ אבני זרקור",
-        "עגליפ חישוק כסף","עגלים חישוק משושה","עגילים צמודים","צמיד זהב","צמיד כסף","שעון כסף נוגה","שעון רוס",
-        "שרשרת זהב","שרשרת כסף"
+    {
+        "Delicate Ring Silver","Gentle Ring Gold" ,"Ring inlaid with green stones","Gold ring inlaid with spotlight stones",
+        "Silver Hoop earrings","Hexagonal Hoop Gold earrings","Stud earrings","Gold bracelet","Silver bracelet","Silver watche","Ross watche",
+        "Gold necklace","Silver necklace"
     };
 
     static string[] ImageSource = 
     {
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
-        "C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
+        @"C:\\Users\\שרה\\source\\repos\\dtNet5783_-5840_9047\\product image\\עגילים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
+        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
     };
 
     static string[] firstName = { "David", "Sara", "Yael", "Lea", "Yair", "Yossi", "Meir", "Tali" };
@@ -63,15 +63,15 @@ internal static class DataSource
             product.m_Price = rand.Next(200, 1000); //Product price initialization.
             product.m_InStock = rand.Next(10, 30); //Initialize quantity in stock for product.
 
-            if (product.m_Name.StartsWith("Necklace") || product.m_Name.EndsWith("שרשרת"))
+            if (product.m_Name.Contains("Necklace") || product.m_Name.Contains("necklace"))
                 product.m_Category = Enums.Category.Necklaces;
-            if (product.m_Name.StartsWith("Ring") || product.m_Name.EndsWith("טבעת"))
+            if (product.m_Name.Contains("Ring") || product.m_Name.Contains("ring"))
                 product.m_Category = Enums.Category.Rings;
-            if (product.m_Name.StartsWith("Bracelet") || product.m_Name.EndsWith("צמיד"))
+            if (product.m_Name.Contains("Bracelet") || product.m_Name.Contains("bracelet"))
                 product.m_Category = Enums.Category.Bracelets;
-            if (product.m_Name.StartsWith("Earring") || product.m_Name.EndsWith("עגילים"))
+            if (product.m_Name.Contains("Earring") || product.m_Name.Contains("earring"))
                 product.m_Category = Enums.Category.Earrings;
-            if (product.m_Name.StartsWith("Watches") || product.m_Name.EndsWith("שעון"))
+            if (product.m_Name.Contains("Watche") || product.m_Name.Contains("watche"))
                 product.m_Category = Enums.Category.Watches;
             product.m_ImageSource = ImageSource[i];
             addProduct(product);

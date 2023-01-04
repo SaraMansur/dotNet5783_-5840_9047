@@ -13,16 +13,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Mangager\shutterstock_739292332__w645h390q80.jpg" />
+    <None Remove="Mangager\WpfOrderManager\v745-kul-39.jpg" />
     <None Remove="Mangager\WpfOrderManager\לשרה.png" />
+    <None Remove="Mangager\WpfProductManager\3392075.jpg" />
+    <None Remove="Mangager\WpfProductManager\v745-kul-39.jpg" />
     <None Remove="Mangager\WpfProductManager\חץץ.jpg" />
     <None Remove="Mangager\WpfProductManager\לשרה.png" />
     <None Remove="Mangager\חץץ.jpg" />
+    <None Remove="Mangager\מסך.jpg" />
+    <None Remove="shutterstock_739292332__w645h390q80.jpg" />
     <None Remove="WpfNewOrder\3392075.jpg" />
+    <None Remove="WpfNewOrder\v745-kul-39.jpg" />
     <None Remove="WpfNewOrder\חץ.jpg" />
     <None Remove="WpfNewOrder\לשרה.png" />
+    <None Remove="WPFOrderTacking\3392075.jpg" />
+    <None Remove="WPFOrderTacking\v745-kul-39.jpg" />
     <None Remove="WPFOrderTacking\חץץ.jpg" />
     <None Remove="WPFOrderTacking\לשרה.png" />
+    <None Remove="WPFOrderTacking\מסך.jpg" />
     <None Remove="לשרה.png" />
+    <None Remove="מסך.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,16 +41,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Mangager\shutterstock_739292332__w645h390q80.jpg" />
+    <Resource Include="Mangager\WpfOrderManager\v745-kul-39.jpg" />
     <Resource Include="Mangager\WpfOrderManager\לשרה.png" />
+    <Resource Include="Mangager\WpfProductManager\3392075.jpg" />
+    <Resource Include="Mangager\WpfProductManager\v745-kul-39.jpg" />
     <Resource Include="Mangager\WpfProductManager\חץץ.jpg" />
     <Resource Include="Mangager\WpfProductManager\לשרה.png" />
     <Resource Include="Mangager\חץץ.jpg" />
+    <Resource Include="Mangager\מסך.jpg" />
+    <Resource Include="shutterstock_739292332__w645h390q80.jpg" />
     <Resource Include="WpfNewOrder\3392075.jpg" />
+    <Resource Include="WpfNewOrder\v745-kul-39.jpg" />
     <Resource Include="WpfNewOrder\חץ.jpg" />
     <Resource Include="WpfNewOrder\לשרה.png" />
+    <Resource Include="WPFOrderTacking\3392075.jpg" />
+    <Resource Include="WPFOrderTacking\v745-kul-39.jpg" />
     <Resource Include="WPFOrderTacking\חץץ.jpg" />
     <Resource Include="WPFOrderTacking\לשרה.png" />
+    <Resource Include="WPFOrderTacking\מסך.jpg" />
     <Resource Include="לשרה.png" />
+    <Resource Include="מסך.jpg" />
   </ItemGroup>
 
 </Project>

@@ -6,10 +6,10 @@
         xmlns:dxg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         mc:Ignorable="d"
-        Title="OrderList" Height="607" Width="815">
+        Title="OrderList" Height="607" Width="945">
     <Grid x:Name="ProductList">
         <Grid.Background>
-            <ImageBrush ImageSource="/Mangager/WpfOrderManager/לשרה.png"/>
+            <ImageBrush ImageSource="/Mangager/WpfOrderManager/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -19,7 +19,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="80"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="150"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="300"/>
                     <GridViewColumn x:Name="_Status"  Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus,Mode=TwoWay }" Width="100"/>
                     <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems,Mode=TwoWay}" Width="80"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice,Mode=TwoWay}" Width="100"/>

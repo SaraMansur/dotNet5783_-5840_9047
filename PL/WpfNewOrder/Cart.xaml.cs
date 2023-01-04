@@ -83,9 +83,25 @@ namespace PL.WpfNewOrder
             }
         }
 
-        private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void updateAmountButton_Click(object sender, RoutedEventArgs e)
         {
-            new ShowProductItem(productItem, C).Show();
-        }
+            try
+            {
+                int num = C.m_orderItems.Count;
+                int amount = (int)this.gradeNumUpDown.Value;
+                OrderItem p = (Items.SelectedItem as OrderItem);
+                if (p == null) throw new Exception("You have not selected a product to update. Please select a product");
+                C = bl.Cart.UpdateAmount(C, p.m_IdProduct, amount);
+                var item = Dates.FirstOrDefault(x => x.m_IdProduct == p.m_IdProduct);
+                int index= Dates.IndexOf(item);
+                Dates.RemoveAt(index);
+                if (num== C.m_orderItems.Count) Dates.Insert(index, item);
+
+                Totul_Price.Text = C.m_TotalPrice.ToString();
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message.ToString());}   
+            }
     }
 }

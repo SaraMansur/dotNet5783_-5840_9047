@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfProduct"
         mc:Ignorable="d"
-        Title="Catalog" Height="607" Width="815">
+        Title="Catalog" Height="607" Width="945">
     <Grid Name="CatalogGrid">
         <Grid.Background>
-            <ImageBrush ImageSource="/Mangager/WpfProductManager/לשרה.png"/>
+            <ImageBrush ImageSource="/Mangager/WpfProductManager/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="24*"/>
@@ -19,15 +19,16 @@
             <RowDefinition Height="500*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,515" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="22*"/>
-                <ColumnDefinition Width="45*"/>
-                <ColumnDefinition Width="13*"/>
-                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="130*"/>
+                <ColumnDefinition Width="266*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="328*"/>
+                <ColumnDefinition Width="145*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" Grid.Column="3" Name="AttributeSelector" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Stretch" />
-            <TextBlock Text="CATEGORY: " Grid.Column="1" TextAlignment="Center" FontSize="36" Grid.ColumnSpan="3" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold" Margin="10,0,280,0" Height="44" VerticalAlignment="Center">
+            <ComboBox Grid.Row="0" Grid.Column="2" Name="AttributeSelector" SelectionChanged="ComboBox_SelectionChanged" Grid.ColumnSpan="3" Margin="76,16,110,0" FontSize="16" />
+            <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" Grid.ColumnSpan="3" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold" Margin="0,22,145,0" Height="37" VerticalAlignment="Top" Grid.Column="1">
                 <TextBlock.Background>
                     <ImageBrush/>
                 </TextBlock.Background>
@@ -37,9 +38,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_ID }" Width="80" />
-                    <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="200"/>
+                    <GridViewColumn Header="Name of Product" DisplayMemberBinding="{Binding Path= m_NameProduct}" Width="300"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_PriceProduct}" Width="150"/>
-                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="80"/>
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path= m_Category}" Width="120"/>
                     <!--<GridViewColumn Header="Image:" x:Name="Image" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -50,7 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Add new Product" Name="AddProduct" Grid.Row="1" HorizontalAlignment="Left" Margin="46,467,0,29" Padding="5" Click = "AddProduct_Click" Width="133" Background="{x:Null}" FontSize="16" FontFamily="Sitka Display" Foreground="#FF6B641F" BorderBrush="#FF6B641F"/>
+        <Button Content="Add new Product" Name="AddProduct" Grid.Row="1" HorizontalAlignment="Left" Margin="46,455,0,29" Padding="5" Click = "AddProduct_Click" Width="149" Background="{x:Null}" FontSize="20" FontFamily="Sitka Display" Foreground="#FF6B641F" BorderBrush="#FF6B641F"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/WpfProductManager/חץץ.jpg"/>

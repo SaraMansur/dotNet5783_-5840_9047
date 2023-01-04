@@ -117,7 +117,7 @@ internal static class DataSource
             OrderItem orderItem = new OrderItem();
             orderItem.m_ID = Config.orderItemId;
             Product p = (Product)m_listPruducts[rand.Next(0, 9)];
-            orderItem.m_OrderId = ((Order)m_listOreders[rand.Next(0, 19)]).m_ID;
+            orderItem.m_OrderId = ((Order)m_listOreders[i/2]).m_ID;
             for (int k = 0, j = 0; j < m_listOrderItems.Count; j++) //Test that each order will be 1 to 4 order items
             {
                 if (m_listOrderItems[j]?.m_OrderId == orderItem.m_OrderId)

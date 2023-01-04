@@ -5,44 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
-        Title="createNewOrder" Height="450" Width="800">
+        Title="createNewOrder" Height="595" Width="1040">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
+            <ImageBrush ImageSource="/WpfNewOrder/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Margin="0,0,0,506" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="0" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="480,0,25,0" Grid.ColumnSpan="2" />
-            <Button x:Name="Cart" Content=" My Cart" Margin="0,344,338,-355" Width="163" HorizontalAlignment="Right" Click="Cart_Click" Foreground="#FFF9F9F9" BorderBrush="#FF898E25" FontFamily="Sylfaen" FontSize="20" FontWeight="Bold">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="#FFFEE38F" Offset="0.953"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="1" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="32,10,30,0" Height="39" VerticalAlignment="Top" FontSize="16" />
+            <Button x:Name="Cart" Content=" My Cart" Margin="0,480,490,-491" Width="163" BorderBrush="#FF6B641F" Foreground="#FF6B641F" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="{x:Null}"/>
 
         </Grid>
-        <ListView Name="ProductItems" MouseDoubleClick="ProductItems_MouseDoubleClick"  Margin="30,39,0,130" Grid.RowSpan="2" HorizontalAlignment="Left" Width="720" Background="{x:Null}" ItemsSource="{Binding}">
+        <ListView Name="ProductItems" Margin="0,0,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Height="369" VerticalAlignment="Bottom">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="60" DisplayMemberBinding="{Binding m_ID}" />
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding m_NameProduct}" />
+                    <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding m_ID}" />
+                    <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding m_NameProduct}" />
                     <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding m_PriceProduct}" />
-                    <GridViewColumn Header="Caregory" Width="100" DisplayMemberBinding="{Binding Category }" />
+                    <GridViewColumn Header="Caregory" Width="120" DisplayMemberBinding="{Binding Category }" />
                     <GridViewColumn Header="In Stock" Width="100" DisplayMemberBinding="{Binding m_InStock}" />
                     <GridViewColumn Header="Amount In Cart" Width="120" DisplayMemberBinding="{Binding m_AmountInCart}" />
-                    <GridViewColumn Header="Update Amount" x:Name="_amount" >
+                    <GridViewColumn Header="Update Amount" x:Name="_amount" Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="updateAmount" Content="Add to cart" Click="AddToCart_click" Background="{x:Null}" BorderBrush="#FF8F912D"/>
+                                <Button x:Name="updateAmount" Content="Add to cart" Width="100" Click="AddToCart_click" BorderBrush="#FF4F4C0C" Foreground="#FF4F4C0C" FontFamily="Sitka Display" FontSize="15" Background="{x:Null}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -58,6 +51,11 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
+        <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold" Margin="430,18,175,0" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.564,0.325" Grid.RowSpan="2">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background>
+        </TextBlock>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

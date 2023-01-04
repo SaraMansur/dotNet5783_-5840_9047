@@ -72,17 +72,13 @@ namespace PL.WpfNewOrder
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close(); }
 
-        private void ProductItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            ProductItem p = ProductItems.SelectedItem as ProductItem;
-            new ShowProductItem(updateAmount, p, cart).Show();
-        }
-
         private void AddToCart_click(object sender, RoutedEventArgs e)
         {
             ProductItem productItem = (sender as Button).DataContext as BO.ProductItem;
             updateAmount(productItem, cart);
             cart = bl.Cart.AddItemToCart(cart, productItem.m_ID);
         }
+
+        private void ProductItems_SelectionChanged(object sender, SelectionChangedEventArgs e) { GroupList(); }
     }
 }

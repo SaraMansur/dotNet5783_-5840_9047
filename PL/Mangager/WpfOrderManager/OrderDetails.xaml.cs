@@ -27,10 +27,13 @@ namespace PL.WpfOrderManager
         private ObservableCollection<OrderItem?> Items;
         private Action<OrderForList> action;
         Order order;
-        public OrderDetails(OrderForList p)
+        public OrderDetails(OrderForList p=null,int orderId=0)
         {
             InitializeComponent();
-            order = bl.Order.orderDetails(p.m_Id);
+            if(p!=null)order = bl.Order.orderDetails(p.m_Id);
+            else { order = bl.Order.orderDetails(orderId);
+                shipping.Visibility = Visibility.Collapsed;
+                delivery.Visibility = Visibility.Collapsed; }
             if (order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
             else { deliver.Text = order.m_DeliveryrDate.ToString(); }
             if (order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }

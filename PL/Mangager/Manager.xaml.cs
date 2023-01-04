@@ -1,4 +1,5 @@
 ﻿using PL.WpfOrderManager;
+using PL.WPFOrderTacking;
 using PL.WpfProduct;
 using System;
 using System.Collections.Generic;
@@ -31,5 +32,7 @@ namespace PL
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close();}
 
         private void OrderForList_Click(object sender, RoutedEventArgs e) { new OrderList().Show(); this.Close(); }
+
+        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking(4).Show(); this.Close(); }
     }
 }

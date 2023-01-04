@@ -9,14 +9,14 @@
     <Window.Resources>
         <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FF898E25" />
-            <Setter Property="FontFamily" Value="FrankRuehl" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="Microsoft PhagsPa" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="16" />
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WPFOrderTacking/לשרה.png"/>
+            <ImageBrush ImageSource="/WPFOrderTacking/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
@@ -40,12 +40,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,314,3"/>
         <TextBlock Text="Status:" Grid.Column="1" Grid.Row="3" FontSize="15" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Text="Description Progress:" Grid.Column="1" Grid.Row="5" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Text="{Binding Path=m_ID}"  Grid.Column="1" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="121,72,0,0" Grid.RowSpan="2"/>
-        <TextBlock Text="{Binding Path=m_Status}" Grid.Column="1" Grid.Row="2" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" Margin="121,7,0,0" Grid.RowSpan="2" Width="350" Grid.ColumnSpan="2"/>
-        <ListView x:Name="orderT" Grid.Row="8" FontSize="15" ItemsSource="{Binding }" HorizontalAlignment="Left" Margin="65,3,0,132" Grid.RowSpan="7" Width="432" Grid.ColumnSpan="3" BorderBrush="#FF898E25" Foreground="#FF898E25" FontFamily="FrankRuehl" FontWeight="Bold" Background="{x:Null}">
+        <TextBlock Text="{Binding Path=m_ID}"  Grid.Column="1" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="121,64,0,3" Grid.RowSpan="2"/>
+        <TextBlock Text="{Binding Path=m_Status}" Grid.Column="1" Grid.Row="3" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" Margin="121,0,0,1" Width="350" Grid.ColumnSpan="2"/>
+        <ListView x:Name="orderT" Grid.Row="8" FontSize="16" ItemsSource="{Binding }" HorizontalAlignment="Left" Margin="35,3,0,115" Grid.RowSpan="7" Width="462" Grid.ColumnSpan="3" BorderBrush="#FF898E25" FontFamily="Microsoft PhagsPa" FontWeight="Normal" Background="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding Path = Item1}" Width="220"/>

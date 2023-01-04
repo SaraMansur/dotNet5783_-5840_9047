@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Manager" Height="450" Width="800">
+        Title="Manager" Height="490" Width="945">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/לשרה.png"/>
+            <ImageBrush ImageSource="/Mangager/מסך.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,8 +22,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Name="ProductForList" Content="Products" Click="ProductForList_Click" Grid.Column="3" Grid.Row="1" Foreground="#FF8F912D" FontFamily="Sitka Heading" FontSize="16" FontWeight="Bold" FontStyle="Italic" BorderBrush="#FF8F912D" Background="{x:Null}"/>
-        <Button Name="OrderForList" Content="Orders" Click="OrderForList_Click" Grid.Column="1" Grid.Row="1" FontFamily="Sitka Heading" FontSize="16" Foreground="#FF8F912D" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" BorderBrush="#FF8F912D"/>
+        <Button Name="ProductForList" Content="Products" Click="ProductForList_Click" Grid.Column="3" Foreground="#FFF0F0E8" FontFamily="Sitka Text" FontSize="20" FontWeight="Bold" BorderBrush="#FFF0F0E8" Background="{x:Null}" Grid.ColumnSpan="2" Margin="145,179,55,185" Grid.RowSpan="3"/>
+        <Button Name="OrderForList" Content="Orders" Click="OrderForList_Click" FontFamily="Sitka Text" FontSize="20" Foreground="#FFF0F0E8" FontWeight="Bold" Background="{x:Null}" BorderBrush="#FFF0F0E8" Grid.ColumnSpan="2" Margin="75,179,125,185" Grid.RowSpan="3"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking view" Grid.Column="1" Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="20" Foreground="#FFF0F0E8" BorderBrush="#FFF0F0E8" Grid.ColumnSpan="3" Margin="152,179,153,185" Grid.RowSpan="3" FontWeight="Bold"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/חץץ.jpg"/>

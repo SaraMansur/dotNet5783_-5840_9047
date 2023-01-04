@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using PL.WpfOrderManager;
+using System.Runtime.CompilerServices;
 
 namespace PL.WPFOrderTacking
 {
@@ -28,21 +29,25 @@ namespace PL.WPFOrderTacking
     {
         public IBl bl = BlApi.Factory.Get();
         private ObservableCollection<OrderForList> _OrderList;
-        public OdrerTacking()
+        int _flag = 0;
+        public OdrerTacking(int num = 0)
         {
-            InitializeComponent();
+            InitializeComponent(); _flag = num;
             _OrderList = new(bl.Order.OrderList()!);
             this.DataContext = _OrderList;
         }
 
-        private void OrderTackindView_Click(object sender, RoutedEventArgs e) 
+        private void OrderTackindView_Click(object sender, RoutedEventArgs e)
         {
             OrderForList p = (List_Order.SelectedItem as OrderForList);
             if (p != null)
-                new View(p).Show();
+                new View(p.m_Id).Show();
         }
 
-        private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close(); }
+        private void Click_buttonBack(object sender, RoutedEventArgs e) {
+            if (_flag == 0) {new MainWindow().Show(); this.Close(); }
+           else { new Manager().Show(); this.Close(); }
+        }
 
     }
 }

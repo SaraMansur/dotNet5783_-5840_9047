@@ -16,7 +16,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WPFOrderTacking/3392075.jpg"/>
+            <ImageBrush ImageSource="/WPFOrderTacking/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>

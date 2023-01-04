@@ -35,7 +35,7 @@ namespace PL
 
         private void Neworder_Click(object sender, RoutedEventArgs e) { new createNewOrder(cart).Show(); this.Close(); }
 
-        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking().Show(); this.Close(); }
+        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new CstomerTracking().Show(); this.Close(); }
 
         private void registeredUser_Click(object sender, RoutedEventArgs e) { }
     }

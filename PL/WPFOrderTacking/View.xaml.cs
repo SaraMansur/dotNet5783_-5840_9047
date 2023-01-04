@@ -29,10 +29,10 @@ namespace PL.WPFOrderTacking
         public ObservableCollection<Tuple<string?, DateTime?>> Dates { get { return _dates; } }
         public IBl bl = Factory.Get();
 
-        public View(OrderForList p)
+        public View(int id)
         {
             InitializeComponent();
-            _OrderTracking = bl.Order.orderTracking(p.m_Id);
+            _OrderTracking = bl.Order.orderTracking(id);
             this.DataContext = _OrderTracking;
             PopulateList();
             orderT.DataContext = Dates;

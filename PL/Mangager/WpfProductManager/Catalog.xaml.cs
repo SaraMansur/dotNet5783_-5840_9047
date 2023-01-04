@@ -58,7 +58,7 @@ namespace PL.WpfProduct
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)
         {
-            new MainWindow().Show();
+            new Manager().Show();
             this.Close();
         }
          private void UpdateViewList(ProductForList p)

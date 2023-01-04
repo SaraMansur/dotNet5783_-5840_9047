@@ -8,7 +8,7 @@
         Title="createNewOrder" Height="595" Width="1040">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WpfNewOrder/לשרה.png"/>
+            <ImageBrush ImageSource="/WpfNewOrder/v745-kul-39.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
@@ -51,6 +51,11 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
+        <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold" Margin="430,18,175,0" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.564,0.325" Grid.RowSpan="2">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background>
+        </TextBlock>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

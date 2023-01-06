@@ -19,7 +19,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="80"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="300"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="200"/>
                     <GridViewColumn x:Name="_Status"  Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus,Mode=TwoWay }" Width="100"/>
                     <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems,Mode=TwoWay}" Width="80"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice,Mode=TwoWay}" Width="100"/>

@@ -50,8 +50,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductImages", "ProductIma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csproj", "{AE72C37F-9A72-4946-BF78-0546B694581E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InitializationXml", "InitializationXml\InitializationXml.csproj", "{6E9778AF-C94D-40E9-8B76-365709636B92}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,10 +88,6 @@ Global
 		{AE72C37F-9A72-4946-BF78-0546B694581E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE72C37F-9A72-4946-BF78-0546B694581E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE72C37F-9A72-4946-BF78-0546B694581E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E9778AF-C94D-40E9-8B76-365709636B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E9778AF-C94D-40E9-8B76-365709636B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E9778AF-C94D-40E9-8B76-365709636B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E9778AF-C94D-40E9-8B76-365709636B92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

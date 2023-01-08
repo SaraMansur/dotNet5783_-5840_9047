@@ -8,7 +8,7 @@ namespace Dal;
 using DalApi;
 using DO;
 
-internal class Order :IOrder
+internal class Order //:IOrder
 {
 
 }

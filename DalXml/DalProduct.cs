@@ -8,7 +8,7 @@ using DalApi;
 using DO;
 using System.Xml.Linq;
 
-internal class DalProduct : IProduct
+internal class DalProduct //: IProduct
 {
     XElement productRoot;
     string productPath = @"Product.xml";

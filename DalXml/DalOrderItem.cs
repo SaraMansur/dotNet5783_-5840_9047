@@ -7,7 +7,7 @@ namespace Dal;
 using DalApi;
 using DO;
 
-internal class DalOrderItem //: IOrderItem
+internal class DalOrderItem : IOrderItem
 {
 
 }

@@ -9,11 +9,11 @@ using DalApi;
 using DO;
 using System.Security.Principal;
 
-sealed  internal class DalXml //:IDal
+sealed  internal class DalXml :IDal
 {
-    //public IProduct Product { get; } = new Dal.DalProduct();
+    public IProduct Product { get; } = new Dal.DalProduct();
 
-   // public IOrder Order { get; } = new Dal.Order();
+    public IOrder Order { get; } = new Dal.Order();
 
-   // public IOrderItem OrderItem { get; } = new Dal.DalOrderItem();
+    public IOrderItem OrderItem { get; } = new Dal.DalOrderItem();
 }

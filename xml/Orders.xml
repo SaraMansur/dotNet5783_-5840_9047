@@ -168,7 +168,7 @@
     <m_CustomerEmail>Yair619@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Begin 18 Netivot</m_CustomerAdress>
     <m_OrderTime>2023-01-01T17:58:30.8973615+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
+    <m_ShipDate>2023-01-09T19:06:09.1439953+02:00</m_ShipDate>
     <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
   </Order>
   <Order>
@@ -177,7 +177,7 @@
     <m_CustomerEmail>Meir846@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Savion 57 Rechassim</m_CustomerAdress>
     <m_OrderTime>2023-01-01T17:58:30.8973628+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
+    <m_ShipDate>2023-01-09T19:05:47.3706956+02:00</m_ShipDate>
     <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
   </Order>
 </ArrayOfOrder>

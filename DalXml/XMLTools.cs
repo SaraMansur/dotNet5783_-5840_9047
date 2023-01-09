@@ -11,6 +11,9 @@ namespace Dal;
 public class XMLTools
 {
     #region SaveLoadWithXMLSerializer
+    static string ConfigPath = @"Config.xml";
+
+    static string dir = @"..\xml\";
     public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
     {
         try
@@ -62,5 +65,23 @@ public class XMLTools
             return null;
         }
     }
-    
+    public static int configOrderId()
+    {
+        XElement configRoot= XElement.Load(dir + ConfigPath);
+        int id = Convert.ToInt32(configRoot.Element("IdOrder").Value);
+        id++;
+        configRoot.Element("IdOrder")!.SetValue(id);
+        configRoot.Save(dir + ConfigPath);
+        return id;
+    }
+    public static int configOrderItemId()
+    {
+        XElement configRoot = XElement.Load(dir + ConfigPath);
+        int id = Convert.ToInt32(configRoot.Element("IdOrderItem").Value);
+        id++;
+        configRoot.Element("IdOrderItem")!.SetValue(id);
+        configRoot.Save(dir + ConfigPath);
+        return id;
+    }
+
 }

@@ -152,14 +152,14 @@ internal class DalProduct : IProduct
         var product = Get().FirstOrDefault(x => x?.m_ID == P?.m_ID);
         if (product == null)
             throw new NotExist();
-        XElement studentElement = (from p in productRoot.Elements()
+        XElement productElement = (from p in productRoot.Elements()
                                    where Convert.ToInt32(p.Element("m_ID").Value) == P?.m_ID
                                    select p).FirstOrDefault();
 
-        studentElement!.Element("m_Name")!.Value = P?.m_Name;
-        studentElement!.Element("m_Category")!.Value = P?.m_Category.ToString();
-        studentElement!.Element("m_InStock")!.Value = P?.m_InStock.ToString();
-        studentElement!.Element("m_Price")!.Value = P?.m_Price.ToString();
+        productElement!.Element("m_Name")!.Value = P?.m_Name;
+        productElement!.Element("m_Category")!.Value = P?.m_Category.ToString();
+        productElement!.Element("m_InStock")!.Value = P?.m_InStock.ToString();
+        productElement!.Element("m_Price")!.Value = P?.m_Price.ToString();
 
         productRoot.Save(dir + productPath);
     }

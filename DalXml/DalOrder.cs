@@ -9,6 +9,7 @@ using DalApi;
 using DO;
 
 
+
 internal class DalOrder : IOrder
 {
     //dir need to be up from bin
@@ -31,7 +32,7 @@ internal class DalOrder : IOrder
     {
         List<DO.Order?> OrderList = XMLTools.LoadListFromXMLSerializer<DO.Order?>(dir + OrderFilePath);
         Order order = entity ?? throw new ArgumentNull();
-        //order.m_ID = Config.getOrderId();
+        order.m_ID = XMLTools.configOrderId();
         OrderList.Add(order);
 
         XMLTools.SaveListToXMLSerializer<DO.Order?>(OrderList, dir + OrderFilePath);

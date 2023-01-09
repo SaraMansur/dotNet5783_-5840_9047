@@ -31,7 +31,7 @@ internal class DalOrderItem : IOrderItem
     {
         List<DO.OrderItem?> OrderItemList = XMLTools.LoadListFromXMLSerializer<DO.OrderItem?>(dir + OrderItemFilePath);
         OrderItem oi = OI ?? throw new ArgumentNull();
-        //oi.m_ID = Config.getOrderItemId();
+        oi.m_ID = XMLTools.configOrderItemId();
         OrderItemList.Add(oi);
 
         XMLTools.SaveListToXMLSerializer<DO.OrderItem?>(OrderItemList, dir + OrderItemFilePath);

@@ -94,7 +94,7 @@ internal class DalProduct : IProduct
     {
 
         LoadData();
-        List<Product?> products;
+        IEnumerable<Product> products;
         try
         {
 
@@ -102,7 +102,7 @@ internal class DalProduct : IProduct
                         select new Product()
                         {
                             m_ID = Convert.ToInt32(p.Element("ID").Value),
-                            m_Name = p.Element("name").Value),
+                            m_Name = p.Element("name")!.Value,
                             m_InStock = Convert.ToInt32(p.Element("InStock").Value),
                             m_Price = Convert.ToInt32(p.Element("Price").Value),
                             m_Category = (DO.Enums.Category)Enum.Parse(typeof(DO.Enums.Category), (string)p.Element("Category")!)
@@ -110,13 +110,13 @@ internal class DalProduct : IProduct
                         }).ToList();
 
             if (func != null)
-                products.Where(func);
+                products?.Where(func).ToList();
         }
         catch
         {
             products = null;
         }
-        return products;
+        return(IEnumerable<Product?>)products;
     }
 
     public Product? GetSingle(Func<Product?, bool>? func)

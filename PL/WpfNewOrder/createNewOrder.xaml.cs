@@ -35,11 +35,15 @@ namespace PL.WpfNewOrder
 
         public createNewOrder(BO.Cart c = null)
         {
-            cart = c; 
-            InitializeComponent();
-            ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
-            ProductItems.ItemsSource = ProductItemlist;
-            GroupBy.ItemsSource = new string[] { "None","Grouping by category" , "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
+            try
+            {
+                cart = c;
+                InitializeComponent();
+                ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
+                ProductItems.ItemsSource = ProductItemlist;
+                GroupBy.ItemsSource = new string[] { "None", "Grouping by category", "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
+            }
+            catch(Exception e) { MessageBox.Show(e.Message); }
         }   
 
         public Predicate<object> Filtering { get; private set; }

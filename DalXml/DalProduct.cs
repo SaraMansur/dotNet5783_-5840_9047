@@ -94,7 +94,7 @@ internal class DalProduct : IProduct
     {
 
         LoadData();
-        IEnumerable<Product> products;
+        IEnumerable<Product> products=new List<Product>();
         try
         {
 
@@ -110,7 +110,7 @@ internal class DalProduct : IProduct
                         }).ToList();
 
             if (func != null)
-                products?.Where(func).ToList();
+                products.Where(p=>func(p));
         }
         catch
         {

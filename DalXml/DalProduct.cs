@@ -94,7 +94,7 @@ internal class DalProduct : IProduct
     {
 
         LoadData();
-        IEnumerable<Product> products;
+        IEnumerable<Product> products=new List<Product>();
         try
         {
 

@@ -18,7 +18,7 @@ internal class DalOrderItem : IOrderItem
             Directory.CreateDirectory(dir);
     }
 
-    string OrderItemFilePath = @"TestList.xml";
+    string OrderItemFilePath = @"OrderItemList.xml";
 
     public DalOrderItem()
     {
@@ -31,7 +31,7 @@ internal class DalOrderItem : IOrderItem
     {
         List<DO.OrderItem?> OrderItemList = XMLTools.LoadListFromXMLSerializer<DO.OrderItem?>(dir + OrderItemFilePath);
         OrderItem oi = OI ?? throw new ArgumentNull();
-        oi.m_ID = Config.getOrderId();
+        oi.m_ID = Config.getOrderItemId();
         OrderItemList.Add(oi);
 
         XMLTools.SaveListToXMLSerializer<DO.OrderItem?>(OrderItemList, dir + OrderItemFilePath);

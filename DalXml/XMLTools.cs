@@ -22,7 +22,7 @@ public class XMLTools
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            throw new(ex.Message);
             //throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
         }
     }
@@ -44,7 +44,7 @@ public class XMLTools
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);  // DO.XMLFileLoadCreateException(filePath, $"fail to load xml file: {filePath}", ex);
+            throw new(ex.Message);
         }
         return null;
     }
@@ -58,7 +58,7 @@ public class XMLTools
         }
         catch
         {
-            Console.WriteLine("File upload problem");
+            throw new("File upload problem");
             return null;
         }
     }

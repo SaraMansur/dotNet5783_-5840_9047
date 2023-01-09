@@ -280,4 +280,25 @@
     <m_Price>738</m_Price>
     <m_amount>1</m_amount>
   </OrderItem>
+  <OrderItem>
+    <m_ID>0</m_ID>
+    <m_ProductId>597679</m_ProductId>
+    <m_OrderId>0</m_OrderId>
+    <m_Price>677</m_Price>
+    <m_amount>1</m_amount>
+  </OrderItem>
+  <OrderItem>
+    <m_ID>0</m_ID>
+    <m_ProductId>618958</m_ProductId>
+    <m_OrderId>0</m_OrderId>
+    <m_Price>7974</m_Price>
+    <m_amount>9</m_amount>
+  </OrderItem>
+  <OrderItem>
+    <m_ID>0</m_ID>
+    <m_ProductId>874820</m_ProductId>
+    <m_OrderId>0</m_OrderId>
+    <m_Price>457</m_Price>
+    <m_amount>1</m_amount>
+  </OrderItem>
 </ArrayOfOrderItem>

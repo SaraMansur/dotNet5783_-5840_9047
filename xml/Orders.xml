@@ -115,7 +115,7 @@
     <m_CustomerAdress>Savion 44 Netivot</m_CustomerAdress>
     <m_OrderTime>2022-12-24T17:58:30.8973461+02:00</m_OrderTime>
     <m_ShipDate>2022-12-27T17:58:30.8973461+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-01-09T19:41:10.6508276+02:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100013</m_ID>
@@ -179,5 +179,14 @@
     <m_OrderTime>2023-01-01T17:58:30.8973628+02:00</m_OrderTime>
     <m_ShipDate>2023-01-09T19:05:47.3706956+02:00</m_ShipDate>
     <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+  </Order>
+  <Order>
+    <m_ID>0</m_ID>
+    <m_CustomerName>sara</m_CustomerName>
+    <m_CustomerEmail>s@gmail.com</m_CustomerEmail>
+    <m_CustomerAdress>haifa</m_CustomerAdress>
+    <m_OrderTime>2023-01-09T19:40:40.1548566+02:00</m_OrderTime>
+    <m_ShipDate xsi:nil="true" />
+    <m_DeliveryrDate xsi:nil="true" />
   </Order>
 </ArrayOfOrder>

@@ -65,5 +65,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <Button Content="Delete Product" Click="Click_DeleteProduct" HorizontalAlignment="Left" Margin="255,455,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" FontFamily="Sitka Display"  Foreground="#FF6B641F" BorderBrush="#FF6B641F" Height="44" Width="144" Background="{x:Null}"/>
     </Grid>
 </Window>

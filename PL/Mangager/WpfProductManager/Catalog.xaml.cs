@@ -73,6 +73,20 @@ namespace PL.WpfProduct
         {
             _Productlist.Add(p);
         }
+
+        private void Click_DeleteProduct(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ProductForList pl = (ProductForList)productsList.SelectedItem ?? throw new ArgumentNull();
+                bl.Product.DeleteProduct(pl.m_ID);
+                int index = _Productlist.IndexOf(pl);
+                _Productlist.RemoveAt(index);
+                MessageBox.Show("product deleted successfully");
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+        }
     }
 }
 

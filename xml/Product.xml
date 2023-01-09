@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Product>
     <m_ID>812115</m_ID>
@@ -10,22 +10,22 @@
   <Product>
     <m_ID>874820</m_ID>
     <m_Name>Gentle Ring Gold</m_Name>
-    <m_Price>457</m_Price>
-    <m_InStock>27</m_InStock>
+    <m_Price>900</m_Price>
+    <m_InStock>26</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
     <m_ID>597679</m_ID>
     <m_Name>Ring inlaid with green stones</m_Name>
     <m_Price>677</m_Price>
-    <m_InStock>18</m_InStock>
+    <m_InStock>17</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
     <m_ID>618958</m_ID>
     <m_Name>Gold ring inlaid with spotlight stones</m_Name>
     <m_Price>886</m_Price>
-    <m_InStock>12</m_InStock>
+    <m_InStock>3</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>

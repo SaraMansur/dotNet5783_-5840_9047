@@ -11,7 +11,7 @@ using System.Xml.Linq;
 internal class DalProduct : IProduct
 {
     XElement productRoot;
-    string productPath = @"Product.xml";
+    string productPath = @"C:\Users\user\source\repos\dotNet5783_-5840_9047\xml\Product.xml";
 
     public int P { get; private set; }
 
@@ -110,7 +110,7 @@ internal class DalProduct : IProduct
                         }).ToList();
 
             if (func != null)
-                products?.Where(func).ToList();
+                products?.Where(p=>func(p)).ToList();
         }
         catch
         {
@@ -122,25 +122,27 @@ internal class DalProduct : IProduct
     public Product? GetSingle(Func<Product?, bool>? func)
     {
         LoadData();
-        Product? product;
+        Product product; Product? produ;
         try
         {
             product = (from p in productRoot.Elements()
                        select new Product()
                        {
                            m_ID = Convert.ToInt32(p.Element("ID").Value),
-                           m_Name = p.Element("Name").Value),
+                           m_Name = p.Element("Name")!.Value,
                            m_InStock = Convert.ToInt32(p.Element("InStock").Value),
                            m_Price = Convert.ToInt32(p.Element("Price").Value),
                            m_Category = (DO.Enums.Category)Enum.Parse(typeof(DO.Enums.Category), (string)p.Element("Category")!)
-                       }).FirstOrDefault(func);
+                       }).FirstOrDefault(p=>func(p)) ;
+            produ = (Product?)product;
         }
+
         catch
         {
-            product = null;
+            produ = null;
         }
-        product = product ?? throw new NotExist();
-        return product;
+        produ = produ ?? throw new NotExist();
+        return produ;
     }
 
     public void Update(Product? P)
@@ -160,6 +162,4 @@ internal class DalProduct : IProduct
         productRoot.Save(productPath);
     }
  
-
-
 }

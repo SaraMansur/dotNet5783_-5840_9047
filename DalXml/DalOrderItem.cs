@@ -18,7 +18,7 @@ internal class DalOrderItem : IOrderItem
             Directory.CreateDirectory(dir);
     }
 
-    string OrderItemFilePath = @"OrderItemList.xml";
+    string OrderItemFilePath = @"OrderItems.xml";
 
     //public DalOrderItem()
     //{

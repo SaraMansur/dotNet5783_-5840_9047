@@ -1,2 +1,94 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <m_ID>812115</m_ID>
+    <m_Name>Delicate Ring Silver</m_Name>
+    <m_Price>929</m_Price>
+    <m_InStock>17</m_InStock>
+    <m_Category>Rings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>874820</m_ID>
+    <m_Name>Gentle Ring Gold</m_Name>
+    <m_Price>457</m_Price>
+    <m_InStock>27</m_InStock>
+    <m_Category>Rings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>597679</m_ID>
+    <m_Name>Ring inlaid with green stones</m_Name>
+    <m_Price>677</m_Price>
+    <m_InStock>18</m_InStock>
+    <m_Category>Rings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>618958</m_ID>
+    <m_Name>Gold ring inlaid with spotlight stones</m_Name>
+    <m_Price>886</m_Price>
+    <m_InStock>12</m_InStock>
+    <m_Category>Rings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>179393</m_ID>
+    <m_Name>Silver Hoop earrings</m_Name>
+    <m_Price>963</m_Price>
+    <m_InStock>27</m_InStock>
+    <m_Category>Earrings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>192728</m_ID>
+    <m_Name>Hexagonal Hoop Gold earrings</m_Name>
+    <m_Price>265</m_Price>
+    <m_InStock>12</m_InStock>
+    <m_Category>Earrings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>230724</m_ID>
+    <m_Name>Stud earrings</m_Name>
+    <m_Price>796</m_Price>
+    <m_InStock>22</m_InStock>
+    <m_Category>Earrings</m_Category>
+  </Product>
+  <Product>
+    <m_ID>330438</m_ID>
+    <m_Name>Gold bracelet</m_Name>
+    <m_Price>324</m_Price>
+    <m_InStock>23</m_InStock>
+    <m_Category>Bracelets</m_Category>
+  </Product>
+  <Product>
+    <m_ID>312838</m_ID>
+    <m_Name>Silver bracelet</m_Name>
+    <m_Price>518</m_Price>
+    <m_InStock>10</m_InStock>
+    <m_Category>Bracelets</m_Category>
+  </Product>
+  <Product>
+    <m_ID>113958</m_ID>
+    <m_Name>Silver watche</m_Name>
+    <m_Price>290</m_Price>
+    <m_InStock>18</m_InStock>
+    <m_Category>Watches</m_Category>
+  </Product>
+  <Product>
+    <m_ID>501500</m_ID>
+    <m_Name>Ross watche</m_Name>
+    <m_Price>966</m_Price>
+    <m_InStock>17</m_InStock>
+    <m_Category>Watches</m_Category>
+  </Product>
+  <Product>
+    <m_ID>685950</m_ID>
+    <m_Name>Gold necklace</m_Name>
+    <m_Price>965</m_Price>
+    <m_InStock>22</m_InStock>
+    <m_Category>Necklaces</m_Category>
+  </Product>
+  <Product>
+    <m_ID>592065</m_ID>
+    <m_Name>Silver necklace</m_Name>
+    <m_Price>957</m_Price>
+    <m_InStock>12</m_InStock>
+    <m_Category>Necklaces</m_Category>
+  </Product>
+</ArrayOfProduct>

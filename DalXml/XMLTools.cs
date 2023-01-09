@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Dal;
 
-internal class XMLTools
+public class XMLTools
 {
     #region SaveLoadWithXMLSerializer
     public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
@@ -62,4 +62,5 @@ internal class XMLTools
             return null;
         }
     }
+    
 }

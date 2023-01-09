@@ -8,6 +8,7 @@ internal class Order : IOrder
 {
     private DalApi.IDal? Dal = DalApi.Factory.Get();
 
+   
     /// <summary>
     /// The function returns the status of the order:
     /// </summary>

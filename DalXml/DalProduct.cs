@@ -11,7 +11,7 @@ using System.Xml.Linq;
 internal class DalProduct : IProduct
 {
     XElement productRoot;
-    string productPath = @"C:\Users\user\source\repos\dotNet5783_-5840_9047\xml\Product.xml";
+    string productPath = @"Product.xml";
 
     public int P { get; private set; }
 

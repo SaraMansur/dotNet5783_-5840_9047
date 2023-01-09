@@ -11,7 +11,7 @@ using DO;
 internal class DalOrderItem : IOrderItem
 {
     //dir need to be up from bin
-    static string dir = @"C:\Users\שרה\source\repos\dotNet5783_-5840_9047\xml\OrderItem.xml";
+    static string dir = @"..\xml\";
     static DalOrderItem()
     {
         if (!Directory.Exists(dir))

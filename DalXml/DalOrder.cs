@@ -12,14 +12,14 @@ using DO;
 internal class DalOrder : IOrder
 {
     //dir need to be up from bin
-    static string dir = @"C:\Users\שרה\source\repos\dotNet5783_-5840_9047\xml\Order.xml";
+    static string dir = @"..\xml\";
     static DalOrder()
     {
         if (!Directory.Exists(dir))
             Directory.CreateDirectory(dir);
     }
 
-    string OrderFilePath = @"OrderList.xml";
+    string OrderFilePath = @"derList.xml";
 
     //public DalOrder()
     //{

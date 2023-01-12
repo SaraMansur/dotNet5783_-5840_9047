@@ -8,10 +8,10 @@
         Title="MainWindow" Height="490" Width="945">
     <Grid Height="474" VerticalAlignment="Center">
         <Grid.Background>
-            <ImageBrush ImageSource="/מסך.jpg"/>
+            <ImageBrush ImageSource="/הגךת.png"/>
         </Grid.Background>
-        <Button x:Name="Managerview" Content="Manager view" Click="Manager_Click" Background="{x:Null}" Foreground="#FFF0F0E8" FontFamily="Sitka Text" FontWeight="Bold" FontSize="24" BorderBrush="#FFF0F0E8" Margin="40,217,665,130"/>
-        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="{x:Null}" FontFamily="Sitka Text" Foreground="#FFF0F0E8" FontSize="24" FontWeight="Bold" BorderBrush="#FFF0F0E8" Margin="340,217,364,132" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Managerview" Content="Manager" Click="Manager_Click" Background="#FF91587B" Foreground="#FFF0F0E8" FontFamily="Sitka Text" FontWeight="Bold" FontSize="24" BorderBrush="#FF8C407D" Margin="70,388,708,39" FontStyle="Italic" BorderThickness="3"/>
+        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="#FF91587B" FontFamily="Sitka Text" Foreground="#FFF0F0E8" FontSize="24" FontWeight="Bold" BorderBrush="#FF8C407D" Margin="388,387,380,42" RenderTransformOrigin="0.5,0.5" FontStyle="Italic" BorderThickness="3">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,7 +21,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="Ordertrackingview" Content="Order tracking view"  Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="22" Foreground="#FFF0F0E8" BorderBrush="#FFF0F0E8" FontWeight="Bold" Margin="640,217,65,130"/>
-        <TextBlock Margin="208,130,0,0" Text="WELCOME" VerticalAlignment="Top" Height="82" Foreground="#FFF0F0E8" Width="492" FontFamily="Sitka Small" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking" BorderThickness="3" Click="OrderTracking_Click" Background="#FF91587B" FontFamily="Sitka Text" FontSize="22" Foreground="White" BorderBrush="#FF8C407D" FontWeight="Bold" Margin="690,388,70,38" FontStyle="Italic"/>
+        <TextBlock Margin="209,42,0,0" Text="WELCOME" VerticalAlignment="Top" Height="63" Foreground="#FF91587B" Width="492" FontFamily="Lucida Calligraphy" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

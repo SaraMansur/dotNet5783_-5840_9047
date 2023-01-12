@@ -22,6 +22,7 @@
     <None Remove="Mangager\WpfProductManager\לשרה.png" />
     <None Remove="Mangager\חץץ.jpg" />
     <None Remove="Mangager\מסך.jpg" />
+    <None Remove="Mangager\רקע מושלם.png" />
     <None Remove="shutterstock_739292332__w645h390q80.jpg" />
     <None Remove="WpfNewOrder\09.png" />
     <None Remove="WpfNewOrder\3392075.jpg" />
@@ -54,6 +55,7 @@
     <Resource Include="Mangager\WpfProductManager\לשרה.png" />
     <Resource Include="Mangager\חץץ.jpg" />
     <Resource Include="Mangager\מסך.jpg" />
+    <Resource Include="Mangager\רקע מושלם.png" />
     <Resource Include="shutterstock_739292332__w645h390q80.jpg" />
     <Resource Include="WpfNewOrder\09.png" />
     <Resource Include="WpfNewOrder\3392075.jpg" />

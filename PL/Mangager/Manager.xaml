@@ -6,9 +6,27 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="Manager" Height="490" Width="945">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FFF0F0E8" />
+            <Setter Property="FontFamily" Value="Sitka Text" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="#FF91587B" />
+            <Setter Property="BorderBrush" Value="#FF8C407D" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF8C407D"/>
+                    <Setter Property="Background" Value="#FF91587B" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Mangager/מסך.jpg"/>
+            <ImageBrush ImageSource="/Mangager/רקע מושלם.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,10 +40,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Name="ProductForList" Content="Products" Click="ProductForList_Click" Grid.Column="3" Foreground="#FFF0F0E8" FontFamily="Sitka Text" FontSize="20" FontWeight="Bold" BorderBrush="#FFF0F0E8" Background="{x:Null}" Grid.ColumnSpan="2" Margin="145,179,55,185" Grid.RowSpan="3"/>
-        <Button Name="OrderForList" Content="Orders" Click="OrderForList_Click" FontFamily="Sitka Text" FontSize="20" Foreground="#FFF0F0E8" FontWeight="Bold" Background="{x:Null}" BorderBrush="#FFF0F0E8" Grid.ColumnSpan="2" Margin="75,179,125,185" Grid.RowSpan="3"/>
-        <Button x:Name="Ordertrackingview" Content="Order tracking view" Grid.Column="1" Click="OrderTracking_Click" Background="{x:Null}" FontFamily="Sitka Text" FontSize="20" Foreground="#FFF0F0E8" BorderBrush="#FFF0F0E8" Grid.ColumnSpan="3" Margin="152,179,153,185" Grid.RowSpan="3" FontWeight="Bold"/>
-        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+        <Button Name="ProductForList" Style="{StaticResource myButtonStyle}" Content="Products" Click="ProductForList_Click" Grid.Column="3" FontWeight="Bold" Grid.ColumnSpan="2" Margin="145,113,55,0" RenderTransformOrigin="0.523,0.591" Grid.Row="2" Height="43"/>
+        <Button Name="OrderForList" Style="{StaticResource myButtonStyle}" Content="Orders" Click="OrderForList_Click" FontFamily="Sitka Text" Grid.ColumnSpan="2" Margin="65,113,135,0" Grid.Row="2" Height="43"/>
+        <Button x:Name="Ordertrackingview" Style="{StaticResource myButtonStyle}" Content="Order tracking view" Grid.Column="1" Click="OrderTracking_Click" Grid.ColumnSpan="3" Margin="128,113,129,0" Grid.Row="2" Height="43"/>
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" RenderTransformOrigin="0.5,0.5">
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/חץץ.jpg"/>
             </Button.Background>
@@ -38,5 +56,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="30,29,0,0" TextWrapping="Wrap" Text="     Hello Manager " VerticalAlignment="Top" Grid.ColumnSpan="3" Height="73" Width="485" FontSize="60" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" FontFamily="Sitka Banner"/>
     </Grid>
 </Window>

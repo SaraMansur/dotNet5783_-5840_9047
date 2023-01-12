@@ -6,12 +6,30 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="490" Width="945">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FFF0F0E8" />
+            <Setter Property="FontFamily" Value="Sitka Text" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="#FF91587B" />
+            <Setter Property="BorderBrush" Value="#FF8C407D" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF8C407D"/>
+                    <Setter Property="Background" Value="#FF91587B" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Height="474" VerticalAlignment="Center">
         <Grid.Background>
             <ImageBrush ImageSource="/הגךת.png"/>
         </Grid.Background>
-        <Button x:Name="Managerview" Content="Manager" Click="Manager_Click" Background="#FF91587B" Foreground="#FFF0F0E8" FontFamily="Sitka Text" FontWeight="Bold" FontSize="24" BorderBrush="#FF8C407D" Margin="70,388,708,39" FontStyle="Italic" BorderThickness="3"/>
-        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Background="#FF91587B" FontFamily="Sitka Text" Foreground="#FFF0F0E8" FontSize="24" FontWeight="Bold" BorderBrush="#FF8C407D" Margin="388,387,380,42" RenderTransformOrigin="0.5,0.5" FontStyle="Italic" BorderThickness="3">
+        <Button x:Name="Managerview" Content="Manager" Click="Manager_Click" Margin="60,384,685,0" Style="{StaticResource myButtonStyle}" Height="42"/>
+        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Margin="368,380,380,0" RenderTransformOrigin="0.5,0.5" Style="{StaticResource myButtonStyle}" Height="46" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,7 +39,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="Ordertrackingview" Content="Order tracking" BorderThickness="3" Click="OrderTracking_Click" Background="#FF91587B" FontFamily="Sitka Text" FontSize="22" Foreground="White" BorderBrush="#FF8C407D" FontWeight="Bold" Margin="690,388,70,38" FontStyle="Italic"/>
-        <TextBlock Margin="209,42,0,0" Text="WELCOME" VerticalAlignment="Top" Height="63" Foreground="#FF91587B" Width="492" FontFamily="Lucida Calligraphy" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking" Click="OrderTracking_Click" Margin="680,384,65,0" Style="{StaticResource myButtonStyle}" Height="42"/>
+        <TextBlock Margin="209,42,0,0" Text="WELCOME" VerticalAlignment="Top" Height="63" Foreground="#FF91587B" Width="492" FontFamily="Sitka Banner" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

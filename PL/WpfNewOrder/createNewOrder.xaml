@@ -8,7 +8,7 @@
         Title="createNewOrder" Height="595" Width="1040">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WpfNewOrder/v745-kul-39.jpg"/>
+            <ImageBrush ImageSource="/WpfNewOrder/image (2).png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions >
             <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="1" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="32,10,30,0" Height="39" VerticalAlignment="Top" FontSize="16" />
-            <Button x:Name="Cart" Content=" My Cart" Margin="0,480,490,-491" Width="163" BorderBrush="#FF6B641F" Foreground="#FF6B641F" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="{x:Null}"/>
+            <Button x:Name="Cart" Content=" My Cart" Margin="0,480,490,-491" Width="163" BorderBrush="#FFFCFCF9" Foreground="#FFFCFCF9" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="#FFC6A67D"/>
 
         </Grid>
         <ListView Name="ProductItems" Margin="0,0,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Height="369" VerticalAlignment="Bottom">
@@ -35,7 +35,7 @@
                     <GridViewColumn Header="Update Amount" x:Name="_amount" Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="updateAmount" Content="Add to cart" Width="100" Click="AddToCart_click" BorderBrush="#FF4F4C0C" Foreground="#FF4F4C0C" FontFamily="Sitka Display" FontSize="15" Background="{x:Null}"/>
+                                <Button x:Name="updateAmount" Content="Add to cart" Width="100" Click="AddToCart_click" BorderBrush="White" Foreground="White" FontFamily="Sitka Display" FontSize="15" Background="#FFC6A67D"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -51,7 +51,7 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
-        <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" FontFamily="SimSun" Foreground="#FF8F912D" FontWeight="Bold" Margin="430,18,175,0" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.564,0.325" Grid.RowSpan="2">
+        <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" FontFamily="SimSun" Foreground="#FFC6A67D" FontWeight="Bold" Margin="430,18,175,0" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.564,0.325" Grid.RowSpan="2">
             <TextBlock.Background>
                 <ImageBrush/>
             </TextBlock.Background>

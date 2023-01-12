@@ -20,6 +20,7 @@
     <None Remove="Mangager\WpfProductManager\v745-kul-39.jpg" />
     <None Remove="Mangager\WpfProductManager\חץץ.jpg" />
     <None Remove="Mangager\WpfProductManager\לשרה.png" />
+    <None Remove="Mangager\הגךת.png" />
     <None Remove="Mangager\חץץ.jpg" />
     <None Remove="Mangager\מסך.jpg" />
     <None Remove="Mangager\רקע מושלם.png" />
@@ -58,6 +59,7 @@
     <Resource Include="Mangager\WpfProductManager\v745-kul-39.jpg" />
     <Resource Include="Mangager\WpfProductManager\חץץ.jpg" />
     <Resource Include="Mangager\WpfProductManager\לשרה.png" />
+    <Resource Include="Mangager\הגךת.png" />
     <Resource Include="Mangager\חץץ.jpg" />
     <Resource Include="Mangager\מסך.jpg" />
     <Resource Include="Mangager\רקע מושלם.png" />

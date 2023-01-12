@@ -8,7 +8,7 @@
         Title="createNewOrder" Height="595" Width="1040">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WpfNewOrder/image (2).png"/>
+            <ImageBrush ImageSource="/WpfNewOrder/09.png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>

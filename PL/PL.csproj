@@ -23,6 +23,7 @@
     <None Remove="Mangager\חץץ.jpg" />
     <None Remove="Mangager\מסך.jpg" />
     <None Remove="shutterstock_739292332__w645h390q80.jpg" />
+    <None Remove="WpfNewOrder\09.png" />
     <None Remove="WpfNewOrder\3392075.jpg" />
     <None Remove="WpfNewOrder\image %282%29.png" />
     <None Remove="WpfNewOrder\v745-kul-39.jpg" />
@@ -33,6 +34,8 @@
     <None Remove="WPFOrderTacking\חץץ.jpg" />
     <None Remove="WPFOrderTacking\לשרה.png" />
     <None Remove="WPFOrderTacking\מסך.jpg" />
+    <None Remove="הגךת.png" />
+    <None Remove="התךס.png" />
     <None Remove="לשרה.png" />
     <None Remove="מסך.jpg" />
   </ItemGroup>
@@ -52,6 +55,7 @@
     <Resource Include="Mangager\חץץ.jpg" />
     <Resource Include="Mangager\מסך.jpg" />
     <Resource Include="shutterstock_739292332__w645h390q80.jpg" />
+    <Resource Include="WpfNewOrder\09.png" />
     <Resource Include="WpfNewOrder\3392075.jpg" />
     <Resource Include="WpfNewOrder\image (2).png" />
     <Resource Include="WpfNewOrder\v745-kul-39.jpg" />
@@ -62,6 +66,8 @@
     <Resource Include="WPFOrderTacking\חץץ.jpg" />
     <Resource Include="WPFOrderTacking\לשרה.png" />
     <Resource Include="WPFOrderTacking\מסך.jpg" />
+    <Resource Include="הגךת.png" />
+    <Resource Include="התךס.png" />
     <Resource Include="לשרה.png" />
     <Resource Include="מסך.jpg" />
   </ItemGroup>

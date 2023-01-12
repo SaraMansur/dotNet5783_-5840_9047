@@ -6,36 +6,56 @@
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
         Title="createNewOrder" Height="595" Width="1040">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FFF0F0E8" />
+            <Setter Property="FontFamily" Value="Sitka Text" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="#FF91587B" />
+            <Setter Property="BorderBrush" Value="#FF8C407D" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF8C407D"/>
+                    <Setter Property="Background" Value="#FF91587B" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/WpfNewOrder/צילום מסך 2023-01-12 233140.png" Stretch="Uniform"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="111*"/>
+            <RowDefinition Height="415*"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Margin="0,0,0,506" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="25*"/>
-            </Grid.ColumnDefinitions >
-            <ComboBox Grid.Row="0" SelectedIndex="0" Grid.Column="1" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Margin="32,10,30,0" Height="39" VerticalAlignment="Top" FontSize="16" />
-            <Button x:Name="Cart" Content=" My Cart" Margin="0,480,490,-491" Width="163" BorderBrush="#FFFCFCF9" Foreground="#FFFCFCF9" HorizontalAlignment="Right" Click="Cart_Click" FontFamily="Sylfaen" FontSize="25" FontWeight="Bold" Background="#FFC6A67D"/>
+        <Grid Name="UpGrid" Height="auto" Grid.Row="0" Margin="0,0,0,400" Grid.RowSpan="3">
+            <ComboBox SelectedIndex="0" Name="GroupBy" SelectionChanged="GroupBy_SelectionChanged" Height="48" VerticalAlignment="Top" FontSize="16" BorderBrush="#FFFBFBFB" FontWeight="Bold" Foreground="#FF993F76" Background="#FF993F76" FontStyle="Italic" HorizontalAlignment="Left" Width="605" Margin="5,49,0,0" />
+            <Button x:Name="Cart" Margin="0,0,0,89" Width="90" HorizontalAlignment="Right" Click="Cart_Click" FontSize="25" BorderBrush="{x:Null}" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/WpfNewOrder/סלל.jpg" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
 
         </Grid>
-        <ListView Name="ProductItems" Margin="0,0,0,137" HorizontalAlignment="Center" Width="970" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Height="369" VerticalAlignment="Bottom">
+        <ListView Name="ProductItems" Margin="0,46,0,0" HorizontalAlignment="Center" Width="1020" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Foreground="#FF993F76" Height="455" VerticalAlignment="Top" Grid.RowSpan="2" FontStyle="Italic" FontWeight="Bold">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding m_ID}" />
+
+                    <GridViewColumn Header="Id" Width="90" DisplayMemberBinding="{Binding m_ID}" />
                     <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding m_NameProduct}" />
                     <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding m_PriceProduct}" />
-                    <GridViewColumn Header="Caregory" Width="120" DisplayMemberBinding="{Binding Category }" />
-                    <GridViewColumn Header="In Stock" Width="100" DisplayMemberBinding="{Binding m_InStock}" />
-                    <GridViewColumn Header="Amount In Cart" Width="120" DisplayMemberBinding="{Binding m_AmountInCart}" />
-                    <GridViewColumn Header="Update Amount" x:Name="_amount" Width="130">
+                    <GridViewColumn Header="Caregory" Width="140" DisplayMemberBinding="{Binding Category }" />
+                    <GridViewColumn Header="In Stock" Width="120" DisplayMemberBinding="{Binding m_InStock}" />
+                    <GridViewColumn Header="In Cart" Width="80" DisplayMemberBinding="{Binding m_AmountInCart}" />
+                    <GridViewColumn Header="Update Amount" x:Name="_amount" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="updateAmount" Content="Add to cart" Width="100" Click="AddToCart_click" BorderBrush="White" Foreground="White" FontFamily="Sitka Display" FontSize="15" Background="#FFC6A67D"/>
+                                <Button x:Name="updateAmount" Content="Add to cart" Width="120" Click="AddToCart_click" Style="{StaticResource myButtonStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -45,28 +65,23 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}" Foreground="#FF898E25" FontFamily="Sylfean"/>
+                            <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Name}" Foreground="#FF000000" FontFamily="Sylfean"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
-        <TextBlock Text="CATEGORY: " TextAlignment="Center" FontSize="30" FontFamily="SimSun" Foreground="#FFC6A67D" FontWeight="Bold" Margin="430,18,175,0" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.564,0.325" Grid.RowSpan="2">
-            <TextBlock.Background>
-                <ImageBrush/>
-            </TextBlock.Background>
-        </TextBlock>
-        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Margin="1,1,0,0">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-179.714"/>
+                    <RotateTransform Angle="0.033"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
+                <ImageBrush ImageSource="/WpfNewOrder/צילום מסך 2023-01-13 011212.jpg"/>
             </Button.Background>
         </Button>
     </Grid>

@@ -40,19 +40,15 @@
                 <TextBlock Grid.Column="4" Text="{Binding m_IdProduct}" />
                 <TextBlock Grid.Column="5" Text="  "/>
                 <TextBlock Grid.Column="6" Text="Name of product: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="7" Text="{Binding Path = m_NameProduct}" />
                 <TextBlock Grid.Column="7" Text="{Binding m_NameProduct}" />
                 <TextBlock Grid.Column="8" Text="  "/>
                 <TextBlock Grid.Column="9" Text="Price product: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="10" Text="{Binding Path = m_PriceProduct}" />
                 <TextBlock Grid.Column="10" Text="{Binding m_PriceProduct}" />
                 <TextBlock Grid.Column="11" Text="  "/>
                 <TextBlock Grid.Column="12" Text="Amount In Cart: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="13" Text="{Binding Path = m_AmountInCart}" />
                 <TextBlock Grid.Column="13" Text="{Binding m_AmountInCart}" />
                 <TextBlock Grid.Column="14" Text="  "/>
                 <TextBlock Grid.Column="15" Text="Total price item: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="16" Text="{Binding Path = m_TotalPriceItem}" />
                 <TextBlock Grid.Column="16" Text="{Binding m_TotalPriceItem}" />
             </Grid>
         </DataTemplate>

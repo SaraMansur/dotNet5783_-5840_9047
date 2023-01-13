@@ -17,6 +17,8 @@
     <None Remove="Mangager\shutterstock_739292332__w645h390q80.jpg" />
     <None Remove="Mangager\WpfOrderManager\v745-kul-39.jpg" />
     <None Remove="Mangager\WpfOrderManager\לשרה.png" />
+    <None Remove="Mangager\WpfOrderManager\צילום מסך 2023-01-12 233140.png" />
+    <None Remove="Mangager\WpfOrderManager\צילום מסך 2023-01-13 011212.jpg" />
     <None Remove="Mangager\WpfProductManager\3392075.jpg" />
     <None Remove="Mangager\WpfProductManager\v745-kul-39.jpg" />
     <None Remove="Mangager\WpfProductManager\חץץ.jpg" />
@@ -24,6 +26,7 @@
     <None Remove="Mangager\הגךת.png" />
     <None Remove="Mangager\חץץ.jpg" />
     <None Remove="Mangager\מסך.jpg" />
+    <None Remove="Mangager\צילום מסך 2023-01-13 011212.jpg" />
     <None Remove="Mangager\רקע מושלם.png" />
     <None Remove="shutterstock_739292332__w645h390q80.jpg" />
     <None Remove="WpfNewOrder\09.png" />
@@ -62,7 +65,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Mangager\WpfOrderManager\צילום מסך 2023-01-12 233140.png" />
+    <Resource Include="Mangager\WpfOrderManager\צילום מסך 2023-01-13 011212.jpg" />
     <Resource Include="Mangager\הגךת.png" />
+    <Resource Include="Mangager\צילום מסך 2023-01-13 011212.jpg" />
     <Resource Include="WpfNewOrder\סלל.jpg" />
     <Resource Include="WpfNewOrder\צילום מסך 2023-01-12 233140.png" />
     <Resource Include="WpfNewOrder\צילום מסך 2023-01-13 011212.jpg" />

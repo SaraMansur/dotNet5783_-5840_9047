@@ -56,7 +56,7 @@ internal static class DataSource
                 product.m_Category = Enums.Category.Earrings;
             if (product.m_Name.Contains("Watche") || product.m_Name.Contains("watche"))
                 product.m_Category = Enums.Category.Watches;
-            addProduct(product);
+            m_listPruducts.Add(product);
         }
 
         for (int i = 0; i < 20; i++)//The loop initializes 20 orders.
@@ -71,27 +71,27 @@ internal static class DataSource
             order.m_CustomerEmail = custumerFirstName + rand.Next(100, 999) + "@gmail.com"; //Initialize the customer email.
             order.m_CustomerAdress = street[rand.Next(0, 7)] + " " + rand.Next(1, 100) + " " + citie[rand.Next(0, 9)]; //Client address initialization.
 
-            if (i >= 10 && i < 16)//80 from orders also have a delivery date.
+            if (i >= 10 && i < 16)//80% from orders also have a Ship date.
             {
-                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));
-                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));//The order date was made before: 14 to 16 days
+                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));//Delivery date is made within 14 business days
                 order.m_DeliveryrDate = DateTime.MinValue;
             }
 
-            if (i >= 0 && i < 10)//To 60 percent of the 80 percent of the orders that also have a delivery date, have a delivery date.
+            if (i >= 0 && i < 10)//To 60% of the 80% of the orders that also have a Ship date, have a delivery date.
             {
-                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0));
-                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0)); ////The order date was made before: 15 to 30 days
+                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0)); //Delivery date is made within 14 business days
                 order.m_DeliveryrDate = order.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
             }
 
-            if (i >= 16 && i < 20)//20 percent of orders have no delivery date and delivery date.
+            if (i >= 16 && i < 20)//20% of orders have no delivery date and delivery date.
             {
-                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-13, -1), 0, 0, 0));
+                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-7, -1), 0, 0, 0));
                 order.m_ShipDate = DateTime.MinValue;
                 order.m_DeliveryrDate = DateTime.MinValue;
             }
-            addOrder(order);
+            m_listOreders.Add(order);
         }
 
         for (int i = 0; i < 40; i++)//The loop initializes 40 ordersItems.
@@ -100,14 +100,6 @@ internal static class DataSource
             orderItem.m_ID = Config.orderItemId;
             Product p = (Product)m_listPruducts[rand.Next(0, 9)];
             orderItem.m_OrderId = ((Order)m_listOreders[i/2]).m_ID;
-            for (int k = 0, j = 0; j < m_listOrderItems.Count; j++) //Test that each order will be 1 to 4 order items
-            {
-                if (m_listOrderItems[j]?.m_OrderId == orderItem.m_OrderId)
-                {
-                    k++;
-                    if (k > 4) { orderItem.m_OrderId = ((Order)m_listOreders[rand.Next(0, 19)]).m_ID; j = 0; }
-                }
-            }
             orderItem.m_ProductId = p.m_ID;
             for (int j = 0; j < m_listOrderItems.Count; j++)  //An examination that this item does not exist in the current order.
             {
@@ -119,27 +111,9 @@ internal static class DataSource
             }
             orderItem.m_amount = rand.Next(1, 4); //Random number of product amount.
             orderItem.m_Price = orderItem.m_amount * p.m_Price; //
-            addOrderItem(orderItem);
+            m_listOrderItems.Add(orderItem);
         }
     }
-
-    /// <summary>
-    /// The function adds a product to the product pool:
-    /// </summary>
-    /// <param name="product"></param>
-    private static void addProduct(Product product) => m_listPruducts.Add(product);
-
-    /// <summary>
-    /// The function adds an order to the order pool:
-    /// </summary>
-    /// <param name="order"></param>
-    private static void addOrder(Order order) => m_listOreders.Add(order);
-
-    /// <summary>
-    /// The function adds an OrderItem to the OrderItem pool:
-    /// </summary>
-    /// <param name="orderItem"></param>
-    private static void addOrderItem(OrderItem orderItem) => m_listOrderItems.Add(orderItem);
 
 
     internal static class Config

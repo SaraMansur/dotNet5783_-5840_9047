@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,10 +25,14 @@ namespace PL.WpfOrderManager
     {
         public IBl bl = Factory.Get();
         private ObservableCollection<OrderForList> Orderlist;
-        private ObservableCollection<OrderItem?> Items;
+
+        private  ObservableCollection<BO.OrderItem?> Items { get; set; }   
+
         private Action<OrderForList> action;
-        Order order;
-        public OrderDetails(OrderForList p=null,int orderId=0)
+
+        BO.Order order;
+
+        public OrderDetails(OrderForList p = null,int orderId=0)
         {
             InitializeComponent();
             if(p!=null)order = bl.Order.orderDetails(p.m_Id);
@@ -49,7 +54,7 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                Order o=bl.Order.orderDelivery(order.m_Id);
+                BO.Order o=bl.Order.orderDelivery(order.m_Id);
                 OrderForList ofl=new OrderForList() { m_AmountItems=o.m_orderItems.Count(),m_CustomerName=o.m_CustomerName,m_Id=o.m_Id,m_OrderStatus=o.m_OrderStatus,m_TotalPrice=o.m_TotalPrice};
                 action(ofl);
                 OrderList win = new OrderList();
@@ -63,7 +68,7 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                Order o=bl.Order.sendingAnInvitation(order.m_Id);
+                BO.Order o=bl.Order.sendingAnInvitation(order.m_Id);
                 OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
                 action(ofl);
                 OrderList win = new OrderList();
@@ -71,6 +76,23 @@ namespace PL.WpfOrderManager
                 MessageBox.Show("The order is updat to be shipping in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+        }
+
+        private void UpdateAmount_click(object sender, RoutedEventArgs e)
+        {
+            int amount = (int)this.gradeNumUpDown.Value;
+            BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
+            BO.Order OI = new BO.Order();
+            try { OI = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
+              for (int i = 0; i < Items.Count(); i++)
+              {
+                var item = Items[i];
+                item = OI.m_orderItems[i];
+                Items.RemoveAt(i);
+                Items.Insert(i, item);
+              }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
     }
 }

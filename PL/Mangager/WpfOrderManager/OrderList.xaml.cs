@@ -43,7 +43,7 @@ namespace PL.WpfOrderManager
         {
             OrderForList p = (List_Order.SelectedItem as OrderForList);
             if (p != null)
-                new OrderDetails(UpdateViewList,p).Show();
+                new OrderDetails(UpdateViewList, p).Show();
         }
 
         private void UpdateViewList(OrderForList o)

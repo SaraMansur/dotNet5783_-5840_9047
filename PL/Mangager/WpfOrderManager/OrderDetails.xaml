@@ -1,9 +1,10 @@
-﻿<Window x:Class="PL.WpfOrderManager.OrderDetails"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfOrderManager"
+        xmlns:WpfNewOrder="clr-namespace:PL.WpfNewOrder" x:Class="PL.WpfOrderManager.OrderDetails"
         mc:Ignorable="d"
         Title="OrderDetails" Height="630" Width="1081">
     <Window.Resources>
@@ -33,25 +34,29 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="ID: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" Text="{Binding Path=m_ID}" />
+                <TextBlock Grid.Column="1" Text="{Binding m_ID}" />
                 <TextBlock Grid.Column="2" Text="  "/>
                 <TextBlock Grid.Column="3" Text="Id of Product: " FontWeight="Bold"/>
-                <TextBlock Grid.Column="4" Text="{Binding Path=m_IdProduct}" />
+                <TextBlock Grid.Column="4" Text="{Binding m_IdProduct}" />
                 <TextBlock Grid.Column="5" Text="  "/>
                 <TextBlock Grid.Column="6" Text="Name of product: " FontWeight="Bold"/>
                 <TextBlock Grid.Column="7" Text="{Binding Path = m_NameProduct}" />
+                <TextBlock Grid.Column="7" Text="{Binding m_NameProduct}" />
                 <TextBlock Grid.Column="8" Text="  "/>
                 <TextBlock Grid.Column="9" Text="Price product: " FontWeight="Bold"/>
                 <TextBlock Grid.Column="10" Text="{Binding Path = m_PriceProduct}" />
+                <TextBlock Grid.Column="10" Text="{Binding m_PriceProduct}" />
                 <TextBlock Grid.Column="11" Text="  "/>
                 <TextBlock Grid.Column="12" Text="Amount In Cart: " FontWeight="Bold"/>
                 <TextBlock Grid.Column="13" Text="{Binding Path = m_AmountInCart}" />
+                <TextBlock Grid.Column="13" Text="{Binding m_AmountInCart}" />
                 <TextBlock Grid.Column="14" Text="  "/>
                 <TextBlock Grid.Column="15" Text="Total price item: " FontWeight="Bold"/>
                 <TextBlock Grid.Column="16" Text="{Binding Path = m_TotalPriceItem}" />
+                <TextBlock Grid.Column="16" Text="{Binding m_TotalPriceItem}" />
             </Grid>
         </DataTemplate>
-        <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
+        <Style x:Key="myTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#FF6B641F" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="TextWrapping" Value="Wrap" />
@@ -60,7 +65,7 @@
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
-        <Style x:Key="myTextBlock" TargetType="TextBlock">
+        <Style x:Key="myTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Top" />
@@ -81,20 +86,21 @@
         <TextBlock Margin="135,483,0,0" Text="The delivery time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="135,424,0,0" Text="The ship time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="130,360,0,0" Text="The orderd time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Margin="377,65,0,0" Text="{Binding Path=m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,127,0,0" Text="{Binding Path= m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,186,0,0" Text="{Binding Path= m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,248,0,0" Text="{Binding Path= m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,306,0,0" Text="{Binding Path= m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,365,0,0" Text="{Binding Path= m_ShipDate}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,424,0,0" Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,487,0,0" Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBlock Margin="377,547,0,0" Text="{Binding Path= m_TotalPrice}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,65,0,0" Text="{Binding m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,127,0,0" Text="{Binding m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,186,0,0" Text="{Binding m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,248,0,0" Text="{Binding m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,306,0,0" Text="{Binding m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,365,0,0" Text="{Binding m_ShipDate}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,424,0,0" x:Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,487,0,0" x:Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBlock Margin="377,547,0,0" Text="{Binding m_TotalPrice}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
 
-        <Button Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="923,334,0,0" VerticalAlignment="Top" Height="41" Width="101" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold"/>
-        <Button Name="shipping" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="684,334,0,0" VerticalAlignment="Top" Height="42" Width="106" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold"/>
-        <ListBox Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="553,156,10,0" Height="129" VerticalAlignment="Top"/>
+        <Button x:Name="delivery" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="923,334,0,0" VerticalAlignment="Top" Height="41" Width="101" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="shipping" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="730,334,0,0" VerticalAlignment="Top" Height="42" Width="106" Background="{x:Null}" Foreground="#FF6B641F" BorderBrush="#FF6B641F" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.953,0.596"/>
+        <ListBox x:Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="553,156,10,0" Height="129" VerticalAlignment="Top"/>
         <TextBlock Margin="577,123,0,0" Style="{StaticResource myTextBlockStyle}" Text="The order items:" />
-
+        <Button Content="Update" HorizontalAlignment="Left" Margin="565,360,0,0" VerticalAlignment="Top" Width="100" Height="42" Click="UpdateAmount_click"/>
+        <WpfNewOrder:NumericUpDownControl x:Name="gradeNumUpDown" Margin="565,316,0,243"/>
     </Grid>
 </Window>

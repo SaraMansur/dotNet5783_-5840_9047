@@ -10,6 +10,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+	  <ApplicationIcon>icon2.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,13 +42,19 @@
     <None Remove="WpfNewOrder\צילום מסך 2023-01-13 011212.jpg" />
     <None Remove="WPFOrderTacking\3392075.jpg" />
     <None Remove="WPFOrderTacking\v745-kul-39.jpg" />
+    <None Remove="WPFOrderTacking\הגךת.png" />
     <None Remove="WPFOrderTacking\חץץ.jpg" />
     <None Remove="WPFOrderTacking\לשרה.png" />
     <None Remove="WPFOrderTacking\מסך.jpg" />
+    <None Remove="WPFOrderTacking\צילום מסך 2023-01-13 011212.jpg" />
     <None Remove="הגךת.png" />
     <None Remove="התךס.png" />
     <None Remove="לשרה.png" />
     <None Remove="מסך.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon2.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -83,9 +90,11 @@
     <Resource Include="WpfNewOrder\צילום מסך 2023-01-13 011212.jpg" />
     <Resource Include="WPFOrderTacking\3392075.jpg" />
     <Resource Include="WPFOrderTacking\v745-kul-39.jpg" />
+    <Resource Include="WPFOrderTacking\הגךת.png" />
     <Resource Include="WPFOrderTacking\חץץ.jpg" />
     <Resource Include="WPFOrderTacking\לשרה.png" />
     <Resource Include="WPFOrderTacking\מסך.jpg" />
+    <Resource Include="WPFOrderTacking\צילום מסך 2023-01-13 011212.jpg" />
     <Resource Include="הגךת.png" />
     <Resource Include="התךס.png" />
     <Resource Include="לשרה.png" />

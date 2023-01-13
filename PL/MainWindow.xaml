@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="490" Width="945">
+        Title="MainWindow"  Height="490" Width="900"  Icon="icon2.ico" >
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="#FFF0F0E8" />

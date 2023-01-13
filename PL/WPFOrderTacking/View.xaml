@@ -8,16 +8,13 @@
         Title="View" Height="450" Width="550">
     <Window.Resources>
         <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FF898E25" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="Microsoft PhagsPa" />
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="FontSize" Value="16" />
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/WPFOrderTacking/v745-kul-39.jpg"/>
-        </Grid.Background>
+    <Grid  Background="#FF805A7C">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="*"/>
@@ -40,12 +37,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,314,3"/>
-        <TextBlock Text="Status:" Grid.Column="1" Grid.Row="3" FontSize="15" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Text="Description Progress:" Grid.Column="1" Grid.Row="5" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Text="{Binding Path=m_ID}"  Grid.Column="1" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="121,64,0,3" Grid.RowSpan="2"/>
-        <TextBlock Text="{Binding Path=m_Status}" Grid.Column="1" Grid.Row="3" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" Margin="121,0,0,1" Width="350" Grid.ColumnSpan="2"/>
-        <ListView x:Name="orderT" Grid.Row="8" FontSize="16" ItemsSource="{Binding }" HorizontalAlignment="Left" Margin="35,3,0,115" Grid.RowSpan="7" Width="462" Grid.ColumnSpan="3" BorderBrush="#FF898E25" FontFamily="Microsoft PhagsPa" FontWeight="Normal" Background="{x:Null}">
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,314,3" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock Text="Status:" Grid.Column="1" Grid.Row="3" FontSize="18" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock Text="Description Progress:" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="5" TextAlignment="Center" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" FontStyle="Italic" FontWeight="Bold" FontSize="18"/>
+        <TextBlock Text="{Binding Path=m_ID}"  Grid.Column="1" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" Margin="40,64,0,0" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="101" VerticalAlignment="Top" Height="19" Grid.RowSpan="2">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Text="{Binding Path=m_Status}" Grid.Column="1" Grid.Row="2" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" Margin="69,4,0,4" Width="186" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <ListView x:Name="orderT" Grid.Row="8" FontSize="16" ItemsSource="{Binding }" HorizontalAlignment="Left" Margin="0,3,0,115" Grid.RowSpan="7" Width="421" Grid.ColumnSpan="2" BorderBrush="#FF1A1717" FontFamily="Microsoft PhagsPa" FontWeight="Normal" Background="#FFB98DBC" Foreground="#FF131314" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding Path = Item1}" Width="220"/>

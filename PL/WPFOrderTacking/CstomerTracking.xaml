@@ -6,14 +6,32 @@
         xmlns:local="clr-namespace:PL.WPFOrderTacking"
         mc:Ignorable="d"
         Title="CstomerTracking" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FFF0F0E8" />
+            <Setter Property="FontFamily" Value="Sitka Text" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Background" Value="#FF91587B" />
+            <Setter Property="BorderBrush" Value="#FF8C407D" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF8C407D"/>
+                    <Setter Property="Background" Value="#FF91587B" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/WPFOrderTacking/מסך.jpg"/>
+            <ImageBrush ImageSource="/WPFOrderTacking/הגךת.png"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="160,134,0,0" TextWrapping="Wrap" Text="Please ender id of your order:" VerticalAlignment="Top" Height="45" Width="315" Foreground="#FFF0F0E8" FontSize="22" FontFamily="Trebuchet MS" FontWeight="Bold"/>
-        <TextBox x:Name="OrderId" HorizontalAlignment="Left" Margin="480,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,1.673" Height="24"/>
-        <Button Content="Order details" HorizontalAlignment="Left" Margin="160,259,0,0" VerticalAlignment="Top" Height="68" Width="185" Click="Orderdetails_click" Background="{x:Null}" BorderBrush="#FFFFFEFD" Foreground="#FFFFFEFD" FontSize="16" FontFamily="Sitka Small Semibold"/>
-        <Button Content="View order tracking" HorizontalAlignment="Left" Margin="480,259,0,0" VerticalAlignment="Top" Height="68" Width="185" Click="View_click" Background="{x:Null}" BorderBrush="#FFFFFEFD" Foreground="#FFFFFEFD" FontSize="16" FontFamily="Sitka Small Semibold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="145,56,0,0" TextWrapping="Wrap" Text="Please enter id of your order:" VerticalAlignment="Top" Height="34" Width="315" Foreground="#FF91587B" FontSize="22" FontFamily="Trebuchet MS" FontWeight="Bold"/>
+        <TextBox x:Name="OrderId" HorizontalAlignment="Left" Margin="465,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,1.673" Height="22" BorderBrush="#FF541C47" Background="#FFD8B8DA"/>
+        <Button Content="Order details" HorizontalAlignment="Left" Margin="159,358,0,0" Height="34" Width="182" Style="{StaticResource myButtonStyle}" Click="Orderdetails_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
+        <Button Content="View order tracking" HorizontalAlignment="Left" Margin="475,358,0,0" Height="34" Width="185" Style="{StaticResource myButtonStyle}" Click="View_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -24,7 +42,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
+                <ImageBrush ImageSource="/WPFOrderTacking/צילום מסך 2023-01-13 011212.jpg"/>
             </Button.Background>
         </Button>
     </Grid>

@@ -28,11 +28,23 @@ namespace PL.WPFOrderTacking
             InitializeComponent();
         }
 
-        private void Orderdetails_click(object sender, RoutedEventArgs e) {
+        private void Orderdetails_click(object sender, RoutedEventArgs e) 
+        {
+            if(OrderId.Text=="")
+            {
+                MessageBox.Show("Empty input!");
+                return;
+            }
             try { new OrderDetails(null, int.Parse(OrderId.Text)).Show();}
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
-        private void View_click(object sender, RoutedEventArgs e) {
+        private void View_click(object sender, RoutedEventArgs e) 
+        {
+            if (OrderId.Text == "")
+            {
+                MessageBox.Show("Empty input!");
+                return;
+            }
             try { new View(int.Parse(OrderId.Text)).Show(); }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }

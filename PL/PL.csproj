@@ -62,43 +62,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Mangager\shutterstock_739292332__w645h390q80.jpg" />
-    <Resource Include="Mangager\WpfOrderManager\v745-kul-39.jpg" />
-    <Resource Include="Mangager\WpfOrderManager\לשרה.png" />
-    <Resource Include="Mangager\WpfProductManager\3392075.jpg" />
-    <Resource Include="Mangager\WpfProductManager\v745-kul-39.jpg" />
-    <Resource Include="Mangager\WpfProductManager\חץץ.jpg" />
-    <Resource Include="Mangager\WpfProductManager\לשרה.png" />
     <Resource Include="Mangager\הגךת.png" />
-    <Resource Include="Mangager\חץץ.jpg" />
-    <Resource Include="Mangager\מסך.jpg" />
-    <Resource Include="Mangager\רקע מושלם.png" />
-    <Resource Include="shutterstock_739292332__w645h390q80.jpg" />
-    <Resource Include="WpfNewOrder\09.png" />
-    <Resource Include="WpfNewOrder\3392075.jpg" />
-    <Resource Include="WpfNewOrder\image (2).png" />
-    <Resource Include="WpfNewOrder\Inkedצילום מסך 2023-01-12 214709.jpg" />
-    <Resource Include="WpfNewOrder\v745-kul-39.jpg" />
-    <Resource Include="WpfNewOrder\חץ.jpg" />
-    <Resource Include="WpfNewOrder\לשרה.png" />
-    <Resource Include="WpfNewOrder\סל.jpg" />
     <Resource Include="WpfNewOrder\סלל.jpg" />
-    <Resource Include="WpfNewOrder\צילום מסך 2023-01-12 230637.png" />
-    <Resource Include="WpfNewOrder\צילום מסך 2023-01-12 232242.png" />
-    <Resource Include="WpfNewOrder\צילום מסך 2023-01-12 232500.png" />
     <Resource Include="WpfNewOrder\צילום מסך 2023-01-12 233140.png" />
     <Resource Include="WpfNewOrder\צילום מסך 2023-01-13 011212.jpg" />
-    <Resource Include="WPFOrderTacking\3392075.jpg" />
-    <Resource Include="WPFOrderTacking\v745-kul-39.jpg" />
     <Resource Include="WPFOrderTacking\הגךת.png" />
-    <Resource Include="WPFOrderTacking\חץץ.jpg" />
-    <Resource Include="WPFOrderTacking\לשרה.png" />
-    <Resource Include="WPFOrderTacking\מסך.jpg" />
     <Resource Include="WPFOrderTacking\צילום מסך 2023-01-13 011212.jpg" />
     <Resource Include="הגךת.png" />
-    <Resource Include="התךס.png" />
-    <Resource Include="לשרה.png" />
-    <Resource Include="מסך.jpg" />
   </ItemGroup>
 
 </Project>

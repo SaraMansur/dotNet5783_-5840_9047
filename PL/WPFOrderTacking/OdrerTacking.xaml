@@ -11,9 +11,6 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <ImageBrush ImageSource="/WPFOrderTacking/v745-kul-39.jpg"/>
-        </Grid.Background>
         <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="50,43,60,97" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16">
             <ListView.View>
                 <GridView>
@@ -35,9 +32,6 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-            <Button.Background>
-                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
-            </Button.Background>
         </Button>
     </Grid>
 

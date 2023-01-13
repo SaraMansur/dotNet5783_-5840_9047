@@ -19,9 +19,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/WpfNewOrder/v745-kul-39.jpg"/>
-        </Grid.Background>
         <TextBlock Margin="80,143,0,0" Text="Enter yor adress:" Style="{StaticResource myButtonStyle}"/>
         <TextBlock Margin="80,215,0,0" Text="Enter your email:" Style="{StaticResource myButtonStyle}"/>
         <TextBlock Margin="80,69,0,0" Text="Enter your name:" Style="{StaticResource myButtonStyle}"/>

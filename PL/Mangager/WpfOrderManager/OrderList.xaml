@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="OrderList" Height="607" Width="945">
     <Grid x:Name="ProductList">
-        <Grid.Background>
-            <ImageBrush ImageSource="/Mangager/WpfOrderManager/v745-kul-39.jpg"/>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="Auto"/>
@@ -35,9 +32,6 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-            <Button.Background>
-                <ImageBrush ImageSource="/WPFOrderTacking/חץץ.jpg"/>
-            </Button.Background>
         </Button>
     </Grid>
 </Window>

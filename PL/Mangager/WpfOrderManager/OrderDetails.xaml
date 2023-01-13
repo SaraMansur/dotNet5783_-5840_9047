@@ -70,9 +70,6 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Mangager/WpfOrderManager/v745-kul-39.jpg"/>
-        </Grid.Background>
         <TextBlock Margin="142,66,0,0" Text="Id of order:" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="138,123,0,0" Text="The name of customer:" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="135,243,0,0" Text="The mail of customer:" RenderTransformOrigin="-0.736,1.563" Style="{StaticResource myTextBlockStyle}"/>

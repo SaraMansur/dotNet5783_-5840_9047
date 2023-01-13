@@ -8,30 +8,37 @@
         mc:Ignorable="d"
         Title="OrderList" Height="607" Width="945">
     <Grid x:Name="ProductList">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Mangager/WpfOrderManager/צילום מסך 2023-01-12 233140.png" Stretch="Uniform"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="50,43,213,97" BorderBrush="#FF6B641F"  Background="{x:Null}" FontSize="16" MouseDoubleClick="List_Order_MouseDoubleClick">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="58,103,57,6" BorderBrush="#FF8C407D"  Background="{x:Null}" FontSize="18" MouseDoubleClick="List_Order_MouseDoubleClick" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="80"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="200"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path= m_Id,Mode=TwoWay}"  Width="120"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName,Mode=TwoWay}" Width="220"/>
                     <GridViewColumn x:Name="_Status"  Header="Status" DisplayMemberBinding="{Binding Path= m_OrderStatus,Mode=TwoWay }" Width="100"/>
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems,Mode=TwoWay}" Width="80"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice,Mode=TwoWay}" Width="100"/>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems,Mode=TwoWay}" Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice,Mode=TwoWay}" Width="120"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <ImageBrush ImageSource="/Mangager/WpfOrderManager/צילום מסך 2023-01-13 011212.jpg"/>
+            </Button.Background>
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-179.714"/>
+                    <RotateTransform Angle="0.395"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <Label Content="Orders:" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="816" Height="49" Foreground="White" BorderBrush="Black" Background="#FF91587B" FontSize="40" FontFamily="Sitka Banner" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

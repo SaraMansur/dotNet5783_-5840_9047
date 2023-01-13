@@ -97,7 +97,7 @@ namespace PL.WpfOrderManager
                     Items.Insert(i, item);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
     }
 }

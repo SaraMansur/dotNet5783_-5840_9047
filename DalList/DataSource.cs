@@ -22,23 +22,6 @@ internal static class DataSource
         "Gold necklace","Silver necklace"
     };
 
-    static string[] ImageSource = 
-    {
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\טבעות",
-        @"C:\\Users\\שרה\\source\\repos\\dtNet5783_-5840_9047\\product image\\עגילים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\עגילים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\צמידים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שעונים",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
-        @"C:\\Users\\שרה\\source\\repos\\dotNet5783_-5840_9047\\product image\\שרשרת",
-    };
-
     static string[] firstName = { "David", "Sara", "Yael", "Lea", "Yair", "Yossi", "Meir", "Tali" };
 
     static string[] lastName = { "Cohen", "Ochana", "Mansur", "Levi", "Dahan", "Ben-Califa", "Zafrani", "Deryi" };
@@ -73,7 +56,6 @@ internal static class DataSource
                 product.m_Category = Enums.Category.Earrings;
             if (product.m_Name.Contains("Watche") || product.m_Name.Contains("watche"))
                 product.m_Category = Enums.Category.Watches;
-            product.m_ImageSource = ImageSource[i];
             addProduct(product);
         }
 

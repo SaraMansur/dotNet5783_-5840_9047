@@ -171,6 +171,39 @@ internal class Order : IOrder
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <param name="productId"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNull"></exception>
+    /// <exception cref="FaildGetting"></exception>
+    public BO.Order changeOrder(int orderId ,int productId, int amount)
+    {
+
+        DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
+        catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
+        if (DOorder.m_ShipDate != DateTime.MinValue)
+            throw new("The order has been sent, so it is not possible to update the quantity of items.");
+        BO.Order BOorder = new BO.Order();
+        BOorder = BuildOrder(BOorder, DOorder, orderId);
+        for(int i=0;i< BOorder.m_orderItems.Count;i++)
+        {
+            if (BOorder.m_orderItems[i].m_IdProduct == productId) 
+            { 
+                BOorder.m_orderItems[i].m_AmountInCart = amount;
+                DO.OrderItem? OI = new DO.OrderItem {m_amount= amount,m_ID= BOorder.m_orderItems[i].m_ID, m_OrderId= orderId , m_Price= BOorder.m_orderItems[i].m_TotalPriceItem,m_ProductId= BOorder.m_orderItems[i].m_IdProduct};
+                try { Dal.OrderItem.Update(OI); }
+                catch (Exception inner) { throw new FaildUpdating(inner); }
+                break; 
+            }
+        }
+        return BOorder;
+    }
+
+    /// <summary>
     ///  The function allows the administrator to track the order:
     /// </summary>
     /// <param name="orderId"></param>

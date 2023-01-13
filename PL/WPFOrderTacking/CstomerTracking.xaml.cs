@@ -30,11 +30,11 @@ namespace PL.WPFOrderTacking
 
         private void Orderdetails_click(object sender, RoutedEventArgs e) {
             try { new OrderDetails(null, int.Parse(OrderId.Text)).Show();}
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show("Please enter correct details again."); }
         }
         private void View_click(object sender, RoutedEventArgs e) {
             try { new View(int.Parse(OrderId.Text)).Show(); }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show("Please enter correct details again."); }
         }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show();this.Close(); }   

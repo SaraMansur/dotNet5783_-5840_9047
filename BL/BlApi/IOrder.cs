@@ -30,6 +30,13 @@ public interface IOrder
     /// <param name=""></param>
     /// <returns></returns>
     public BO.Order orderDelivery (int? orderId);
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <returns></returns>
+    public BO.Order changeOrder(int orderId , int productId, int amount);
 
     /// <summary>
     /// The function allows the administrator to track the order

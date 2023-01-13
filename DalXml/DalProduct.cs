@@ -130,10 +130,10 @@ internal class DalProduct : IProduct
             product = (from p in productRoot.Elements()
                        select new Product()
                        {
-                           m_ID = Convert.ToInt32(p.Element("m_ID").Value),
+                           m_ID = Convert.ToInt32(p.Element("m_ID")!.Value),
                            m_Name = p.Element("m_Name")!.Value,
-                           m_InStock = Convert.ToInt32(p.Element("m_InStock").Value),
-                           m_Price = Convert.ToInt32(p.Element("m_Price").Value),
+                           m_InStock = Convert.ToInt32(p.Element("m_InStock")!.Value),
+                           m_Price = Convert.ToInt32(p.Element("m_Price")!.Value),
                            m_Category = (DO.Enums.Category)Enum.Parse(typeof(DO.Enums.Category), (string)p.Element("m_Category")!)
                        }).FirstOrDefault(p=>func(p)) ;
             produ = (Product?)product;

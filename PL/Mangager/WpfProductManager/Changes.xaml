@@ -18,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions >
         <Grid.RowDefinitions>
@@ -38,13 +38,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions >
-        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" Style="{StaticResource myTextBlockStyle}" Foreground="#FFF8F7F1" FontFamily="David" />
+        <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" Style="{StaticResource myTextBlockStyle}" Foreground="#FFF8F7F1" />
         <TextBlock Text="Category:" Grid.Column="1" Grid.Row="3" Style="{StaticResource myTextBlockStyle}" Foreground="#FFFBFAF8"/>
         <TextBlock Text="Name:" Grid.Column="1" Grid.Row="5" Style="{StaticResource myTextBlockStyle}" Foreground="#FFF9F9F4"/>
         <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" Style="{StaticResource myTextBlockStyle}" Foreground="#FFFBFAEF"/>
         <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" Style="{StaticResource myTextBlockStyle}" Foreground="#FFF8F7EF"/>
-        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_Id, Mode=TwoWay}"  Background="White" Foreground="#FF110101" />
-        <ComboBox  Name="category" Grid.Column="2" Grid.Row="2"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}" BorderBrush="#FF6B641F" HorizontalAlignment="Left" Margin="0,13,0,0" Grid.RowSpan="2" Width="108">
+        <TextBox Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_Id, Mode=TwoWay}"  Background="White" Foreground="#FF110101" BorderBrush="#FF650F54" FontSize="14" />
+        <ComboBox  Name="category" Grid.Column="2" Grid.Row="2"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}" BorderBrush="#FF650F54" HorizontalAlignment="Center" Margin="0,13,0,0" Grid.RowSpan="2" Width="145" FontSize="14">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -52,10 +52,10 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <TextBox Name="Name" Grid.Column="2" Grid.Row="5"  Text="{Binding Path=m_Name, Mode=TwoWay}" BorderBrush="#FF6B641F"/>
-        <TextBox Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_Price, Mode=TwoWay}" BorderBrush="#FF6B641F"/>
-        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path=m_InStock , Mode=TwoWay}" BorderBrush="#FF6B641F" />
-        <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="12" Click="UpdateP_Click" Background="#FFF8F7EF" Foreground="#FF8F599A" BorderBrush="#FF541C47" BorderThickness="3" Grid.ColumnSpan="2" Margin="0,18,107,107" Grid.RowSpan="3"/>
-        <Button x:Name="AddP" Content="ADD"  Grid.Row="12" Click="AddP_Click" Background="#FFF8F7EF" Foreground="#FF8F599A" Grid.ColumnSpan="3" BorderBrush="#FF541C47" BorderThickness="3" Margin="107,18,108,111" Grid.RowSpan="3" FontStyle="Italic" FontWeight="Bold"/>
+        <TextBox Name="Name" Grid.Column="2" Grid.Row="5"  Text="{Binding Path=m_Name, Mode=TwoWay}" BorderBrush="#FF650F54" FontSize="14"/>
+        <TextBox Name="Price" Grid.Column="2" Grid.Row="7" Text="{Binding Path=m_Price, Mode=TwoWay}" BorderBrush="#FF650F54" FontSize="14"/>
+        <TextBox Name="InStock" Grid.Column="2" Grid.Row="9" Text="{Binding Path=m_InStock , Mode=TwoWay}" BorderBrush="#FF650F54" FontSize="14" />
+        <Button x:Name="UpdateP" Content="Update" Grid.Column="1"  Grid.Row="12" Click="UpdateP_Click" Background="#FFF8F7EF" Foreground="#FF8F599A" BorderBrush="#FF541C47" BorderThickness="3" Grid.ColumnSpan="2" Margin="0,18,107,107" Grid.RowSpan="3" FontWeight="Bold"/>
+        <Button x:Name="AddP" Content="ADD"  Grid.Row="12" Click="AddP_Click" Background="#FFF8F7EF" Foreground="#FF8F599A" Grid.ColumnSpan="2" BorderBrush="#FF541C47" BorderThickness="3" Margin="0,18,108,107" Grid.RowSpan="3" FontStyle="Italic" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
     </Grid>
 </Window>

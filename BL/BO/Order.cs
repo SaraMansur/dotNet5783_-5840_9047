@@ -62,7 +62,18 @@ public class Order : INotifyPropertyChanged
     /// <summary>
     /// the total price of the order
     /// </summary>
-    public double m_TotalPrice { get; set; }
+   // public double m_TotalPrice { get; set; }
+    private double TotalPrice;
+    public double m_TotalPrice
+    {
+        get { return TotalPrice; }
+        set
+        {
+            TotalPrice = value;
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TotalPrice")); }
+
+        }
+    }
     /// <summary>
     /// the time that the order made
     /// </summary>

@@ -31,8 +31,9 @@ namespace PL.WpfOrderManager
         private Action<OrderForList> action;
 
         BO.Order order;
+        Users user;
 
-        public OrderDetails(OrderForList p = null, int orderId = 0)
+        public OrderDetails(Users u,OrderForList p = null, int orderId = 0)
         {
             InitializeComponent();
             if (p != null) order = bl.Order.orderDetails(p.m_Id);
@@ -49,9 +50,10 @@ namespace PL.WpfOrderManager
             DataContext = order;
             Items = new(order.m_orderItems);
             myItems.DataContext = Items;
+            user = u;
         }
 
-        public OrderDetails(Action<OrderForList> a, OrderForList p) : this(p) { action = a; }
+        public OrderDetails(Action<OrderForList> a, Users u, OrderForList p) : this(u,p) { action = a; }
 
         private void OrderDelivery_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +62,7 @@ namespace PL.WpfOrderManager
                 BO.Order o = bl.Order.orderDelivery(order.m_Id);
                 OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
                 action(ofl);
-                OrderList win = new OrderList();
+                OrderList win = new OrderList(user);
                 this.Close();
                 MessageBox.Show("The order is updat to be Delivery in succsesfuly!");
             }
@@ -74,7 +76,7 @@ namespace PL.WpfOrderManager
                 BO.Order o = bl.Order.sendingAnInvitation(order.m_Id);
                 OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
                 action(ofl);
-                OrderList win = new OrderList();
+                OrderList win = new OrderList(user);
                 this.Close();
                 MessageBox.Show("The order is updat to be shipping in succsesfuly!");
             }

@@ -1,4 +1,5 @@
-﻿using PL.WpfOrderManager;
+﻿using BO;
+using PL.WpfOrderManager;
 using PL.WPFOrderTacking;
 using PL.WpfProduct;
 using System;
@@ -22,17 +23,19 @@ namespace PL
     /// </summary>
     public partial class Manager : Window
     {
-        public Manager()
+        Users user;
+        public Manager(Users u)
         {
             InitializeComponent();
+            hello.Text = "Hello " + u.Name + "!";
         }
 
-        private void ProductForList_Click(object sender, RoutedEventArgs e) { new Catalog().Show(); this.Close(); }
+        private void ProductForList_Click(object sender, RoutedEventArgs e) { new Catalog(user).Show(); this.Close(); }
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close();}
 
-        private void OrderForList_Click(object sender, RoutedEventArgs e) { new OrderList().Show(); this.Close(); }
+        private void OrderForList_Click(object sender, RoutedEventArgs e) { new OrderList(user).Show(); this.Close(); }
 
-        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking(4).Show(); this.Close(); }
+        private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking(user,4).Show(); this.Close(); }
     }
 }

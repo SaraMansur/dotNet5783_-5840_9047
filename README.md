@@ -10,6 +10,7 @@ bonuses:
 *Admin option to delete a product
 *Building or using generic extension methods-the interest method tostring
 *using style
+*Login to the system by user for the administrator
 בונוס: ב-BL - שימוש במתודה\-ות גנרית\-יות  הרחבה עם reflection על מנת להעתיק נתונים בין אובייקטים של ישויות נתונים  ושל ישויות לוגיות עבור תכונות עם אותו שם ואותו טיפוס
 לבונוס: בתוכניות בדיקה של שכבת נתונים ושכבה לוגית - שימוש במתודה\-ות גנרית\-יות  הרחבה עם reflection על מנת להדפיס את האובייקטים של ישויות הנתונים והישויות הלוגיות בהתאם
 

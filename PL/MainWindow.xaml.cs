@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PL.Mangager;
+using BO;
 
 namespace PL
 {
@@ -31,7 +33,7 @@ namespace PL
             InitializeComponent();
         }
 
-        private void Manager_Click(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
+        private void Manager_Click(object sender, RoutedEventArgs e) { new SignIn().Show(); this.Close(); }
 
         private void Neworder_Click(object sender, RoutedEventArgs e) { new createNewOrder(cart).Show(); this.Close(); }
 

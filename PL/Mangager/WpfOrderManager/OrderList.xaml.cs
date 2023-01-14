@@ -27,23 +27,24 @@ namespace PL.WpfOrderManager
     {
         public ObservableCollection<OrderForList> Orderlist;
         public IBl bl = Factory.Get();
+        Users user;
 
-
-        public OrderList(int num=0)
+        public OrderList(Users u,int num=0)
         {
             InitializeComponent();
             Orderlist = new(bl.Order.OrderList()!);
             DataContext = Orderlist;
+            user = u;
         }
 
 
-        private void Click_buttonBack(object sender, RoutedEventArgs e) { new Manager().Show(); this.Close(); }
+        private void Click_buttonBack(object sender, RoutedEventArgs e) { new Manager(user).Show(); this.Close(); }
 
         private void List_Order_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             OrderForList p = (List_Order.SelectedItem as OrderForList);
             if (p != null)
-                new OrderDetails(UpdateViewList, p).Show();
+                new OrderDetails(UpdateViewList,user, p).Show();
         }
 
         private void UpdateViewList(OrderForList o)

@@ -57,6 +57,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="30,29,0,0" TextWrapping="Wrap" Text="     Hello Manager " VerticalAlignment="Top" Grid.ColumnSpan="3" Height="73" Width="485" FontSize="60" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" FontFamily="Sitka Banner"/>
+        <TextBlock  Name="hello" Grid.Column="1" HorizontalAlignment="Center" Margin="30,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Grid.ColumnSpan="3" Height="73" Width="485" FontSize="60" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" FontFamily="Sitka Banner"/>
     </Grid>
 </Window>

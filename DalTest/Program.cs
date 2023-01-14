@@ -16,14 +16,22 @@ namespace DalList
             Product p = new Product();
             Order O = new Order();
             OrderItem OI = new OrderItem();
-            int ans;
-
+            int ans=0,x; bool f=true; double pri; string op;
             do
             {
                 Console.WriteLine("To check the Product entity, type-1");
                 Console.WriteLine("To check the Order entity, type-2");
                 Console.WriteLine("To check the OrderItem entity, type-3");
-                ans = int.Parse(Console.ReadLine()!);
+                do
+                {
+                    try
+                    {
+                        f = int.TryParse(Console.ReadLine(), out ans);
+                        if (!f)
+                            throw new Exception("the input illegal");
+                    }
+                    catch (Exception e) { Console.WriteLine(e.Message); }
+                } while (!f);
                 if (ans == 1 || ans == 2 || ans == 3)
                 {
                     Console.WriteLine("Which option do you want to check?");
@@ -44,7 +52,7 @@ namespace DalList
                 {
                     switch (ans)
                     {
-
+                        
                         case 0:
                             break;
                         case 1:
@@ -52,17 +60,27 @@ namespace DalList
                             {
                                 case "a":
                                     Console.WriteLine("please enter id,category ,InStock,price,name of the product.");
-                                    p.m_ID = int.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!,out x);
+                                    if(!f)
+                                        throw new Exception("the input illegal");
+                                    p.m_ID = x;
                                     p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine()!);
-                                    p.m_InStock = int.Parse(Console.ReadLine()!);
-                                    p.m_Price = double.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!,out x);
+                                        throw new Exception("the input illegal");
+                                    p.m_InStock = x;
+                                    f= double.TryParse(Console.ReadLine()!, out pri);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    p.m_Price = pri;
                                     p.m_Name = Console.ReadLine();
                                     Console.WriteLine(d?.Product.Add(p));
                                     break;
                                 case "b":
                                     Console.WriteLine("please enter ID of the product.");
-                                    int id = int.Parse(Console.ReadLine()!);    
-                                    Console.WriteLine(d?.Product.GetSingle(x => x?.m_ID == id));
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");  
+                                    Console.WriteLine(d?.Product.GetSingle(y => y?.m_ID == x));
                                     break;
                                 case "c":
                                     IEnumerable<Product?> Ie = d.Product.Get();
@@ -75,10 +93,19 @@ namespace DalList
                                     break;
                                 case "d":
                                     Console.WriteLine("please enter id,category,inStock,price,name of the product.");
-                                    p.m_ID = int.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    p.m_ID = x;
                                     p.m_Category = (Category)Enum.Parse(typeof(Category), Console.ReadLine()!);
-                                    p.m_InStock = int.Parse(Console.ReadLine()!);
-                                    p.m_Price = double.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    p.m_InStock = x;
+                                    f = double.TryParse(Console.ReadLine()!, out pri);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    p.m_Price = pri;
                                     p.m_Name = Console.ReadLine();
                                     d?.Product.Update(p);
                                     break;
@@ -104,8 +131,10 @@ namespace DalList
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the order.");
-                                    int id = int.Parse(Console.ReadLine()!);
-                                    Console.WriteLine(d?.Order.GetSingle(x => x?.m_ID == id));
+                                    f= int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    Console.WriteLine(d?.Order.GetSingle(y => y?.m_ID == x));
                                     break;
 
                                 case "c":
@@ -120,7 +149,10 @@ namespace DalList
 
                                 case "d":
                                     Console.WriteLine("please enter id, your name, email,and adress.");
-                                    O.m_ID = int.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    O.m_ID = x;
                                     O.m_CustomerName = Console.ReadLine();
                                     O.m_CustomerEmail = Console.ReadLine(); 
                                     O.m_CustomerAdress = Console.ReadLine(); 
@@ -142,21 +174,34 @@ namespace DalList
                             {
                                 case "a":
                                     Console.WriteLine("please enter productId, orderId, price, amount.");
-                                    OI.m_ProductId = int.Parse(Console.ReadLine()!);
-                                    OI.m_OrderId = int.Parse(Console.ReadLine()!);
-                                    OI.m_Price = double.Parse(Console.ReadLine()!);
-                                    OI.m_amount = int.Parse(Console.ReadLine()!);
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    OI.m_ProductId = x;
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    OI.m_OrderId = x;
+                                    f = double.TryParse(Console.ReadLine()!, out pri);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    OI.m_Price = pri;
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    OI.m_amount = x;
                                     Console.WriteLine(d?.OrderItem.Add(OI));
                                     break;
 
                                 case "b":
                                     Console.WriteLine("please enter ID of the orderItem.");
-                                    int id = int.Parse(Console.ReadLine()!);
-                                    Console.WriteLine(d?.OrderItem.GetSingle(x => x?.m_ID == id));
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    Console.WriteLine(d?.OrderItem.GetSingle(y => y?.m_ID == x));
                                     break;
 
                                 case "c":
-
                                     IEnumerable<OrderItem?> Ie = d.OrderItem.Get();
                                     IEnumerator<OrderItem?> enumerator = Ie.GetEnumerator();
                                     while (enumerator.MoveNext())
@@ -168,11 +213,7 @@ namespace DalList
 
                                 case "d":
                                     Console.WriteLine("please enter orderItemId, productId, orderId, price, amount.");
-                                    OI.m_ID= int.Parse(Console.ReadLine()!); ;
-                                    OI.m_ProductId = int.Parse(Console.ReadLine()!);
-                                    OI.m_OrderId = int.Parse(Console.ReadLine()!);
-                                    OI.m_Price = double.Parse(Console.ReadLine()!);
-                                    OI.m_amount = int.Parse(Console.ReadLine()!);
+
                                     d.OrderItem.Update(OI);
                                     break;
 
@@ -183,8 +224,10 @@ namespace DalList
 
                                 case "f":
                                     Console.WriteLine("please enter ID of the order.");
-                                    int id3 = int.Parse(Console.ReadLine()!);
-                                    IEnumerable<OrderItem?> Ien = d.OrderItem.Get(x => x?.m_OrderId == id3);
+                                    f = int.TryParse(Console.ReadLine()!, out x);
+                                    if (!f)
+                                        throw new Exception("the input illegal");
+                                    IEnumerable<OrderItem?> Ien = d.OrderItem.Get(y => y?.m_OrderId ==x);
                                     IEnumerator<OrderItem?> enumerato = Ien.GetEnumerator();
                                     while (enumerato.MoveNext())
                                     {

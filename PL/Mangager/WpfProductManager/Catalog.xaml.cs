@@ -28,15 +28,16 @@ namespace PL.WpfProduct
     {
         IBl bl = Factory.Get();
         private ObservableCollection<ProductForList?> _Productlist;
+        Users user;
 
-        public Catalog()
+        public Catalog(Users u)
         {
             InitializeComponent();
             _Productlist = new(bl.Product.ProductList());
             this.DataContext = _Productlist;
 
             AttributeSelector.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-
+            user = u;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,7 +59,7 @@ namespace PL.WpfProduct
 
         private void Click_buttonBack(object sender, RoutedEventArgs e)
         {
-            new Manager().Show();
+            new Manager(user).Show();
             this.Close();
         }
          private void UpdateViewList(ProductForList p)

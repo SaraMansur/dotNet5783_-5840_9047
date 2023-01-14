@@ -9,6 +9,7 @@ internal class Program
     static void Main(string[] args)
     {
         BO.Cart C = new BO.Cart();
+        bool f = true;
         C.m_orderItems = new List<BO.OrderItem>();
         Console.WriteLine("Are you a manager or customer?");
         if (Console.ReadLine() == "customer")
@@ -22,12 +23,15 @@ internal class Program
         int ans;
         do
         {
+            
             Console.WriteLine("To check the Cart entity, type-1");
             Console.WriteLine("To check the Order entity, type-2");
             Console.WriteLine("To check the Product entity, type-3");
-            ans = int.Parse(Console.ReadLine());
             try
             {
+                f = int.TryParse(Console.ReadLine(), out ans);
+                if (!f)
+                    throw new Exception("the input illegal");
                 switch (ans)
                 {
                     case 0:
@@ -47,7 +51,7 @@ internal class Program
 
                 }
             }
-            catch (Exception e) { Console.WriteLine(e + "\n"); }
+            catch (Exception e) { Console.WriteLine(e.Message);ans = 1; }
         } while (ans!=0);
     }
 
@@ -91,6 +95,7 @@ internal class Program
     {
         IBl bl = Factory.Get(); 
         BO.Order O= new BO.Order();
+        bool f; int id;
         Console.WriteLine("a.Option to receive a list of orders");
         Console.WriteLine("b.Option to receive order details");
         Console.WriteLine("c.Option to send an order");
@@ -107,20 +112,32 @@ internal class Program
                 break;
             case "b":
                 Console.WriteLine("Enter please id of the order");
-                Console.WriteLine(bl.Order.orderDetails(int.Parse(Console.ReadLine())));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Order.orderDetails(id));
                 //fv
                 break;
             case "c":
                 Console.WriteLine("Enter please id of the order");
-                Console.WriteLine(bl.Order.sendingAnInvitation(int.Parse(Console.ReadLine())));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Order.sendingAnInvitation(id));
                 break;
             case "d":
                 Console.WriteLine("Enter please id of the order");
-                Console.WriteLine(bl.Order.orderDelivery(int.Parse(Console.ReadLine())));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Order.orderDelivery(id));
                 break;
             case "e":
                 Console.WriteLine("Enter please id of the order");
-                Console.WriteLine(bl.Order.orderTracking(int.Parse(Console.ReadLine())));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Order.orderTracking(id));
                 break;
             default:
                 Console.WriteLine("ERROR");
@@ -134,6 +151,7 @@ internal class Program
     static void productTesting()
     {
         IBl bl = Factory.Get();
+        bool f; int id;
         BO.Product p = new BO.Product();
         Console.WriteLine("a.Option to request a list of products to the manager");
         Console.WriteLine("b.Option to request product details to the manager");

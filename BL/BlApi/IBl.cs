@@ -1,4 +1,5 @@
-﻿using DalApi;
+﻿using BlImplementation;
+using DalApi;
 
 namespace BlApi;
 
@@ -21,4 +22,5 @@ public interface IBl
     /// interface of Product
     /// </summary>
     public IProduct Product { get; }
+
 }

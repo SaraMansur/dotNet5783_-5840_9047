@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUsers>
+<Users>
+	<Name>Yael</Name>
+	<Password>2142</Password>
+</Users>
+<Users>
+	<Name>Sara</Name>
+	<Password>1324</Password>
+</Users>
+<Users>
+	<Name>Adina</Name>
+	<Password>1234</Password>
+</Users>
+</ArrayOfUsers>

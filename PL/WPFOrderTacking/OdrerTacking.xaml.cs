@@ -28,13 +28,15 @@ namespace PL.WPFOrderTacking
     public partial class OdrerTacking : Window
     {
         public IBl bl = BlApi.Factory.Get();
+        Users user;
         private ObservableCollection<OrderForList> _OrderList;
         int _flag = 0;
-        public OdrerTacking(int num = 0)
+        public OdrerTacking(Users u,int num = 0)
         {
             InitializeComponent(); _flag = num;
             _OrderList = new(bl.Order.OrderList()!);
             this.DataContext = _OrderList;
+            user = u;
         }
 
         private void OrderTackindView_Click(object sender, RoutedEventArgs e)
@@ -46,7 +48,7 @@ namespace PL.WPFOrderTacking
 
         private void Click_buttonBack(object sender, RoutedEventArgs e) {
             if (_flag == 0) {new MainWindow().Show(); this.Close(); }
-           else { new Manager().Show(); this.Close(); }
+           else { new Manager(user).Show(); this.Close(); }
         }
 
     }

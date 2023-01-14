@@ -35,7 +35,7 @@ namespace PL.WPFOrderTacking
                 MessageBox.Show("Empty input!");
                 return;
             }
-            try { new OrderDetails(null, int.Parse(OrderId.Text)).Show();}
+            try { new OrderDetails(null, null,int.Parse(OrderId.Text)).Show();}
             catch (Exception ex) { MessageBox.Show("Please enter correct details again."); }
         }
         private void View_click(object sender, RoutedEventArgs e) 

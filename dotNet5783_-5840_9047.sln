@@ -19,9 +19,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BITest", "BITest\BITest.csproj", "{A9827384-3DFC-4735-99F4-AD7F893B1687}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{DC5B0DEF-7DDB-4FF7-AC7E-F1A69E21C561}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41} = {AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749F-4E2C-B7E7-0C2F37B2E430}"
 	ProjectSection(SolutionItems) = preProject

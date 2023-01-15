@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using DO;
 using System.Runtime.Intrinsics.Arm;
 
 namespace BlImplementation;
@@ -42,9 +43,6 @@ internal class Order : IOrder
     /// <exception cref="BO.MissingID"></exception>
     private BO.Order BuildOrder(BO.Order? BOorder, DO.Order? DOorder, int? orderId)
     {
-        BOorder = BOorder ?? throw new ArgumentNull();
-        DOorder = DOorder ?? throw new ArgumentNull();
-        orderId = orderId ?? throw new ArgumentNull();
         List<BO.OrderItem> orderItems = new List<BO.OrderItem>();
         IEnumerable<DO.OrderItem?> DOorderItems = Dal!.OrderItem.Get(x => x?.m_OrderId == orderId);//List of current order details.
         foreach (DO.OrderItem item in DOorderItems)
@@ -181,25 +179,37 @@ internal class Order : IOrder
     /// <exception cref="FaildGetting"></exception>
     public BO.Order changeOrder(int orderId ,int productId, int amount)
     {
-
+        DO.Product product = new DO.Product();//A new product is released.
         DO.Order DOorder = new DO.Order();//Checking if Order ID is correct 
-        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId)); } //Checking if Order ID is correct
+        DO.OrderItem Oitem = new DO.OrderItem();
+        try { DOorder = (DO.Order)Dal.Order.GetSingle((x => x?.m_ID == orderId));
+              Oitem = (DO.OrderItem)Dal.OrderItem.GetSingle(x => (x?.m_ProductId == productId) && (x?.m_OrderId == orderId));
+        } //Checking if Order ID is correct
+        
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
         if (DOorder.m_ShipDate != DateTime.MinValue)
             throw new("The order has been sent, so it is not possible to update the quantity of items.");
+
+        try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == productId); } //Checks if the product exists
+        catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
+
+        if(amount==0)
+        { try { Dal.OrderItem.Delete(Oitem.m_ID); }
+          catch (Exception inner) { throw new FaildUpdating(inner); }
+        }
+        if (product.m_InStock < amount)
+            throw new BO.MissingInStock();
+        try {
+            product.m_InStock = product.m_InStock + (Oitem.m_amount - amount);
+            Dal.Product.Update(product); }
+        catch (Exception inner) { throw new FaildUpdating(inner); }
+
+        DO.OrderItem? OI = new DO.OrderItem {m_amount= amount,m_ID= Oitem.m_ID, m_OrderId= orderId , m_Price= amount*product.m_Price ,m_ProductId= product.m_ID};
+        try { Dal.OrderItem.Update(OI); }
+        catch (Exception inner) { throw new FaildUpdating(inner); }
+
         BO.Order BOorder = new BO.Order();
         BOorder = BuildOrder(BOorder, DOorder, orderId);
-        for(int i=0;i< BOorder.m_orderItems.Count;i++)
-        {
-            if (BOorder.m_orderItems[i].m_IdProduct == productId) 
-            { 
-                BOorder.m_orderItems[i].m_AmountInCart = amount;
-                DO.OrderItem? OI = new DO.OrderItem {m_amount= amount,m_ID= BOorder.m_orderItems[i].m_ID, m_OrderId= orderId , m_Price= BOorder.m_orderItems[i].m_TotalPriceItem,m_ProductId= BOorder.m_orderItems[i].m_IdProduct};
-                try { Dal.OrderItem.Update(OI); }
-                catch (Exception inner) { throw new FaildUpdating(inner); }
-                break; 
-            }
-        }
         return BOorder;
     }
 

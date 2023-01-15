@@ -32,8 +32,9 @@ public class hi
         static string[] citie = { "Haifa", "Jerusalem", "Rechassim", "Tveria", "Netivot", "Rechovot", "Gadera", "Gadera", "Tveria", "Jerosulem" };
 
         static string[] street = { "Ben Guryon", "Harimonim", "Hazait", "Vaitzman", "Begin", "Hatamar", "Savion", "Haoranim" };
-        public int nu = 100000;
-        public int num = 100000;
+        //public int nu = 100000;
+        //public int num = 100000;
+
         private static void s_Initialize()
         {
 
@@ -62,12 +63,12 @@ public class hi
                     product.m_Category = Enums.Category.Watches;
                 m_listPruducts.Add(product);
             }
-
+            int nu = 100000;
             for (int i = 0; i < 20; i++)//The loop initializes 20 orders.
             {
                 DO.Order order = new DO.Order();
 
-                //order.m_ID = nu++;
+                order.m_ID = nu++;
 
                 string custumerFirstName = firstName[rand.Next(0, 7)];
                 string custumerLastName = lastName[rand.Next(0, 7)];
@@ -144,23 +145,27 @@ public class hi
 
         static void Main(string[] args)
         {
-            //s_Initialize();
+            s_Initialize();
             //private static DalApi.IDal? dal = DalApi.Factory.Get();
             List<Order?> orderlist = m_listOreders;
             List<OrderItem?> orderitemlist = m_listOrderItems;
             List<Product?> productlist = m_listPruducts;
-            string path = @"Config.xml";
+           string path = @"Config.xml";
             string path1 = @"Orders.xml";
             string path2 = @"Product.xml";
-            XElement? config;
+            string path3 = @"OrderItems.xml";
+             XElement? config;
             config = new XElement("Config", new XElement("IdOrder", 100019), new XElement("IdOrderItem", 100039));
             config.Save(path);
-            //XMLTools.SaveListToXML<OrderItem?>(orderlist, path);
+            XMLTools.SaveListToXMLSerializer<OrderItem?>(orderitemlist,path3);
+            Console.WriteLine("OrderItem");
 
-            // XMLTools.SaveListToXML<OrderItem?>(orderitemlist, path1);
-            //XMLTools.SaveListToXML<Product?>(productlist, path2);
-            Console.WriteLine("jsj");
-            //List<Product> list2 = XMLTools.LoadListFromXML<Product>(path2);    
+            XMLTools.SaveListToXMLSerializer<Order?>(orderlist, path1);
+            Console.WriteLine("order");
+
+            XMLTools.SaveListToXMLSerializer<Product?>(productlist, path2);
+            Console.WriteLine("product");
+           // List<Product> list2 = XMLTools.LoadListFromXML<Product>(path2);
         }
     }
 }

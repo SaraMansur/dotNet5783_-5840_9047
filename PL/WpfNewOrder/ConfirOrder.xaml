@@ -7,24 +7,20 @@
         mc:Ignorable="d"
         Title="ConfirOrder" Height="455" Width="405">
     <Window.Resources>
-        <Style x:Key="myButtonStyle" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Height" Value="45" />
-            <Setter Property="Width" Value="137" />
-            <Setter Property="FontFamily" Value="Cambria Math" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Foreground" Value="#FF6B641F" />
-            <Setter Property="TextWrapping" Value="Wrap" />
+        <Style x:Key="myTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFF8F7EF" />
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16"/>
         </Style>
     </Window.Resources>
-    <Grid>
-        <TextBlock Margin="80,143,0,0" Text="Enter yor adress:" Style="{StaticResource myButtonStyle}"/>
-        <TextBlock Margin="80,215,0,0" Text="Enter your email:" Style="{StaticResource myButtonStyle}"/>
-        <TextBlock Margin="80,69,0,0" Text="Enter your name:" Style="{StaticResource myButtonStyle}"/>
-        <TextBox Margin="235,69,0,0" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Text="{Binding Path=m_CustomerName,Mode=TwoWay}" Height="35" BorderBrush="#FF6B641F"/>
-        <TextBox Margin="240,143,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=m_CustomerAdress,Mode=TwoWay}" Height="35" BorderBrush="#FF6B641F"/>
-        <TextBox Margin="240,215,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=m_CustomerMail,Mode=TwoWay}" Height="35" BorderBrush="#FF6B641F"/>
-        <Button Content="Confirm Order" HorizontalAlignment="Left" Margin="100,294,0,0" VerticalAlignment="Top" Height="45" Width="90" Click="Confirm_Order_Click" BorderBrush="#FF6B641F" Foreground="#FF6B641F" FontFamily="Sitka Display" FontSize="14" Background="{x:Null}"/>
+    <Grid Background="#FF805A7C">
+        <TextBlock Margin="60,149,203,255" Text="Enter yor adress:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="60,220,190,188" Text="Enter your email:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="60,74,203,335" Text="Enter your name:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBox Margin="220,69,0,0" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerName,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
+        <TextBox Margin="220,143,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerAdress,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
+        <TextBox Margin="220,215,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerMail,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
+        <Button Content="Confirm Order" HorizontalAlignment="Left" Margin="100,294,0,0" VerticalAlignment="Top" Height="45" Width="90" Click="Confirm_Order_Click" BorderBrush="#FF6B641F" Foreground="#FF6B641F" FontFamily="Sitka Display" FontSize="14" Background="#FFFFF3F3"/>
     </Grid>
 </Window>

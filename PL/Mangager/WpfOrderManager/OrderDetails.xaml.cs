@@ -23,6 +23,7 @@ namespace PL.WpfOrderManager
     /// </summary>
     public partial class OrderDetails : Window
     {
+
         public BO.Order order
         {
             get { return (BO.Order)GetValue(OrderProperty); }
@@ -34,7 +35,7 @@ namespace PL.WpfOrderManager
         public IBl bl = Factory.Get();
         private ObservableCollection<OrderForList> Orderlist;
 
-        private ObservableCollection<BO.OrderItem?> Items { get; set; }
+        public ObservableCollection<BO.OrderItem?> Items { get; set; }
 
         private Action<OrderForList> action;
 
@@ -51,16 +52,15 @@ namespace PL.WpfOrderManager
                 shipping.Visibility = Visibility.Collapsed;
                 delivery.Visibility = Visibility.Collapsed;
                 update.Visibility = Visibility.Collapsed;
-                gradeNumUpDown.Visibility = Visibility.Collapsed;
+                OrderItemId.Visibility = Visibility.Collapsed;
             }
             if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
             else { deliver.Text = order.m_DeliveryrDate.ToString(); }
             if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }
             else { ship.Text = order.m_ShipDate.ToString();
                    update.Visibility = Visibility.Collapsed;
-                   gradeNumUpDown.Visibility = Visibility.Collapsed;
+                   OrderItemId.Visibility = Visibility.Collapsed;
             }
-           // DataContext = this;
             Items = new(order.m_orderItems);
             myItems.DataContext = Items;
             user = u;
@@ -102,26 +102,21 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                int amount = (int)this.gradeNumUpDown.Value;
-                BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
-                p= p?? throw new("Please select a product to update amount");
-                order = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
-                OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
-                for (int i = 0; i < order.m_orderItems.Count; i++)
-                    ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
-                action(ofl);
-                for (int i = 0; i < Items.Count(); i++)
-                {
-                    var item = Items[i];
-                    item = order.m_orderItems[i];
-                    Items.RemoveAt(i);
-                    Items.Insert(i, item);
-                }
-                MessageBox.Show("The order is updat in succsesfuly!");
+                int amount = int.Parse(Amount.Text);
+                order = bl.Order.changeOrder(order.m_Id, int.Parse(OrderItemId.Text), amount);
+                //OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                //for (int j = 0; j < order.m_orderItems.Count; j++)
+                //    ofl.m_AmountItems += order.m_orderItems[j].m_AmountInCart;
+                //action(ofl);
+                action(bl?.Order.OrderList().Where((p => p.m_Id == order?.m_Id)).FirstOrDefault());
+
+                for(int i=0;i< Items.Count();i++) Items.RemoveAt(i);
+                for (int i = 0; i < order.m_orderItems.Count; i++) Items.Insert(i,order.m_orderItems[i]);
+
+                 MessageBox.Show("The order has been successfully updated");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
-
     }
 }
 

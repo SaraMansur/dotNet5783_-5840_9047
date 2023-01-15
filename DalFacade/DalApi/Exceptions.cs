@@ -39,7 +39,7 @@ public class DalConfigException : Exception
 /// </summary>
 public class ArgumentNull : Exception
 {
-    public override string Message => "The input is empty";
+    public override string Message => "One or more of the items is empty, please check and re-enter correct details.";
     public override string ToString()
     {
         return Message;

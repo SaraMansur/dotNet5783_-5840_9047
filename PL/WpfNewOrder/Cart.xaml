@@ -8,20 +8,26 @@
         Title="Cart" Height="495" Width="900">
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontFamily" Value="Sylfaen" />
+            <Setter Property="Foreground" Value="#FFF0F0E8" />
+            <Setter Property="FontFamily" Value="Sitka Text" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Width" Value="120" />
-            <Setter Property="Height" Value="64" />
+            <Setter Property="FontSize" Value="24" />
             <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Background" Value="#FFC6A67D" />
-            <Setter Property="BorderBrush" Value="White" />
-            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Background" Value="#FF91587B" />
+            <Setter Property="BorderBrush" Value="#FF8C407D" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF8C407D"/>
+                    <Setter Property="Background" Value="#FF91587B" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/WpfNewOrder/צילום מסך 2023-01-12 233140.png" Stretch="Uniform"/>
+        </Grid.Background>
 
         <ListView x:Name="Items" Grid.Row ="0" BorderBrush="#FF6B641F"  FontSize="18" ItemsSource="{Binding}" Margin="30,34,185,0" Height="337" VerticalAlignment="Top" Background="{x:Null}" >
             <ListView.View>
@@ -34,8 +40,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Create Order" Margin="744,48,0,0" Style="{StaticResource myButtonStyle}" Height="56" Width="102" Click="Confir_Order"/>
-        <Button Content="Make Empy" Margin="744,294,0,0" Style="{StaticResource myButtonStyle}" Height="56" Width="102" Click="Make_Empy_Click"/>
+        <Button Content="Create Order" FontSize="12" Margin="736,34,55,0" Style="{StaticResource myButtonStyle}" Height="42" Click="Confir_Order" RenderTransformOrigin="0.444,-0.119"/>
+        <Button Content="Make Empy" Margin="736,326,55,0" Style="{StaticResource myButtonStyle}" Height="45" Click="Make_Empy_Click" FontSize="12"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -47,8 +53,8 @@
             </Button.RenderTransform>
         </Button>
         <TextBlock x:Name="Totul_Price_Of_The_Cart" HorizontalAlignment="Left" Margin="40,397,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="203" FontFamily="Segoe UI Variable Display Semibold" FontSize="18" FontWeight="Bold"/>
-        <local:NumericUpDownControl x:Name="gradeNumUpDown" Margin="744,166,-54,256" RenderTransformOrigin="0.036,0.659" />
-        <Button x:Name="updateButton" Content="update Amount" Click="updateAmountButton_Click" Margin="744,202,0,0" Style="{StaticResource myButtonStyle}" Width="102" Height="48" FontSize="14"/>
-        <TextBlock Name="Totul_Price" HorizontalAlignment="Left" Margin="243,397,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice,Mode=TwoWay}"  VerticalAlignment="Top" Width="62" FontFamily="Segoe UI Variable Display Semibold" FontSize="18" FontWeight="Bold" Height="27"/>
+        <local:NumericUpDownControl x:Name="gradeNumUpDown" Margin="736,150,55,282" RenderTransformOrigin="0.036,0.659" />
+        <Button x:Name="updateButton" Content="update Amount" Click="updateAmountButton_Click" Margin="736,202,55,0" Style="{StaticResource myButtonStyle}" Height="48" FontSize="12"/>
+        <TextBlock Name="Totul_Price" HorizontalAlignment="Left" Margin="243,397,0,0" TextWrapping="Wrap" Text="{Binding Path = m_TotalPrice,Mode=TwoWay}"  VerticalAlignment="Top" Width="62" FontFamily="Segoe UI Variable Display Semibold" FontSize="12" FontWeight="Bold" Height="27"/>
     </Grid>
 </Window>

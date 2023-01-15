@@ -35,7 +35,7 @@ namespace PL.Mangager
         {
             try
             {
-                if (user == null || user.Name == "" || user.Password == "")
+                if (user.Name == "" || user.Password == "")
                     throw new Exception("Please enter missing data");
                 Users u = new Users() { Name = user.Name, Password = user.Password };
                 usersXml u2 = new usersXml();

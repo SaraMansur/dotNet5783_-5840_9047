@@ -27,7 +27,8 @@ namespace PL
         public Manager(Users u)
         {
             InitializeComponent();
-            hello.Text = "Hello " + u.Name + "!";
+            user = u;
+            hello.Text = "Hello " + user.Name + "!";
         }
 
         private void ProductForList_Click(object sender, RoutedEventArgs e) { new Catalog(user).Show(); this.Close(); }

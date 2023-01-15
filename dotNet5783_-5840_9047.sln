@@ -19,6 +19,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BITest", "BITest\BITest.csproj", "{A9827384-3DFC-4735-99F4-AD7F893B1687}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{DC5B0DEF-7DDB-4FF7-AC7E-F1A69E21C561}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41} = {AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749F-4E2C-B7E7-0C2F37B2E430}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,26 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749
 		xml\Users.xml = xml\Users.xml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductImages", "ProductImages", "{34DFFFE1-5DE7-4D8B-A71E-304632348E94}"
-	ProjectSection(SolutionItems) = preProject
-		product image\שרשרת\hg.png = product image\שרשרת\hg.png
-		product image\טבעות\צילום מסך 2023-01-02 211358.jpg = product image\טבעות\צילום מסך 2023-01-02 211358.jpg
-		product image\שרשרת\צילום מסך 2023-01-03 014809.png = product image\שרשרת\צילום מסך 2023-01-03 014809.png
-		product image\טבעות\צילום מסך 2023-01-03 015143.png = product image\טבעות\צילום מסך 2023-01-03 015143.png
-		product image\צמידים\צילום מסך 2023-01-03 015308.png = product image\צמידים\צילום מסך 2023-01-03 015308.png
-		product image\צמידים\צילום מסך 2023-01-03 015443.png = product image\צמידים\צילום מסך 2023-01-03 015443.png
-		product image\עגילים\צילום מסך 2023-01-03 015630.png = product image\עגילים\צילום מסך 2023-01-03 015630.png
-		product image\עגילים\צילום מסך 2023-01-03 015656.png = product image\עגילים\צילום מסך 2023-01-03 015656.png
-		product image\עגילים\צילום מסך 2023-01-03 015801.png = product image\עגילים\צילום מסך 2023-01-03 015801.png
-		product image\שעונים\צילום מסך 2023-01-03 015841.png = product image\שעונים\צילום מסך 2023-01-03 015841.png
-		product image\טבעות\צילום מסך 2023-01-03 030515.jpg = product image\טבעות\צילום מסך 2023-01-03 030515.jpg
-		product image\טבעות\צילום מסך 2023-01-03 030535.jpg = product image\טבעות\צילום מסך 2023-01-03 030535.jpg
-		product image\שעונים\צילום מסך 2023-01-03 032046.jpg = product image\שעונים\צילום מסך 2023-01-03 032046.jpg
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csproj", "{AE72C37F-9A72-4946-BF78-0546B694581E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSource", "DataSource\DataSource.csproj", "{AAFD1129-10A1-49C2-92F8-622796D52914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator\Simulator.csproj", "{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +77,10 @@ Global
 		{AAFD1129-10A1-49C2-92F8-622796D52914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAFD1129-10A1-49C2-92F8-622796D52914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAFD1129-10A1-49C2-92F8-622796D52914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

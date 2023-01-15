@@ -42,7 +42,7 @@ namespace PL.WpfOrderManager
         //BO.Order order = new BO.Order { m_TotalPrice = 0 };
         Users user;
 
-        public OrderDetails(Users u,OrderForList p = null, int orderId = 0)
+        public OrderDetails(Users u, OrderForList p = null, int orderId = 0)
         {
             InitializeComponent();
             if (p != null) order = bl.Order.orderDetails(p.m_Id);
@@ -57,16 +57,18 @@ namespace PL.WpfOrderManager
             if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
             else { deliver.Text = order.m_DeliveryrDate.ToString(); }
             if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }
-            else { ship.Text = order.m_ShipDate.ToString();
-                   update.Visibility = Visibility.Collapsed;
-                   OrderItemId.Visibility = Visibility.Collapsed;
+            else
+            {
+                ship.Text = order.m_ShipDate.ToString();
+                update.Visibility = Visibility.Collapsed;
+                OrderItemId.Visibility = Visibility.Collapsed;
             }
             Items = new(order.m_orderItems);
             myItems.DataContext = Items;
             user = u;
         }
 
-        public OrderDetails(Action<OrderForList> a, Users u, OrderForList p) : this(u,p) { action = a; }
+        public OrderDetails(Action<OrderForList> a, Users u, OrderForList p) : this(u, p) { action = a; }
 
         private void OrderDelivery_Click(object sender, RoutedEventArgs e)
         {

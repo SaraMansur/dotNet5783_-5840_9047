@@ -249,7 +249,14 @@
     <m_ID>100049</m_ID>
     <m_ProductId>645125</m_ProductId>
     <m_OrderId>100016</m_OrderId>
-    <m_Price>3185</m_Price>
-    <m_amount>7</m_amount>
+    <m_Price>1365</m_Price>
+    <m_amount>3</m_amount>
+  </OrderItem>
+  <OrderItem>
+    <m_ID>100050</m_ID>
+    <m_ProductId>645125</m_ProductId>
+    <m_OrderId>100019</m_OrderId>
+    <m_Price>2730</m_Price>
+    <m_amount>6</m_amount>
   </OrderItem>
 </ArrayOfOrderItem>

@@ -217,21 +217,8 @@ internal class Order : IOrder
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
              var item = BOorder.m_orderItems.FirstOrDefault(x => x.m_ID == Oitem.m_ID);
              int index = BOorder.m_orderItems.IndexOf(item);
-                                                                       //// BOorder.m_orderItems.RemoveAt(index);
-                                                                       // BOorder.m_orderItems.RemoveAt(index);
-            BOorder.m_orderItems.Remove(BOorder.m_orderItems[index]);//The missing product from the product list.
-            //IEnumerable<DO.OrderItem?> help = Dal.OrderItem.Get(x=>x?.m_OrderId== BOorder.m_Id);
-            //int i = 0;
-            //foreach(DO.OrderItem item in help) 
-            //{
-            //    BOorder.m_orderItems[i].m_IdProduct = item.m_ProductId;
-            //    BOorder.m_orderItems[i].m_NameProduct = product.m_Name;
-            //    BOorder.m_orderItems[i].m_ID= item.m_ID;
-            //    BOorder.m_orderItems[i].m_PriceProduct= product.m_Price;
-            //    BOorder.m_orderItems[i].m_AmountInCart = item.m_amount;
-            //    BOorder.m_orderItems[i].m_TotalPriceItem = item.m_Price;
-            //    i++;
-            //}
+            BOorder.m_orderItems.Remove(BOorder.m_orderItems[index]);
+
             product.m_InStock += Oitem.m_amount;
             BOorder.m_TotalPrice -= Oitem.m_Price;
             Dal.Product.Update(product);

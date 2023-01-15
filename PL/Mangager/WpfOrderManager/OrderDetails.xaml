@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PL.WpfOrderManager"
         xmlns:WpfNewOrder="clr-namespace:PL.WpfNewOrder" x:Class="PL.WpfOrderManager.OrderDetails"
         mc:Ignorable="d"
-        Title="OrderDetails" Height="630" Width="1081">
+        Title="OrderDetails" Height="630" Width="1081"
+        DataContext="{Binding RelativeSource={RelativeSource self}}">
     <Window.Resources>
         <DataTemplate x:Key="MyDataTemplate">
             <Grid>
@@ -106,15 +107,15 @@
         <TextBlock Margin="577,243,0,0" Text="The delivery time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="577,186,0,0" Text="The ship time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="577,127,0,0" Text="The orderd time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBox Margin="345,66,0,0" Text="{Binding m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="345,123,0,0" Text="{Binding m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="345,182,0,0" Text="{Binding m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="345,243,0,0" Text="{Binding m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBox Margin="773,66,0,0" Text="{Binding m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBox Margin="773,123,0,0" Text="{Binding m_OrderTime}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="345,66,0,0" Text="{Binding order.m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="345,123,0,0" Text="{Binding order.m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="345,182,0,0" Text="{Binding order.m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="345,243,0,0" Text="{Binding order.m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBox Margin="773,66,0,0" Text="{Binding order.m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBox Margin="773,123,0,0" Text="{Binding order.m_OrderTime}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
         <TextBox Margin="773,182,0,0" x:Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
         <TextBox Margin="773,235,0,0" x:Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="773,302,0,0" x:Name="price" Text="{Binding m_TotalPrice}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBox Margin="773,302,0,0" x:Name="price" Text="{Binding order.m_TotalPrice , Mode=TwoWay}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
 
         <Button x:Name="delivery" Style="{StaticResource myButtonStyle}" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="321,514,0,0" RenderTransformOrigin="0.125,0.596" />
         <Button x:Name="shipping" Style="{StaticResource myButtonStyle}" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="124,513,0,0" RenderTransformOrigin="0.953,0.596"/>

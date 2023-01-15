@@ -40,7 +40,9 @@ namespace PL.Mangager
                 Users u = new Users() { Name = user.Name, Password = user.Password };
                 usersXml u2 = new usersXml();
                 if (u2.isExsist(u))
-                    new Manager(user).Show();
+                {
+                    new Manager(user).Show(); this.Close();
+                }
                 else
                     throw new Exception("The username or password is incorrect!");
             }

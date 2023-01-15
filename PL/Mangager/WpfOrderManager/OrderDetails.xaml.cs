@@ -23,6 +23,14 @@ namespace PL.WpfOrderManager
     /// </summary>
     public partial class OrderDetails : Window
     {
+        public BO.Order order
+        {
+            get { return (BO.Order)GetValue(OrderProperty); }
+            set { SetValue(OrderProperty, value); }
+        }
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register("order", typeof(BO.Order), typeof(Window), new PropertyMetadata(null));
+
         public IBl bl = Factory.Get();
         private ObservableCollection<OrderForList> Orderlist;
 
@@ -30,7 +38,7 @@ namespace PL.WpfOrderManager
 
         private Action<OrderForList> action;
 
-        BO.Order order;
+        //BO.Order order = new BO.Order { m_TotalPrice = 0 };
         Users user;
 
         public OrderDetails(Users u,OrderForList p = null, int orderId = 0)
@@ -52,7 +60,7 @@ namespace PL.WpfOrderManager
                    update.Visibility = Visibility.Collapsed;
                    gradeNumUpDown.Visibility = Visibility.Collapsed;
             }
-            DataContext = order;
+           // DataContext = this;
             Items = new(order.m_orderItems);
             myItems.DataContext = Items;
             user = u;
@@ -97,20 +105,18 @@ namespace PL.WpfOrderManager
                 int amount = (int)this.gradeNumUpDown.Value;
                 BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
                 p= p?? throw new("Please select a product to update amount");
-                BO.Order OI = new BO.Order();
-                OI = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
-                OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = OI.m_CustomerName, m_Id = OI.m_Id, m_OrderStatus = OI.m_OrderStatus, m_TotalPrice = OI.m_TotalPrice };
-                for (int i = 0; i < OI.m_orderItems.Count; i++)
-                    ofl.m_AmountItems += OI.m_orderItems[i].m_AmountInCart;
+                order = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
+                OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
                 for (int i = 0; i < Items.Count(); i++)
                 {
                     var item = Items[i];
-                    item = OI.m_orderItems[i];
+                    item = order.m_orderItems[i];
                     Items.RemoveAt(i);
                     Items.Insert(i, item);
                 }
-                price.Text = OI.m_TotalPrice.ToString();
                 MessageBox.Show("The order is updat in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }

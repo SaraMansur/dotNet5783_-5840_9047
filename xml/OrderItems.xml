@@ -228,15 +228,15 @@
     <m_ID>100032</m_ID>
     <m_ProductId>798115</m_ProductId>
     <m_OrderId>100016</m_OrderId>
-    <m_Price>792</m_Price>
-    <m_amount>1</m_amount>
+    <m_Price>1584</m_Price>
+    <m_amount>2</m_amount>
   </OrderItem>
   <OrderItem>
     <m_ID>100033</m_ID>
     <m_ProductId>892219</m_ProductId>
     <m_OrderId>100016</m_OrderId>
-    <m_Price>1548</m_Price>
-    <m_amount>3</m_amount>
+    <m_Price>516</m_Price>
+    <m_amount>1</m_amount>
   </OrderItem>
   <OrderItem>
     <m_ID>100034</m_ID>
@@ -256,8 +256,8 @@
     <m_ID>100036</m_ID>
     <m_ProductId>434818</m_ProductId>
     <m_OrderId>100018</m_OrderId>
-    <m_Price>964</m_Price>
-    <m_amount>1</m_amount>
+    <m_Price>2892</m_Price>
+    <m_amount>3</m_amount>
   </OrderItem>
   <OrderItem>
     <m_ID>100037</m_ID>
@@ -270,14 +270,7 @@
     <m_ID>100038</m_ID>
     <m_ProductId>892219</m_ProductId>
     <m_OrderId>100019</m_OrderId>
-    <m_Price>1548</m_Price>
-    <m_amount>3</m_amount>
-  </OrderItem>
-  <OrderItem>
-    <m_ID>100039</m_ID>
-    <m_ProductId>687081</m_ProductId>
-    <m_OrderId>100019</m_OrderId>
-    <m_Price>806</m_Price>
-    <m_amount>2</m_amount>
+    <m_Price>2580</m_Price>
+    <m_amount>5</m_amount>
   </OrderItem>
 </ArrayOfOrderItem>

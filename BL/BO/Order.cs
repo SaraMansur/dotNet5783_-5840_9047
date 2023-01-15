@@ -1,9 +1,14 @@
 ﻿using DO;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BO;
 
-public class Order : INotifyPropertyChanged
+public class Order
 {
     /// <summary>
     /// the id of the order
@@ -13,47 +18,47 @@ public class Order : INotifyPropertyChanged
     /// the name of the customrt
     /// </summary>
 
-    private string? CustomerName;
-    public string? m_CustomerName
-    {
-        get { return CustomerName; }
-        set
-        {
-            CustomerName = value;
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NameUser")); }
+    //private string? CustomerName;
+    public string? m_CustomerName { get; set; }
+    //{
+    //    get { return CustomerName; }
+    //    set
+    //    {
+    //        CustomerName = value;
+    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NameUser")); }
 
-        }
-    }
+    //    }
+    //}
 
     /// <summary>
     /// the meil of the customer
     /// </summary>
-    private string? CustomerMail;
-    public string? m_CustomerMail
-    {
-        get { return CustomerMail; }
-        set
-        {
-            CustomerMail = value;
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MailUser")); }
+    //private string? CustomerMail;
+    public string? m_CustomerMail { get; set; } 
+    //{
+    //    get { return CustomerMail; }
+    //    set
+    //    {
+    //        CustomerMail = value;
+    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MailUser")); }
 
-        }
-    }
+    //    }
+    //}
 
     /// <summary>
     /// the address of the customer
     /// </summary>
-    private string? CustomerAdress;
-    public string? m_CustomerAdress
-    {
-        get { return CustomerAdress; }
-        set
-        {
-            CustomerAdress = value;
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AdressUser")); }
+   // private string? CustomerAdress;
+    public string? m_CustomerAdress { get; set; }   
+    //{
+    //    get { return CustomerAdress; }
+    //    set
+    //    {
+    //        CustomerAdress = value;
+    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AdressUser")); }
 
-        }
-    }
+    //    }
+    //}
 
     /// <summary>
     /// the status of the order
@@ -63,17 +68,17 @@ public class Order : INotifyPropertyChanged
     /// the total price of the order
     /// </summary>
    // public double m_TotalPrice { get; set; }
-    private double TotalPrice;
-    public double m_TotalPrice
-    {
-        get { return TotalPrice; }
-        set
-        {
-            TotalPrice = value;
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TotalPrice")); }
+   // private double TotalPrice;
+    public double m_TotalPrice { get; set; }    
+    //{
+    //    get { return TotalPrice; }
+    //    set
+    //    {
+    //        TotalPrice = value;
+    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TotalPrice")); }
 
-        }
-    }
+    //    }
+    //}
     /// <summary>
     /// the time that the order made
     /// </summary>
@@ -91,7 +96,7 @@ public class Order : INotifyPropertyChanged
     /// </summary>
     public List<BO.OrderItem?>? m_orderItems { get; set; }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+   // public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>
     /// This function will print all order attributes

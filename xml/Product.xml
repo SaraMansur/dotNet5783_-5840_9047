@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Product>
     <m_ID>892219</m_ID>
@@ -46,21 +46,21 @@
     <m_ID>687081</m_ID>
     <m_Name>Stud earrings</m_Name>
     <m_Price>403</m_Price>
-    <m_InStock>17</m_InStock>
+    <m_InStock>19</m_InStock>
     <m_Category>Earrings</m_Category>
   </Product>
   <Product>
     <m_ID>798115</m_ID>
     <m_Name>Gold bracelet</m_Name>
     <m_Price>792</m_Price>
-    <m_InStock>18</m_InStock>
+    <m_InStock>17</m_InStock>
     <m_Category>Bracelets</m_Category>
   </Product>
   <Product>
     <m_ID>434818</m_ID>
     <m_Name>Silver bracelet</m_Name>
     <m_Price>964</m_Price>
-    <m_InStock>10</m_InStock>
+    <m_InStock>8</m_InStock>
     <m_Category>Bracelets</m_Category>
   </Product>
   <Product>

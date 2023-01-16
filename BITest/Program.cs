@@ -63,6 +63,7 @@ internal class Program
     static BO.Cart cartTesting(BO.Cart C)
     {
         IBl bl = Factory.Get();
+        bool f; int x;
         //BO.Cart C = new BO.Cart();
         Console.WriteLine("a.Option to add an item to the cart");
         Console.WriteLine("b.Option to update the amount");
@@ -71,7 +72,10 @@ internal class Program
         {
             case "a":
                 Console.WriteLine("Enter please id of the product");
-                Console.WriteLine(bl.Cart.AddItemToCart(C,int.Parse(Console.ReadLine())));
+                f = int.TryParse(Console.ReadLine(), out x);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Cart.AddItemToCart(C,x));
                 break;
             case "b":
                 Console.WriteLine("Enter please id,amount of the product");
@@ -95,7 +99,7 @@ internal class Program
     {
         IBl bl = Factory.Get(); 
         BO.Order O= new BO.Order();
-        bool f; int id;
+        bool f; int id; 
         Console.WriteLine("a.Option to receive a list of orders");
         Console.WriteLine("b.Option to receive order details");
         Console.WriteLine("c.Option to send an order");
@@ -151,7 +155,7 @@ internal class Program
     static void productTesting()
     {
         IBl bl = Factory.Get();
-        bool f; int id;
+        bool f; int id;double x;
         BO.Product p = new BO.Product();
         Console.WriteLine("a.Option to request a list of products to the manager");
         Console.WriteLine("b.Option to request product details to the manager");
@@ -171,29 +175,53 @@ internal class Program
                 break;
             case "b":
                 Console.WriteLine("Enter please id of the  product");
-                Console.WriteLine(bl.Product.ProductId(int.Parse(Console.ReadLine()!)));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Product.ProductId(id));
                 break;
             case "c":
                 Console.WriteLine("Enter please id,category,instock,price,name of the product");
-                p.m_Id = int.Parse(Console.ReadLine()!);
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_Id = id;
                 p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine()!);
-                p.m_InStock = int.Parse(Console.ReadLine()!);
-                p.m_Price = double.Parse(Console.ReadLine()!);
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_InStock = id;
+                f = double.TryParse(Console.ReadLine(), out x);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_Price = x;
                 p.m_Name = Console.ReadLine();
                 bl.Product.AddProduct(p);
                 break;
             case "d":
                 Console.WriteLine("Enter please id,category,instock,price,name of the product");
-                p.m_Id = int.Parse(Console.ReadLine()!);
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_Id = id;
                 p.m_Category = (BO.Enums.Category)Enum.Parse(typeof(BO.Enums.Category), Console.ReadLine()!);
-                p.m_InStock = int.Parse(Console.ReadLine()!);
-                p.m_Price = double.Parse(Console.ReadLine()!);
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_InStock = id;
+                f = double.TryParse(Console.ReadLine(), out x);
+                if (!f)
+                    throw new Exception("the input illegal");
+                p.m_Price = x;
                 p.m_Name = Console.ReadLine();
                 bl.Product.UpdateProduct(p);
                 break;
             case "e":
                 Console.WriteLine("Enter id of the  product");
-                bl.Product.DeleteProduct(int.Parse(Console.ReadLine()!));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                bl.Product.DeleteProduct(id);
                 break;
             case "f":
                 IEnumerable<BO.ProductItem> e2= bl.Product.CatalogList(null);
@@ -204,7 +232,10 @@ internal class Program
                 break;
             case "g":
                 Console.WriteLine("Enter id of the  product");
-                Console.WriteLine(bl.Product.CatalogProductId(int.Parse(Console.ReadLine()!)));
+                f = int.TryParse(Console.ReadLine(), out id);
+                if (!f)
+                    throw new Exception("the input illegal");
+                Console.WriteLine(bl.Product.CatalogProductId(id));
                 break;
             default:
                 Console.WriteLine("ERROR");

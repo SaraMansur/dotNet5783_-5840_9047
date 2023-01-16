@@ -42,7 +42,7 @@
         </Grid.RowDefinitions>
         <Button Name="ProductForList" Style="{StaticResource myButtonStyle}" Content="Products" Click="ProductForList_Click" Grid.Column="3" FontWeight="Bold" Margin="174,113,55,0" RenderTransformOrigin="0.523,0.591" Grid.Row="2" Height="43" Grid.ColumnSpan="2"/>
         <Button Name="OrderForList" Style="{StaticResource myButtonStyle}" Content="Orders" Click="OrderForList_Click" FontFamily="Sitka Text" Margin="105,113,129,0" Grid.Row="2" Height="43" Grid.ColumnSpan="2"/>
-        <Button x:Name="Ordertrackingview" Style="{StaticResource myButtonStyle}" Content="Order tracking view" Grid.Column="1" Click="OrderTracking_Click" Grid.ColumnSpan="3" Margin="184,113,155,0" Grid.Row="2" Height="43"/>
+        <Button x:Name="Ordertrackingview" Style="{StaticResource myButtonStyle}" Content="Order tracking" Grid.Column="1" Click="OrderTracking_Click" Grid.ColumnSpan="3" Margin="178,113,141,0" Grid.Row="2" Height="43"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="33" Click="Click_buttonBack" RenderTransformOrigin="0.5,0.5">
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/צילום מסך 2023-01-13 011212.jpg"/>
@@ -57,6 +57,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock  Name="hello" Grid.Column="1" HorizontalAlignment="Center" Margin="30,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Grid.ColumnSpan="3" Height="73" Width="485" FontSize="60" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" FontFamily="Sitka Banner"/>
+        <TextBlock  Name="hello" Grid.Column="1" HorizontalAlignment="Center" Margin="30,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Grid.ColumnSpan="3" Height="73" Width="485" FontSize="30" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" FontFamily="Sitka Banner"/>
     </Grid>
 </Window>

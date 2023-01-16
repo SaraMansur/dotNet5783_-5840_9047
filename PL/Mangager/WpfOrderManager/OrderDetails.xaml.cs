@@ -45,28 +45,32 @@ namespace PL.WpfOrderManager
         public OrderDetails(Users u, OrderForList p = null, int orderId = 0)
         {
             InitializeComponent();
-            if (p != null) order = bl.Order.orderDetails(p.m_Id);
-            else
+            try
             {
-                order = bl.Order.orderDetails(orderId);
-                shipping.Visibility = Visibility.Collapsed;
-                delivery.Visibility = Visibility.Collapsed;
-                update.Visibility = Visibility.Collapsed;
-                gradeNumUpDown.Visibility = Visibility.Collapsed;
+                if (p != null) order = bl.Order.orderDetails(p.m_Id);
+                else
+                {
+                    order = bl.Order.orderDetails(orderId);
+                    shipping.Visibility = Visibility.Collapsed;
+                    delivery.Visibility = Visibility.Collapsed;
+                    update.Visibility = Visibility.Collapsed;
+                    gradeNumUpDown.Visibility = Visibility.Collapsed;
+                }
+                if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
+                else { deliver.Text = order.m_DeliveryrDate.ToString(); }
+                if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
+                else
+                {
+                    ship.Text = order.m_ShipDate.ToString();
+                    update.Visibility = Visibility.Collapsed;
+                    gradeNumUpDown.Visibility = Visibility.Collapsed;
+                }
+                Items = new(order.m_orderItems);
+                myItems.DataContext = Items;
+                user = u;
             }
-            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
-            else { deliver.Text = order.m_DeliveryrDate.ToString(); }
-            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
-            else
-            {
-                ship.Text = order.m_ShipDate.ToString();
-                update.Visibility = Visibility.Collapsed;
-                gradeNumUpDown.Visibility = Visibility.Collapsed;
-            }
-            // DataContext = this;
-            Items = new(order.m_orderItems);
-            myItems.DataContext = Items;
-            user = u;
+
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
         public OrderDetails(Action<OrderForList> a, Users u, OrderForList p) : this(u, p) { action = a; }

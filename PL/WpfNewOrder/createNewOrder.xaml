@@ -42,7 +42,7 @@
             </Button>
 
         </Grid>
-        <ListView Name="ProductItems" Margin="0,46,0,0" HorizontalAlignment="Center" Width="1020" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Foreground="#FF993F76" Height="455" VerticalAlignment="Top" Grid.RowSpan="2" FontStyle="Italic" FontWeight="Bold">
+        <ListView Name="ProductItems" Margin="0,46,0,0" HorizontalAlignment="Center" Width="1020" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" Foreground="#FF993F76" Height="455" VerticalAlignment="Top" Grid.RowSpan="2" FontStyle="Italic" FontWeight="Bold">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="90" DisplayMemberBinding="{Binding m_ID}" />

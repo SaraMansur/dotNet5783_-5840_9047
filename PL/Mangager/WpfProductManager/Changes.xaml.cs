@@ -31,14 +31,18 @@ namespace PL.WpfProduct
         private Action<ProductForList> action;
         public Changes(int id=0)
         {
-            InitializeComponent();
-            if (id != 0) P = bl.Product.ProductId(id);
-            else { P = new BO.Product() { m_Category = Enums.Category.None, m_Id = 0, m_InStock = 0, m_Name = "", m_Price = 0 }; };
-            this.DataContext = P;
-            category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
-            if (id != 0) { AddP.Visibility = Visibility.Collapsed; }
-            else
-                UpdateP.Visibility = Visibility.Collapsed;
+            try
+            {
+                InitializeComponent();
+                if (id != 0) P = bl.Product.ProductId(id);
+                else { P = new BO.Product() { m_Category = Enums.Category.None, m_Id = 0, m_InStock = 0, m_Name = "", m_Price = 0 }; };
+                this.DataContext = P;
+                category.ItemsSource = Enum.GetValues(typeof(BO.Enums.Category));
+                if (id != 0) { AddP.Visibility = Visibility.Collapsed; }
+                else
+                    UpdateP.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
         public Changes(Action<ProductForList> a,int id=0):this(id)

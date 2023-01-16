@@ -188,6 +188,7 @@ internal class Order : IOrder
         } //Checking if Order ID is correct
 
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
+        
         if (DOorder.m_ShipDate != DateTime.MinValue)
             throw new("The order has been sent, so it is not possible to update the quantity of items.");
 

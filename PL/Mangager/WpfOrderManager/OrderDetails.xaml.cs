@@ -40,7 +40,6 @@ namespace PL.WpfOrderManager
 
         private Action<OrderForList> action;
 
-        //BO.Order order = new BO.Order { m_TotalPrice = 0 };
         Users user;
 
         public OrderDetails(Users u, OrderForList p = null, int orderId = 0)
@@ -55,9 +54,9 @@ namespace PL.WpfOrderManager
                 update.Visibility = Visibility.Collapsed;
                 gradeNumUpDown.Visibility = Visibility.Collapsed;
             }
-            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
+            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
             else { deliver.Text = order.m_DeliveryrDate.ToString(); }
-            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }
+            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
             else
             {
                 ship.Text = order.m_ShipDate.ToString();

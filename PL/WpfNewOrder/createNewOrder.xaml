@@ -45,17 +45,16 @@
         <ListView Name="ProductItems" Margin="0,46,0,0" HorizontalAlignment="Center" Width="1020" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" SelectionChanged="ProductItems_SelectionChanged" Foreground="#FF993F76" Height="455" VerticalAlignment="Top" Grid.RowSpan="2" FontStyle="Italic" FontWeight="Bold">
             <ListView.View>
                 <GridView>
-
                     <GridViewColumn Header="Id" Width="90" DisplayMemberBinding="{Binding m_ID}" />
                     <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding m_NameProduct}" />
                     <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding m_PriceProduct}" />
                     <GridViewColumn Header="Caregory" Width="140" DisplayMemberBinding="{Binding Category }" />
-                    <GridViewColumn Header="In Stock" Width="120" DisplayMemberBinding="{Binding m_InStock}" />
+                    <GridViewColumn Header="In Stock" Width="120" DisplayMemberBinding="{Binding m_InStock}"  />
                     <GridViewColumn Header="In Cart" Width="80" DisplayMemberBinding="{Binding m_AmountInCart}" />
                     <GridViewColumn Header="Update Amount" x:Name="_amount" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="updateAmount" Content="Add to cart" Width="120" Click="AddToCart_click" Style="{StaticResource myButtonStyle}"/>
+                                <Button x:Name="updateAmount" Content="Add to cart" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Click="AddToCart_click" Style="{StaticResource myButtonStyle}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

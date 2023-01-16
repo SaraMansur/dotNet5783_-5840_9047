@@ -22,7 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{DC5B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749F-4E2C-B7E7-0C2F37B2E430}"
 	ProjectSection(SolutionItems) = preProject
+		xml\Config.xml = xml\Config.xml
 		xml\dal-config.xml = xml\dal-config.xml
+		xml\OrderItems.xml = xml\OrderItems.xml
+		xml\Orders.xml = xml\Orders.xml
+		xml\Product.xml = xml\Product.xml
 		xml\Users.xml = xml\Users.xml
 	EndProjectSection
 EndProject
@@ -30,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSource", "DataSource\DataSource.csproj", "{AAFD1129-10A1-49C2-92F8-622796D52914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator\Simulator.csproj", "{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simulator", "Simulator\Simulator.csproj", "{AFD1B73C-BA39-4AA0-82C5-DC0773AACE41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

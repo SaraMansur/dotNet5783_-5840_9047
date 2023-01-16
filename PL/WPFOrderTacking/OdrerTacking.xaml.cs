@@ -31,20 +31,11 @@ namespace PL.WPFOrderTacking
         Users user;
         private ObservableCollection<OrderForList> _OrderList;
         int _flag = 0;
-        //public BO.OrderForList odrerTacking
-        //{
-        //    get { return (BO.OrderForList)GetValue(OrderProperty); }
-        //    set { SetValue(OrderProperty, value); }
-        //}
-        //public static readonly DependencyProperty OrderProperty =
-        //    DependencyProperty.Register("odrerTacking", typeof(BO.Order), typeof(Window), new PropertyMetadata(null));
         public OdrerTacking(Users u ,int num = 0)
         {
             InitializeComponent(); _flag = num;
             _OrderList = new(bl.Order.OrderList()!);
             this.DataContext = _OrderList;
-            //odrerTacking= _OrderList;
-          //  for(int i=0;i< _OrderList.Count;i++) odrerTacking= _OrderList[i];
             user = u;
         }
 

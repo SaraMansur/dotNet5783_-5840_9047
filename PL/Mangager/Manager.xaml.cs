@@ -37,7 +37,7 @@ public partial class Manager : Window
 
     private void OrderForList_Click(object sender, RoutedEventArgs e) { new OrderList(user).Show(); this.Close(); }
 
-    private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking(user,4).Show(); this.Close(); }
+    private void OrderTracking_Click(object sender, RoutedEventArgs e) { new OdrerTacking(user).Show(); this.Close(); }
 
 
 }

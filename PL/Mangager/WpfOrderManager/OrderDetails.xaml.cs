@@ -45,28 +45,32 @@ namespace PL.WpfOrderManager
         public OrderDetails(Users u, OrderForList p = null, int orderId = 0)
         {
             InitializeComponent();
-            if (p != null) order = bl.Order.orderDetails(p.m_Id);
-            else
+            try
             {
-                order = bl.Order.orderDetails(orderId);
-                shipping.Visibility = Visibility.Collapsed;
-                delivery.Visibility = Visibility.Collapsed;
-                update.Visibility = Visibility.Collapsed;
-                gradeNumUpDown.Visibility = Visibility.Collapsed;
+                if (p != null) order = bl.Order.orderDetails(p.m_Id);
+                else
+                {
+                    order = bl.Order.orderDetails(orderId);
+                    shipping.Visibility = Visibility.Collapsed;
+                    delivery.Visibility = Visibility.Collapsed;
+                    update.Visibility = Visibility.Collapsed;
+                    gradeNumUpDown.Visibility = Visibility.Collapsed;
+                }
+                if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
+                else { deliver.Text = order.m_DeliveryrDate.ToString(); }
+                if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
+                else
+                {
+                    ship.Text = order.m_ShipDate.ToString();
+                    update.Visibility = Visibility.Collapsed;
+                    gradeNumUpDown.Visibility = Visibility.Collapsed;
+                }
+                Items = new(order.m_orderItems);
+                myItems.DataContext = Items;
+                user = u;
             }
-            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
-            else { deliver.Text = order.m_DeliveryrDate.ToString(); }
-            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
-            else
-            {
-                ship.Text = order.m_ShipDate.ToString();
-                update.Visibility = Visibility.Collapsed;
-                gradeNumUpDown.Visibility = Visibility.Collapsed;
-            }
-            // DataContext = this;
-            Items = new(order.m_orderItems);
-            myItems.DataContext = Items;
-            user = u;
+
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
         public OrderDetails(Action<OrderForList> a, Users u, OrderForList p) : this(u, p) { action = a; }
@@ -75,8 +79,10 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                BO.Order o = bl.Order.orderDelivery(order.m_Id);
-                OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
+                order = bl.Order.orderDelivery(order.m_Id);
+                OrderForList ofl = new OrderForList() { m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
                 OrderList win = new OrderList(user);
                 this.Close();
@@ -89,10 +95,10 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                BO.Order o = bl.Order.sendingAnInvitation(order.m_Id);
-                OrderForList ofl = new OrderForList() { m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
-                for (int i = 0; i < o.m_orderItems.Count; i++)
-                    ofl.m_AmountItems = o.m_orderItems[i].m_AmountInCart;
+                order = bl.Order.sendingAnInvitation(order.m_Id);
+                OrderForList ofl = new OrderForList() { m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
                 OrderList win = new OrderList(user);
                 this.Close();
@@ -115,13 +121,11 @@ namespace PL.WpfOrderManager
                 action(ofl);
                 if(amount!=0)
                 {
-                    for (int i = 0, j = 0; j < Items.Count(); j++, i++)
+                    for (int j = 0; j < Items.Count(); j++)
                     {
-                        var item = order.m_orderItems[i];
+                        var item = order.m_orderItems[j];
                         Items.RemoveAt(j);
-                        if (amount == 0 && item == p)
-                        { i--; break; }
-                        Items.Insert(i, item);
+                        Items.Insert(j, item);
                     }
                 }
                 if(amount == 0)

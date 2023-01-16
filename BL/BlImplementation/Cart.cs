@@ -121,7 +121,6 @@ internal class Cart : ICart
             if (!(nameCustomr[i]<='z'&& nameCustomr[i] >='a') && (nameCustomr[i]!=' ') && !(nameCustomr[i] <= 'Z' && nameCustomr[i] >= 'A')) 
                 throw new BO.IlegalInput(); }
 
-
         foreach (var item in cart?.m_orderItems)
         {
             DO.Product product = new DO.Product();//A new product is released.

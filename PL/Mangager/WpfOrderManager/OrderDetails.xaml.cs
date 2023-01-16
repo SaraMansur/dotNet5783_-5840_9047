@@ -114,13 +114,22 @@ namespace PL.WpfOrderManager
                 for (int i = 0; i < order.m_orderItems.Count; i++)
                     ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
-                for (int i = 0,j=0; j < Items.Count();j++ ,i++)
+                if(amount!=0)
                 {
-                    var item = Items[j];
-                    Items.RemoveAt(i);
-                    if (amount == 0 && item == p)
-                    { i--; break; }
-                    Items.Insert(i, item);
+                    for (int i = 0, j = 0; j < Items.Count(); j++, i++)
+                    {
+                        var item = order.m_orderItems[i];
+                        Items.RemoveAt(j);
+                        if (amount == 0 && item == p)
+                        { i--; break; }
+                        Items.Insert(i, item);
+                    }
+                }
+                if(amount == 0)
+                {
+                    var item = Items.FirstOrDefault(x => x.m_ID == p.m_ID);
+                    int index = Items.IndexOf(item);
+                    Items.RemoveAt(index);
                 }
                 MessageBox.Show("The order is updat in succsesfuly!");
             }

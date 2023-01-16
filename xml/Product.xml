@@ -4,7 +4,7 @@
     <m_ID>659351</m_ID>
     <m_Name>Delicate Ring Silver</m_Name>
     <m_Price>497</m_Price>
-    <m_InStock>23</m_InStock>
+    <m_InStock>24</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
@@ -25,14 +25,14 @@
     <m_ID>310930</m_ID>
     <m_Name>G89spotlight stones</m_Name>
     <m_Price>429</m_Price>
-    <m_InStock>10</m_InStock>
+    <m_InStock>12</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
     <m_ID>947189</m_ID>
     <m_Name>Silver Hoop earrings</m_Name>
     <m_Price>337</m_Price>
-    <m_InStock>14</m_InStock>
+    <m_InStock>18</m_InStock>
     <m_Category>Earrings</m_Category>
   </Product>
   <Product>
@@ -53,14 +53,14 @@
     <m_ID>579354</m_ID>
     <m_Name>Gold bracelet</m_Name>
     <m_Price>218</m_Price>
-    <m_InStock>17</m_InStock>
+    <m_InStock>19</m_InStock>
     <m_Category>Bracelets</m_Category>
   </Product>
   <Product>
     <m_ID>218679</m_ID>
     <m_Name>Silver bracelet</m_Name>
     <m_Price>727</m_Price>
-    <m_InStock>21</m_InStock>
+    <m_InStock>24</m_InStock>
     <m_Category>Bracelets</m_Category>
   </Product>
   <Product>

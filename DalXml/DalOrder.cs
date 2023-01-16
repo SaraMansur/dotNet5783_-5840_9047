@@ -22,11 +22,6 @@ internal class DalOrder : IOrder
 
     string OrderFilePath = @"Orders.xml";
 
-    //public DalOrder()
-    //{
-    //    if (!File.Exists(dir + OrderFilePath))
-    //        XMLTools.SaveListToXMLSerializer<DO.Order?>(DataSource.m_listOreders, dir + OrderFilePath);
-    //}
 
     public int Add(DO.Order? entity)
     {

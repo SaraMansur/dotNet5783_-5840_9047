@@ -20,49 +20,18 @@ public class Order
 
     //private string? CustomerName;
     public string? m_CustomerName { get; set; }
-    //{
-    //    get { return CustomerName; }
-    //    set
-    //    {
-    //        CustomerName = value;
-    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NameUser")); }
-
-    //    }
-    //}
 
     /// <summary>
     /// the meil of the customer
     /// </summary>
     //private string? CustomerMail;
     public string? m_CustomerMail { get; set; } 
-    //{
-    //    get { return CustomerMail; }
-    //    set
-    //    {
-    //        CustomerMail = value;
-    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MailUser")); }
-
-    //    }
-    //}
-
     /// <summary>
     /// the address of the customer
     /// </summary>
    // private string? CustomerAdress;
     public string? m_CustomerAdress { get; set; }   
-    //{
-    //    get { return CustomerAdress; }
-    //    set
-    //    {
-    //        CustomerAdress = value;
-    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AdressUser")); }
 
-    //    }
-    //}
-
-    /// <summary>
-    /// the status of the order
-    /// </summary>
     public Enums.Status? m_OrderStatus { get; set; }
     /// <summary>
     /// the total price of the order
@@ -70,18 +39,10 @@ public class Order
    // public double m_TotalPrice { get; set; }
    // private double TotalPrice;
     public double m_TotalPrice { get; set; }    
-    //{
-    //    get { return TotalPrice; }
-    //    set
-    //    {
-    //        TotalPrice = value;
-    //        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TotalPrice")); }
-
-    //    }
-    //}
     /// <summary>
     /// the time that the order made
     /// </summary>
+    /// 
     public DateTime? m_OrderTime { get; set; }
     /// <summary>
     /// the time that the order shiped

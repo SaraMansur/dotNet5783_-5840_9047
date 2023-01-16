@@ -113,8 +113,8 @@
         <TextBox Margin="345,243,0,0" Text="{Binding order.m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
         <TextBox Margin="773,66,0,0" Text="{Binding order.m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
         <TextBox Margin="773,123,0,0" Text="{Binding order.m_OrderTime}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="773,182,0,0" x:Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
-        <TextBox Margin="773,235,0,0" x:Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="773,182,0,0" Text="{Binding order.m_ShipDate}" x:Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBox Margin="773,235,0,0" Text="{Binding order. m_DeliveryrDate}" x:Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
         <TextBox Margin="773,302,0,0" x:Name="price" Text="{Binding order.m_TotalPrice , Mode=TwoWay}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
 
         <Button x:Name="delivery" Style="{StaticResource myButtonStyle}" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="321,514,0,0" RenderTransformOrigin="0.125,0.596" />

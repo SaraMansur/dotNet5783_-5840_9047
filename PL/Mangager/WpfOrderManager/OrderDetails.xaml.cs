@@ -84,8 +84,6 @@ namespace PL.WpfOrderManager
                 for (int i = 0; i < order.m_orderItems.Count; i++)
                     ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
-                OrderList win = new OrderList(user);
-                this.Close();
                 MessageBox.Show("The order is updat to be Delivery in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
@@ -100,8 +98,6 @@ namespace PL.WpfOrderManager
                 for (int i = 0; i < order.m_orderItems.Count; i++)
                     ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
-                OrderList win = new OrderList(user);
-                this.Close();
                 MessageBox.Show("The order is updat to be shipping in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }

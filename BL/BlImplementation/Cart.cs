@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using DO;
 
 namespace BlImplementation;
 
@@ -111,8 +112,7 @@ internal class Cart : ICart
         BO.Cart c = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
         if (!mailCustomer!.EndsWith("@gmail.com") || nameCustomr?.Length == 0 || mailCustomer?.Length == 0 || addressCustomr?.Length == 0 )
             throw new BO.IlegalInput(); //Throwing an exception in case one or more of the details is wrong.
-
-        for (int i = 0; i < nameCustomr.Length; i++) { 
+        for (int i = 0; i < nameCustomr.Length; i++) {
             if (!(nameCustomr[i]<='z'&& nameCustomr[i] >='a') && (nameCustomr[i]!=' ') && !(nameCustomr[i] <= 'Z' && nameCustomr[i] >= 'A')) 
                 throw new BO.IlegalInput(); }
 

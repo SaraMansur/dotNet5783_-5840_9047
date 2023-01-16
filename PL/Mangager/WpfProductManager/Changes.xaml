@@ -44,7 +44,7 @@
         <TextBlock Text="Price:" Grid.Column="1" Grid.Row="7" Style="{StaticResource myTextBlockStyle}" Foreground="#FFFBFAEF"/>
         <TextBlock Text="In Stock:" Grid.Column="1" Grid.Row="9" Style="{StaticResource myTextBlockStyle}" Foreground="#FFF8F7EF"/>
         <TextBox Name="Id" Grid.Column="2" Grid.Row="1" Text="{Binding Path=m_Id, Mode=TwoWay}"  Background="White" Foreground="#FF110101" BorderBrush="#FF650F54" FontSize="14" />
-        <ComboBox  Name="category" Grid.Column="2" Grid.Row="2"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}" BorderBrush="#FF650F54" HorizontalAlignment="Center" Margin="0,13,0,0" Grid.RowSpan="2" Width="145" FontSize="14">
+        <ComboBox  Name="category" Grid.Column="2" Grid.Row="2"  SelectedItem="{Binding Path=m_Category, Mode=TwoWay}" BorderBrush="#FF650F54" HorizontalAlignment="Center" Margin="0,13,0,10" Grid.RowSpan="3" Width="145" FontSize="14">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>

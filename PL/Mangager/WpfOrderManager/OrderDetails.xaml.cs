@@ -109,21 +109,27 @@ namespace PL.WpfOrderManager
                 BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
                 p = p ?? throw new("Please select a product to update amount");
                 order = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
-
-                for (int i = 0,j=0; j < Items.Count();j++ ,i++)
-                {
-                    var item = Items[j];
-                    Items.RemoveAt(i);
-                    if (amount == 0 && item == p)
-                    { i--; break; }
-                    Items.Insert(i, item);
-                }
-
                 OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
                 for (int i = 0; i < order.m_orderItems.Count; i++)
                     ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
-
+                if(amount!=0)
+                {
+                    for (int i = 0, j = 0; j < Items.Count(); j++, i++)
+                    {
+                        var item = order.m_orderItems[i];
+                        Items.RemoveAt(j);
+                        if (amount == 0 && item == p)
+                        { i--; break; }
+                        Items.Insert(i, item);
+                    }
+                }
+                if(amount == 0)
+                {
+                    var item = Items.FirstOrDefault(x => x.m_ID == p.m_ID);
+                    int index = Items.IndexOf(item);
+                    Items.RemoveAt(index);
+                }
                 MessageBox.Show("The order is updat in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }

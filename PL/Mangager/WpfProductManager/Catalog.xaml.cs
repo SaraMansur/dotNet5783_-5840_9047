@@ -62,13 +62,14 @@ namespace PL.WpfProduct
             new Manager(user).Show();
             this.Close();
         }
+
          private void UpdateViewList(ProductForList p)
-        {
+         {
             var item = _Productlist.FirstOrDefault(x => x.m_ID == p.m_ID);
             int index= _Productlist.IndexOf(item);
             _Productlist.RemoveAt(index);
             _Productlist.Insert(index,p);
-        }
+         }
 
         private void AddViewList(ProductForList p)
         {

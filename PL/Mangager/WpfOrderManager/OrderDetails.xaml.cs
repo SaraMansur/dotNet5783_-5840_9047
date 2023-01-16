@@ -40,7 +40,6 @@ namespace PL.WpfOrderManager
 
         private Action<OrderForList> action;
 
-        //BO.Order order = new BO.Order { m_TotalPrice = 0 };
         Users user;
 
         public OrderDetails(Users u, OrderForList p = null, int orderId = 0)
@@ -55,9 +54,9 @@ namespace PL.WpfOrderManager
                 update.Visibility = Visibility.Collapsed;
                 gradeNumUpDown.Visibility = Visibility.Collapsed;
             }
-            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order dont Deliver yet"; }
+            if (order.m_DeliveryrDate == null || order.m_DeliveryrDate == DateTime.MinValue) { deliver.Text = "This order hasn't Delivered yet"; }
             else { deliver.Text = order.m_DeliveryrDate.ToString(); }
-            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order dont Ship yet"; }
+            if (order.m_ShipDate == null || order.m_ShipDate == DateTime.MinValue) { ship.Text = "This order hasn't Shiped yet"; }
             else
             {
                 ship.Text = order.m_ShipDate.ToString();
@@ -110,10 +109,7 @@ namespace PL.WpfOrderManager
                 BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
                 p = p ?? throw new("Please select a product to update amount");
                 order = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
-                OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
-                for (int i = 0; i < order.m_orderItems.Count; i++)
-                    ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
-                action(ofl);
+
                 for (int i = 0,j=0; j < Items.Count();j++ ,i++)
                 {
                     var item = Items[j];
@@ -122,6 +118,12 @@ namespace PL.WpfOrderManager
                     { i--; break; }
                     Items.Insert(i, item);
                 }
+
+                OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
+                action(ofl);
+
                 MessageBox.Show("The order is updat in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }

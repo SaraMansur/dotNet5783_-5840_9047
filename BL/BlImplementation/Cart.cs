@@ -78,12 +78,7 @@ internal class Cart : ICart
             {
                 if (amount < 0) 
                 {
-                    if((cart.m_orderItems[i]!.m_AmountInCart + amount)<0) throw new BO.IlegalInput();
-                    cart.m_orderItems[i]!.m_AmountInCart += amount ?? throw new ArgumentNull(); //The quantity of the item to amount that customer wont.
-                    cart.m_TotalPrice = (cart.m_TotalPrice + (cart.m_orderItems[i]!.m_AmountInCart * product.m_Price) - cart.m_orderItems[i]?.m_TotalPriceItem) ?? throw new ArgumentNull(); //Total price update of the shopping curt.
-                    cart.m_orderItems[i]!.m_TotalPriceItem = (cart.m_orderItems[i]!.m_AmountInCart * product.m_Price) ;  //Total price of the item
-                    return cart; //Returning an updated shopping basket.
-
+                     throw new BO.IlegalInput();
                 }
                 if (amount == 0)
                 {//If the customer wants to remove the product from the cart.
@@ -120,9 +115,6 @@ internal class Cart : ICart
         for (int i = 0; i < nameCustomr.Length; i++) { 
             if (!(nameCustomr[i]<='z'&& nameCustomr[i] >='a') && (nameCustomr[i]!=' ') && !(nameCustomr[i] <= 'Z' && nameCustomr[i] >= 'A')) 
                 throw new BO.IlegalInput(); }
-        //for (int i = 0; i < addressCustomr.Length; i++) {
-        //    if (!(addressCustomr[i] <= 'z' && addressCustomr[i] >= 'a') && (addressCustomr[i] != ' ') && !(addressCustomr[i] <= 'Z' && addressCustomr[i] >= 'A'))
-        //        throw new BO.IlegalInput(); }
 
         foreach (var item in cart?.m_orderItems)
         {

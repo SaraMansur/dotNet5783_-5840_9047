@@ -29,7 +29,8 @@
             <Setter Property="IsReadOnly" Value="true"  />
             <Setter Property="Foreground" Value="#FF8C407D"  />
         </Style>
-        <local:convert x:Key="convert"/>
+        <local:convert 
+            x:Key="convert"/>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -47,7 +48,7 @@
                     <GridViewColumn x:Name="Status"  Header="Status" Width="160">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox  HorizontalAlignment="Center"  Width="120" TextAlignment="Center" Text="{Binding Path= m_OrderStatus }" Style = "{StaticResource TextBoxStyle}" Background="{Binding ElementName = Status , Path = Text, Converter={StaticResource convert}}" />
+                                <TextBox  HorizontalAlignment="Center"  Width="120" TextAlignment="Center" Text="{Binding Path= m_OrderStatus }" Style = "{StaticResource TextBoxStyle}" Background="{Binding m_OrderStatus, Converter={StaticResource convert}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

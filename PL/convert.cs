@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
+using static BO.Enums;
 
 namespace PL
 {
@@ -9,22 +10,18 @@ namespace PL
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string Status = value as string; 
-            if (string.IsNullOrEmpty(Status))
-                throw new ArgumentException("Cannot convert null or empty string");
-            if (Status == "Ordered")
+            BO.Enums.Status status = (BO.Enums.Status)value;
+
+            if (status == BO.Enums.Status.Ordered)
             {
                 return Brushes.Red;
             }
-            if (Status == "Shipped")
+            else if (status == BO.Enums.Status.Shipped)
             {
                 return Brushes.Yellow;
             }
-            if (Status == "Received")
-            {
-                return Brushes.Green;
-            }
-            throw new ArgumentException("Invalid status");
+            return Brushes.Green;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

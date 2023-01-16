@@ -93,8 +93,7 @@ namespace PL.WpfNewOrder
             {
                 int num = C.m_orderItems.Count;
                 int amount = (int)this.gradeNumUpDown.Value;
-                OrderItem p = (Items.SelectedItem as OrderItem);
-                if (p == null) throw new Exception("You have not selected a product to update. Please select a product");
+                OrderItem p = (Items.SelectedItem as OrderItem) ?? throw new Exception("You have not selected a product to update. Please select a product");
                 C = bl.Cart.UpdateAmount(C, p.m_IdProduct, amount);
                 var item = Dates.FirstOrDefault(x => x.m_IdProduct == p.m_IdProduct);
                 int index= Dates.IndexOf(item);

@@ -51,11 +51,11 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <TextBlock Text="{Binding Path=m_Status}" Grid.Column="1" Grid.Row="2" TextAlignment="Left" Style="{StaticResource myTextBlockStyle}" HorizontalAlignment="Left" Margin="69,4,0,4" Width="186" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ListView x:Name="orderT" Grid.Row="8" FontSize="16" ItemsSource="{Binding }" HorizontalAlignment="Left" Margin="0,3,0,115" Grid.RowSpan="7" Width="421" Grid.ColumnSpan="2" BorderBrush="#FF1A1717" FontFamily="Microsoft PhagsPa" FontWeight="Normal" Background="#FFB98DBC" Foreground="#FFF9F9FF" Grid.Column="1">
+        <ListView x:Name="orderT" Grid.Row="8" FontSize="16" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="0,3,0,115" Grid.RowSpan="7" Width="421" Grid.ColumnSpan="2" BorderBrush="#FF1A1717" FontFamily="Microsoft PhagsPa" FontWeight="Normal" Background="#FFB98DBC" Foreground="#FFF9F9FF" Grid.Column="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  DisplayMemberBinding="{Binding Path = Item1}" Width="220"/>
-                    <GridViewColumn  DisplayMemberBinding="{Binding Path = Item2}" Width="180"/>
+                    <GridViewColumn Header="Order status:"  DisplayMemberBinding="{Binding Path = Item1}" Width="220"/>
+                    <GridViewColumn Header="Date:"  DisplayMemberBinding="{Binding Path = Item2}" Width="180"/>
                 </GridView>
             </ListView.View>
         </ListView>

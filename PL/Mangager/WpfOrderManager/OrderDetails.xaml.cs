@@ -75,8 +75,10 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                BO.Order o = bl.Order.orderDelivery(order.m_Id);
-                OrderForList ofl = new OrderForList() { m_AmountItems = o.m_orderItems.Count(), m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
+                order = bl.Order.orderDelivery(order.m_Id);
+                OrderForList ofl = new OrderForList() { m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
                 OrderList win = new OrderList(user);
                 this.Close();
@@ -89,10 +91,10 @@ namespace PL.WpfOrderManager
         {
             try
             {
-                BO.Order o = bl.Order.sendingAnInvitation(order.m_Id);
-                OrderForList ofl = new OrderForList() { m_CustomerName = o.m_CustomerName, m_Id = o.m_Id, m_OrderStatus = o.m_OrderStatus, m_TotalPrice = o.m_TotalPrice };
-                for (int i = 0; i < o.m_orderItems.Count; i++)
-                    ofl.m_AmountItems = o.m_orderItems[i].m_AmountInCart;
+                order = bl.Order.sendingAnInvitation(order.m_Id);
+                OrderForList ofl = new OrderForList() { m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
+                for (int i = 0; i < order.m_orderItems.Count; i++)
+                    ofl.m_AmountItems = order.m_orderItems[i].m_AmountInCart;
                 action(ofl);
                 OrderList win = new OrderList(user);
                 this.Close();
@@ -115,13 +117,11 @@ namespace PL.WpfOrderManager
                 action(ofl);
                 if(amount!=0)
                 {
-                    for (int i = 0, j = 0; j < Items.Count(); j++, i++)
+                    for (int j = 0; j < Items.Count(); j++)
                     {
-                        var item = order.m_orderItems[i];
+                        var item = order.m_orderItems[j];
                         Items.RemoveAt(j);
-                        if (amount == 0 && item == p)
-                        { i--; break; }
-                        Items.Insert(i, item);
+                        Items.Insert(j, item);
                     }
                 }
                 if(amount == 0)

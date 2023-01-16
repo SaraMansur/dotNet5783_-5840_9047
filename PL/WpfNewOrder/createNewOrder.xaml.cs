@@ -46,7 +46,6 @@ namespace PL.WpfNewOrder
             catch(Exception e) { MessageBox.Show(e.Message); }
         }   
 
-        public Predicate<object> Filtering { get; private set; }
 
         public void GroupList()
         {
@@ -68,7 +67,7 @@ namespace PL.WpfNewOrder
             var item = ProductItemlist.FirstOrDefault(x => x.m_ID == productItem.m_ID);
             int index = ProductItemlist.IndexOf(item);
             ProductItemlist.RemoveAt(index);
-            item.m_AmountInCart += 1;// cart.m_orderItems.FirstOrDefault(x => x.m_ID == item.m_ID).m_AmountInCart;
+            item.m_AmountInCart += 1;
             ProductItemlist.Insert(index,item);
         }
 
@@ -83,6 +82,6 @@ namespace PL.WpfNewOrder
             cart = bl.Cart.AddItemToCart(cart, productItem.m_ID);
         }
 
-        private void ProductItems_SelectionChanged(object sender, SelectionChangedEventArgs e) { GroupList(); }
+
     }
-}
+} 

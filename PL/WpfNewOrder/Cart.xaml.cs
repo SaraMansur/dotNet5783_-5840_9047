@@ -100,10 +100,9 @@ namespace PL.WpfNewOrder
                 var item = Dates.FirstOrDefault(x => x.m_IdProduct == p.m_IdProduct);
                 int index= Dates.IndexOf(item);
                 Dates.RemoveAt(index);
-                if (num== C.m_orderItems.Count) Dates.Insert(index, item);
-
-
-               Totul_Price.Text = C.m_TotalPrice.ToString();
+                
+                if (num == C.m_orderItems.Count) Dates.Insert(index, item);
+                Totul_Price.Text = C.m_TotalPrice.ToString();
             }
             catch(Exception ex) {
                 MessageBox.Show(ex.Message.ToString());}   

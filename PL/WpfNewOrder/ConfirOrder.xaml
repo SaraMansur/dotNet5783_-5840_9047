@@ -14,13 +14,13 @@
             <Setter Property="FontSize" Value="16"/>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF805A7C">
-        <TextBlock Margin="60,149,203,255" Text="Enter yor adress:" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Margin="60,220,190,188" Text="Enter your email:" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Margin="60,74,203,335" Text="Enter your name:" Style="{StaticResource myTextBlockStyle}"/>
+    <Grid Background="#FF805A7C" Margin="0,0,0,-6">
+        <TextBlock Margin="60,149,203,246" Text="Enter yor adress:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="60,215,190,176" Text="Enter your email:" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="60,74,203,321" Text="Enter your name:" Style="{StaticResource myTextBlockStyle}"/>
         <TextBox Margin="220,69,0,0" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerName,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
         <TextBox Margin="220,143,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerAdress,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
         <TextBox Margin="220,215,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text="{Binding Path=m_CustomerMail,Mode=TwoWay}" Height="35" BorderBrush="#FF650F54" FontSize="14"/>
-        <Button Content="Confirm Order" HorizontalAlignment="Left" Margin="100,294,0,0" VerticalAlignment="Top" Height="45" Width="90" Click="Confirm_Order_Click" BorderBrush="#FF6B641F" Foreground="#FF6B641F" FontFamily="Sitka Display" FontSize="14" Background="#FFFFF3F3"/>
+        <Button Content="Confirm Order" HorizontalAlignment="Left" Margin="100,294,0,0" VerticalAlignment="Top" Height="55" Width="115" Click="Confirm_Order_Click" BorderBrush="#FF8B2563" Foreground="#FF8B2563" FontFamily="Sitka Display" FontSize="16" Background="#FFFFF3F3" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

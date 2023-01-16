@@ -100,9 +100,9 @@
         </Grid.Background>
         <TextBlock Margin="142,66,0,0" Text="Id of order:" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="138,123,0,0" Text="The name of customer:" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Margin="138,243,0,0" Text="The mail of customer:" RenderTransformOrigin="-0.736,1.563" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="135,243,0,0" Text="The mail of customer:" RenderTransformOrigin="-0.736,1.563" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="577,66,0,0" Text="The status of the order:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
-        <TextBlock Margin="138,182,0,0" Text="The adress of customer:" RenderTransformOrigin="-0.371,0.516" Style="{StaticResource myTextBlockStyle}"/>
+        <TextBlock Margin="132,182,0,0" Text="The adress of customer:" RenderTransformOrigin="-0.371,0.516" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="536,306,0,0" Text="The totul price of the order:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="577,243,0,0" Text="The delivery time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBlock Margin="577,186,0,0" Text="The ship time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
@@ -117,9 +117,9 @@
         <TextBox Margin="773,235,0,0" x:Name="deliver" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
         <TextBox Margin="773,302,0,0" x:Name="price" Text="{Binding order.m_TotalPrice , Mode=TwoWay}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
 
-        <Button x:Name="delivery" Style="{StaticResource myButtonStyle}" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="138,564,0,0" RenderTransformOrigin="0.125,0.596" />
-        <Button x:Name="shipping" Style="{StaticResource myButtonStyle}" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="138,514,0,0" RenderTransformOrigin="0.953,0.596"/>
-        <ListBox x:Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="138,360,108,0" Height="129" VerticalAlignment="Top" Foreground="White">
+        <Button x:Name="delivery" Style="{StaticResource myButtonStyle}" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="321,514,0,0" RenderTransformOrigin="0.125,0.596" />
+        <Button x:Name="shipping" Style="{StaticResource myButtonStyle}" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="124,513,0,0" RenderTransformOrigin="0.953,0.596"/>
+        <ListBox x:Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="112,360,138,0" Height="129" VerticalAlignment="Top" Foreground="White">
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF76366A" Offset="0"/>
@@ -127,11 +127,8 @@
                 </LinearGradientBrush>
             </ListBox.Background>
         </ListBox>
-        <TextBlock Margin="138,315,0,0"  Style="{StaticResource myTextBlockStyle}" Text="The order items:" RenderTransformOrigin="0.516,0.716" />
-        <Button x:Name="update" Content="Update" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="738,532,0,0" Click="UpdateAmount_click" Width="135"/>
-        <TextBox x:Name="OrderItemId" HorizontalAlignment="Left" Margin="567,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="33" BorderBrush="#FF541C47" Background="#FFD8B8DA" FontSize="14" RenderTransformOrigin="0.875,-0.605"/>
-        <TextBlock  Style="{StaticResource myTextBlockStyle}" Margin="382,514,0,0" TextWrapping="Wrap" Text="Enter id of order item:" Width="174" Height="33" RenderTransformOrigin="0.483,0.304" />
-        <TextBlock Style="{StaticResource myTextBlockStyle}" Margin="382,564,0,0" TextWrapping="Wrap" Text="Enter amount:" Height="30" Width="174"/>
-        <TextBox x:Name="Amount" HorizontalAlignment="Left" Margin="567,564,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="33" BorderBrush="#FF541C47" Background="#FFD8B8DA" FontSize="14" RenderTransformOrigin="0.875,-0.605"/>
+        <TextBlock Margin="135,317,0,0"  Style="{StaticResource myTextBlockStyle}" Text="The order items:" RenderTransformOrigin="0.516,0.716" />
+        <Button x:Name="update" Content="Update" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="536,514,0,0" Click="UpdateAmount_click"/>
+        <WpfNewOrder:NumericUpDownControl x:Name="gradeNumUpDown" Margin="685,514,-125,41" RenderTransformOrigin="0.432,0.7"/>
     </Grid>
 </Window>

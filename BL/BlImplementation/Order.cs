@@ -202,23 +202,16 @@ internal class Order : IOrder
 
         try { Oitem = (DO.OrderItem)Dal.OrderItem.GetSingle(x => (x?.m_ProductId == productId) && (x?.m_OrderId == orderId)); }
         catch (Exception inner) {
-            Oitem = new DO.OrderItem { m_amount = (int)amount, m_OrderId = (int)orderId, m_Price = (int)amount * product.m_Price, m_ProductId = product.m_ID };
-            Oitem.m_ID = Dal.OrderItem.Add(Oitem);
-            BOorder.m_orderItems.Add(new BO.OrderItem { m_AmountInCart= (int)amount ,m_ID= Oitem.m_ID ,m_IdProduct= product.m_ID ,m_NameProduct= product.m_Name,m_PriceProduct= product.m_Price, m_TotalPriceItem= (int)amount * product.m_Price });
-            product.m_InStock -= (int)amount;
-            BOorder.m_TotalPrice += (int)amount * product.m_Price;
-            Dal.Product.Update(product);
-            return BOorder;
+            throw new("The product does not exist.");
         }
 
         if (amount == 0) 
         {
             try { Dal.OrderItem.Delete(Oitem.m_ID); }
             catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number
-             var item = BOorder.m_orderItems.FirstOrDefault(x => x.m_ID == Oitem.m_ID);
-             int index = BOorder.m_orderItems.IndexOf(item);
+            var item = BOorder.m_orderItems.FirstOrDefault(x => x.m_ID == Oitem.m_ID);
+            int index = BOorder.m_orderItems.IndexOf(item);
             BOorder.m_orderItems.Remove(BOorder.m_orderItems[index]);
-
             product.m_InStock += Oitem.m_amount;
             BOorder.m_TotalPrice -= Oitem.m_Price;
             Dal.Product.Update(product);
@@ -229,15 +222,17 @@ internal class Order : IOrder
         {
             if (product.m_InStock < amount)
                 throw new BO.MissingInStock();
+            Oitem = new DO.OrderItem { m_amount = (int)amount, m_ID = Oitem.m_ID, m_OrderId = (int)orderId, m_Price = (int)amount * product.m_Price, m_ProductId = product.m_ID };
+            Dal.OrderItem.Update(Oitem);
+            //BOorder = BuildOrder(BOorder, DOorder, orderId);
             BOorder.m_TotalPrice -= (int)(Oitem.m_amount - amount) * product.m_Price;
             product.m_InStock = (int)(product.m_InStock + (Oitem.m_amount - amount));
             Dal.Product.Update(product);
-            Oitem = new DO.OrderItem { m_amount = (int)amount, m_ID = Oitem.m_ID, m_OrderId = (int)orderId, m_Price = (int)amount * product.m_Price, m_ProductId = product.m_ID };
-            Dal.OrderItem.Update(Oitem);
-            var item = BOorder.m_orderItems.FirstOrDefault(x => x.m_ID == Oitem.m_ID);
-            int index = BOorder.m_orderItems.IndexOf(item);
-            BOorder.m_orderItems.RemoveAt(index);
-            BOorder.m_orderItems.Insert(index, new BO.OrderItem { m_AmountInCart = (int)amount, m_ID = Oitem.m_ID, m_IdProduct = product.m_ID, m_NameProduct = product.m_Name, m_PriceProduct = product.m_Price, m_TotalPriceItem = (int)amount * product.m_Price });
+              var item = BOorder.m_orderItems.FirstOrDefault(x => x.m_ID == Oitem.m_ID);
+             int index = BOorder.m_orderItems.IndexOf(item);
+             BOorder.m_orderItems.RemoveAt(index);
+            return BOorder;
+            //  BOorder.m_orderItems.Insert(index, new BO.OrderItem { m_AmountInCart = (int)amount, m_ID = Oitem.m_ID, m_IdProduct = product.m_ID, m_NameProduct = product.m_Name, m_PriceProduct = product.m_Price, m_TotalPriceItem = (int)amount * product.m_Price });
         }
         catch (Exception inner) { throw new FaildUpdating(inner); }
         return BOorder;

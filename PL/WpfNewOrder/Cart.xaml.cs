@@ -23,7 +23,10 @@ namespace PL.WpfNewOrder
     /// </summary>
     public partial class Cart : Window 
     {
-        BO.Cart C; BO.ProductItem productItem;
+
+        public BO.Cart C;
+
+        BO.ProductItem productItem;
         private readonly ObservableCollection<BO.OrderItem?> _dates = new ObservableCollection<BO.OrderItem?>();
         public ObservableCollection<BO.OrderItem?> Dates { get { return _dates; } }
 
@@ -98,7 +101,8 @@ namespace PL.WpfNewOrder
                 Dates.RemoveAt(index);
                 if (num== C.m_orderItems.Count) Dates.Insert(index, item);
 
-                Totul_Price.Text = C.m_TotalPrice.ToString();
+
+               Totul_Price.Text = C.m_TotalPrice.ToString();
             }
             catch(Exception ex) {
                 MessageBox.Show(ex.Message.ToString());}   

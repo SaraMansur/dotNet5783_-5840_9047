@@ -87,7 +87,12 @@ internal class Product : IProduct
     /// <exception cref="FaildAdding"></exception>
     public void AddProduct(BO.Product? product)
     {
-        if(product.m_Category==Enums.Category.None)
+        for (int i = 0; i < product.m_Name.Length; i++)
+        {
+            if (!(product.m_Name[i] <= 'z' && product.m_Name[i] >= 'a') && (product.m_Name[i] != ' ') && !(product.m_Name[i] <= 'Z' && product.m_Name[i] >= 'A'))
+                throw new BO.IlegalInput();
+        }
+        if (product.m_Category==Enums.Category.None)
             throw new FaildAdding(new BO.IlegalInput());
         product = product ?? throw new ArgumentNull();
         if (product.m_Id < 100000|| product.m_Id > 999999|| product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
@@ -125,6 +130,11 @@ internal class Product : IProduct
     /// <exception cref="FaildUpdating"></exception>
     public void UpdateProduct(BO.Product? product)
     {
+        for (int i = 0; i < product.m_Name.Length; i++)
+        {
+            if (!(product.m_Name[i] <= 'z' && product.m_Name[i] >= 'a') && (product.m_Name[i] != ' ') && !(product.m_Name[i] <= 'Z' && product.m_Name[i] >= 'A'))
+                throw new BO.IlegalInput();
+        }
         product = product ?? throw new ArgumentNull();
         if (product?.m_Id < 0 || product?.m_Price < 0 || product?.m_InStock < 0 || product?.m_Name == "")//check if the data is correct
             throw new BO.IlegalInput();

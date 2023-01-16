@@ -1,10 +1,12 @@
 ﻿using BlApi;
 using BO;
+using DalApi;
 using DO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,7 +33,7 @@ namespace PL.WpfOrderManager
         public static readonly DependencyProperty OrderProperty =
             DependencyProperty.Register("order", typeof(BO.Order), typeof(Window), new PropertyMetadata(null));
 
-        public IBl bl = Factory.Get();
+        public IBl bl = BlApi.Factory.Get();
         private ObservableCollection<OrderForList> Orderlist;
 
         private ObservableCollection<BO.OrderItem?> Items { get; set; }
@@ -111,21 +113,19 @@ namespace PL.WpfOrderManager
                 OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
                 for (int i = 0; i < order.m_orderItems.Count; i++)
                     ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
-                
                 action(ofl);
-                for (int i = 0 , j=0; j < Items.Count(); j++)
+                for (int i = 0,j=0; j < Items.Count();j++ ,i++)
                 {
                     var item = Items[j];
-                    //var item = order.m_orderItems[j];
-                    Items.RemoveAt(j);
+                    Items.RemoveAt(i);
                     if (amount == 0 && item == p)
                     { i--; break; }
-                        
                     Items.Insert(i, item);
                 }
                 MessageBox.Show("The order is updat in succsesfuly!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+        
         }
 
     }

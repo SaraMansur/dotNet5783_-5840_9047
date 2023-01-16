@@ -95,7 +95,7 @@ internal class Product : IProduct
         if (product.m_Category==Enums.Category.None)
             throw new FaildAdding(new BO.IlegalInput());
         product = product ?? throw new ArgumentNull();
-        if (product.m_Id < 100000|| product.m_Id > 999999|| product.m_Price < 0 || product.m_InStock < 0 || product.m_Name == "")//check if the data is correct
+        if (product.m_Id < 100000|| product.m_Id > 999999|| product.m_Price <= 0 || product.m_InStock <= 0 || product.m_Name == ""|| product.m_Category==BO.Enums.Category.None)//check if the data is correct
             throw new FaildAdding(new IlegalInput());
         DO.Product Doproduct = new DO.Product() { m_Name = product.m_Name, m_Price = product.m_Price, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
         try { Dal!.Product.Add(Doproduct); }
@@ -136,7 +136,7 @@ internal class Product : IProduct
                 throw new BO.IlegalInput();
         }
         product = product ?? throw new ArgumentNull();
-        if (product?.m_Id < 0 || product?.m_Price < 0 || product?.m_InStock < 0 || product?.m_Name == "")//check if the data is correct
+        if (product?.m_Id < 0 || product?.m_Price <= 0 || product?.m_InStock <= 0 || product?.m_Name == "" || product.m_Category == BO.Enums.Category.None)//check if the data is correct
             throw new BO.IlegalInput();
         DO.Product Doproduct = new DO.Product() { m_Name = product?.m_Name, m_Price = (double)product?.m_Price!, m_Category = (DO.Enums.Category?)product.m_Category, m_ID = product.m_Id, m_InStock = product.m_InStock };
         try { Dal!.Product.Update(Doproduct); }
@@ -153,12 +153,13 @@ internal class Product : IProduct
         if (c == BO.Enums.Category.None)
             return ProductList();
         return ProductList().Where(x => x.m_Category == c);
-    }
+}
 
-    public IEnumerable<ProductItem> FilterBycategoryCustomer(BO.Enums.Category c)
-    {
-        if (c == BO.Enums.Category.None)
-            return CatalogList();
-        return CatalogList().Where(x => x.Category == c);
-    }
+public IEnumerable<ProductItem> FilterBycategoryCustomer(BO.Enums.Category c)
+{
+    if (c == BO.Enums.Category.None)
+        return CatalogList();
+    return CatalogList().Where(x => x.Category == c);
+}
+
 }

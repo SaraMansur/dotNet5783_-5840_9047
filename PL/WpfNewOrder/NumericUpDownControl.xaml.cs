@@ -55,8 +55,6 @@ namespace PL.WpfNewOrder
 
 
 
-
-
         public NumericUpDownControl()
         {
             InitializeComponent();

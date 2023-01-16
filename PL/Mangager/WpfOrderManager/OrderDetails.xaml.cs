@@ -104,36 +104,6 @@ namespace PL.WpfOrderManager
 
         private void UpdateAmount_click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    int amount = (int)this.gradeNumUpDown.Value;
-            //    BO.OrderItem p = (myItems.SelectedItem as BO.OrderItem);
-            //    p = p ?? throw new("Please select a product to update amount");
-            //    order = bl.Order.changeOrder(order.m_Id, p.m_IdProduct, amount);
-
-            //    var item = Items.FirstOrDefault(x => x.m_ID == p.m_ID);
-            //    int index = Items.IndexOf(item);
-            //    Items.RemoveAt(index);
-            //    Items.Insert(index, item);
-
-            //    OrderForList ofl = new OrderForList() { m_AmountItems = 0, m_CustomerName = order.m_CustomerName, m_Id = order.m_Id, m_OrderStatus = order.m_OrderStatus, m_TotalPrice = order.m_TotalPrice };
-            //    for (int i = 0; i < order.m_orderItems.Count; i++)
-            //        ofl.m_AmountItems += order.m_orderItems[i].m_AmountInCart;
-
-            //    action(ofl);
-            //    //for (int i = 0 , j=0; j < Items.Count();i++, j++)
-            //    //{
-            //    //    var item = Items[j];
-            //    //    //var item = order.m_orderItems[j];
-            //    //    Items.RemoveAt(j);
-            //    //    if (amount == 0 && item == p)
-            //    //    { i--; break; }
-            //    //    Items.Insert(i, item);
-            //    //}
-
-            //    MessageBox.Show("The order is updat in succsesfuly!");
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
             try
             {
                 int amount = (int)this.gradeNumUpDown.Value;
@@ -147,7 +117,6 @@ namespace PL.WpfOrderManager
                 for (int i = 0,j=0; j < Items.Count();j++ ,i++)
                 {
                     var item = Items[j];
-                    item = order.m_orderItems[j];
                     Items.RemoveAt(i);
                     if (amount == 0 && item == p)
                     { i--; break; }

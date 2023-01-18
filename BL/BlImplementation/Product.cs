@@ -25,6 +25,7 @@ internal class Product : IProduct
     /// <returns></returns>
     public IEnumerable<BO.ProductItem> CatalogList(BO.Cart C = null)
     {
+
         List<ProductItem> catalogList = new List<ProductItem>();
         foreach (var item in Dal!.Product.Get())
         {

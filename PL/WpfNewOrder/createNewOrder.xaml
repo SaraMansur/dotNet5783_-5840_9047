@@ -40,6 +40,8 @@
                     <ImageBrush ImageSource="/WpfNewOrder/סלל.jpg" Stretch="Fill"/>
                 </Button.Background>
             </Button>
+            <Button x:Name="myOrders" Style="{StaticResource myButtonStyle}" Content="All my order" HorizontalAlignment="Left" Margin="750,10,0,0" Height="44" Width="170" Click="myOrder_Click"/>
+            <Label Name="Hello" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="280" FontSize="16" Foreground="#FF8C407D" Height="32" FontWeight="Bold"/>
 
         </Grid>
         <ListView Name="ProductItems" Margin="0,46,0,0" HorizontalAlignment="Center" Width="1020" BorderBrush="{x:Null}"  Background="{x:Null}" FontSize="16"  ItemsSource="{Binding}" Grid.Row="1" Foreground="#FF993F76" Height="455" VerticalAlignment="Top" Grid.RowSpan="2" FontStyle="Italic" FontWeight="Bold">

@@ -20,6 +20,7 @@ using System.Reflection.Emit;
 using System.Data;
 using System.Windows.Media.TextFormatting;
 using System.Security.Cryptography;
+using PL.WPFOrderTacking;
 
 namespace PL.WpfNewOrder
 {
@@ -32,16 +33,22 @@ namespace PL.WpfNewOrder
 
         public ObservableCollection<ProductItem?> ProductItemlist { get; set; }
         BO.Cart cart;
-
-        public createNewOrder(BO.Cart c = null)
+        BO.Customer customer;
+        public createNewOrder(BO.Cart c = null , BO.Customer cu = null)
         {
             try
             {
-                cart = c;
+                customer = cu;
+                if (customer != null) cart = customer.m_Cart;
+                else { cart = c; /*myOrders.Visibility = Visibility.Collapsed; */}
                 InitializeComponent();
                 ProductItemlist = new ObservableCollection<ProductItem?>(bl.Product.CatalogList(cart).ToList());
                 ProductItems.ItemsSource = ProductItemlist;
                 GroupBy.ItemsSource = new string[] { "None", "Grouping by category", "Watches", "Bracelets", "Earrings", "Rings", "Necklaces" };
+                DateTime currentTime = DateTime.Now;
+                if (currentTime.Hour >= 5 && currentTime.Hour <= 12) Hello.Content = "Good Morning " + cart.m_CustomerName;
+                else { if (currentTime.Hour >= 12 && currentTime.Hour <= 17) Hello.Content = "Good Afternoon " + cart.m_CustomerName;
+                      else Hello.Content = "Good Evening " + cart.m_CustomerName; }
             }
             catch(Exception e) { MessageBox.Show(e.Message); }
         }   
@@ -71,9 +78,22 @@ namespace PL.WpfNewOrder
             ProductItemlist.Insert(index,item);
         }
 
-        private void Cart_Click(object sender, RoutedEventArgs e) { new Cart(cart).Show(); this.Close(); }
+        private void Cart_Click(object sender, RoutedEventArgs e) {
+            if (customer != null)
+            {
+                customer.m_Cart = cart;
+                bl.Customer.UpdateCustomer(customer);
+            }
+            new Cart(cart,null,customer).Show(); this.Close(); 
+        }
 
-        private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show(); this.Close(); }
+        private void Click_buttonBack(object sender, RoutedEventArgs e) {
+            if (customer != null)
+            {
+                customer.m_Cart = cart;
+                bl.Customer.UpdateCustomer(customer);
+            }
+            new MainWindow().Show(); this.Close(); }
 
         private void AddToCart_click(object sender, RoutedEventArgs e)
         {
@@ -82,6 +102,9 @@ namespace PL.WpfNewOrder
             cart = bl.Cart.AddItemToCart(cart, productItem.m_ID);
         }
 
-
+        private void myOrder_Click(object sender, RoutedEventArgs e)
+        {
+            new CstomerTracking(customer ).Show(); this.Close();  
+        }
     }
 } 

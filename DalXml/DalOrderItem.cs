@@ -20,12 +20,6 @@ internal class DalOrderItem : IOrderItem
 
     string OrderItemFilePath = @"OrderItems.xml";
 
-    //public DalOrderItem()
-    //{
-    //    if (!File.Exists(dir + OrderItemFilePath))
-    //        XMLTools.SaveListToXMLSerializer<DO.OrderItem?>(DataSource.m_listOrderItems, dir + OrderItemFilePath);
-    //}
-
 
     public int Add(OrderItem? OI)
     {
@@ -33,7 +27,6 @@ internal class DalOrderItem : IOrderItem
         OrderItem oi = OI ?? throw new ArgumentNull();
         oi.m_ID = XMLTools.configOrderItemId();
         OrderItemList.Add(oi);
-
         XMLTools.SaveListToXMLSerializer<DO.OrderItem?>(OrderItemList, dir + OrderItemFilePath);
         return oi.m_ID;
     }
@@ -44,7 +37,6 @@ internal class DalOrderItem : IOrderItem
         if (!OrderItemList.Exists(t => t?.m_ID == ID))
         {
             throw new Exception("DL: Student with the same id not found...");
-            //throw new SomeException("DL: Student with the same id not found...");
         }
 
         OrderItemList.Remove(GetSingle(x => x?.m_ID == ID));

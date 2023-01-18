@@ -28,8 +28,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="/הגךת.png"/>
         </Grid.Background>
-        <Button x:Name="Managerview" Content="Manager" Click="Manager_Click" Margin="60,384,640,0" Style="{StaticResource myButtonStyle}" Height="42" />
-        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Margin="348,379,355,0" RenderTransformOrigin="0.5,0.5" Style="{StaticResource myButtonStyle}" Height="42" >
+        <Button x:Name="Managerview" Content="Manager" Click="Manager_Click" Margin="30,384,715,0" Style="{StaticResource myButtonStyle}" Height="42" />
+        <Button x:Name="Neworderdisplay" Content="Shopping" Click="Neworder_Click" Margin="456,379,283,0" RenderTransformOrigin="0.5,0.5" Style="{StaticResource myButtonStyle}" Height="45" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -39,7 +39,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="Ordertrackingview" Content="Order tracking" Click="OrderTracking_Click" Margin="630,384,65,0" Style="{StaticResource myButtonStyle}" Height="42"/>
+        <Button x:Name="Ordertrackingview" Content="Order tracking" Click="OrderTracking_Click" Margin="685,384,25,0" Style="{StaticResource myButtonStyle}" Height="42"/>
         <TextBlock Margin="209,42,0,0" Text="WELCOME" VerticalAlignment="Top" Height="63" Foreground="#FF91587B" Width="492" FontFamily="Sitka Banner" FontSize="60" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="Customer" Content="Customer" Click="Customer_Click" Margin="234,384,510,0" Style="{StaticResource myButtonStyle}" Height="42" />
     </Grid>
 </Window>

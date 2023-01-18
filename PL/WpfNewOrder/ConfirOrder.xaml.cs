@@ -23,17 +23,21 @@ namespace PL.WpfNewOrder
     public partial class ConfirOrder : Window
     {
         BO.Cart _myOrder;
+        BO.Customer customer;    
         IBl bl = Factory.Get();
         private Action< List<BO.OrderItem?>?> action;
 
-        public ConfirOrder(BO.Cart cart)
+        public ConfirOrder(BO.Cart cart, BO.Customer cc)
         {
             InitializeComponent();
             _myOrder = new BO.Cart() { m_CustomerAdress = "", m_CustomerMail = "", m_CustomerName = "", m_orderItems = cart.m_orderItems, m_TotalPrice = cart.m_TotalPrice };
-
-            this.DataContext = _myOrder;
+            if (cc != null) { _myOrder.m_CustomerAdress = cc.m_Cart.m_CustomerAdress; _myOrder.m_CustomerMail = cc.m_Cart.m_CustomerMail; _myOrder.m_CustomerName = cc.Name; }
+            customer = cc;
+             this.DataContext = _myOrder;
+           // else this.DataContext = cc.m_Cart; 
         }
-        public ConfirOrder(Action<List<BO.OrderItem?>?> a, BO.Cart cart):this(cart)
+
+        public ConfirOrder(Action<List<BO.OrderItem?>?> a, BO.Cart cart, BO.Customer cc) :this(cart ,cc)
         {
             action= a;
         }

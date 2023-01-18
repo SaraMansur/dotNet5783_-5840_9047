@@ -18,6 +18,8 @@ sealed  internal class DalXml :IDal
 
     public IOrderItem OrderItem { get; } = new Dal.DalOrderItem();
 
+    public ICustomer Customer { get; }= new Dal.DalCustomer();  
+
     public static IDal Instance { get; } = new DalXml();
 
     private DalXml() { }

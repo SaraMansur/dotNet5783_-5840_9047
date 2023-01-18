@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCustomer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Customer>
+    <m_ID>100000</m_ID>
+    <m_Name>Meir Mansur</m_Name>
+    <m_Password>1447</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>911228</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>569</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>836117</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>3275</m_Price>
+        <m_amount>5</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100020</m_ID>
+        <m_CustomerName>Meir Mansur</m_CustomerName>
+        <m_CustomerEmail>Meir234@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Savion 44 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-19T20:38:48.9785521+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-22T20:38:48.9785521+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-23T01:38:48.9785521+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100021</m_ID>
+        <m_CustomerName>Meir Mansur</m_CustomerName>
+        <m_CustomerEmail>Meir234@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Savion 44 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-12T20:38:48.9785746+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-03T20:38:48.9785746+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-04T08:38:48.9785746+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100022</m_ID>
+        <m_CustomerName>Meir Mansur</m_CustomerName>
+        <m_CustomerEmail>Meir234@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Savion 44 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-20T20:38:48.9785756+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-12T20:38:48.9785756+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-13T11:38:48.9785756+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100035</m_ID>
+        <m_CustomerName>Meir Mansur</m_CustomerName>
+        <m_CustomerEmail>Meir@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>fg</m_CustomerAdress>
+        <m_OrderTime>2023-01-17T20:41:21.0379908+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+      <Order>
+        <m_ID>100037</m_ID>
+        <m_CustomerName>Meir Mansur</m_CustomerName>
+        <m_CustomerEmail>Meir@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>haifa</m_CustomerAdress>
+        <m_OrderTime>2023-01-17T20:51:30.6069199+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+    </m_orders>
+    <m_Email>MeirMansur234@gmail.com</m_Email>
+    <m_Adress>Savion 44 Rechovot</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100001</m_ID>
+    <m_Name>Sara Levi</m_Name>
+    <m_Password>2894</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>100020</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100010</m_OrderId>
+        <m_Price>645</m_Price>
+        <m_amount>3</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100031</m_ID>
+        <m_ProductId>911228</m_ProductId>
+        <m_OrderId>100015</m_OrderId>
+        <m_Price>1138</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100013</m_ID>
+        <m_ProductId>364069</m_ProductId>
+        <m_OrderId>100006</m_OrderId>
+        <m_Price>724</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100018</m_ID>
+        <m_ProductId>216115</m_ProductId>
+        <m_OrderId>100009</m_OrderId>
+        <m_Price>1412</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100023</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara344@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 4 Jerusalem</m_CustomerAdress>
+        <m_OrderTime>2022-12-13T20:38:48.9791192+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-10T20:38:48.9791192+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-11T07:38:48.9791192+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100024</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara344@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 4 Jerusalem</m_CustomerAdress>
+        <m_OrderTime>2022-12-08T20:38:48.979122+02:00</m_OrderTime>
+        <m_ShipDate>2022-11-29T20:38:48.979122+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-11-30T01:38:48.979122+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100025</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara344@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 4 Jerusalem</m_CustomerAdress>
+        <m_OrderTime>2022-12-14T20:38:48.9791227+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-17T20:38:48.9791227+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-17T23:38:48.9791227+02:00</m_DeliveryrDate>
+      </Order>
+    </m_orders>
+    <m_Email>Sara344@gmail.com</m_Email>
+    <m_Adress>Begin 4 Jerusalem</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100002</m_ID>
+    <m_Name>Yossi Levi</m_Name>
+    <m_Password>3496</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>100007</m_ID>
+        <m_ProductId>858007</m_ProductId>
+        <m_OrderId>100003</m_OrderId>
+        <m_Price>1616</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100032</m_ID>
+        <m_ProductId>511004</m_ProductId>
+        <m_OrderId>100016</m_OrderId>
+        <m_Price>246</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100035</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100017</m_OrderId>
+        <m_Price>430</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100035</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100017</m_OrderId>
+        <m_Price>430</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100026</m_ID>
+        <m_CustomerName>Yossi Levi</m_CustomerName>
+        <m_CustomerEmail>Yossi942@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 44 Gadera</m_CustomerAdress>
+        <m_OrderTime>2022-12-15T20:38:48.9791251+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-09T20:38:48.9791251+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-10T15:38:48.9791251+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100027</m_ID>
+        <m_CustomerName>Yossi Levi</m_CustomerName>
+        <m_CustomerEmail>Yossi942@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 44 Gadera</m_CustomerAdress>
+        <m_OrderTime>2022-12-12T20:38:48.9791256+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-06T20:38:48.9791256+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-07T03:38:48.9791256+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100028</m_ID>
+        <m_CustomerName>Yossi Levi</m_CustomerName>
+        <m_CustomerEmail>Yossi942@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Begin 44 Gadera</m_CustomerAdress>
+        <m_OrderTime>2022-12-17T20:38:48.9791262+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-09T20:38:48.9791262+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-10T02:38:48.9791262+02:00</m_DeliveryrDate>
+      </Order>
+    </m_orders>
+    <m_Email>Yossi942@gmail.com</m_Email>
+    <m_Adress>Begin 44 Gadera</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100003</m_ID>
+    <m_Name>Sara Levi</m_Name>
+    <m_Password>2572</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>100015</m_ID>
+        <m_ProductId>163948</m_ProductId>
+        <m_OrderId>100007</m_OrderId>
+        <m_Price>1221</m_Price>
+        <m_amount>3</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100035</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100017</m_OrderId>
+        <m_Price>430</m_Price>
+        <m_amount>2</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100022</m_ID>
+        <m_ProductId>216115</m_ProductId>
+        <m_OrderId>100011</m_OrderId>
+        <m_Price>2118</m_Price>
+        <m_amount>3</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100026</m_ID>
+        <m_ProductId>361132</m_ProductId>
+        <m_OrderId>100013</m_OrderId>
+        <m_Price>361</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100029</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara804@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 98 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-08T20:38:48.9791286+02:00</m_OrderTime>
+        <m_ShipDate>2022-11-29T20:38:48.9791286+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-11-30T11:38:48.9791286+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100030</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara804@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 98 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-14T20:38:48.9791328+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-05T20:38:48.9791328+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-06T00:38:48.9791328+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100031</m_ID>
+        <m_CustomerName>Sara Levi</m_CustomerName>
+        <m_CustomerEmail>Sara804@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 98 Rechovot</m_CustomerAdress>
+        <m_OrderTime>2022-12-09T20:38:48.9791334+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-06T20:38:48.9791334+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-07T00:38:48.9791334+02:00</m_DeliveryrDate>
+      </Order>
+    </m_orders>
+    <m_Email>Sara804@gmail.com</m_Email>
+    <m_Adress>Harimonim 98 Rechovot</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100004</m_ID>
+    <m_Name>Yair Ben-Califa</m_Name>
+    <m_Password>2869</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>100019</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100009</m_OrderId>
+        <m_Price>215</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100013</m_ID>
+        <m_ProductId>364069</m_ProductId>
+        <m_OrderId>100006</m_OrderId>
+        <m_Price>724</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100012</m_ID>
+        <m_ProductId>511004</m_ProductId>
+        <m_OrderId>100006</m_OrderId>
+        <m_Price>738</m_Price>
+        <m_amount>3</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>100036</m_ID>
+        <m_ProductId>932758</m_ProductId>
+        <m_OrderId>100018</m_OrderId>
+        <m_Price>215</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100032</m_ID>
+        <m_CustomerName>Yair Ben-Califa</m_CustomerName>
+        <m_CustomerEmail>Yair615@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 85 Haifa</m_CustomerAdress>
+        <m_OrderTime>2022-12-22T20:38:48.9791344+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-18T20:38:48.9791344+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-19T16:38:48.9791344+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100033</m_ID>
+        <m_CustomerName>Yair Ben-Califa</m_CustomerName>
+        <m_CustomerEmail>Yair615@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 85 Haifa</m_CustomerAdress>
+        <m_OrderTime>2022-12-19T20:38:48.9791359+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-15T20:38:48.9791359+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-16T16:38:48.9791359+02:00</m_DeliveryrDate>
+      </Order>
+      <Order>
+        <m_ID>100034</m_ID>
+        <m_CustomerName>Yair Ben-Califa</m_CustomerName>
+        <m_CustomerEmail>Yair615@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>Harimonim 85 Haifa</m_CustomerAdress>
+        <m_OrderTime>2022-12-21T20:38:48.9791364+02:00</m_OrderTime>
+        <m_ShipDate>2022-12-12T20:38:48.9791364+02:00</m_ShipDate>
+        <m_DeliveryrDate>2022-12-13T00:38:48.9791364+02:00</m_DeliveryrDate>
+      </Order>
+    </m_orders>
+    <m_Email>Yair615@gmail.com</m_Email>
+    <m_Adress>Harimonim 85 Haifa</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100005</m_ID>
+    <m_Name>Sara Mansur</m_Name>
+    <m_Password>1234</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>911228</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>569</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>836117</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>655</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>364069</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>2172</m_Price>
+        <m_amount>3</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders>
+      <Order>
+        <m_ID>100038</m_ID>
+        <m_CustomerName>Sara</m_CustomerName>
+        <m_CustomerEmail>ss@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>haifa</m_CustomerAdress>
+        <m_OrderTime>2023-01-17T21:39:16.269465+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+      <Order>
+        <m_ID>100040</m_ID>
+        <m_CustomerName>Sara Mansur</m_CustomerName>
+        <m_CustomerEmail>ss@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>haifa</m_CustomerAdress>
+        <m_OrderTime>2023-01-18T11:14:19.7183055+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+      <Order>
+        <m_ID>100041</m_ID>
+        <m_CustomerName>Sara Mansur</m_CustomerName>
+        <m_CustomerEmail>ss@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>haifa</m_CustomerAdress>
+        <m_OrderTime>2023-01-18T21:36:32.9215624+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+    </m_orders>
+    <m_Email>ss@gmail.com</m_Email>
+    <m_Adress>haifa</m_Adress>
+  </Customer>
+  <Customer>
+    <m_ID>100006</m_ID>
+    <m_Name>Yael Tvil</m_Name>
+    <m_Password>7907</m_Password>
+    <m_orderItems>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>911228</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>569</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>836117</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>655</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+      <OrderItem>
+        <m_ID>0</m_ID>
+        <m_ProductId>364069</m_ProductId>
+        <m_OrderId>0</m_OrderId>
+        <m_Price>724</m_Price>
+        <m_amount>1</m_amount>
+      </OrderItem>
+    </m_orderItems>
+    <m_orders />
+    <m_Email>ya@gmail.com</m_Email>
+    <m_Adress>Netania</m_Adress>
+  </Customer>
+</ArrayOfCustomer>

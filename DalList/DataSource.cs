@@ -11,7 +11,7 @@ internal static class DataSource
     internal static List<Product?> m_listPruducts = new List<Product?>();
     internal static List<Order?> m_listOreders = new List<Order?>();
     internal static List<OrderItem?> m_listOrderItems = new List<OrderItem?>();
-
+    internal static List<Customer?> m_listCustomer = new List<Customer?>();
 
     static DataSource() => s_Initialize(); //difult constructor.
 
@@ -113,15 +113,32 @@ internal static class DataSource
             orderItem.m_Price = orderItem.m_amount * p.m_Price; //
             m_listOrderItems.Add(orderItem);
         }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Customer customer = new Customer();
+            customer.m_ID = Config.CustomerId;
+            customer.m_Name = firstName[rand.Next(0, 7)] + ' ' + lastName[rand.Next(0, 7)];
+            customer.m_Password = rand.Next(1000, 9999);
+            int n = 0;
+            customer.m_orderItems = new List<OrderItem?>();
+            for (int j = rand.Next(1, 4); j > 0; j--)
+            {
+                customer.m_orderItems.Add(m_listOrderItems[rand.Next(0, 20)]);
+            }
+            m_listCustomer.Add(customer);
+        }
     }
 
 
     internal static class Config
     {
+        private static int m_CustomerId = 100000;
         private static int m_orderId = 100000;
         private static int m_orderItemId = 100000;
         internal static int orderId { get { return m_orderId++; } }
         internal static int orderItemId { get { return m_orderItemId++; } }
+        internal static int CustomerId { get { return m_CustomerId++; } }
     }
 
 }

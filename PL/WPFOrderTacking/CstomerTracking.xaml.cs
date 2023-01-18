@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using PL.WpfNewOrder;
 using PL.WpfOrderManager;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,16 @@ namespace PL.WPFOrderTacking
     public partial class CstomerTracking : Window
     {
         public IBl bl = Factory.Get();
-        public CstomerTracking()
+        BO.Customer customer;
+        List<DO.Order?> orders = new List<DO.Order?>();
+        public CstomerTracking(BO.Customer c=null )
         {
             InitializeComponent();
+            customer= c;
+            if(customer== null) { myItems.Visibility = Visibility.Collapsed; }
+            else {
+                orders = bl.Customer.AllOrder(customer);
+                myItems.DataContext= orders; }
         }
 
         private void Orderdetails_click(object sender, RoutedEventArgs e) 
@@ -50,7 +58,10 @@ namespace PL.WPFOrderTacking
             catch (Exception ex) { MessageBox.Show("Please enter correct details again."); }
         }
 
-        private void Click_buttonBack(object sender, RoutedEventArgs e) { new MainWindow().Show();this.Close(); }   
+        private void Click_buttonBack(object sender, RoutedEventArgs e) {
+            if (customer == null) { new MainWindow().Show(); this.Close(); }
+            else { new createNewOrder(customer.m_Cart, customer).Show(); this.Close(); }
+        }
 
     }
 }

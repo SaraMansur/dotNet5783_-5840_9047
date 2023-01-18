@@ -39,6 +39,7 @@ namespace PL
 
         private void OrderTracking_Click(object sender, RoutedEventArgs e) { new CstomerTracking().Show(); this.Close(); }
 
-  
+        private void Customer_Click(object sender, RoutedEventArgs e) { new SignIn(4).Show(); this.Close(); }
+
     }
 }

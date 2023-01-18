@@ -30,8 +30,8 @@ internal class Cart : ICart
     /// <returns></returns>
     public BO.Cart AddItemToCart(BO.Cart? cart, int? ID)
     {
-        DO.Product product = new DO.Product();//A new product is released.
-        cart = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
+         DO.Product product = new DO.Product();//A new product is released.
+        //cart = cart ?? throw new ArgumentNull(); //cheack that the cart is ligal.
 
         try { product = (DO.Product)Dal.Product.GetSingle(x => x?.m_ID == ID); } //Checks if the product exists
         catch (Exception inner) { throw new FaildGetting(inner); } //Throwing in the event of a wrong ID number

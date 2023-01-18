@@ -74,6 +74,7 @@ public class XMLTools
         configRoot.Save(dir + ConfigPath);
         return id;
     }
+
     public static int configOrderItemId()
     {
         XElement configRoot = XElement.Load(dir + ConfigPath);
@@ -84,4 +85,13 @@ public class XMLTools
         return id;
     }
 
+    public static int configCustomer()
+    {
+        XElement configRoot = XElement.Load(dir + ConfigPath);
+        int id = Convert.ToInt32(configRoot.Element("IdCustomer").Value);
+        id++;
+        configRoot.Element("IdCustomer")!.SetValue(id);
+        configRoot.Save(dir + ConfigPath);
+        return id;
+    }
 }

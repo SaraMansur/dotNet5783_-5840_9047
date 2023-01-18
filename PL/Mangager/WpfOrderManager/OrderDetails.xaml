@@ -109,8 +109,8 @@
         <TextBlock Margin="577,127,0,0" Text="The orderd time:" RenderTransformOrigin="0.432,1.325" Style="{StaticResource myTextBlockStyle}"/>
         <TextBox Margin="345,66,0,0" Text="{Binding order.m_Id}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
         <TextBox Margin="345,123,0,0" Text="{Binding order.m_CustomerName}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="345,182,0,0" Text="{Binding order.m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
-        <TextBox Margin="345,243,0,0" Text="{Binding order.m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
+        <TextBox Margin="345,182,0,0" Text="{Binding order.m_CustomerAdress}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
+        <TextBox Margin="345,243,0,0" Text="{Binding order.m_CustomerMail}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
         <TextBox Margin="773,66,0,0" Text="{Binding order.m_OrderStatus}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
         <TextBox Margin="773,123,0,0" Text="{Binding order.m_OrderTime}" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}" />
         <TextBox Margin="773,182,0,0" Text="{Binding order.m_ShipDate}" x:Name="ship" RenderTransformOrigin="1.236,0.711" Style="{StaticResource myTextBlock}"/>
@@ -119,7 +119,7 @@
 
         <Button x:Name="delivery" Style="{StaticResource myButtonStyle}" Content="Delivery" Click="OrderDelivery_Click" HorizontalAlignment="Left" Margin="321,514,0,0" RenderTransformOrigin="0.125,0.596" />
         <Button x:Name="shipping" Style="{StaticResource myButtonStyle}" Content="Ship" Click="OrderShipping_Click" HorizontalAlignment="Left" Margin="124,513,0,0" RenderTransformOrigin="0.953,0.596"/>
-        <ListBox x:Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="112,360,138,0" Height="129" VerticalAlignment="Top" Foreground="White">
+        <ListBox x:Name="myItems" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" Margin="112,360,108,0" Height="129" VerticalAlignment="Top" Foreground="White">
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF76366A" Offset="0"/>

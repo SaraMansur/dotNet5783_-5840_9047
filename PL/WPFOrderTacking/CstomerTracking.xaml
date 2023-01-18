@@ -30,8 +30,8 @@
         </Grid.Background>
         <TextBlock HorizontalAlignment="Left" Margin="145,56,0,0" TextWrapping="Wrap" Text="Please enter id of your order:" VerticalAlignment="Top" Height="34" Width="315" Foreground="#FF91587B" FontSize="22" FontFamily="Trebuchet MS" FontWeight="Bold"/>
         <TextBox x:Name="OrderId" HorizontalAlignment="Left" Margin="465,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,1.673" Height="22" BorderBrush="#FF541C47" Background="#FFD8B8DA" FontSize="16"/>
-        <Button Content="Order details" HorizontalAlignment="Left" Margin="159,358,0,0" Height="34" Width="182" Style="{StaticResource myButtonStyle}" Click="Orderdetails_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
-        <Button Content="View order tracking" HorizontalAlignment="Left" Margin="475,358,0,0" Height="34" Width="185" Style="{StaticResource myButtonStyle}" Click="View_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
+        <Button Content="Order details" HorizontalAlignment="Left" Margin="70,358,0,0" Height="34" Width="182" Style="{StaticResource myButtonStyle}" Click="Orderdetails_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
+        <Button Content="View order tracking" HorizontalAlignment="Left" Margin="560,358,0,0" Height="34" Width="185" Style="{StaticResource myButtonStyle}" Click="View_click"  FontSize="16" FontFamily="Sitka Small Semibold"/>
         <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -45,5 +45,18 @@
                 <ImageBrush ImageSource="/WPFOrderTacking/צילום מסך 2023-01-13 011212.jpg"/>
             </Button.Background>
         </Button>
+        <ListView x:Name="myItems" ItemsSource="{Binding}" Margin="312,132,312,42" FontSize="16" FontWeight="Bold">
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFDBF1"/>
+                    <GradientStop Color="#FF91587B" Offset="1"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id of my orders:" DisplayMemberBinding="{Binding Path= m_ID}" Width="150"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

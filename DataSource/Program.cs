@@ -17,6 +17,7 @@ public class hi
         internal static List<DO.Product?> m_listPruducts = new List<DO.Product?>();
         internal static List<DO.Order?> m_listOreders = new List<DO.Order?>();
         internal static List<DO.OrderItem?> m_listOrderItems = new List<DO.OrderItem?>();
+        internal static List<Customer?> m_listCustomer = new List<DO.Customer?>();
 
         static string[] nameProduct =
         {
@@ -127,6 +128,51 @@ public class hi
                 orderItem.m_Price = orderItem.m_amount * p.m_Price; //
                 m_listOrderItems.Add(orderItem);
             }
+
+            int tt = 100000; 
+            for (int i = 0; i < 5; i++)
+            {
+                Customer customer = new Customer();
+                customer.m_ID = tt++;
+                customer.m_Name = firstName[rand.Next(0, 7)] + ' ' + lastName[rand.Next(0, 7)];
+                customer.m_Adress= street[rand.Next(0, 7)] + " " + rand.Next(1, 100) + " " + citie[rand.Next(0, 9)];
+                customer.m_Email= firstName[rand.Next(0, 7)] + rand.Next(100, 999) + "@gmail.com";
+
+                customer.m_Password = rand.Next(1000, 9999);
+                int n = 0;
+                customer.m_orderItems = new List<OrderItem?>();
+                for (int j = 4; j > 0; j--)
+                {
+                    customer.m_orderItems.Add(m_listOrderItems[rand.Next(0, 39)]);
+                }
+                customer.m_orders = new List<Order?>();
+                for (int j = 3; j > 0; j--) 
+                {
+                    Order o = new Order();
+                    o.m_ID = nu++;
+                    o.m_CustomerName = customer.m_Name;
+                    o.m_CustomerEmail = customer.m_Email;
+                    o.m_CustomerAdress = customer.m_Adress;
+                    o.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-40, -25), 0, 0, 0));
+                    o.m_ShipDate = o.m_OrderTime?.Add(new TimeSpan(rand.Next(-9, 4), 0, 0, 0));
+                    o.m_DeliveryrDate = o.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
+                    m_listOreders.Add(o);   
+                    customer.m_orders.Add(o);
+                    for (int kj = 3; kj > 0; kj--)
+                    {
+                        OrderItem ot = new OrderItem();
+                        ot.m_ID = num++;
+                        ot.m_OrderId = o.m_ID;
+                        Product? p = m_listPruducts[rand.Next(0, 9)];
+                        ot.m_ProductId = p.Value.m_ID;
+                        ot.m_amount = rand.Next(1, 4);
+                        ot.m_Price = p.Value.m_Price * ot.m_amount;
+                        m_listOrderItems.Add(ot);   
+                    }
+                }
+
+                m_listCustomer.Add(customer);
+            }
         }
 
 
@@ -150,15 +196,21 @@ public class hi
             List<Order?> orderlist = m_listOreders;
             List<OrderItem?> orderitemlist = m_listOrderItems;
             List<Product?> productlist = m_listPruducts;
-           string path = @"Config.xml";
+            List<Customer?> customerlist = m_listCustomer;
+
+            string path = @"Config.xml";
             string path1 = @"Orders.xml";
             string path2 = @"Product.xml";
             string path3 = @"OrderItems.xml";
-             XElement? config;
-            config = new XElement("Config", new XElement("IdOrder", 100019), new XElement("IdOrderItem", 100039));
+            string path4 = @"Customer.xml";
+            XElement? config;
+            config = new XElement("Config", new XElement("IdOrder", 100034), new XElement("IdOrderItem", 100083), new XElement("IdCustomer", 100004));
             config.Save(path);
             XMLTools.SaveListToXMLSerializer<OrderItem?>(orderitemlist,path3);
             Console.WriteLine("OrderItem");
+
+            XMLTools.SaveListToXMLSerializer<Customer?>(customerlist, path4);
+            Console.WriteLine("customer");
 
             XMLTools.SaveListToXMLSerializer<Order?>(orderlist, path1);
             Console.WriteLine("order");

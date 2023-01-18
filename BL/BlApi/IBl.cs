@@ -23,4 +23,6 @@ public interface IBl
     /// </summary>
     public IProduct Product { get; }
 
+    public ICustomer Customer { get; }
+
 }

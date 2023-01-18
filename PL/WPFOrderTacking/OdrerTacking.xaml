@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="OdrerTacking" Height="700" Width="970" >
-    <!--DataContext="{Binding RelativeSource={RelativeSource self}}"-->
+        Title="OdrerTacking" Height="800" Width="970" DataContext="{Binding RelativeSource={RelativeSource self}}"> 
+  
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="#FFF0F0E8" />
@@ -40,20 +40,20 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding}" Margin="23,87,25,105" BorderBrush="#FF8C407D"  Background="{x:Null}" FontSize="18" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding OrderList}" Margin="23,87,25,105" BorderBrush="#FF8C407D"  Background="{x:Null}" FontSize="18" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path = m_Id}"  Width="120" />
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path= m_CustomerName}" Width="170"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding m_Id}"  Width="120" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding m_CustomerName}" Width="170"/>
                     <GridViewColumn x:Name="Status"  Header="Status" Width="160">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox  HorizontalAlignment="Center"  Width="120" TextAlignment="Center" Text="{Binding Path= m_OrderStatus }" Style = "{StaticResource TextBoxStyle}" Background="{Binding m_OrderStatus, Converter={StaticResource convert}}" />
+                                <TextBox  HorizontalAlignment="Center"  Width="120" TextAlignment="Center" Text="{Binding m_OrderStatus }" Style = "{StaticResource TextBoxStyle}" Background="{Binding m_OrderStatus, Converter={StaticResource convert}}" Foreground="White"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path= m_AmountItems}" Width="100"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path= m_TotalPrice}" Width="130"/>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding m_AmountItems}" Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding m_TotalPrice}" Width="130"/>
                     <GridViewColumn Header="view trackig" x:Name="track"  Width="220">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -64,7 +64,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+        <Button Name="Back" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="29" Click="Click_buttonBack" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" >
             <Button.Background>
                 <ImageBrush ImageSource="/Mangager/WpfOrderManager/צילום מסך 2023-01-13 011212.jpg"/>
             </Button.Background>
@@ -77,9 +77,9 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Content="Orders:" HorizontalAlignment="Left" Margin="23,40,0,0" VerticalAlignment="Top" Width="922" Height="47" Foreground="White" BorderBrush="Black" Background="#FF91587B" FontSize="40" FontFamily="Sitka Banner" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
-        <Button  Name="Start" Content="Start Tracking" HorizontalAlignment="Left" Margin="241,600,0,0" Width="144" Height="49" Style="{StaticResource myButtonStyle}" />
-        <Button  Name="Stop" Content="Stop Tracking" HorizontalAlignment="Left" Margin="562,600,0,0" Width="139" Height="49" Style="{StaticResource myButtonStyle}" />
+        <Label Content="Orders:" HorizontalAlignment="Left" Margin="23,40,0,0" VerticalAlignment="Top" Width="922" Height="47" Foreground="White" BorderBrush="Black" Background="#FF91587B" FontSize="40" FontFamily="Sitka Banner" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2" />
+        <Button  Name="Start" Click="Start_Click" Content="Start Tracking" HorizontalAlignment="Left" Margin="251,716,0,0" Width="144" Height="49" Style="{StaticResource myButtonStyle}" />
+        <Button  Name="Stop" Click="Stop_Click" Content="Stop Tracking" HorizontalAlignment="Left" Margin="578,716,0,0" Width="139" Height="49" Style="{StaticResource myButtonStyle}"  />
     </Grid>
 
 </Window>

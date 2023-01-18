@@ -19,38 +19,137 @@ using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using PL.WpfOrderManager;
 using System.Runtime.CompilerServices;
+using System.ComponentModel;
+using System.Threading;
+using System.Windows.Controls.Primitives;
 
-namespace PL.WPFOrderTacking
+namespace PL.WPFOrderTacking;
+
+///// <summary>
+// Interaction logic for OdrerTacking.xaml
+//</summary>
+public partial class OdrerTacking : Window
 {
-    ///// <summary>
-    // Interaction logic for OdrerTacking.xaml
-    //</summary>
-    public partial class OdrerTacking : Window
+    ProgressBar progbar = new ProgressBar();
+    public IBl bl = BlApi.Factory.Get();
+    Users user;
+   // private ObservableCollection<OrderForList> OrderList;
+    int flag = 0;
+    BackgroundWorker Track;
+    BO.Order order;
+    DateTime time = DateTime.Now;
+    public List<BO.OrderForList?> OrderList
     {
-        public IBl bl = BlApi.Factory.Get();
-        Users user;
-        private ObservableCollection<OrderForList> _OrderList;
-        int _flag = 0;
-        public OdrerTacking(Users u ,int num = 0)
+        get { return (List<BO.OrderForList?>)GetValue(OrderForListsProperty); }
+        set { SetValue(OrderForListsProperty, value); }
+    }
+    public static readonly DependencyProperty OrderForListsProperty =
+    DependencyProperty.Register("OrderForLists", typeof(List<BO.OrderForList?>), typeof(OdrerTacking), new PropertyMetadata(null));
+
+
+
+
+public OdrerTacking (Users u, int num = 0)
+    {
+        flag = num;
+        OrderList = new List<OrderForList?>(bl.Order.OrderList()!);
+        user = u;
+
+        Track = new BackgroundWorker();
+        Track.DoWork += Track_DoWork;
+        Track.ProgressChanged += Track_ProgressChanged;
+        Track.RunWorkerCompleted += Track_RunWorkerCompleted;
+        Track.WorkerReportsProgress = true;
+        Track.WorkerSupportsCancellation = true;
+        InitializeComponent();
+    }
+
+    private void Track_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
+    {
+        if (e.Cancelled == true)
         {
-            InitializeComponent(); _flag = num;
-            _OrderList = new(bl.Order.OrderList()!);
-            this.DataContext = _OrderList;
-            user = u;
+            MessageBox.Show("The process is cencelled");
         }
-
-        private void OrderTackindView_Click(object sender, RoutedEventArgs e)
+        else
         {
-            OrderForList p = (sender as Button).DataContext as OrderForList;
-            if (p != null)
-                new View(p.m_Id).Show();
+            MessageBox.Show("The process ended successfully");
         }
+        //this.Cursor = Cursors.Arrow;
+    }
 
-
-        private void Click_buttonBack(object sender, RoutedEventArgs e) {
-            if (_flag == 0) {new MainWindow().Show(); this.Close(); }
-           else { new Manager(user).Show(); this.Close(); }
+    private void Track_ProgressChanged(object? sender, ProgressChangedEventArgs e)
+    {
+        OrderList = new List<OrderForList?>(bl.Order.OrderList()!);
+        try
+        {
+            foreach( var Item in OrderList)
+            {
+                if(Item.m_OrderStatus!= BO.Enums.Status.Received)
+                    order = bl.Order.orderDetails(Item.m_Id) ?? throw new Exception("order is null");
+                if (order!=null)
+                {
+                    if (time - order.m_OrderTime >= new TimeSpan(0, 2, 0, 0) && Item.m_OrderStatus == BO.Enums.Status.Ordered)
+                    {
+                        order.m_OrderTime = time.AddMinutes(1);
+                        order = bl.Order.sendingAnInvitation(Item.m_Id);
+                    }
+                    else if (time - order.m_OrderTime >= new TimeSpan(0, 1, 0, 0) && Item.m_OrderStatus == BO.Enums.Status.Shipped)
+                    {
+                        order.m_ShipDate = time.AddDays(1);
+                        order = bl.Order.orderDelivery(Item.m_Id);
+                    }
+                    
+                }
+                OrderList = new List<OrderForList?>(bl.Order.OrderList()!);
+            }
         }
+        catch(Exception ex) { MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK); }
+    }
 
+    private void Track_DoWork(object? sender, DoWorkEventArgs e)
+    {
+        while (true)
+        {
+            if (Track.CancellationPending == true)
+            {
+                e.Cancel = true;
+                break;
+            }
+            else
+            {
+                Thread.Sleep(2000);
+                time = time.AddDays(1);
+                if (Track.WorkerReportsProgress == true) { Track.ReportProgress(11); }
+            }
+        }
+    }
+
+    private void OrderTackindView_Click(object sender, RoutedEventArgs e)
+    {
+        OrderForList p = (sender as Button).DataContext as OrderForList;
+        if (p != null)
+            new View(p.m_Id).Show();
+    }
+
+
+    private void Click_buttonBack(object sender, RoutedEventArgs e)
+    {
+        if (flag == 0) { new MainWindow().Show(); this.Close(); }
+        else { new Manager(user).Show(); this.Close(); }
+    }
+
+    private void Start_Click(object sender, RoutedEventArgs e)
+    {
+        if (Track.IsBusy != true)
+        {
+            Track.RunWorkerAsync();
+        }
+    }
+
+    private void Stop_Click(object sender, RoutedEventArgs e)
+    {
+        if (Track.WorkerSupportsCancellation == true)
+            Track.CancelAsync();
     }
 }
+

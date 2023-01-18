@@ -14,13 +14,13 @@ namespace PL
 
             if (status == BO.Enums.Status.Ordered)
             {
-                return Brushes.Red;
+                return Brushes.Purple;
             }
             else if (status == BO.Enums.Status.Shipped)
             {
-                return Brushes.Yellow;
+                return Brushes.Plum;
             }
-            return Brushes.Green;
+            return Brushes.Silver;
 
         }
 

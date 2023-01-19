@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="OdrerTacking" Height="800" Width="970" DataContext="{Binding RelativeSource={RelativeSource self}}"> 
-  
+        Title="OdrerTacking" Height="800" Width="970" DataContext="{Binding RelativeSource={RelativeSource self}}">
+
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="#FFF0F0E8" />
@@ -32,7 +32,7 @@
         <local:convert 
             x:Key="convert"/>
     </Window.Resources>
-    <Grid>
+    <Grid Height="790" VerticalAlignment="Top">
         <Grid.Background>
             <ImageBrush ImageSource="/WPFOrderTacking/צילום מסך 2023-01-12 233140.png" Stretch="Uniform"/>
         </Grid.Background>
@@ -54,7 +54,7 @@
                     </GridViewColumn>
                     <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding m_AmountItems}" Width="100"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding m_TotalPrice}" Width="130"/>
-                    <GridViewColumn Header="view trackig" x:Name="track"  Width="220">
+                    <GridViewColumn Header="view trackig" x:Name="track"  Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button  Name="OrderTackindView"  HorizontalAlignment="Center" Content="Watch order tracking" Width="170" Style="{StaticResource myButtonStyle}" Click="OrderTackindView_Click" FontSize="12"/>
@@ -78,8 +78,8 @@
             </Button.RenderTransform>
         </Button>
         <Label Content="Orders:" HorizontalAlignment="Left" Margin="23,40,0,0" VerticalAlignment="Top" Width="922" Height="47" Foreground="White" BorderBrush="Black" Background="#FF91587B" FontSize="40" FontFamily="Sitka Banner" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2" />
-        <Button  Name="Start" Click="Start_Click" Content="Start Tracking" HorizontalAlignment="Left" Margin="251,716,0,0" Width="144" Height="49" Style="{StaticResource myButtonStyle}" />
-        <Button  Name="Stop" Click="Stop_Click" Content="Stop Tracking" HorizontalAlignment="Left" Margin="578,716,0,0" Width="139" Height="49" Style="{StaticResource myButtonStyle}"  />
+        <Button  Name="Start" Click="Start_Click" Content="Start Tracking" HorizontalAlignment="Left" Margin="181,690,0,0" Width="179" Height="49" Style="{StaticResource myButtonStyle}" />
+        <Button  Name="Stop" Click="Stop_Click" Content="Stop Tracking" Margin="545,690,45,0" Height="49" Style="{StaticResource myButtonStyle}"  />
     </Grid>
 
 </Window>

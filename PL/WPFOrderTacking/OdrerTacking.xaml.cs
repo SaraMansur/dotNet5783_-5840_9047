@@ -24,10 +24,8 @@ using System.Threading;
 using System.Windows.Controls.Primitives;
 
 namespace PL.WPFOrderTacking;
+ 
 
-///// <summary>
-// Interaction logic for OdrerTacking.xaml
-//</summary>
 public partial class OdrerTacking : Window
 {
     ProgressBar progbar = new ProgressBar();

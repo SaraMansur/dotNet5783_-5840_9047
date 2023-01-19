@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC9EBA7B-749
 		xml\Config.xml = xml\Config.xml
 		xml\Customer.xml = xml\Customer.xml
 		xml\dal-config.xml = xml\dal-config.xml
+		xml\OrderItems.xml = xml\OrderItems.xml
 		xml\Orders.xml = xml\Orders.xml
 		xml\Product.xml = xml\Product.xml
 		xml\Users.xml = xml\Users.xml

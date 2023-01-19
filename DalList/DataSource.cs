@@ -1,5 +1,6 @@
 ﻿using Dal;
 using DO;
+using System;
 using System.Collections;
 using static Dal.DataSource;
 
@@ -71,21 +72,21 @@ internal static class DataSource
             order.m_CustomerEmail = custumerFirstName + rand.Next(100, 999) + "@gmail.com"; //Initialize the customer email.
             order.m_CustomerAdress = street[rand.Next(0, 7)] + " " + rand.Next(1, 100) + " " + citie[rand.Next(0, 9)]; //Client address initialization.
 
-            if (i >= 10 && i < 16)//80% from orders also have a Ship date.
+            if (i >= 0 && i < 9)//80% from orders also have a Ship date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-16, -14), 0, 0, 0));//The order date was made before: 14 to 16 days
                 order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0));//Delivery date is made within 14 business days
                 order.m_DeliveryrDate = DateTime.MinValue;
             }
 
-            if (i >= 0 && i < 10)//To 60% of the 80% of the orders that also have a Ship date, have a delivery date.
-            {
-                order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0)); ////The order date was made before: 15 to 30 days
-                order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0)); //Delivery date is made within 14 business days
-                order.m_DeliveryrDate = order.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
-            }
+            //if (i >= 0 && i < 7)//To 60% of the 80% of the orders that also have a Ship date, have a delivery date.
+            //{
+            //    order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-30, -15), 0, 0, 0)); ////The order date was made before: 15 to 30 days
+            //    order.m_ShipDate = order.m_OrderTime?.Add(new TimeSpan(rand.Next(1, 14), 0, 0, 0)); //Delivery date is made within 14 business days
+            //    order.m_DeliveryrDate = order.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
+            //}
 
-            if (i >= 16 && i < 20)//20% of orders have no delivery date and delivery date.
+            if (i >= 9 && i < 20)//20% of orders have no delivery date and delivery date.
             {
                 order.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-7, -1), 0, 0, 0));
                 order.m_ShipDate = DateTime.MinValue;
@@ -114,22 +115,66 @@ internal static class DataSource
             m_listOrderItems.Add(orderItem);
         }
 
-        for (int i = 0; i < 5; i++)
-        {
-            Customer customer = new Customer();
-            customer.m_ID = Config.CustomerId;
-            customer.m_Name = firstName[rand.Next(0, 7)] + ' ' + lastName[rand.Next(0, 7)];
-            customer.m_Password = rand.Next(1000, 9999);
-            int n = 0;
-            customer.m_orderItems = new List<OrderItem?>();
-            for (int j = rand.Next(1, 4); j > 0; j--)
-            {
-                customer.m_orderItems.Add(m_listOrderItems[rand.Next(0, 20)]);
-            }
-            m_listCustomer.Add(customer);
-        }
-    }
 
+            for (int i = 0; i < 5; i++)
+            {
+                Customer customer = new Customer();
+                customer.m_ID = Config.CustomerId;
+                customer.m_Name = firstName[rand.Next(0, 7)] + ' ' + lastName[rand.Next(0, 7)];
+                customer.m_Adress = street[rand.Next(0, 7)] + " " + rand.Next(1, 100) + " " + citie[rand.Next(0, 9)];
+                customer.m_Email = firstName[rand.Next(0, 7)] + rand.Next(100, 999) + "@gmail.com";
+
+                customer.m_Password = rand.Next(1000, 9999);
+                int n = 0;
+                customer.m_orderItems = new List<OrderItem?>();
+                for (int j = 4; j > 0; j--)
+                {
+                    customer.m_orderItems.Add(m_listOrderItems[rand.Next(0, 39)]);
+                }
+                customer.m_orders = new List<Order?>();
+                for (int j = 3; j > 0; j--)
+                {
+                    Order o = new Order();
+                    o.m_ID = Config.orderId;
+                    o.m_CustomerName = customer.m_Name;
+                    o.m_CustomerEmail = customer.m_Email;
+                    o.m_CustomerAdress = customer.m_Adress;
+                    o.m_OrderTime = DateTime.Now.Add(new TimeSpan(rand.Next(-40, -25), 0, 0, 0));
+                    o.m_ShipDate = o.m_OrderTime?.Add(new TimeSpan(rand.Next(-9, 4), 0, 0, 0));
+                    o.m_DeliveryrDate = o.m_ShipDate?.Add(new TimeSpan(0, rand.Next(1, 24), 0, 0));
+                    m_listOreders.Add(o);
+                    customer.m_orders.Add(o);
+                    for (int kj = 3; kj > 0; kj--)
+                    {
+                        OrderItem ot = new OrderItem();
+                        ot.m_ID = Config.orderItemId;
+                        ot.m_OrderId = o.m_ID;
+                        Product? p = m_listPruducts[rand.Next(0, 9)];
+                        ot.m_ProductId = p.Value.m_ID;
+                        ot.m_amount = rand.Next(1, 4);
+                        ot.m_Price = p.Value.m_Price * ot.m_amount;
+                        m_listOrderItems.Add(ot);
+                    }
+                }
+
+                m_listCustomer.Add(customer);
+            }
+        List<Order?> orders = new List<Order?>(); int num = 100000;
+        Order orderff = new Order();
+        for (int i = 0; i < 11; i++)
+        {
+            for (int j = i; j < 33;)
+            {
+                orderff = (Order)m_listOreders[j];
+                j = j + 10;
+                orderff.m_ID = num++;
+                orders.Add(orderff);
+            }
+        }
+        m_listOreders = orders;
+        m_listOreders.RemoveAt(35);
+
+    }
 
     internal static class Config
     {

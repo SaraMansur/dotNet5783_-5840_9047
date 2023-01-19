@@ -40,16 +40,16 @@ public partial class OdrerTacking : Window
     DateTime time = DateTime.Now;
     public List<BO.OrderForList?> OrderList
     {
-        get { return (List<BO.OrderForList?>)GetValue(OrderForListsProperty); }
-        set { SetValue(OrderForListsProperty, value); }
+        get { return (List<BO.OrderForList?>)GetValue(OrderListProperty); }
+        set { SetValue(OrderListProperty, value); }
     }
-    public static readonly DependencyProperty OrderForListsProperty =
-    DependencyProperty.Register("OrderForLists", typeof(List<BO.OrderForList?>), typeof(OdrerTacking), new PropertyMetadata(null));
+    public static readonly DependencyProperty OrderListProperty =
+    DependencyProperty.Register("OrderList", typeof(List<BO.OrderForList?>), typeof(OdrerTacking), new PropertyMetadata(null));
 
 
 
 
-public OdrerTacking (Users u, int num = 0)
+    public OdrerTacking (Users u, int num = 0)
     {
         flag = num;
         OrderList = new List<OrderForList?>(bl.Order.OrderList()!);
@@ -134,8 +134,8 @@ public OdrerTacking (Users u, int num = 0)
 
     private void Click_buttonBack(object sender, RoutedEventArgs e)
     {
-        if (flag == 0) { new MainWindow().Show(); this.Close(); }
-        else { new Manager(user).Show(); this.Close(); }
+      //  if (flag == 0) { new MainWindow().Show(); this.Close(); }
+        new Manager(user).Show(); this.Close(); 
     }
 
     private void Start_Click(object sender, RoutedEventArgs e)

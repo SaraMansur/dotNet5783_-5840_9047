@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1BFDCE6-52D9-4A10-8A24-2D9286AD79E5}"
 	ProjectSection(SolutionItems) = preProject
 		bonuses.md = bonuses.md
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalFacade", "DalFacade\DalFacade.csproj", "{7C9C24C6-2AEC-41D5-BC97-BB13F22E75FA}"

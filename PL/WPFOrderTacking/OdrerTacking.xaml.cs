@@ -115,7 +115,7 @@ public partial class OdrerTacking : Window
             }
             else
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(6000);
                 time = time.AddDays(1);
                 if (Track.WorkerReportsProgress == true) { Track.ReportProgress(11); }
             }

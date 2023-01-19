@@ -31,6 +31,8 @@
         </Style>
         <local:convert 
             x:Key="convert"/>
+        <local:Convert2
+            x:Key="Convert2"/>
     </Window.Resources>
     <Grid Height="790" VerticalAlignment="Top">
         <Grid.Background>
@@ -49,6 +51,13 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox  HorizontalAlignment="Center"  Width="120" TextAlignment="Center" Text="{Binding m_OrderStatus }" Style = "{StaticResource TextBoxStyle}" Background="{Binding m_OrderStatus, Converter={StaticResource convert}}" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="Progras"   Width="160">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar HorizontalAlignment="Center"  Width="120" Height="20"  Value="{Binding m_OrderStatus, Converter={StaticResource Convert2}}" Background="White" Foreground="#FF8C407D" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

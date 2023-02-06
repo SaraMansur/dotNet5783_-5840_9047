@@ -42,7 +42,7 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding OrderList}" Margin="23,87,25,105" BorderBrush="#FF8C407D"  Background="{x:Null}" FontSize="18" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2">
+        <ListView x:Name="List_Order" Grid.Row ="0" ItemsSource="{Binding OrderList}" Margin="23,87,25,171" BorderBrush="#FF8C407D"  Background="{x:Null}" FontSize="18" Foreground="#FF8C407D" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding m_Id}"  Width="120" />
@@ -87,8 +87,8 @@
             </Button.RenderTransform>
         </Button>
         <Label Content="Orders:" HorizontalAlignment="Left" Margin="23,40,0,0" VerticalAlignment="Top" Width="922" Height="47" Foreground="White" BorderBrush="Black" Background="#FF91587B" FontSize="40" FontFamily="Sitka Banner" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2" />
-        <Button  Name="Start" Click="Start_Click" Content="Start Tracking" HorizontalAlignment="Left" Margin="181,690,0,0" Width="179" Height="49" Style="{StaticResource myButtonStyle}" />
-        <Button  Name="Stop" Click="Stop_Click" Content="Stop Tracking" Margin="545,690,45,0" Height="49" Style="{StaticResource myButtonStyle}"  />
+        <Button  Name="Start" Click="Start_Click" Content="Start Tracking" HorizontalAlignment="Left" Margin="185,640,0,0" Width="179" Height="49" Style="{StaticResource myButtonStyle}" />
+        <Button  Name="Stop" Click="Stop_Click" Content="Stop Tracking" Margin="550,640,40,0" Height="49" Style="{StaticResource myButtonStyle}" RenderTransformOrigin="0.556,-0.02"  />
     </Grid>
 
 </Window>

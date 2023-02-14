@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="OdrerTacking" Height="800" Width="970" DataContext="{Binding RelativeSource={RelativeSource self}}">
+        Title="OdrerTacking" Height="760" Width="970" DataContext="{Binding RelativeSource={RelativeSource self}}">
 
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">

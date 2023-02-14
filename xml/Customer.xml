@@ -354,4 +354,23 @@
     <m_Email>sa@gmail.com</m_Email>
     <m_Adress>haifa</m_Adress>
   </Customer>
+  <Customer>
+    <m_ID>100006</m_ID>
+    <m_Name>Sara</m_Name>
+    <m_Password>1234</m_Password>
+    <m_orderItems />
+    <m_orders>
+      <Order>
+        <m_ID>100035</m_ID>
+        <m_CustomerName>Sara</m_CustomerName>
+        <m_CustomerEmail>sara@gmail.com</m_CustomerEmail>
+        <m_CustomerAdress>haifa</m_CustomerAdress>
+        <m_OrderTime>2023-02-10T00:30:48.4923885+02:00</m_OrderTime>
+        <m_ShipDate xsi:nil="true" />
+        <m_DeliveryrDate xsi:nil="true" />
+      </Order>
+    </m_orders>
+    <m_Email>sara@gmail.com</m_Email>
+    <m_Adress>haifa</m_Adress>
+  </Customer>
 </ArrayOfCustomer>

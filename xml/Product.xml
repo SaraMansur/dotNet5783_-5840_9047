@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Product>
     <m_ID>218252</m_ID>
@@ -11,7 +11,7 @@
     <m_ID>849214</m_ID>
     <m_Name>Gentle Ring Gold</m_Name>
     <m_Price>338</m_Price>
-    <m_InStock>18</m_InStock>
+    <m_InStock>17</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
@@ -25,14 +25,14 @@
     <m_ID>430229</m_ID>
     <m_Name>Gold ring inlaid with spotlight stones</m_Name>
     <m_Price>911</m_Price>
-    <m_InStock>16</m_InStock>
+    <m_InStock>15</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
     <m_ID>939708</m_ID>
     <m_Name>Silver Hoop earrings</m_Name>
     <m_Price>332</m_Price>
-    <m_InStock>17</m_InStock>
+    <m_InStock>16</m_InStock>
     <m_Category>Earrings</m_Category>
   </Product>
   <Product>

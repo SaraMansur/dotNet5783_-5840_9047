@@ -97,7 +97,7 @@
     <m_CustomerAdress>Savion 14 Gadera</m_CustomerAdress>
     <m_OrderTime>2023-01-04T10:21:09.1707176+02:00</m_OrderTime>
     <m_ShipDate>2023-01-17T10:21:09.1707176+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.8377364+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100011</m_ID>
@@ -106,7 +106,7 @@
     <m_CustomerAdress>Harimonim 40 Rechovot</m_CustomerAdress>
     <m_OrderTime>2023-01-04T10:21:09.1707182+02:00</m_OrderTime>
     <m_ShipDate>2023-01-10T10:21:09.1707182+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.856231+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100012</m_ID>
@@ -115,7 +115,7 @@
     <m_CustomerAdress>Harimonim 98 Gadera</m_CustomerAdress>
     <m_OrderTime>2023-01-04T10:21:09.1707186+02:00</m_OrderTime>
     <m_ShipDate>2023-01-16T10:21:09.1707186+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.8712161+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100013</m_ID>
@@ -124,7 +124,7 @@
     <m_CustomerAdress>Hatamar 62 Rechassim</m_CustomerAdress>
     <m_OrderTime>2023-01-03T10:21:09.1707191+02:00</m_OrderTime>
     <m_ShipDate>2023-01-14T10:21:09.1707191+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.8867263+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100014</m_ID>
@@ -133,7 +133,7 @@
     <m_CustomerAdress>Begin 81 Netivot</m_CustomerAdress>
     <m_OrderTime>2023-01-03T10:21:09.1707195+02:00</m_OrderTime>
     <m_ShipDate>2023-01-12T10:21:09.1707195+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.901754+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100015</m_ID>
@@ -142,7 +142,7 @@
     <m_CustomerAdress>Harimonim 26 Netivot</m_CustomerAdress>
     <m_OrderTime>2023-01-04T10:21:09.1707199+02:00</m_OrderTime>
     <m_ShipDate>2023-01-10T10:21:09.1707199+02:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_DeliveryrDate>2023-09-11T23:49:59.9154535+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100016</m_ID>
@@ -150,8 +150,8 @@
     <m_CustomerEmail>Yossi460@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Vaitzman 95 Tveria</m_CustomerAdress>
     <m_OrderTime>2023-01-12T10:21:09.1707203+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_ShipDate>2023-09-11T23:49:59.9305706+03:00</m_ShipDate>
+    <m_DeliveryrDate>2023-09-11T23:50:05.8889585+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100017</m_ID>
@@ -159,8 +159,8 @@
     <m_CustomerEmail>Sara426@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Ben Guryon 66 Gadera</m_CustomerAdress>
     <m_OrderTime>2023-01-11T10:21:09.1707261+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_ShipDate>2023-09-11T23:49:59.9466475+03:00</m_ShipDate>
+    <m_DeliveryrDate>2023-09-11T23:50:05.9054377+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100018</m_ID>
@@ -168,8 +168,8 @@
     <m_CustomerEmail>Meir948@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Savion 25 Haifa</m_CustomerAdress>
     <m_OrderTime>2023-01-08T10:21:09.1707266+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_ShipDate>2023-09-11T23:49:59.9619167+03:00</m_ShipDate>
+    <m_DeliveryrDate>2023-09-11T23:50:05.9191474+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100019</m_ID>
@@ -177,8 +177,8 @@
     <m_CustomerEmail>Meir831@gmail.com</m_CustomerEmail>
     <m_CustomerAdress>Savion 63 Tveria</m_CustomerAdress>
     <m_OrderTime>2023-01-15T10:21:09.1707269+02:00</m_OrderTime>
-    <m_ShipDate>0001-01-01T00:00:00</m_ShipDate>
-    <m_DeliveryrDate>0001-01-01T00:00:00</m_DeliveryrDate>
+    <m_ShipDate>2023-09-11T23:49:59.9772888+03:00</m_ShipDate>
+    <m_DeliveryrDate>2023-09-11T23:50:05.9348456+03:00</m_DeliveryrDate>
   </Order>
   <Order>
     <m_ID>100020</m_ID>
@@ -322,6 +322,15 @@
     <m_CustomerAdress>haifa</m_CustomerAdress>
     <m_OrderTime>2023-02-10T00:30:48.4923885+02:00</m_OrderTime>
     <m_ShipDate>2023-02-10T00:32:09.198312+02:00</m_ShipDate>
-    <m_DeliveryrDate xsi:nil="true" />
+    <m_DeliveryrDate>2023-09-11T23:50:00.1319787+03:00</m_DeliveryrDate>
+  </Order>
+  <Order>
+    <m_ID>100036</m_ID>
+    <m_CustomerName>isca</m_CustomerName>
+    <m_CustomerEmail>gfffj@gmail.com</m_CustomerEmail>
+    <m_CustomerAdress>jerusalem</m_CustomerAdress>
+    <m_OrderTime>2023-09-11T23:45:29.0454971+03:00</m_OrderTime>
+    <m_ShipDate>2023-09-11T23:49:25.4765817+03:00</m_ShipDate>
+    <m_DeliveryrDate>2023-09-11T23:50:00.1513508+03:00</m_DeliveryrDate>
   </Order>
 </ArrayOfOrder>

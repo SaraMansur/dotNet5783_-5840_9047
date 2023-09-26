@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WpfNewOrder"
         mc:Ignorable="d"
-        Title="Cart" Height="495" Width="900" 
+        Title="Cart" Height="500" Width="990" 
         DataContext="{Binding RelativeSource={RelativeSource self}}">
     <Window.Resources>
         <Style x:Key="myButtonStyle" TargetType="Button">
@@ -38,7 +38,7 @@
             <ImageBrush ImageSource="/WpfNewOrder/צילום מסך 2023-01-12 233140.png" Stretch="Uniform"/>
         </Grid.Background>
 
-        <ListView x:Name="Items" Grid.Row ="0" BorderBrush="#FF91587B"  FontSize="18" ItemsSource="{Binding}" Margin="30,34,170,0" Height="337" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF9A3774" Grid.ColumnSpan="2" FontWeight="Bold" >
+        <ListView x:Name="Items" Grid.Row ="0" BorderBrush="#FF91587B"  FontSize="18" ItemsSource="{Binding}" Margin="30,34,205,0" Height="337" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF9A3774" Grid.ColumnSpan="2" FontWeight="Bold" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID of order" DisplayMemberBinding="{Binding Path= m_ID}" Width="100"/>
@@ -65,7 +65,7 @@
             </Button.RenderTransform>
         </Button>
         <TextBlock x:Name="Totul_Price_Of_The_Cart" HorizontalAlignment="Left" Margin="40,397,0,0" TextWrapping="Wrap" Text="Totul Price Of The Cart:" VerticalAlignment="Top" Height="32" Width="203" FontFamily="Segoe UI Variable Display Semibold" FontSize="18" FontWeight="Bold"/>
-        <local:NumericUpDownControl x:Name="gradeNumUpDown" Margin="73,168,23,264" RenderTransformOrigin="0.036,0.659" Grid.Column="1" />
+        <local:NumericUpDownControl x:Name="gradeNumUpDown" Margin="50,166,0,266" RenderTransformOrigin="0.036,0.659" Grid.Column="1" />
         <Button x:Name="updateButton" Content="update Amount" Click="updateAmountButton_Click" Margin="50,202,10,0" Style="{StaticResource myButtonStyle}" Height="60" FontSize="14" Grid.Column="1"/>
         <TextBlock Name="Totul_Price" HorizontalAlignment="Left" Margin="248,397,0,0" TextWrapping="Wrap" Text="{Binding m_TotalPrice , Mode=TwoWay}"  VerticalAlignment="Top" Width="107" FontFamily="Segoe UI Variable Display Semibold" FontSize="18" FontWeight="Bold" Height="45"/>
     </Grid>

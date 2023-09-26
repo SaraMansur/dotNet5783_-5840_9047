@@ -4,7 +4,7 @@
     <m_ID>218252</m_ID>
     <m_Name>Delicate Ring Silver</m_Name>
     <m_Price>505</m_Price>
-    <m_InStock>17</m_InStock>
+    <m_InStock>16</m_InStock>
     <m_Category>Rings</m_Category>
   </Product>
   <Product>
@@ -32,7 +32,7 @@
     <m_ID>939708</m_ID>
     <m_Name>Silver Hoop earrings</m_Name>
     <m_Price>332</m_Price>
-    <m_InStock>16</m_InStock>
+    <m_InStock>15</m_InStock>
     <m_Category>Earrings</m_Category>
   </Product>
   <Product>
@@ -60,7 +60,7 @@
     <m_ID>998647</m_ID>
     <m_Name>Silver bracelet</m_Name>
     <m_Price>733</m_Price>
-    <m_InStock>23</m_InStock>
+    <m_InStock>21</m_InStock>
     <m_Category>Bracelets</m_Category>
   </Product>
   <Product>
